@@ -580,12 +580,12 @@ function Projects() {
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
           label="Proyectos"
-          label-eyebrow=""
           ghost="Nuestro portfolio,"
           title="explora el trabajo."
           paragraph="Negocios locales que ya están recibiendo más clientes desde Google gracias a su nueva web."
           cta="Ver todos →"
         />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.name} {...p} />
