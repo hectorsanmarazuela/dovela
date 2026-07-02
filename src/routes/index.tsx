@@ -323,47 +323,21 @@ function Hero() {
 /* ---------- POR QUÉ DOVELA ---------- */
 
 function PorQueDovela() {
-  const items = [
-    {
-      h: "Estudio en Segovia",
-      b: "No somos una gran agencia de Madrid. Estamos aquí, conocemos el mercado local y trabajamos contigo de cerca.",
-    },
-    {
-      h: "Entrega en 2 semanas",
-      b: "Tu web lista en 14 días. Sin procesos eternos, sin burocracia. Rápido y bien hecho.",
-    },
-    {
-      h: "Comunicación directa",
-      b: "Hablas con quien hace el trabajo. Sin intermediarios, sin cuentas que te pasen el teléfono.",
-    },
-    {
-      h: "Resultados medibles",
-      b: "Posiciones en Google, llamadas, formularios. Medimos lo que importa y te lo enseñamos.",
-    },
-  ];
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-3">
             <div className="label-eyebrow mb-8">Por qué Dovela</div>
             <h2
-              className="h-display text-[#0A0A0A]"
+              className="h-display"
               style={{ fontSize: "clamp(44px, 6.4vw, 84px)", maxWidth: "14ch" }}
             >
-              <span className="block">Construimos webs usables</span>
+              <span className="block" style={{ color: "#888" }}>
+                Construimos webs usables
+              </span>
               <span className="block" style={{ color: "#0A0A0A" }}>
-                <span
-                  style={{
-                    background: "#C7F751",
-                    padding: "0 0.18em",
-                    borderRadius: 6,
-                    boxDecorationBreak: "clone",
-                    WebkitBoxDecorationBreak: "clone",
-                  }}
-                >
-                  para que vendas
-                </span>
+                para que vendas
               </span>
             </h2>
             <p
@@ -376,44 +350,24 @@ function PorQueDovela() {
           <div className="lg:col-span-1 flex flex-col justify-end gap-4">
             <a
               href="#servicios"
-              className="self-start rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
+              className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
               style={{
                 border: "0.5px solid #0A0A0A",
-                padding: "8px 16px",
+                padding: "8px 8px 8px 16px",
                 fontSize: 13,
                 color: "#0A0A0A",
               }}
             >
-              Conocer el estudio →
+              Descubre el servicio
+              <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
             </a>
           </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {items.map((it, i) => (
-            <div
-              key={it.h}
-              className="p-8"
-              style={{
-                borderLeft: i === 0 ? "none" : "0.5px solid #E5E5E5",
-              }}
-            >
-              <div style={{ color: "#C7F751", fontSize: 20, lineHeight: 1 }}>◆</div>
-              <h3
-                className="mt-6"
-                style={{ fontSize: 18, fontWeight: 600, color: "#0A0A0A" }}
-              >
-                {it.h}
-              </h3>
-              <p className="mt-3" style={{ fontSize: 14, color: "#888" }}>
-                {it.b}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- SERVICES ACCORDION ---------- */
 
