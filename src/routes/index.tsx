@@ -795,7 +795,7 @@ function Plan() {
             </ol>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
               style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
             >
               Reserva tu llamada
