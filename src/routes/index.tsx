@@ -113,17 +113,22 @@ function Nav() {
           Dovela
         </a>
         <div className="hidden md:flex items-center gap-7 ml-2">
-          {["Proyectos", "Servicios", "Blog"].map((l) => (
+          {[
+            { label: "Proyectos", href: "/#proyectos" },
+            { label: "Servicios", href: "/servicios" },
+            { label: "Blog", href: "#blog" },
+          ].map((l) => (
             <a
-              key={l}
-              href={`#${l.toLowerCase()}`}
+              key={l.label}
+              href={l.href}
               className="text-[15px] text-[#888] hover:text-[#0A0A0A] transition-colors"
               style={{ fontWeight: 400 }}
             >
-              {l}
+              {l.label}
             </a>
           ))}
         </div>
+
         <div className="flex items-center gap-2 ml-auto group">
           <a
             href="#auditoria"
