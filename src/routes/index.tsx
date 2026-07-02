@@ -661,47 +661,108 @@ function ProjectCard({
 
 /* ---------- PLAN ---------- */
 
+function RotatingSeal({ size = 140 }: { size?: number }) {
+  const id = "seal-path";
+  return (
+    <div
+      className="relative shrink-0"
+      style={{ width: size, height: size }}
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 100 100"
+        width={size}
+        height={size}
+        className="animate-[spin_18s_linear_infinite]"
+        style={{ display: "block" }}
+      >
+        <defs>
+          <path
+            id={id}
+            d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
+          />
+        </defs>
+        <circle cx="50" cy="50" r="50" fill="#C7F751" />
+        <text
+          fill="#0A0A0A"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            fontSize: 9,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          <textPath href={`#${id}`} startOffset="0">
+            PERSONALIZADA Y GRATUITA · PERSONALIZADA Y GRATUITA ·
+          </textPath>
+        </text>
+      </svg>
+      <div className="absolute inset-0 grid place-items-center">
+        <svg
+          width={Math.round(size * 0.24)}
+          height={Math.round(size * 0.24)}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#0A0A0A"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 function Plan() {
-  const before = [
+  const steps = [
     "Reserva una llamada",
     "Cuéntanos qué necesitas",
-    "Recibe una propuesta",
+    "Recibe tu propuesta visual",
   ];
-  const after = [
+  const guarantees = [
     "Contacto directo con el equipo",
     "Garantía de entrega en 2 semanas",
     "45 días de actualizaciones SEO incluidos",
   ];
+  const titleStyle: React.CSSProperties = {
+    fontSize: "clamp(28px, 3vw, 36px)",
+    minHeight: 88,
+  };
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="label-eyebrow mb-8">Plan</div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {/* Before */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+          {/* Steps — now dark */}
           <div
+            className="flex flex-col"
             style={{
-              background: "#F5F5F5",
+              background: "#0A0A0A",
               borderRadius: 20,
               padding: 32,
-              border: "0.5px solid #E5E5E5",
+              color: "#FAFAFA",
             }}
           >
-            <h3
-              className="h-display text-[#0A0A0A]"
-              style={{ fontSize: "clamp(28px, 3vw, 36px)" }}
-            >
-              Antes de decidir
+            <h3 className="h-display" style={{ ...titleStyle, color: "#FAFAFA" }}>
+              3 sencillos pasos
             </h3>
-            <ol className="mt-8 flex flex-col gap-4">
-              {before.map((t, i) => (
+            <ol
+              className="mt-8 grid gap-4"
+              style={{ gridAutoRows: "minmax(48px, auto)" }}
+            >
+              {steps.map((t, i) => (
                 <li key={t} className="flex items-start gap-4">
                   <span
                     className="inline-flex items-center justify-center rounded-full shrink-0"
                     style={{
                       width: 32,
                       height: 32,
-                      background: "#0A0A0A",
-                      color: "#FAFAFA",
+                      background: "#C7F751",
+                      color: "#0A0A0A",
                       fontSize: 13,
                       fontWeight: 600,
                     }}
@@ -711,7 +772,7 @@ function Plan() {
                   <span
                     style={{
                       fontSize: 16,
-                      color: "#0A0A0A",
+                      color: "rgba(250,250,250,0.92)",
                       lineHeight: 1.5,
                       paddingTop: 4,
                     }}
@@ -721,47 +782,49 @@ function Plan() {
                 </li>
               ))}
             </ol>
-            <div
-              className="inline-flex items-center gap-2 mt-8 rounded-full"
-              style={{
-                background: "#C7F751",
-                color: "#0A0A0A",
-                padding: "8px 14px",
-                fontSize: 13,
-                fontWeight: 600,
-              }}
-            >
-              ◆ Propuesta visual personalizada gratuita
+            <div className="mt-8 flex items-center gap-6 flex-wrap">
+              <RotatingSeal size={128} />
+              <a
+                href="#contacto"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
+              >
+                Reserva tu llamada
+                <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+              </a>
             </div>
           </div>
 
-          {/* After */}
+          {/* Guarantees — now light */}
           <div
+            className="flex flex-col"
             style={{
-              background: "#0A0A0A",
+              background: "#F5F5F5",
               borderRadius: 20,
               padding: 32,
-              color: "#FAFAFA",
+              border: "0.5px solid #E5E5E5",
+              color: "#0A0A0A",
             }}
           >
             <h3
-              className="h-display"
-              style={{ fontSize: "clamp(28px, 3vw, 36px)", color: "#FAFAFA" }}
+              className="h-display text-[#0A0A0A]"
+              style={titleStyle}
             >
-              Cuando dices que sí,
-              <br />
-              esto te garantizamos
+              Garantías
             </h3>
-            <ul className="mt-8 flex flex-col gap-4">
-              {after.map((t) => (
+            <ul
+              className="mt-8 grid gap-4"
+              style={{ gridAutoRows: "minmax(48px, auto)" }}
+            >
+              {guarantees.map((t) => (
                 <li key={t} className="flex items-start gap-4">
                   <span
                     className="inline-flex items-center justify-center rounded-full shrink-0"
                     style={{
                       width: 32,
                       height: 32,
-                      background: "#C7F751",
-                      color: "#0A0A0A",
+                      background: "#0A0A0A",
+                      color: "#C7F751",
                     }}
                   >
                     <svg
@@ -780,7 +843,7 @@ function Plan() {
                   <span
                     style={{
                       fontSize: 16,
-                      color: "rgba(250,250,250,0.9)",
+                      color: "#0A0A0A",
                       lineHeight: 1.5,
                       paddingTop: 4,
                     }}
@@ -792,11 +855,16 @@ function Plan() {
             </ul>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 mt-10 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-              style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
+              className="group inline-flex items-center gap-2 mt-auto pt-10 rounded-full self-start text-[#0A0A0A] transition"
+              style={{ fontWeight: 600, fontSize: 14 }}
             >
-              Ver el Pack Completo
-              <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+              <span
+                className="inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] text-[#FAFAFA] hover:brightness-110 transition"
+                style={{ padding: "12px 20px" }}
+              >
+                Ver el Pack Completo
+                <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+              </span>
             </a>
           </div>
         </div>
@@ -804,6 +872,7 @@ function Plan() {
     </section>
   );
 }
+
 
 /* ---------- CTA BANNER ---------- */
 
