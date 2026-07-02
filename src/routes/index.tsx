@@ -901,7 +901,8 @@ function CtaBanner() {
           style={{
             background: "#111111",
             borderRadius: 24,
-            padding: "80px 40px",
+            padding: "100px 40px 80px",
+            minHeight: 480,
           }}
         >
           <div
@@ -913,7 +914,7 @@ function CtaBanner() {
               backgroundSize: "3px 3px",
             }}
           />
-          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative flex flex-col gap-16">
             <h2
               className="h-display"
               style={{
@@ -937,15 +938,18 @@ function CtaBanner() {
               </span>
               .
             </h2>
-            <a
-              href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-              style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
-            >
-              Reserva una llamada gratuita
-              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
-            </a>
+            <div className="flex justify-end">
+              <a
+                href="#contacto"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
+              >
+                Reserva una llamada gratuita
+                <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+              </a>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
