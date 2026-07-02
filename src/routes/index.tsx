@@ -451,16 +451,18 @@ function SectionHeader({
         <p style={{ fontSize: 15, color: "#888" }}>{paragraph}</p>
         <a
           href="#"
-          className="self-start rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
+          className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
           style={{
             border: "0.5px solid #0A0A0A",
-            padding: "8px 16px",
+            padding: "6px 6px 6px 16px",
             fontSize: 13,
             color: "#0A0A0A",
           }}
         >
-          {cta}
+          {cta.replace(/\s*→\s*$/, "")}
+          <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
         </a>
+
       </div>
     </div>
   );
