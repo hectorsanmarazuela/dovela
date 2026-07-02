@@ -486,8 +486,8 @@ function Services() {
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
           label="Servicios"
-          title="Lo que hacemos."
-          paragraph="Cada servicio está pensado para que tu negocio reciba más llamadas, más reservas y más clientes locales."
+          title="Nuestros servicios."
+          paragraph="Estamos especializados en diseño web, posicionamiento SEO y Google Business. Trabajamos mejor cuando un proyecto requiere los tres servicios, pero si solo necesitas uno, cuéntanoslo."
           cta="Trabajar con nosotros →"
         />
         <div>
