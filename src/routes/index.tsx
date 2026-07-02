@@ -1554,3 +1554,5 @@ function Index() {
     </main>
   );
 }
+
+export { Nav, Services, Footer };
