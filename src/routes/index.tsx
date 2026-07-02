@@ -761,7 +761,9 @@ function Plan() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="label-eyebrow mb-8">Plan</div>
+        <h2 className="h-display text-[#0A0A0A] mb-16" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+          ¿Hablamos de tu proyecto?
+        </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
           {/* Steps — dark */}
           <div
