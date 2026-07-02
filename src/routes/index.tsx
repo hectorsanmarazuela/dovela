@@ -376,13 +376,14 @@ function PorQueDovela() {
               className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
               style={{
                 border: "0.5px solid #0A0A0A",
-                padding: "8px 8px 8px 16px",
-                fontSize: 13,
+                padding: "10px 10px 10px 20px",
+                fontSize: 15,
+                fontWeight: 600,
                 color: "#0A0A0A",
               }}
             >
               Descubre el servicio
-              <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
+              <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
             </a>
           </div>
         </div>
