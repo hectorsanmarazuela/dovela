@@ -337,18 +337,20 @@ function PorQueDovela() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 80 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          <div className="lg:col-span-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
             <div className="label-eyebrow mb-8">Por qué Dovela</div>
             <h2
               className="h-display"
               style={{ fontSize: "clamp(44px, 6.4vw, 84px)" }}
             >
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
-                Construimos webs usables
+                Construimos
               </span>
-
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
+                webs usables
+              </span>
+              <span className="block" style={{ whiteSpace: "nowrap" }}>
                 <span
                   style={{
                     background: "#C7F751",
@@ -370,11 +372,9 @@ function PorQueDovela() {
               <span className="block">de la mano de una estrategia</span>
               <span className="block">para posicionarte sobre la competencia.</span>
             </p>
-          </div>
-          <div className="lg:col-span-1 flex flex-col justify-end gap-4">
             <a
               href="#servicios"
-              className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
+              className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition mt-10"
               style={{
                 border: "0.5px solid #0A0A0A",
                 padding: "10px 10px 10px 20px",
@@ -386,6 +386,32 @@ function PorQueDovela() {
               Descubre el servicio
               <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
             </a>
+          </div>
+
+          <div className="relative">
+            <div
+              className="relative overflow-hidden bg-[#FAFAFA]"
+              style={{
+                borderRadius: 28,
+                border: "0.5px solid #E5E5E5",
+                padding: 14,
+                boxShadow: "0 24px 70px rgba(0,0,0,0.08)",
+              }}
+            >
+              <img
+                src={cap_scam_buena.url}
+                alt="Mockup de web y móvil para un proyecto de instalaciones eléctricas y solares"
+                className="w-full h-auto"
+                style={{ borderRadius: 18, display: "block" }}
+                loading="lazy"
+              />
+              <div
+                className="absolute top-6 right-6 grid place-items-center rounded-full"
+                style={{ width: 44, height: 44, background: "#C7F751" }}
+              >
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#0A0A0A" }}>WEB</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
