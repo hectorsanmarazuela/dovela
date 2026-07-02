@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import cap_scam_buena from "@/assets/cap_scam_buena.png.asset.json";
+import jose2 from "@/assets/jose2.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -369,7 +369,7 @@ function PorQueDovela() {
               className="mt-8"
               style={{ fontSize: 15, color: "#888", maxWidth: 520 }}
             >
-              <span className="block">de la mano de una estrategia</span>
+              <span className="block">De la mano de una estrategia</span>
               <span className="block">para posicionarte sobre la competencia.</span>
             </p>
             <a
@@ -399,7 +399,7 @@ function PorQueDovela() {
               }}
             >
               <img
-                src={cap_scam_buena.url}
+                src={jose2.url}
                 alt="Mockup de web y móvil para un proyecto de instalaciones eléctricas y solares"
                 className="w-full h-auto"
                 style={{ borderRadius: 18, display: "block" }}
