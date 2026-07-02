@@ -1542,7 +1542,7 @@ function Index() {
       <Nav />
       <Hero />
       <PorQueDovela />
-      <Services />
+      
       <Projects />
       <Plan />
       <CtaBanner />
