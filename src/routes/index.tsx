@@ -770,7 +770,7 @@ function Plan() {
               3 sencillos pasos
             </h3>
             <ol
-              className="mt-5 grid gap-4"
+              className="mt-10 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {steps.map((t, i) => (
@@ -829,7 +829,7 @@ function Plan() {
               Garantías
             </h3>
             <ul
-              className="mt-5 grid gap-4"
+              className="mt-10 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {guarantees.map((t) => (
