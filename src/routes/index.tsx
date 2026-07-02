@@ -218,16 +218,13 @@ function Hero() {
         </div>
       </div>
 
-      {/* Center left H1 */}
-      <div
-        className="absolute left-10 max-w-[70%]"
-        style={{ top: "48%", transform: "translateY(-50%)" }}
-      >
+      {/* Bottom left H1 */}
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ bottom: 80 }}>
         <h1
           className="h-display"
           style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA" }}
         >
-          <span style={{ color: "rgba(255,255,255,0.28)", fontWeight: 600 }}>
+          <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
             Si te buscan
           </span>{" "}
           <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
@@ -251,7 +248,7 @@ function Hero() {
           </a>
           <a
             href="#servicios"
-            className="rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
+            className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
             style={{
               border: "0.5px solid rgba(255,255,255,0.35)",
               padding: "14px 24px",
@@ -261,6 +258,7 @@ function Hero() {
             }}
           >
             Conoce nuestros servicios
+            <ArrowCircle size={28} bg="#FAFAFA" fg="#0A0A0A" />
           </a>
         </div>
         <div
@@ -270,6 +268,7 @@ function Hero() {
           20 minutos, sin compromiso.
         </div>
       </div>
+
 
       {/* Bottom right floating card */}
       <div
