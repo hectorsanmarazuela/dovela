@@ -219,7 +219,7 @@ function Hero() {
       </div>
 
       {/* Bottom left H1 */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ bottom: 80 }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
         <h1
           className="h-display"
           style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA" }}
@@ -337,14 +337,26 @@ function PorQueDovela() {
                 Construimos webs usables
               </span>
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
-                para que vendas
+                <span
+                  style={{
+                    background: "#C7F751",
+                    color: "#0A0A0A",
+                    padding: "0 0.18em",
+                    borderRadius: 6,
+                    boxDecorationBreak: "clone",
+                    WebkitBoxDecorationBreak: "clone",
+                  }}
+                >
+                  para que vendas
+                </span>
               </span>
             </h2>
             <p
               className="mt-8"
               style={{ fontSize: 15, color: "#888", maxWidth: 520 }}
             >
-              de la mano de una estrategia para posicionarte sobre la competencia.
+              <span className="block">de la mano de una estrategia</span>
+              <span className="block">para posicionarte sobre la competencia.</span>
             </p>
           </div>
           <div className="lg:col-span-1 flex flex-col justify-end gap-4">
@@ -730,14 +742,13 @@ function Plan() {
   ];
   const titleStyle: React.CSSProperties = {
     fontSize: "clamp(28px, 3vw, 36px)",
-    minHeight: 88,
   };
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="label-eyebrow mb-8">Plan</div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
-          {/* Steps — now dark */}
+          {/* Steps — dark */}
           <div
             className="flex flex-col"
             style={{
@@ -751,7 +762,7 @@ function Plan() {
               3 sencillos pasos
             </h3>
             <ol
-              className="mt-8 grid gap-4"
+              className="mt-5 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {steps.map((t, i) => (
@@ -782,20 +793,17 @@ function Plan() {
                 </li>
               ))}
             </ol>
-            <div className="mt-8 flex items-center gap-6 flex-wrap">
-              <RotatingSeal size={128} />
-              <a
-                href="#contacto"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-                style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
-              >
-                Reserva tu llamada
-                <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
-              </a>
-            </div>
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
+            >
+              Reserva tu llamada
+              <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+            </a>
           </div>
 
-          {/* Guarantees — now light */}
+          {/* Guarantees — light */}
           <div
             className="flex flex-col"
             style={{
@@ -813,7 +821,7 @@ function Plan() {
               Garantías
             </h3>
             <ul
-              className="mt-8 grid gap-4"
+              className="mt-5 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {guarantees.map((t) => (
@@ -855,7 +863,7 @@ function Plan() {
             </ul>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 mt-auto pt-10 rounded-full self-start text-[#0A0A0A] transition"
+              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start text-[#0A0A0A] transition"
               style={{ fontWeight: 600, fontSize: 14 }}
             >
               <span
@@ -897,7 +905,7 @@ function CtaBanner() {
               backgroundSize: "3px 3px",
             }}
           />
-          <div className="relative grid grid-cols-1 lg:grid-cols-[65%_35%] gap-8 items-end">
+          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <h2
               className="h-display"
               style={{
@@ -921,16 +929,14 @@ function CtaBanner() {
               </span>
               .
             </h2>
-            <div className="flex lg:justify-end">
-              <a
-                href="#contacto"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-                style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
-              >
-                Reserva una llamada gratuita
-                <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
-              </a>
-            </div>
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
+            >
+              Reserva una llamada gratuita
+              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+            </a>
           </div>
         </div>
       </div>
