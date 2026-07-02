@@ -113,17 +113,22 @@ function Nav() {
           Dovela
         </a>
         <div className="hidden md:flex items-center gap-7 ml-2">
-          {["Proyectos", "Servicios", "Blog"].map((l) => (
+          {[
+            { label: "Proyectos", href: "/#proyectos" },
+            { label: "Servicios", href: "/servicios" },
+            { label: "Blog", href: "#blog" },
+          ].map((l) => (
             <a
-              key={l}
-              href={`#${l.toLowerCase()}`}
+              key={l.label}
+              href={l.href}
               className="text-[15px] text-[#888] hover:text-[#0A0A0A] transition-colors"
               style={{ fontWeight: 400 }}
             >
-              {l}
+              {l.label}
             </a>
           ))}
         </div>
+
         <div className="flex items-center gap-2 ml-auto group">
           <a
             href="#auditoria"
@@ -218,7 +223,7 @@ function Hero() {
         </div>
       </div>
 
-      {/* Bottom left H1 */}
+      {/* Centered H1 */}
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
         <h1
           className="h-display"
@@ -231,13 +236,17 @@ function Hero() {
             que te encuentren.
           </span>
         </h1>
+      </div>
+
+      {/* Bottom-left copy + CTAs */}
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
         <p
-          className="mt-8 max-w-[560px]"
+          className="max-w-[560px]"
           style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}
         >
           Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
-        <div className="flex flex-wrap items-center gap-3 mt-7">
+        <div className="flex flex-wrap items-center gap-3 mt-6">
           <a
             href="#contacto"
             className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
@@ -247,7 +256,7 @@ function Hero() {
             <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
           </a>
           <a
-            href="#servicios"
+            href="/servicios"
             className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
             style={{
               border: "0.5px solid rgba(255,255,255,0.35)",
@@ -268,6 +277,7 @@ function Hero() {
           20 minutos, sin compromiso.
         </div>
       </div>
+
 
 
       {/* Bottom right floating card */}
@@ -333,9 +343,10 @@ function PorQueDovela() {
               className="h-display"
               style={{ fontSize: "clamp(44px, 6.4vw, 84px)" }}
             >
-              <span className="block" style={{ color: "#888", whiteSpace: "nowrap" }}>
+              <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
                 Construimos webs usables
               </span>
+
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
                 <span
                   style={{
@@ -445,16 +456,18 @@ function SectionHeader({
         <p style={{ fontSize: 15, color: "#888" }}>{paragraph}</p>
         <a
           href="#"
-          className="self-start rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
+          className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
           style={{
             border: "0.5px solid #0A0A0A",
-            padding: "8px 16px",
+            padding: "6px 6px 6px 16px",
             fontSize: 13,
             color: "#0A0A0A",
           }}
         >
-          {cta}
+          {cta.replace(/\s*→\s*$/, "")}
+          <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
         </a>
+
       </div>
     </div>
   );
@@ -762,7 +775,7 @@ function Plan() {
               3 sencillos pasos
             </h3>
             <ol
-              className="mt-5 grid gap-4"
+              className="mt-10 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {steps.map((t, i) => (
@@ -821,7 +834,7 @@ function Plan() {
               Garantías
             </h3>
             <ul
-              className="mt-5 grid gap-4"
+              className="mt-10 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {guarantees.map((t) => (
@@ -893,7 +906,8 @@ function CtaBanner() {
           style={{
             background: "#111111",
             borderRadius: 24,
-            padding: "80px 40px",
+            padding: "100px 40px 80px",
+            minHeight: 480,
           }}
         >
           <div
@@ -905,7 +919,7 @@ function CtaBanner() {
               backgroundSize: "3px 3px",
             }}
           />
-          <div className="relative flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="relative flex flex-col gap-16">
             <h2
               className="h-display"
               style={{
@@ -929,15 +943,18 @@ function CtaBanner() {
               </span>
               .
             </h2>
-            <a
-              href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-              style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
-            >
-              Reserva una llamada gratuita
-              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
-            </a>
+            <div className="flex justify-end">
+              <a
+                href="#contacto"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
+              >
+                Reserva una llamada gratuita
+                <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+              </a>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1525,7 +1542,7 @@ function Index() {
       <Nav />
       <Hero />
       <PorQueDovela />
-      <Services />
+      
       <Projects />
       <Plan />
       <CtaBanner />
@@ -1537,3 +1554,5 @@ function Index() {
     </main>
   );
 }
+
+export { Nav, Services, Footer };
