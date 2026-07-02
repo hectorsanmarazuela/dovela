@@ -334,7 +334,7 @@ function Hero() {
 
 function PorQueDovela() {
   return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
+    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 80 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-3">
@@ -376,13 +376,14 @@ function PorQueDovela() {
               className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
               style={{
                 border: "0.5px solid #0A0A0A",
-                padding: "8px 8px 8px 16px",
-                fontSize: 13,
+                padding: "10px 10px 10px 20px",
+                fontSize: 15,
+                fontWeight: 600,
                 color: "#0A0A0A",
               }}
             >
               Descubre el servicio
-              <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
+              <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
             </a>
           </div>
         </div>
@@ -459,13 +460,14 @@ function SectionHeader({
           className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
           style={{
             border: "0.5px solid #0A0A0A",
-            padding: "6px 6px 6px 16px",
-            fontSize: 13,
+            padding: "10px 10px 10px 20px",
+            fontSize: 15,
+            fontWeight: 600,
             color: "#0A0A0A",
           }}
         >
           {cta.replace(/\s*→\s*$/, "")}
-          <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
+          <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
         </a>
 
       </div>
@@ -484,8 +486,8 @@ function Services() {
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
           label="Servicios"
-          title="Lo que hacemos."
-          paragraph="Cada servicio está pensado para que tu negocio reciba más llamadas, más reservas y más clientes locales."
+          title="Nuestros servicios."
+          paragraph="Estamos especializados en diseño web, posicionamiento SEO y Google Business. Trabajamos mejor cuando un proyecto requiere los tres servicios, pero si solo necesitas uno, cuéntanoslo."
           cta="Trabajar con nosotros →"
         />
         <div>
@@ -612,7 +614,7 @@ function Projects() {
     <section
       id="proyectos"
       className="bg-[#FAFAFA]"
-      style={{ paddingTop: 140, paddingBottom: 140 }}
+      style={{ paddingTop: 80, paddingBottom: 140 }}
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
@@ -759,7 +761,9 @@ function Plan() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <div className="label-eyebrow mb-8">Plan</div>
+        <h2 className="h-display text-[#0A0A0A] mb-16" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+          ¿Hablamos de tu proyecto?
+        </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
           {/* Steps — dark */}
           <div
