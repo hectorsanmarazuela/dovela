@@ -338,9 +338,10 @@ function PorQueDovela() {
               className="h-display"
               style={{ fontSize: "clamp(44px, 6.4vw, 84px)" }}
             >
-              <span className="block" style={{ color: "#888", whiteSpace: "nowrap" }}>
+              <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
                 Construimos webs usables
               </span>
+
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
                 <span
                   style={{
