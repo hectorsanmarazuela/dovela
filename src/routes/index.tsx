@@ -459,13 +459,14 @@ function SectionHeader({
           className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
           style={{
             border: "0.5px solid #0A0A0A",
-            padding: "6px 6px 6px 16px",
-            fontSize: 13,
+            padding: "10px 10px 10px 20px",
+            fontSize: 15,
+            fontWeight: 600,
             color: "#0A0A0A",
           }}
         >
           {cta.replace(/\s*→\s*$/, "")}
-          <ArrowCircle size={24} bg="#0A0A0A" fg="#FAFAFA" />
+          <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
         </a>
 
       </div>
