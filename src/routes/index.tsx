@@ -23,41 +23,55 @@ export const Route = createFileRoute("/")({
 
 /* ---------- Shared bits ---------- */
 
+/**
+ * Modern arrow: on hover, the current arrow slides diagonally out to the top-right
+ * (fading out) while a second copy slides in diagonally from the bottom-left.
+ * No naive tilt. Uses grid-stack so both arrows overlap perfectly.
+ */
 function ArrowCircle({
   size = 36,
   bg = "#0A0A0A",
   fg = "#FAFAFA",
-  rotateOnHover = true,
 }: {
   size?: number;
   bg?: string;
   fg?: string;
-  rotateOnHover?: boolean;
 }) {
+  const iconSize = Math.round(size * 0.42);
   return (
     <span
-      className="group/arrow inline-flex items-center justify-center rounded-full shrink-0"
+      className="group/arrow relative inline-flex items-center justify-center rounded-full shrink-0 overflow-hidden"
       style={{ width: size, height: size, backgroundColor: bg, color: fg }}
     >
-      <svg
-        width={size * 0.42}
-        height={size * 0.42}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={
-          rotateOnHover
-            ? "transition-transform duration-300 group-hover/arrow:-rotate-45 group-hover:-rotate-45"
-            : ""
-        }
+      <span
+        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
       >
-        <line x1="5" y1="12" x2="19" y2="12" />
-        <polyline points="13 6 19 12 13 18" />
-      </svg>
+        <ArrowSvg size={iconSize} />
+      </span>
+      <span
+        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+      >
+        <ArrowSvg size={iconSize} />
+      </span>
     </span>
+  );
+}
+
+function ArrowSvg({ size }: { size: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="13 6 19 12 13 18" />
+    </svg>
   );
 }
 
@@ -110,7 +124,7 @@ function Nav() {
             </a>
           ))}
         </div>
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-2 ml-auto group">
           <a
             href="#auditoria"
             className="rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
@@ -150,7 +164,6 @@ function Hero() {
       className="relative w-full overflow-hidden"
       style={{ backgroundColor: "#111111", minHeight: "100vh" }}
     >
-      {/* desaturated texture */}
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
@@ -161,7 +174,6 @@ function Hero() {
         }}
       />
 
-      {/* Top left date */}
       <div
         className="absolute"
         style={{ top: 110, left: 40, color: "rgba(255,255,255,0.4)", fontSize: 12 }}
@@ -169,7 +181,6 @@ function Hero() {
         08/06/2026
       </div>
 
-      {/* Top right label */}
       <div
         className="absolute text-right max-w-[320px]"
         style={{ top: 110, right: 40, color: "rgba(255,255,255,0.5)", fontSize: 12 }}
@@ -177,7 +188,6 @@ function Hero() {
         Agencia de diseño web y SEO local — Segovia, España
       </div>
 
-      {/* Right vertical center */}
       <div
         className="absolute hidden lg:flex flex-col gap-3"
         style={{ right: 40, top: "50%", transform: "translateY(-50%)" }}
@@ -210,40 +220,54 @@ function Hero() {
 
       {/* Center left H1 */}
       <div
-        className="absolute left-10 max-w-[65%]"
-        style={{ top: "50%", transform: "translateY(-50%)" }}
+        className="absolute left-10 max-w-[70%]"
+        style={{ top: "48%", transform: "translateY(-50%)" }}
       >
         <h1
           className="h-display"
           style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA" }}
         >
-          <span style={{ color: "rgba(255,255,255,0.2)", fontWeight: 600 }}>
-            Hacemos webs
+          <span style={{ color: "rgba(255,255,255,0.28)", fontWeight: 600 }}>
+            Si te buscan
           </span>{" "}
           <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
-            que traen clientes.
+            que te encuentren.
           </span>
         </h1>
-      </div>
-
-      {/* Bottom left */}
-      <div
-        className="absolute left-10 max-w-[520px]"
-        style={{ bottom: 56 }}
-      >
-        <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 15 }}>
-          Diseñamos y posicionamos webs para negocios locales de Segovia. En dos
-          semanas, sin rodeos.
+        <p
+          className="mt-8 max-w-[560px]"
+          style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}
+        >
+          Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
-        <div className="flex items-center gap-2 mt-5 group">
+        <div className="flex flex-wrap items-center gap-3 mt-7">
           <a
-            href="#proyectos"
-            className="rounded-full bg-[#0A0A0A] text-[#FAFAFA] hover:brightness-110 transition"
-            style={{ padding: "12px 24px", fontWeight: 600, fontSize: 14 }}
+            href="#contacto"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+            style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14 }}
           >
-            Ver proyectos
+            Reserva una llamada gratuita
+            <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
           </a>
-          <ArrowCircle size={40} />
+          <a
+            href="#servicios"
+            className="rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
+            style={{
+              border: "0.5px solid rgba(255,255,255,0.35)",
+              padding: "14px 24px",
+              fontWeight: 500,
+              fontSize: 14,
+              color: "#FAFAFA",
+            }}
+          >
+            Conoce nuestros servicios
+          </a>
+        </div>
+        <div
+          className="mt-4"
+          style={{ color: "rgba(255,255,255,0.45)", fontSize: 12 }}
+        >
+          20 minutos, sin compromiso.
         </div>
       </div>
 
@@ -297,7 +321,129 @@ function Hero() {
   );
 }
 
-/* ---------- SECTION HEADER (3/4 + 1/4) ---------- */
+/* ---------- POR QUÉ DOVELA ---------- */
+
+function PorQueDovela() {
+  const items = [
+    {
+      h: "Estudio en Segovia",
+      b: "No somos una gran agencia de Madrid. Estamos aquí, conocemos el mercado local y trabajamos contigo de cerca.",
+    },
+    {
+      h: "Entrega en 2 semanas",
+      b: "Tu web lista en 14 días. Sin procesos eternos, sin burocracia. Rápido y bien hecho.",
+    },
+    {
+      h: "Comunicación directa",
+      b: "Hablas con quien hace el trabajo. Sin intermediarios, sin cuentas que te pasen el teléfono.",
+    },
+    {
+      h: "Resultados medibles",
+      b: "Posiciones en Google, llamadas, formularios. Medimos lo que importa y te lo enseñamos.",
+    },
+  ];
+  return (
+    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-20">
+          <div className="lg:col-span-3">
+            <div className="label-eyebrow mb-8">Por qué Dovela</div>
+            <h2
+              className="h-display text-[#0A0A0A]"
+              style={{ fontSize: "clamp(44px, 6.4vw, 84px)", maxWidth: "14ch" }}
+            >
+              <span className="block">Construimos webs usables</span>
+              <span className="block" style={{ color: "#0A0A0A" }}>
+                <span
+                  style={{
+                    background: "#C7F751",
+                    padding: "0 0.18em",
+                    borderRadius: 6,
+                    boxDecorationBreak: "clone",
+                    WebkitBoxDecorationBreak: "clone",
+                  }}
+                >
+                  para que vendas
+                </span>
+              </span>
+            </h2>
+            <p
+              className="mt-8"
+              style={{ fontSize: 18, color: "#888", maxWidth: 520 }}
+            >
+              Y si te encuentran, se quedan.
+            </p>
+          </div>
+          <div className="lg:col-span-1 flex flex-col justify-end gap-4">
+            <a
+              href="#servicios"
+              className="self-start rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
+              style={{
+                border: "0.5px solid #0A0A0A",
+                padding: "8px 16px",
+                fontSize: 13,
+                color: "#0A0A0A",
+              }}
+            >
+              Conocer el estudio →
+            </a>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {items.map((it, i) => (
+            <div
+              key={it.h}
+              className="p-8"
+              style={{
+                borderLeft: i === 0 ? "none" : "0.5px solid #E5E5E5",
+              }}
+            >
+              <div style={{ color: "#C7F751", fontSize: 20, lineHeight: 1 }}>◆</div>
+              <h3
+                className="mt-6"
+                style={{ fontSize: 18, fontWeight: 600, color: "#0A0A0A" }}
+              >
+                {it.h}
+              </h3>
+              <p className="mt-3" style={{ fontSize: 14, color: "#888" }}>
+                {it.b}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- SERVICES ACCORDION ---------- */
+
+const SERVICES = [
+  {
+    n: "01",
+    name: "Diseño web",
+    desc: "Webs rápidas y bonitas que convierten visitas en clientes.",
+    pills: ["Diseño UI", "WordPress", "Mobile first"],
+  },
+  {
+    n: "02",
+    name: "SEO Local",
+    desc: "Primera página en Google cuando buscan tu negocio en Segovia.",
+    pills: ["Google Maps", "Keywords locales", "On-page SEO"],
+  },
+  {
+    n: "03",
+    name: "Google Business",
+    desc: "Tu ficha de Google optimizada, con reseñas y fotos actualizadas.",
+    pills: ["GBP Optimización", "Reseñas", "Fotos"],
+  },
+  {
+    n: "04",
+    name: "Mantenimiento",
+    desc: "Tu web siempre rápida, segura y actualizada.",
+    pills: ["Hosting", "Seguridad", "Actualizaciones"],
+  },
+];
 
 function SectionHeader({
   label,
@@ -349,92 +495,6 @@ function SectionHeader({
   );
 }
 
-/* ---------- SECTION 2 — MANIFESTO ---------- */
-
-function Manifesto() {
-  const items = [
-    {
-      h: "Estudio en Segovia",
-      b: "No somos una gran agencia de Madrid. Estamos aquí, conocemos el mercado local y trabajamos contigo de cerca.",
-    },
-    {
-      h: "Entrega en 2 semanas",
-      b: "Tu web lista en 14 días. Sin procesos eternos, sin burocracia. Rápido y bien hecho.",
-    },
-    {
-      h: "Comunicación directa",
-      b: "Hablas con quien hace el trabajo. Sin intermediarios, sin cuentas que te pasen el teléfono.",
-    },
-    {
-      h: "Resultados medibles",
-      b: "Posiciones en Google, llamadas, formularios. Medimos lo que importa y te lo enseñamos.",
-    },
-  ];
-  return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
-      <div className="max-w-[1280px] mx-auto px-6">
-        <SectionHeader
-          label="Estudio"
-          title="Por qué Dovela."
-          paragraph="Trabajamos con negocios locales que quieren crecer en internet. Sin humo, sin agencias lentas."
-          cta="Conocer el estudio →"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {items.map((it, i) => (
-            <div
-              key={it.h}
-              className="p-8"
-              style={{
-                borderLeft: i === 0 ? "none" : "0.5px solid #E5E5E5",
-              }}
-            >
-              <div style={{ color: "#C7F751", fontSize: 20, lineHeight: 1 }}>◆</div>
-              <h3
-                className="mt-6"
-                style={{ fontSize: 18, fontWeight: 600, color: "#0A0A0A" }}
-              >
-                {it.h}
-              </h3>
-              <p className="mt-3" style={{ fontSize: 14, color: "#888" }}>
-                {it.b}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- SECTION 3 — SERVICES ACCORDION ---------- */
-
-const SERVICES = [
-  {
-    n: "01",
-    name: "Diseño web",
-    desc: "Webs rápidas y bonitas que convierten visitas en clientes.",
-    pills: ["Diseño UI", "WordPress", "Mobile first"],
-  },
-  {
-    n: "02",
-    name: "SEO Local",
-    desc: "Primera página en Google cuando buscan tu negocio en Segovia.",
-    pills: ["Google Maps", "Keywords locales", "On-page SEO"],
-  },
-  {
-    n: "03",
-    name: "Google Business",
-    desc: "Tu ficha de Google optimizada, con reseñas y fotos actualizadas.",
-    pills: ["GBP Optimización", "Reseñas", "Fotos"],
-  },
-  {
-    n: "04",
-    name: "Mantenimiento",
-    desc: "Tu web siempre rápida, segura y actualizada.",
-    pills: ["Hosting", "Seguridad", "Actualizaciones"],
-  },
-];
-
 function Services() {
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -460,7 +520,6 @@ function Services() {
                 className={isOpen ? "overflow-hidden" : ""}
               >
                 <div
-                  className={isOpen ? "" : ""}
                   style={
                     isOpen
                       ? {
@@ -561,7 +620,7 @@ function Services() {
   );
 }
 
-/* ---------- SECTION 4 — PROJECTS ---------- */
+/* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
   { name: "Fontanería Valverde", pills: ["Diseño web", "SEO Local"], cat: "SEO Local" },
@@ -580,8 +639,7 @@ function Projects() {
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
           label="Proyectos"
-          ghost="Nuestro portfolio,"
-          title="explora el trabajo."
+          title="Proyectos recientes."
           paragraph="Negocios locales que ya están recibiendo más clientes desde Google gracias a su nueva web."
           cta="Ver todos →"
         />
@@ -627,25 +685,7 @@ function ProjectCard({
           ))}
         </div>
         <div className="absolute top-4 right-4">
-          <span
-            className="inline-flex items-center justify-center rounded-full overflow-hidden bg-[#FAFAFA] text-[#0A0A0A]"
-            style={{ width: 36, height: 36 }}
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-all duration-300 group-hover:[animation:arrowDiag_500ms_ease-in-out]"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </span>
+          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
         </div>
       </ImagePlaceholder>
       <div className="mt-4 flex items-center justify-between gap-3">
@@ -662,19 +702,221 @@ function ProjectCard({
           {cat}
         </span>
       </div>
-      <style>{`
-        @keyframes arrowDiag {
-          0% { transform: translate(0,0); opacity: 1; }
-          40% { transform: translate(8px,-8px); opacity: 0; }
-          41% { transform: translate(-8px,8px); opacity: 0; }
-          100% { transform: translate(0,0); opacity: 1; }
-        }
-      `}</style>
     </div>
   );
 }
 
-/* ---------- SECTION 5 — TESTIMONIALS ---------- */
+/* ---------- PLAN ---------- */
+
+function Plan() {
+  const before = [
+    "Reserva una llamada",
+    "Cuéntanos qué necesitas",
+    "Recibe una propuesta",
+  ];
+  const after = [
+    "Contacto directo con el equipo",
+    "Garantía de entrega en 2 semanas",
+    "45 días de actualizaciones SEO incluidos",
+  ];
+  return (
+    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div className="label-eyebrow mb-8">Plan</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Before */}
+          <div
+            style={{
+              background: "#F5F5F5",
+              borderRadius: 20,
+              padding: 32,
+              border: "0.5px solid #E5E5E5",
+            }}
+          >
+            <h3
+              className="h-display text-[#0A0A0A]"
+              style={{ fontSize: "clamp(28px, 3vw, 36px)" }}
+            >
+              Antes de decidir
+            </h3>
+            <ol className="mt-8 flex flex-col gap-4">
+              {before.map((t, i) => (
+                <li key={t} className="flex items-start gap-4">
+                  <span
+                    className="inline-flex items-center justify-center rounded-full shrink-0"
+                    style={{
+                      width: 32,
+                      height: 32,
+                      background: "#0A0A0A",
+                      color: "#FAFAFA",
+                      fontSize: 13,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 16,
+                      color: "#0A0A0A",
+                      lineHeight: 1.5,
+                      paddingTop: 4,
+                    }}
+                  >
+                    {t}
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <div
+              className="inline-flex items-center gap-2 mt-8 rounded-full"
+              style={{
+                background: "#C7F751",
+                color: "#0A0A0A",
+                padding: "8px 14px",
+                fontSize: 13,
+                fontWeight: 600,
+              }}
+            >
+              ◆ Propuesta visual personalizada gratuita
+            </div>
+          </div>
+
+          {/* After */}
+          <div
+            style={{
+              background: "#0A0A0A",
+              borderRadius: 20,
+              padding: 32,
+              color: "#FAFAFA",
+            }}
+          >
+            <h3
+              className="h-display"
+              style={{ fontSize: "clamp(28px, 3vw, 36px)", color: "#FAFAFA" }}
+            >
+              Cuando dices que sí,
+              <br />
+              esto te garantizamos
+            </h3>
+            <ul className="mt-8 flex flex-col gap-4">
+              {after.map((t) => (
+                <li key={t} className="flex items-start gap-4">
+                  <span
+                    className="inline-flex items-center justify-center rounded-full shrink-0"
+                    style={{
+                      width: 32,
+                      height: 32,
+                      background: "#C7F751",
+                      color: "#0A0A0A",
+                    }}
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 16,
+                      color: "rgba(250,250,250,0.9)",
+                      lineHeight: 1.5,
+                      paddingTop: 4,
+                    }}
+                  >
+                    {t}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-2 mt-10 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
+            >
+              Ver el Pack Completo
+              <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- CTA BANNER ---------- */
+
+function CtaBanner() {
+  return (
+    <section style={{ paddingTop: 40, paddingBottom: 40 }}>
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div
+          className="relative overflow-hidden"
+          style={{
+            background: "#111111",
+            borderRadius: 24,
+            padding: "80px 40px",
+          }}
+        >
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-[0.06] pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
+              backgroundSize: "3px 3px",
+            }}
+          />
+          <div className="relative grid grid-cols-1 lg:grid-cols-[65%_35%] gap-8 items-end">
+            <h2
+              className="h-display"
+              style={{
+                fontSize: "clamp(36px, 5vw, 64px)",
+                color: "#FAFAFA",
+                maxWidth: "18ch",
+              }}
+            >
+              Accede a la base de clientes que{" "}
+              <span
+                style={{
+                  background: "#C7F751",
+                  color: "#0A0A0A",
+                  padding: "0 0.18em",
+                  borderRadius: 6,
+                  boxDecorationBreak: "clone",
+                  WebkitBoxDecorationBreak: "clone",
+                }}
+              >
+                tu negocio se merece
+              </span>
+              .
+            </h2>
+            <div className="flex lg:justify-end">
+              <a
+                href="#contacto"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
+              >
+                Reserva una llamada gratuita
+                <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- TESTIMONIALS ---------- */
 
 function Testimonials() {
   const small = [
@@ -799,7 +1041,7 @@ function Testimonials() {
   );
 }
 
-/* ---------- SECTION 6 — FAQ ---------- */
+/* ---------- FAQ ---------- */
 
 const FAQ = [
   {
@@ -831,7 +1073,7 @@ function Faq() {
             className="h-display text-[#0A0A0A]"
             style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
           >
-            ¿Tienes dudas?
+            Preguntas frecuentes.
           </h2>
           <div className="relative mt-12" style={{ height: 380 }}>
             <div
@@ -908,6 +1150,257 @@ function Faq() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ---------- LEAD MAGNET ---------- */
+
+function LeadMagnet() {
+  const [site, setSite] = useState("");
+  const items = [
+    "Tu posición frente a tu competencia",
+    "Errores que te restan visibilidad",
+    "Estado de tu ficha de GBP",
+    "Tiempo de carga en móvil",
+  ];
+  return (
+    <section
+      id="auditoria"
+      style={{ paddingTop: 40, paddingBottom: 40 }}
+    >
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div
+          className="relative overflow-hidden"
+          style={{
+            background: "#0A0A0A",
+            borderRadius: 24,
+            padding: "72px 40px",
+            color: "#FAFAFA",
+          }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12">
+            <div>
+              <div
+                className="label-eyebrow"
+                style={{ color: "#C7F751" }}
+              >
+                Auditoría digital gratuita
+              </div>
+              <h2
+                className="h-display mt-6"
+                style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}
+              >
+                El progreso consiste{" "}
+                <span style={{ color: "rgba(255,255,255,0.35)" }}>en renovarse.</span>
+              </h2>
+              <p
+                className="mt-6"
+                style={{
+                  color: "rgba(255,255,255,0.65)",
+                  fontSize: 15,
+                  maxWidth: 520,
+                }}
+              >
+                Introduce el nombre de tu negocio o tu web y descubre si tu
+                posicionamiento te está costando clientes. Y qué hacer para no
+                quedarte atrás.
+              </p>
+              <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {items.map((it) => (
+                  <li key={it} className="flex items-start gap-3">
+                    <span style={{ color: "#C7F751", fontSize: 16, lineHeight: 1.4 }}>
+                      ◆
+                    </span>
+                    <span
+                      style={{
+                        fontSize: 14,
+                        color: "rgba(255,255,255,0.85)",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {it}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex flex-col justify-center gap-3"
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                border: "0.5px solid rgba(255,255,255,0.15)",
+                borderRadius: 20,
+                padding: 24,
+              }}
+            >
+              <label
+                style={{
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.6)",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Tu web o negocio
+              </label>
+              <input
+                value={site}
+                onChange={(e) => setSite(e.target.value)}
+                placeholder="tunegocio.es"
+                className="w-full outline-none"
+                style={{
+                  background: "#FAFAFA",
+                  color: "#0A0A0A",
+                  fontSize: 15,
+                  padding: "14px 18px",
+                  borderRadius: 12,
+                  border: "0.5px solid #E5E5E5",
+                  minHeight: 48,
+                }}
+              />
+              <button
+                type="submit"
+                className="group inline-flex items-center justify-between gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                style={{
+                  padding: "14px 22px",
+                  fontWeight: 600,
+                  fontSize: 14,
+                  marginTop: 4,
+                  minHeight: 48,
+                }}
+              >
+                Recibe tu auditoría gratuita
+                <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+              </button>
+              <p
+                style={{
+                  fontSize: 11,
+                  color: "rgba(255,255,255,0.4)",
+                  marginTop: 4,
+                }}
+              >
+                Sin spam. Respuesta en menos de 24h.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- CONTACT FORM ---------- */
+
+function ContactForm() {
+  return (
+    <section
+      id="contacto"
+      className="bg-[#FAFAFA]"
+      style={{ paddingTop: 140, paddingBottom: 140 }}
+    >
+      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-16">
+        <div>
+          <div className="label-eyebrow mb-8">Contacto</div>
+          <h2
+            className="h-display text-[#0A0A0A]"
+            style={{ fontSize: "clamp(48px, 7vw, 96px)" }}
+          >
+            ¿Hablamos?
+          </h2>
+          <p
+            className="mt-8"
+            style={{ fontSize: 16, color: "#888", maxWidth: 420 }}
+          >
+            Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
+            compromiso.
+          </p>
+          <div
+            className="mt-10 flex flex-col gap-2"
+            style={{ fontSize: 14, color: "#0A0A0A" }}
+          >
+            <div>hola@dovelaestudio.es</div>
+            <div style={{ color: "#888" }}>Segovia, España</div>
+          </div>
+        </div>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col gap-4"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Field label="Nombre" placeholder="Tu nombre" />
+            <Field label="Teléfono o email" placeholder="+34 · o tu@email.com" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              style={{
+                fontSize: 11,
+                color: "#888",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                fontWeight: 500,
+              }}
+            >
+              Mensaje
+            </label>
+            <textarea
+              placeholder="Cuéntanos sobre tu negocio y qué necesitas…"
+              className="w-full outline-none resize-none focus:border-[#0A0A0A] transition-colors"
+              rows={6}
+              style={{
+                background: "#FAFAFA",
+                color: "#0A0A0A",
+                fontSize: 15,
+                padding: "14px 18px",
+                borderRadius: 12,
+                border: "0.5px solid #E5E5E5",
+                fontFamily: "inherit",
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            className="group self-start inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] text-[#FAFAFA] hover:brightness-110 transition"
+            style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14, minHeight: 48 }}
+          >
+            Enviar mensaje
+            <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function Field({ label, placeholder }: { label: string; placeholder: string }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <label
+        style={{
+          fontSize: 11,
+          color: "#888",
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          fontWeight: 500,
+        }}
+      >
+        {label}
+      </label>
+      <input
+        placeholder={placeholder}
+        className="w-full outline-none focus:border-[#0A0A0A] transition-colors"
+        style={{
+          background: "#FAFAFA",
+          color: "#0A0A0A",
+          fontSize: 15,
+          padding: "14px 18px",
+          borderRadius: 12,
+          border: "0.5px solid #E5E5E5",
+          minHeight: 48,
+        }}
+      />
+    </div>
   );
 }
 
@@ -1002,11 +1495,15 @@ function Index() {
     <main className="bg-[#FAFAFA] text-[#0A0A0A]">
       <Nav />
       <Hero />
-      <Manifesto />
+      <PorQueDovela />
       <Services />
       <Projects />
+      <Plan />
+      <CtaBanner />
       <Testimonials />
       <Faq />
+      <LeadMagnet />
+      <ContactForm />
       <Footer />
     </main>
   );
