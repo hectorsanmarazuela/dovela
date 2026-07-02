@@ -218,7 +218,7 @@ function Hero() {
         </div>
       </div>
 
-      {/* Bottom left H1 */}
+      {/* Centered H1 */}
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
         <h1
           className="h-display"
@@ -231,13 +231,17 @@ function Hero() {
             que te encuentren.
           </span>
         </h1>
+      </div>
+
+      {/* Bottom-left copy + CTAs */}
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
         <p
-          className="mt-8 max-w-[560px]"
+          className="max-w-[560px]"
           style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}
         >
           Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
-        <div className="flex flex-wrap items-center gap-3 mt-7">
+        <div className="flex flex-wrap items-center gap-3 mt-6">
           <a
             href="#contacto"
             className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
@@ -247,7 +251,7 @@ function Hero() {
             <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
           </a>
           <a
-            href="#servicios"
+            href="/servicios"
             className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
             style={{
               border: "0.5px solid rgba(255,255,255,0.35)",
@@ -268,6 +272,7 @@ function Hero() {
           20 minutos, sin compromiso.
         </div>
       </div>
+
 
 
       {/* Bottom right floating card */}
