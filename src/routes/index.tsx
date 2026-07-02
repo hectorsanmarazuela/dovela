@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import cap_scam_buena from "@/assets/cap_scam_buena.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
