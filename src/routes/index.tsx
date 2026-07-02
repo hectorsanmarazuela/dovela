@@ -1212,9 +1212,10 @@ function LeadMagnet() {
                 className="h-display mt-6"
                 style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}
               >
-                El progreso consiste{" "}
-                <span style={{ color: "rgba(255,255,255,0.35)" }}>en renovarse.</span>
+                <span style={{ color: "#FAFAFA" }}>El progreso</span>{" "}
+                <span style={{ color: "#C7F751" }}>consiste en renovarse.</span>
               </h2>
+
               <p
                 className="mt-6"
                 style={{
