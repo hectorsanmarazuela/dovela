@@ -193,6 +193,7 @@ function Hero() {
         style={{
           width: "70%",
           zIndex: 1,
+          pointerEvents: "none",
           background:
             "linear-gradient(90deg, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.82) 40%, rgba(250,250,250,0.55) 75%, rgba(250,250,250,0) 100%)",
         }}
@@ -203,13 +204,14 @@ function Hero() {
         className="absolute inset-0 opacity-[0.05] mix-blend-multiply pointer-events-none"
         style={{
           zIndex: 1,
+          pointerEvents: "none",
           backgroundImage:
             "radial-gradient(rgba(10,10,10,0.6) 1px, transparent 1px)",
           backgroundSize: "3px 3px",
         }}
       />
 
-      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
 
 
       <div
