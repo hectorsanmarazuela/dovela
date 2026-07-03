@@ -209,6 +209,8 @@ function Hero() {
         }}
       />
 
+      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+
 
       <div
         className="absolute"
