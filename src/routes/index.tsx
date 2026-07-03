@@ -191,7 +191,7 @@ function Hero() {
         style={{
           width: "70%",
           background:
-            "linear-gradient(90deg, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.82) 40%, rgba(250,250,250,0.55) 75%, rgba(250,250,250,0) 100%)",
+            "linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.45) 75%, rgba(255,255,255,0) 100%)",
         }}
       />
       {/* Subtle grain */}
