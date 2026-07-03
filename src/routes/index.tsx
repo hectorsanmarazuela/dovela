@@ -207,14 +207,14 @@ function Hero() {
 
       <div
         className="absolute"
-        style={{ top: 110, left: 40, color: "rgba(10,10,10,0.5)", fontSize: 12 }}
+        style={{ top: 110, left: 40, color: "#333", fontSize: 12 }}
       >
         08/06/2026
       </div>
 
       <div
         className="absolute text-right max-w-[320px]"
-        style={{ top: 110, right: 40, color: "rgba(10,10,10,0.6)", fontSize: 12 }}
+        style={{ top: 110, right: 40, color: "#333", fontSize: 12 }}
       >
         Agencia de diseño web y SEO local — Segovia, España
       </div>
