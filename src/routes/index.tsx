@@ -786,10 +786,12 @@ function Plan() {
     fontSize: "clamp(28px, 3vw, 36px)",
   };
   return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
+    <section className="bg-[#FAFAFA]" style={{ paddingTop: 40, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <h2 className="h-display text-[#0A0A0A] mb-16" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
-          ¿Hablamos de tu proyecto?
+        <h2 className="h-display mb-16" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+          <span style={{ color: "#888" }}>¿Hablamos de tu </span>
+          <span style={{ color: "#0A0A0A" }}>proyecto</span>
+          <span style={{ color: "#888" }}>?</span>
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
           {/* Steps — dark */}
