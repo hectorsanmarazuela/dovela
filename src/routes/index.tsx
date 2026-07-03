@@ -1678,6 +1678,7 @@ function Index() {
       <PorQueDovela />
       
       <Projects />
+      <MarqueeBand />
       <Plan />
       <CtaBanner />
       <Testimonials />
