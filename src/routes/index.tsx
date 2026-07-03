@@ -109,8 +109,8 @@ function Nav() {
           border: "0.5px solid rgba(10,10,10,0.08)",
           height: 52,
           padding: "0 8px",
-          background: "rgba(250,250,250,0.72)",
-          backdropFilter: "blur(14px) saturate(140%)",
+          background: "rgba(255,255,255,0.7)",
+          backdropFilter: "blur(16px) saturate(140%)",
           boxShadow: "0 6px 24px rgba(10,10,10,0.06)",
         }}
       >
