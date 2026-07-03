@@ -270,7 +270,7 @@ function Hero() {
       <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
         <p
           className="max-w-[560px]"
-          style={{ color: "rgba(10,10,10,0.72)", fontSize: 16 }}
+          style={{ color: "#333", fontSize: 16 }}
         >
           Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
@@ -287,13 +287,13 @@ function Hero() {
             href="/servicios"
             className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(10,10,10,0.05)]"
             style={{
-              border: "0.5px solid rgba(10,10,10,0.25)",
-              background: "rgba(250,250,250,0.6)",
+              border: "0.5px solid #111",
+              background: "#FFFFFF",
               backdropFilter: "blur(8px)",
               padding: "14px 24px",
               fontWeight: 500,
               fontSize: 14,
-              color: "#0A0A0A",
+              color: "#111",
             }}
           >
             Conoce nuestros servicios
@@ -302,7 +302,7 @@ function Hero() {
         </div>
         <div
           className="mt-4"
-          style={{ color: "rgba(10,10,10,0.55)", fontSize: 12 }}
+          style={{ color: "#555", fontSize: 12 }}
         >
           20 minutos, sin compromiso.
         </div>
