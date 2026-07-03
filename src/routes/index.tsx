@@ -255,12 +255,12 @@ function Hero() {
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
         <h1
           className="h-display"
-          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#0A0A0A" }}
+          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#111" }}
         >
-          <span style={{ color: "rgba(10,10,10,0.45)", fontWeight: 600 }}>
+          <span style={{ color: "#333", fontWeight: 600 }}>
             Si te buscan
           </span>{" "}
-          <span style={{ color: "#0A0A0A", fontWeight: 600 }}>
+          <span style={{ color: "#111", fontWeight: 600 }}>
             que te encuentren.
           </span>
         </h1>
