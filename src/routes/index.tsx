@@ -641,7 +641,7 @@ function Projects() {
     <section
       id="proyectos"
       className="bg-[#FAFAFA]"
-      style={{ paddingTop: 80, paddingBottom: 140 }}
+      style={{ paddingTop: 80, paddingBottom: 80 }}
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
