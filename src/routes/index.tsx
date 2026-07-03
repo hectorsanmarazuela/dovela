@@ -178,7 +178,7 @@ function Hero() {
       className="relative w-full overflow-hidden"
       style={{
         backgroundColor: "#F0EDE6",
-        backgroundImage: `url(${heroMap.url ?? heroMap})`,
+        backgroundImage: `url(${heroMap})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
