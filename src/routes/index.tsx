@@ -276,7 +276,7 @@ function Hero() {
       </div>
 
       {/* Bottom-left copy + CTAs */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px] pointer-events-auto" style={{ bottom: 48 }}>
         <p
           className="max-w-[560px]"
           style={{ color: "rgba(10,10,10,0.72)", fontSize: 16 }}
@@ -322,7 +322,7 @@ function Hero() {
 
       {/* Bottom right floating card */}
       <div
-        className="absolute hidden md:block"
+        className="absolute hidden md:block pointer-events-auto"
         style={{ right: 24, bottom: 24, width: 260 }}
       >
         <div
@@ -367,6 +367,18 @@ function Hero() {
         </div>
       </div>
       </div>
+
+      {/* Bottom fade to page background */}
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        style={{
+          height: 120,
+          zIndex: 5,
+          pointerEvents: "none",
+          background: "linear-gradient(to bottom, transparent, white)",
+        }}
+      />
     </section>
 
 
