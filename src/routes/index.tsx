@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import jose2 from "@/assets/jose2.png.asset.json";
-import heroMap from "@/assets/hero-map.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -177,19 +177,22 @@ function Hero() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        backgroundColor: "#F0EDE6",
-        backgroundImage: `url(${heroMap})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
         minHeight: "100vh",
       }}
     >
+      <iframe
+        src="https://hectorsanmarazuela.github.io/dovela-mapa/"
+        className="absolute inset-0 w-full h-full"
+        style={{ border: "none", zIndex: 0 }}
+        title="Mapa Segovia"
+      />
       {/* Left white translucent overlay for legibility */}
       <div
         aria-hidden
         className="absolute inset-y-0 left-0 pointer-events-none"
         style={{
           width: "70%",
+          zIndex: 1,
           background:
             "linear-gradient(90deg, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.82) 40%, rgba(250,250,250,0.55) 75%, rgba(250,250,250,0) 100%)",
         }}
@@ -199,11 +202,15 @@ function Hero() {
         aria-hidden
         className="absolute inset-0 opacity-[0.05] mix-blend-multiply pointer-events-none"
         style={{
+          zIndex: 1,
           backgroundImage:
             "radial-gradient(rgba(10,10,10,0.6) 1px, transparent 1px)",
           backgroundSize: "3px 3px",
         }}
       />
+
+      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+
 
       <div
         className="absolute"
@@ -357,7 +364,10 @@ function Hero() {
           </div>
         </div>
       </div>
+      </div>
     </section>
+
+
   );
 }
 
