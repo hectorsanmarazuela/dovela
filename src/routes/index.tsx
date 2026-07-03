@@ -224,10 +224,10 @@ function Hero() {
         style={{ right: 40, top: "50%", transform: "translateY(-50%)" }}
       >
         <div className="text-right">
-          <div style={{ color: "rgba(10,10,10,0.5)", fontSize: 11 }}>
+          <div style={{ color: "#333", fontSize: 11 }}>
             Hora local Segovia:
           </div>
-          <div style={{ color: "#0A0A0A", fontSize: 13, fontWeight: 500 }}>
+          <div style={{ color: "#111", fontSize: 13, fontWeight: 500 }}>
             {time || "17:32"}
           </div>
         </div>
@@ -237,10 +237,10 @@ function Hero() {
               key={s}
               className="rounded-full"
               style={{
-                border: "0.5px solid rgba(10,10,10,0.2)",
-                background: "rgba(250,250,250,0.75)",
+                border: "0.5px solid #E5E5E5",
+                background: "#FFFFFF",
                 backdropFilter: "blur(8px)",
-                color: "rgba(10,10,10,0.7)",
+                color: "#111",
                 fontSize: 11,
                 padding: "4px 12px",
               }}
