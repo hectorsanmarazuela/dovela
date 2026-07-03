@@ -109,8 +109,8 @@ function Nav() {
           border: "0.5px solid rgba(10,10,10,0.08)",
           height: 52,
           padding: "0 8px",
-          background: "rgba(255,255,255,0.7)",
-          backdropFilter: "blur(16px) saturate(140%)",
+          background: "rgba(250,250,250,0.72)",
+          backdropFilter: "blur(14px) saturate(140%)",
           boxShadow: "0 6px 24px rgba(10,10,10,0.06)",
         }}
       >
@@ -191,7 +191,7 @@ function Hero() {
         style={{
           width: "70%",
           background:
-            "linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.45) 75%, rgba(255,255,255,0) 100%)",
+            "linear-gradient(90deg, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.82) 40%, rgba(250,250,250,0.55) 75%, rgba(250,250,250,0) 100%)",
         }}
       />
       {/* Subtle grain */}
@@ -207,14 +207,14 @@ function Hero() {
 
       <div
         className="absolute"
-        style={{ top: 110, left: 40, color: "#333", fontSize: 12 }}
+        style={{ top: 110, left: 40, color: "rgba(10,10,10,0.5)", fontSize: 12 }}
       >
         08/06/2026
       </div>
 
       <div
         className="absolute text-right max-w-[320px]"
-        style={{ top: 110, right: 40, color: "#333", fontSize: 12 }}
+        style={{ top: 110, right: 40, color: "rgba(10,10,10,0.6)", fontSize: 12 }}
       >
         Agencia de diseño web y SEO local — Segovia, España
       </div>
@@ -224,10 +224,10 @@ function Hero() {
         style={{ right: 40, top: "50%", transform: "translateY(-50%)" }}
       >
         <div className="text-right">
-          <div style={{ color: "#333", fontSize: 11 }}>
+          <div style={{ color: "rgba(10,10,10,0.5)", fontSize: 11 }}>
             Hora local Segovia:
           </div>
-          <div style={{ color: "#111", fontSize: 13, fontWeight: 500 }}>
+          <div style={{ color: "#0A0A0A", fontSize: 13, fontWeight: 500 }}>
             {time || "17:32"}
           </div>
         </div>
@@ -237,10 +237,10 @@ function Hero() {
               key={s}
               className="rounded-full"
               style={{
-                border: "0.5px solid #E5E5E5",
-                background: "#FFFFFF",
+                border: "0.5px solid rgba(10,10,10,0.2)",
+                background: "rgba(250,250,250,0.75)",
                 backdropFilter: "blur(8px)",
-                color: "#111",
+                color: "rgba(10,10,10,0.7)",
                 fontSize: 11,
                 padding: "4px 12px",
               }}
@@ -255,12 +255,12 @@ function Hero() {
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
         <h1
           className="h-display"
-          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#111" }}
+          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#0A0A0A" }}
         >
-          <span style={{ color: "#333", fontWeight: 600 }}>
+          <span style={{ color: "rgba(10,10,10,0.45)", fontWeight: 600 }}>
             Si te buscan
           </span>{" "}
-          <span style={{ color: "#111", fontWeight: 600 }}>
+          <span style={{ color: "#0A0A0A", fontWeight: 600 }}>
             que te encuentren.
           </span>
         </h1>
@@ -270,7 +270,7 @@ function Hero() {
       <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
         <p
           className="max-w-[560px]"
-          style={{ color: "#333", fontSize: 16 }}
+          style={{ color: "rgba(10,10,10,0.72)", fontSize: 16 }}
         >
           Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
@@ -287,13 +287,13 @@ function Hero() {
             href="/servicios"
             className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(10,10,10,0.05)]"
             style={{
-              border: "0.5px solid #111",
-              background: "#FFFFFF",
+              border: "0.5px solid rgba(10,10,10,0.25)",
+              background: "rgba(250,250,250,0.6)",
               backdropFilter: "blur(8px)",
               padding: "14px 24px",
               fontWeight: 500,
               fontSize: 14,
-              color: "#111",
+              color: "#0A0A0A",
             }}
           >
             Conoce nuestros servicios
@@ -302,7 +302,7 @@ function Hero() {
         </div>
         <div
           className="mt-4"
-          style={{ color: "#555", fontSize: 12 }}
+          style={{ color: "rgba(10,10,10,0.55)", fontSize: 12 }}
         >
           20 minutos, sin compromiso.
         </div>
