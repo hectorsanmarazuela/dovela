@@ -193,6 +193,7 @@ function Hero() {
         style={{
           width: "70%",
           zIndex: 1,
+          pointerEvents: "none",
           background:
             "linear-gradient(90deg, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.82) 40%, rgba(250,250,250,0.55) 75%, rgba(250,250,250,0) 100%)",
         }}
@@ -203,13 +204,14 @@ function Hero() {
         className="absolute inset-0 opacity-[0.05] mix-blend-multiply pointer-events-none"
         style={{
           zIndex: 1,
+          pointerEvents: "none",
           backgroundImage:
             "radial-gradient(rgba(10,10,10,0.6) 1px, transparent 1px)",
           backgroundSize: "3px 3px",
         }}
       />
 
-      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
 
 
       <div
@@ -274,7 +276,7 @@ function Hero() {
       </div>
 
       {/* Bottom-left copy + CTAs */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px] pointer-events-auto" style={{ bottom: 48 }}>
         <p
           className="max-w-[560px]"
           style={{ color: "rgba(10,10,10,0.72)", fontSize: 16 }}
@@ -320,7 +322,7 @@ function Hero() {
 
       {/* Bottom right floating card */}
       <div
-        className="absolute hidden md:block"
+        className="absolute hidden md:block pointer-events-auto"
         style={{ right: 24, bottom: 24, width: 260 }}
       >
         <div
@@ -365,6 +367,18 @@ function Hero() {
         </div>
       </div>
       </div>
+
+      {/* Bottom fade to page background */}
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        style={{
+          height: 120,
+          zIndex: 5,
+          pointerEvents: "none",
+          background: "linear-gradient(to bottom, transparent, white)",
+        }}
+      />
     </section>
 
 
