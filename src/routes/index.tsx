@@ -104,8 +104,15 @@ function Nav() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1200px]"
-        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 8px" }}
+        className="pointer-events-auto flex items-center gap-6 rounded-full w-full max-w-[1200px]"
+        style={{
+          border: "0.5px solid rgba(10,10,10,0.08)",
+          height: 52,
+          padding: "0 8px",
+          background: "rgba(250,250,250,0.72)",
+          backdropFilter: "blur(14px) saturate(140%)",
+          boxShadow: "0 6px 24px rgba(10,10,10,0.06)",
+        }}
       >
         <a
           href="/"
