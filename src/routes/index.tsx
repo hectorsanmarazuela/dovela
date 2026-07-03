@@ -928,6 +928,78 @@ function Plan() {
 }
 
 
+/* ---------- MARQUEE BAND ---------- */
+
+function MarqueeBand() {
+  const items = [
+    "SEO Local",
+    "Diseño web",
+    "Copywriting",
+    "Google Business",
+    "Branding",
+    "Analítica",
+    "Mantenimiento",
+    "UX / UI",
+  ];
+  // Duplicate for seamless loop
+  const loop = [...items, ...items, ...items, ...items];
+  return (
+    <section aria-hidden style={{ paddingTop: 40, paddingBottom: 40 }}>
+      <style>{`
+        @keyframes dovela-marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          background: "#C7F751",
+          borderTop: "1.5px solid #0A0A0A",
+          borderBottom: "1.5px solid #0A0A0A",
+          paddingTop: 22,
+          paddingBottom: 22,
+        }}
+      >
+        <div
+          className="flex whitespace-nowrap"
+          style={{
+            width: "max-content",
+            animation: "dovela-marquee 40s linear infinite",
+          }}
+        >
+          {loop.map((t, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center"
+              style={{
+                fontSize: "clamp(22px, 2.6vw, 36px)",
+                fontWeight: 600,
+                color: "#0A0A0A",
+                letterSpacing: "-0.02em",
+                paddingLeft: 28,
+                paddingRight: 28,
+              }}
+            >
+              {t}
+              <span
+                aria-hidden
+                className="inline-block ml-14"
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  background: "#0A0A0A",
+                }}
+              />
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- CTA BANNER ---------- */
 
 function CtaBanner() {
@@ -937,10 +1009,9 @@ function CtaBanner() {
         <div
           className="relative overflow-hidden"
           style={{
-            background: "#111111",
+            background: "#0A0A0A",
             borderRadius: 24,
-            padding: "100px 40px 80px",
-            minHeight: 480,
+            padding: "72px 56px",
           }}
         >
           <div
@@ -952,31 +1023,53 @@ function CtaBanner() {
               backgroundSize: "3px 3px",
             }}
           />
-          <div className="relative flex flex-col gap-16">
-            <h2
-              className="h-display"
-              style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
-                color: "#FAFAFA",
-                maxWidth: "18ch",
-              }}
-            >
-              Accede a la base de clientes que{" "}
-              <span
+          {/* Decorative lime glow */}
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              width: 380,
+              height: 380,
+              right: -120,
+              top: -140,
+              background:
+                "radial-gradient(circle, rgba(199,247,81,0.22), rgba(199,247,81,0) 65%)",
+              filter: "blur(20px)",
+            }}
+          />
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-8">
+              <div
+                className="label-eyebrow mb-6"
+                style={{ color: "rgba(250,250,250,0.55)" }}
+              >
+                Empieza hoy
+              </div>
+              <h2
+                className="h-display"
                 style={{
-                  background: "#C7F751",
-                  color: "#0A0A0A",
-                  padding: "0 0.18em",
-                  borderRadius: 6,
-                  boxDecorationBreak: "clone",
-                  WebkitBoxDecorationBreak: "clone",
+                  fontSize: "clamp(34px, 4.6vw, 60px)",
+                  color: "#FAFAFA",
+                  maxWidth: "18ch",
                 }}
               >
-                tu negocio se merece
-              </span>
-              .
-            </h2>
-            <div className="flex justify-end">
+                Accede a la base de clientes que{" "}
+                <span
+                  style={{
+                    background: "#C7F751",
+                    color: "#0A0A0A",
+                    padding: "0 0.18em",
+                    borderRadius: 6,
+                    boxDecorationBreak: "clone",
+                    WebkitBoxDecorationBreak: "clone",
+                  }}
+                >
+                  tu negocio se merece
+                </span>
+                .
+              </h2>
+            </div>
+            <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-5">
               <a
                 href="#contacto"
                 className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
@@ -985,14 +1078,22 @@ function CtaBanner() {
                 Reserva una llamada gratuita
                 <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
               </a>
+              <div
+                style={{
+                  color: "rgba(250,250,250,0.5)",
+                  fontSize: 13,
+                }}
+              >
+                20 minutos · Sin compromiso
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- TESTIMONIALS ---------- */
 
