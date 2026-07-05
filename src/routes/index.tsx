@@ -1296,9 +1296,32 @@ const FAQ = [
 ];
 
 function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
+      <style>{`
+        .faq-section { background:#EAEAE0; border-radius:24px; padding:20px; max-width:700px; margin:0 auto; }
+        .faq-stack { display:flex; flex-direction:column; gap:8px; }
+        .faq-card1 { background:#F0F0E6; border-radius:16px; box-shadow:0 1px 3px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65); cursor:pointer; }
+        .faq-closed-row { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; gap:14px; max-height:80px; opacity:1; overflow:hidden; transition:max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease; }
+        .faq-card1.open .faq-closed-row { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
+        .faq-card2-wrap { max-height:0; opacity:0; overflow:hidden; transition:max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
+        .faq-card1.open .faq-card2-wrap { max-height:120px; opacity:1; overflow:visible; }
+        .faq-card2-inner { padding:10px 10px 0; padding-bottom:12px; }
+        .faq-card2 { background:#111111; border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; box-shadow:0 6px 16px rgba(0,0,0,0.28), 0 14px 36px rgba(0,0,0,0.18); }
+        .faq-card2 .faq-q-text { color:#FAFAFA; }
+        .faq-answer-wrap { max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.4,0,.2,1); }
+        .faq-card1.open .faq-answer-wrap { max-height:200px; }
+        .faq-answer-body { padding:4px 20px 18px; }
+        .faq-answer-body p { font-size:13.5px; color:#666; line-height:1.68; }
+        .faq-q-text { font-size:14.5px; font-weight:500; color:#111; line-height:1.4; flex:1; }
+        .faq-icon { width:26px; height:26px; border-radius:50%; border:1.5px solid #C0C0B4; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition:background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .icon-arrow { position:absolute; transition:opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .icon-chevron { position:absolute; transition:opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
+        .faq-card1.open .faq-card2 .faq-icon { background:#C7F751; border-color:#C7F751; }
+        .faq-card1.open .faq-card2 .faq-icon .icon-arrow { opacity:0; transform:rotate(90deg); }
+        .faq-card1.open .faq-card2 .faq-icon .icon-chevron { opacity:1; transform:rotate(0deg); }
+      `}</style>
       <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[40%_60%] gap-16">
         <div>
           <div className="label-eyebrow mb-8">FAQ</div>
@@ -1334,112 +1357,89 @@ function Faq() {
           </div>
         </div>
         <div className="w-full" style={{ maxWidth: 720 }}>
-          {FAQ.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div
-                key={f.q}
-                style={{
-                  marginBottom: 8,
-                  borderRadius: 12,
-                  border: isOpen ? "1px solid #0A0A0A" : "1px solid #E5E5E5",
-                  background: isOpen ? "#0A0A0A" : "#FFFFFF",
-                  boxShadow: isOpen ? "0 8px 32px rgba(0,0,0,0.12)" : "none",
-                  transition: "box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                  overflow: "hidden",
-                }}
-              >
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between text-left"
-                  style={{
-                    padding: "20px 24px",
-                    background: isOpen ? "#0A0A0A" : "#FFFFFF",
-                    color: isOpen ? "#FAFAFA" : "#0A0A0A",
-                    borderRadius: isOpen ? "12px 12px 0 0" : 12,
-                    transition: "background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 500,
-                      color: isOpen ? "#FAFAFA" : "#0A0A0A",
-                      transition: "color 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                      paddingRight: 16,
+          <div className="faq-section">
+            <div className="faq-stack">
+              {FAQ.map((f, i) => {
+                const isOpen = open === i;
+                return (
+                  <div
+                    key={f.q}
+                    className={isOpen ? "faq-card1 open" : "faq-card1"}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpen(isOpen ? null : i);
+                      }
                     }}
                   >
-                    {f.q}
-                  </span>
-                  {isOpen ? (
-                    <span
-                      className="inline-flex items-center justify-center rounded-full shrink-0"
-                      style={{
-                        width: 28,
-                        height: 28,
-                        background: "#C7F751",
-                        color: "#0A0A0A",
-                        transform: "rotate(0deg)",
-                        transition: "transform 0.3s ease",
-                      }}
-                    >
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </span>
-                  ) : (
-                    <span
-                      className="inline-flex items-center justify-center shrink-0"
-                      style={{
-                        width: 28,
-                        height: 28,
-                        color: "#888888",
-                        fontSize: 22,
-                        lineHeight: 1,
-                        transform: "rotate(0deg)",
-                        transition: "transform 0.3s ease",
-                      }}
-                    >
-                      ›
-                    </span>
-                  )}
-                </button>
-                <div
-                  style={{
-                    maxHeight: isOpen ? 500 : 0,
-                    overflow: "hidden",
-                    transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                    background: "#FFFFFF",
-                    borderRadius: "0 0 12px 12px",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: 14,
-                      color: "#888888",
-                      padding: "20px 24px",
-                    }}
-                  >
-                    {f.a}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+                    <div className="faq-closed-row">
+                      <span className="faq-q-text">{f.q}</span>
+                      <div className="faq-icon">
+                        <svg
+                          className="icon-arrow"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="13 6 19 12 13 18" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="faq-card2-wrap">
+                      <div className="faq-card2-inner">
+                        <div className="faq-card2">
+                          <span className="faq-q-text">{f.q}</span>
+                          <div className="faq-icon">
+                            <svg
+                              className="icon-arrow"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <polyline points="13 6 19 12 13 18" />
+                            </svg>
+                            <svg
+                              className="icon-chevron"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="faq-answer-wrap">
+                      <div className="faq-answer-body">
+                        <p>{f.a}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------- LEAD MAGNET ---------- */
 
