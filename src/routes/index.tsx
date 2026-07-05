@@ -181,7 +181,7 @@ function Hero() {
       }}
     >
       <iframe
-        src="https://hectorsanmarazuela.github.io/dovela-mapa/"
+        src="https://hectorsanmarazuela.github.io/dovela-mapa/?v=2"
         className="absolute inset-0 w-full h-full"
         style={{ border: "none", zIndex: 0 }}
         title="Mapa Segovia"
@@ -1333,50 +1333,105 @@ function Faq() {
             />
           </div>
         </div>
-        <div>
+        <div className="w-full" style={{ maxWidth: 720 }}>
           {FAQ.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} style={{ borderTop: "0.5px solid #E5E5E5" }}>
+              <div
+                key={f.q}
+                style={{
+                  marginBottom: 8,
+                  borderRadius: 12,
+                  border: isOpen ? "1px solid #0A0A0A" : "1px solid #E5E5E5",
+                  background: isOpen ? "#0A0A0A" : "#FFFFFF",
+                  boxShadow: isOpen ? "0 8px 32px rgba(0,0,0,0.12)" : "none",
+                  transition: "box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+                  overflow: "hidden",
+                }}
+              >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center gap-4 text-left py-6"
+                  className="w-full flex items-center justify-between text-left"
+                  style={{
+                    padding: "20px 24px",
+                    background: isOpen ? "#0A0A0A" : "#FFFFFF",
+                    color: isOpen ? "#FAFAFA" : "#0A0A0A",
+                    borderRadius: isOpen ? "12px 12px 0 0" : 12,
+                    transition: "background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
                 >
                   <span
-                    style={{ fontSize: 16, fontWeight: 500, color: "#0A0A0A" }}
+                    style={{
+                      fontSize: 16,
+                      fontWeight: 500,
+                      color: isOpen ? "#FAFAFA" : "#0A0A0A",
+                      transition: "color 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+                      paddingRight: 16,
+                    }}
                   >
                     {f.q}
                   </span>
-                  <span
-                    className="ml-auto inline-flex items-center justify-center rounded-full"
+                  {isOpen ? (
+                    <span
+                      className="inline-flex items-center justify-center rounded-full shrink-0"
+                      style={{
+                        width: 28,
+                        height: 28,
+                        background: "#C7F751",
+                        color: "#0A0A0A",
+                        transform: "rotate(0deg)",
+                        transition: "transform 0.3s ease",
+                      }}
+                    >
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </span>
+                  ) : (
+                    <span
+                      className="inline-flex items-center justify-center shrink-0"
+                      style={{
+                        width: 28,
+                        height: 28,
+                        color: "#888888",
+                        fontSize: 22,
+                        lineHeight: 1,
+                        transform: "rotate(0deg)",
+                        transition: "transform 0.3s ease",
+                      }}
+                    >
+                      ›
+                    </span>
+                  )}
+                </button>
+                <div
+                  style={{
+                    maxHeight: isOpen ? 500 : 0,
+                    overflow: "hidden",
+                    transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+                    background: "#FFFFFF",
+                    borderRadius: "0 0 12px 12px",
+                  }}
+                >
+                  <p
                     style={{
-                      width: 28,
-                      height: 28,
-                      background: "#C7F751",
-                      color: "#0A0A0A",
-                      transform: isOpen ? "rotate(180deg)" : "none",
-                      transition: "transform 200ms",
+                      fontSize: 14,
+                      color: "#888888",
+                      padding: "20px 24px",
                     }}
                   >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </span>
-                </button>
-                {isOpen && (
-                  <p className="pb-6" style={{ fontSize: 14, color: "#888" }}>
                     {f.a}
                   </p>
-                )}
+                </div>
               </div>
             );
           })}
