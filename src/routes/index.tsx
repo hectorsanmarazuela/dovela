@@ -1625,7 +1625,7 @@ function ContactForm() {
         </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 min-w-0 w-full"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Field label="Nombre" placeholder="Tu nombre" />
