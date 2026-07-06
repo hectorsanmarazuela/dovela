@@ -1177,7 +1177,7 @@ function Testimonials() {
     },
   ];
   return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
+    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 60 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="mb-12">
           <div className="label-eyebrow mb-8">Clientes</div>
@@ -1305,16 +1305,17 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section style={{ background: "#FAFAFA", paddingTop: 120, paddingBottom: 120 }}>
+    <section style={{ background: "#FAFAFA", paddingTop: 60, paddingBottom: 120 }}>
       <style>{`
-        .fq-card { background:#F0F0F0; border:1px solid #E5E5E5; border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
+        .fq-card { background:#F0F0F0; border:1px solid #E5E5E5; border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
         .fq-card:hover { background:#EBEBEB; }
         .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:22px 26px; gap:16px; max-height:96px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
         .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
         .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
-        .fq-c2inner { padding:12px 12px 14px; }
-        .fq-c2 { background:#0A0A0A; border:1px solid #0A0A0A; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .fq-c2inner { padding:2px 12px 14px; }
+        .fq-c2 { background:#0A0A0A; border:1px solid #0A0A0A; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; transition: box-shadow .4s cubic-bezier(.4,0,.2,1); }
+        .fq-card.open .fq-c2 { box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
         .fq-c2 .fq-qtext { color:#FAFAFA; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
