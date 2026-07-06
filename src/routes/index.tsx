@@ -1455,16 +1455,19 @@ function LeadMagnet() {
   return (
     <section
       id="auditoria"
-      style={{ paddingTop: 40, paddingBottom: 40 }}
+      style={{ paddingTop: 0, paddingBottom: 40 }}
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <div
           className="relative overflow-hidden"
           style={{
             background: "#0A0A0A",
-            borderRadius: 24,
+            borderRadius: "24px 24px 0 0",
             padding: "72px 40px",
             color: "#FAFAFA",
+            marginTop: -40,
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12">
@@ -1479,8 +1482,9 @@ function LeadMagnet() {
                 className="h-display mt-6"
                 style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}
               >
-                <span style={{ color: "#FAFAFA" }}>El progreso</span>{" "}
-                <span style={{ color: "#C7F751" }}>consiste en renovarse.</span>
+                <span style={{ color: "#FAFAFA" }}>¿Tu negocio </span>
+                <span style={{ color: "#C7F751" }}>aparece en Google</span>
+                <span style={{ color: "#FAFAFA" }}>?</span>
               </h2>
 
               <p
