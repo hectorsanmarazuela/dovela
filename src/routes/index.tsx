@@ -991,17 +991,24 @@ function MarqueeBand() {
 
 
   return (
-    <section aria-hidden style={{ paddingTop: 32, paddingBottom: 32 }}>
+    <section
+      aria-hidden
+      style={{
+        background: "#C7F751",
+        paddingTop: 28,
+        paddingBottom: 28,
+        borderTop: "1px solid #0A0A0A",
+        borderBottom: "1px solid #0A0A0A",
+      }}
+    >
       <style>{`
-        .dovela-stroke-text {
+        .dovela-band-text {
           font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-          font-weight: 800;
+          font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: -0.02em;
-          color: #C7F751;
-          -webkit-text-stroke: 3px #0A0A0A;
-          paint-order: stroke fill;
-          line-height: 0.95;
+          letter-spacing: -0.01em;
+          color: #0A0A0A;
+          line-height: 1;
         }
         .dovela-sep-icon {
           transition: transform 700ms cubic-bezier(.65,0,.35,1);
@@ -1017,11 +1024,11 @@ function MarqueeBand() {
           {loop.map((t, i) => (
             <span key={i} className="inline-flex items-center">
               <span
-                className="dovela-stroke-text"
+                className="dovela-band-text"
                 style={{
-                  fontSize: "clamp(72px, 11vw, 168px)",
-                  paddingLeft: 32,
-                  paddingRight: 32,
+                  fontSize: "clamp(40px, 6vw, 88px)",
+                  paddingLeft: 28,
+                  paddingRight: 28,
                 }}
               >
                 {t}
@@ -1029,16 +1036,16 @@ function MarqueeBand() {
               <span
                 aria-hidden
                 className="inline-flex items-center justify-center"
-                style={{ paddingLeft: 8, paddingRight: 8 }}
+                style={{ paddingLeft: 4, paddingRight: 4 }}
               >
                 <svg
                   className="dovela-sep-icon"
-                  width="56"
-                  height="56"
+                  width="36"
+                  height="36"
                   viewBox="0 0 24 24"
-                  fill="#C7F751"
+                  fill="#0A0A0A"
                   stroke="#0A0A0A"
-                  strokeWidth="1.6"
+                  strokeWidth="1.4"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   style={{ transform: `rotate(${dir === -1 ? 0 : 180}deg)` }}
@@ -1053,6 +1060,7 @@ function MarqueeBand() {
     </section>
   );
 }
+
 
 /* ---------- CTA BANNER ---------- */
 
