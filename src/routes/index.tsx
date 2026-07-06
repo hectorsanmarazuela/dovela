@@ -1684,8 +1684,8 @@ function Index() {
       <Hero />
       <PorQueDovela />
       
-      <Projects />
       <MarqueeBand />
+      <Projects />
       <Plan />
       <CtaBanner />
       <Testimonials />
