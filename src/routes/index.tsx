@@ -950,10 +950,9 @@ function MarqueeBand() {
     const track = trackRef.current;
     if (!track) return;
 
-    // Base speed: 40s to translate half the track width (seamless loop)
-    const BASE_DURATION = 40; // seconds
+    // Slow, editorial base speed
+    const BASE_DURATION = 90; // seconds for a full half-track pass
     let offset = 0;
-    let speedMul = 1; // scroll-velocity boost, decays to 1
     let direction = -1;
     let lastScrollY = window.scrollY;
     let lastTs = performance.now();
@@ -964,9 +963,6 @@ function MarqueeBand() {
       const delta = y - lastScrollY;
       if (delta > 0) direction = -1;
       else if (delta < 0) direction = 1;
-      // Boost speed based on scroll velocity magnitude
-      const boost = Math.min(6, Math.abs(delta) * 0.15);
-      speedMul = Math.max(speedMul, 1 + boost);
       lastScrollY = y;
       setDir(direction as 1 | -1);
     };
@@ -976,15 +972,12 @@ function MarqueeBand() {
       lastTs = ts;
       const halfWidth = track.scrollWidth / 2;
       if (halfWidth > 0) {
-        const pxPerSec = (halfWidth / BASE_DURATION) * speedMul;
+        const pxPerSec = halfWidth / BASE_DURATION;
         offset += direction * pxPerSec * dt;
-        // Wrap seamlessly
         if (offset <= -halfWidth) offset += halfWidth;
         if (offset >= 0) offset -= halfWidth;
         track.style.transform = `translate3d(${offset}px, 0, 0)`;
       }
-      // Ease speed multiplier back to 1
-      speedMul += (1 - speedMul) * Math.min(1, dt * 2.2);
       raf = requestAnimationFrame(tick);
     };
 
@@ -996,18 +989,26 @@ function MarqueeBand() {
     };
   }, []);
 
+
   return (
-    <section aria-hidden style={{ paddingTop: 32, paddingBottom: 32 }}>
+    <section
+      aria-hidden
+      style={{
+        background: "#C7F751",
+        paddingTop: 28,
+        paddingBottom: 28,
+        borderTop: "1px solid #0A0A0A",
+        borderBottom: "1px solid #0A0A0A",
+      }}
+    >
       <style>{`
-        .dovela-stroke-text {
+        .dovela-band-text {
           font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-          font-weight: 800;
+          font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: -0.02em;
-          color: #C7F751;
-          -webkit-text-stroke: 3px #0A0A0A;
-          paint-order: stroke fill;
-          line-height: 0.95;
+          letter-spacing: -0.01em;
+          color: #0A0A0A;
+          line-height: 1;
         }
         .dovela-sep-icon {
           transition: transform 700ms cubic-bezier(.65,0,.35,1);
@@ -1023,11 +1024,11 @@ function MarqueeBand() {
           {loop.map((t, i) => (
             <span key={i} className="inline-flex items-center">
               <span
-                className="dovela-stroke-text"
+                className="dovela-band-text"
                 style={{
-                  fontSize: "clamp(72px, 11vw, 168px)",
-                  paddingLeft: 32,
-                  paddingRight: 32,
+                  fontSize: "clamp(40px, 6vw, 88px)",
+                  paddingLeft: 28,
+                  paddingRight: 28,
                 }}
               >
                 {t}
@@ -1035,16 +1036,16 @@ function MarqueeBand() {
               <span
                 aria-hidden
                 className="inline-flex items-center justify-center"
-                style={{ paddingLeft: 8, paddingRight: 8 }}
+                style={{ paddingLeft: 4, paddingRight: 4 }}
               >
                 <svg
                   className="dovela-sep-icon"
-                  width="56"
-                  height="56"
+                  width="36"
+                  height="36"
                   viewBox="0 0 24 24"
-                  fill="#C7F751"
+                  fill="#0A0A0A"
                   stroke="#0A0A0A"
-                  strokeWidth="1.6"
+                  strokeWidth="1.4"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   style={{ transform: `rotate(${dir === -1 ? 0 : 180}deg)` }}
@@ -1059,6 +1060,7 @@ function MarqueeBand() {
     </section>
   );
 }
+
 
 /* ---------- CTA BANNER ---------- */
 
@@ -1097,57 +1099,56 @@ function CtaBanner() {
               filter: "blur(20px)",
             }}
           />
-          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-8">
-              <div
-                className="label-eyebrow mb-6"
-                style={{ color: "rgba(250,250,250,0.55)" }}
-              >
-                Empieza hoy
-              </div>
-              <h2
-                className="h-display"
-                style={{
-                  fontSize: "clamp(34px, 4.6vw, 60px)",
-                  color: "#FAFAFA",
-                  maxWidth: "18ch",
-                }}
-              >
-                Accede a la base de clientes que{" "}
-                <span
-                  style={{
-                    background: "#C7F751",
-                    color: "#0A0A0A",
-                    padding: "0 0.18em",
-                    borderRadius: 6,
-                    boxDecorationBreak: "clone",
-                    WebkitBoxDecorationBreak: "clone",
-                  }}
-                >
-                  tu negocio se merece
-                </span>
-                .
-              </h2>
+          <div className="relative flex flex-col items-center text-center">
+            <div
+              className="label-eyebrow mb-6"
+              style={{ color: "rgba(250,250,250,0.55)" }}
+            >
+              Empieza hoy
             </div>
-            <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-5">
-              <a
-                href="#contacto"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-                style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
-              >
-                Reserva una llamada gratuita
-                <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
-              </a>
-              <div
+            <h2
+              className="h-display"
+              style={{
+                fontSize: "clamp(40px, 6vw, 76px)",
+                color: "#FAFAFA",
+                maxWidth: "16ch",
+                marginBottom: 40,
+              }}
+            >
+              Tu próximo{" "}
+              <span
                 style={{
-                  color: "rgba(250,250,250,0.5)",
-                  fontSize: 13,
+                  background: "#C7F751",
+                  color: "#0A0A0A",
+                  padding: "0 0.18em",
+                  borderRadius: 6,
+                  boxDecorationBreak: "clone",
+                  WebkitBoxDecorationBreak: "clone",
                 }}
               >
-                20 minutos · Sin compromiso
-              </div>
+                cliente
+              </span>{" "}
+              te está buscando.
+            </h2>
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              style={{ padding: "18px 30px", fontWeight: 600, fontSize: 16 }}
+            >
+              Reserva una llamada gratuita
+              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+            </a>
+            <div
+              style={{
+                color: "rgba(250,250,250,0.5)",
+                fontSize: 13,
+                marginTop: 16,
+              }}
+            >
+              20 minutos · Sin compromiso
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1304,23 +1305,24 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 120, paddingBottom: 120 }}>
+    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 120 }}>
       <style>{`
-        .fq-card { background:#F0F0E6; border-radius:16px; box-shadow:0 1px 3px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65); cursor:pointer; }
-        .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; gap:14px; max-height:80px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
+        .fq-card { background:rgba(255,255,255,0.03); border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
+        .fq-card:hover { background:rgba(255,255,255,0.05); }
+        .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:22px 26px; gap:16px; max-height:96px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
         .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
-        .fq-card.open .fq-c2wrap { max-height:120px; opacity:1; overflow:visible; }
-        .fq-c2inner { padding:10px 10px 12px; }
-        .fq-c2 { background:#111; border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; box-shadow:0 6px 16px rgba(0,0,0,.28), 0 14px 36px rgba(0,0,0,.18); }
+        .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
+        .fq-c2inner { padding:12px 12px 14px; }
+        .fq-c2 { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
         .fq-c2 .fq-qtext { color:#FAFAFA; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
-        .fq-card.open .fq-answ { max-height:220px; }
-        .fq-answbody { padding:4px 20px 18px; }
-        .fq-answbody p { font-size:13.5px; color:#666; line-height:1.68; }
-        .fq-qtext { font-size:14.5px; font-weight:500; color:#111; line-height:1.4; flex:1; }
-        .fq-icon { width:26px; height:26px; border-radius:50%; border:1.5px solid #C0C0B4; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
-        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .fq-card.open .fq-answ { max-height:260px; }
+        .fq-answbody { padding:6px 26px 22px; }
+        .fq-answbody p { font-size:15px; color:rgba(250,250,250,0.65); line-height:1.7; }
+        .fq-qtext { font-size:19px; font-weight:500; color:#FAFAFA; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(229,229,229,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#FAFAFA; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
         .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
@@ -1328,20 +1330,18 @@ function Faq() {
       `}</style>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
-          <div className="label-eyebrow mb-4">FAQ</div>
-          <h2 className="h-display text-[#0A0A0A]" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+          <div className="label-eyebrow mb-4" style={{ color: "rgba(250,250,250,0.55)" }}>FAQ</div>
+          <h2 className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}>
             Preguntas frecuentes.
           </h2>
         </div>
         <div
           style={{
-            background: "#EAEAE0",
-            borderRadius: 24,
-            padding: 20,
-            maxWidth: 700,
+            maxWidth: 760,
             margin: "0 auto",
           }}
         >
+
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {FAQ.map((f, i) => {
               const isOpen = open === i;
