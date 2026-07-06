@@ -1099,57 +1099,56 @@ function CtaBanner() {
               filter: "blur(20px)",
             }}
           />
-          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-8">
-              <div
-                className="label-eyebrow mb-6"
-                style={{ color: "rgba(250,250,250,0.55)" }}
-              >
-                Empieza hoy
-              </div>
-              <h2
-                className="h-display"
-                style={{
-                  fontSize: "clamp(34px, 4.6vw, 60px)",
-                  color: "#FAFAFA",
-                  maxWidth: "18ch",
-                }}
-              >
-                Accede a la base de clientes que{" "}
-                <span
-                  style={{
-                    background: "#C7F751",
-                    color: "#0A0A0A",
-                    padding: "0 0.18em",
-                    borderRadius: 6,
-                    boxDecorationBreak: "clone",
-                    WebkitBoxDecorationBreak: "clone",
-                  }}
-                >
-                  tu negocio se merece
-                </span>
-                .
-              </h2>
+          <div className="relative flex flex-col items-center text-center">
+            <div
+              className="label-eyebrow mb-6"
+              style={{ color: "rgba(250,250,250,0.55)" }}
+            >
+              Empieza hoy
             </div>
-            <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-5">
-              <a
-                href="#contacto"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-                style={{ padding: "16px 26px", fontWeight: 600, fontSize: 15 }}
-              >
-                Reserva una llamada gratuita
-                <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
-              </a>
-              <div
+            <h2
+              className="h-display"
+              style={{
+                fontSize: "clamp(40px, 6vw, 76px)",
+                color: "#FAFAFA",
+                maxWidth: "16ch",
+                marginBottom: 40,
+              }}
+            >
+              Tu próximo{" "}
+              <span
                 style={{
-                  color: "rgba(250,250,250,0.5)",
-                  fontSize: 13,
+                  background: "#C7F751",
+                  color: "#0A0A0A",
+                  padding: "0 0.18em",
+                  borderRadius: 6,
+                  boxDecorationBreak: "clone",
+                  WebkitBoxDecorationBreak: "clone",
                 }}
               >
-                20 minutos · Sin compromiso
-              </div>
+                cliente
+              </span>{" "}
+              te está buscando.
+            </h2>
+            <a
+              href="#contacto"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              style={{ padding: "18px 30px", fontWeight: 600, fontSize: 16 }}
+            >
+              Reserva una llamada gratuita
+              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+            </a>
+            <div
+              style={{
+                color: "rgba(250,250,250,0.5)",
+                fontSize: 13,
+                marginTop: 16,
+              }}
+            >
+              20 minutos · Sin compromiso
             </div>
           </div>
+
         </div>
       </div>
     </section>
