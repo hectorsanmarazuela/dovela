@@ -1410,7 +1410,7 @@ function LeadMagnet() {
           style={{
             background: "#0A0A0A",
             borderRadius: 24,
-            padding: "72px 40px",
+            padding: "56px clamp(20px, 3vw, 40px)",
             color: "#FAFAFA",
           }}
         >
