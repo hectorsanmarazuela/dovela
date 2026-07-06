@@ -950,10 +950,9 @@ function MarqueeBand() {
     const track = trackRef.current;
     if (!track) return;
 
-    // Base speed: 40s to translate half the track width (seamless loop)
-    const BASE_DURATION = 40; // seconds
+    // Slow, editorial base speed
+    const BASE_DURATION = 90; // seconds for a full half-track pass
     let offset = 0;
-    let speedMul = 1; // scroll-velocity boost, decays to 1
     let direction = -1;
     let lastScrollY = window.scrollY;
     let lastTs = performance.now();
@@ -964,9 +963,6 @@ function MarqueeBand() {
       const delta = y - lastScrollY;
       if (delta > 0) direction = -1;
       else if (delta < 0) direction = 1;
-      // Boost speed based on scroll velocity magnitude
-      const boost = Math.min(6, Math.abs(delta) * 0.15);
-      speedMul = Math.max(speedMul, 1 + boost);
       lastScrollY = y;
       setDir(direction as 1 | -1);
     };
@@ -976,15 +972,12 @@ function MarqueeBand() {
       lastTs = ts;
       const halfWidth = track.scrollWidth / 2;
       if (halfWidth > 0) {
-        const pxPerSec = (halfWidth / BASE_DURATION) * speedMul;
+        const pxPerSec = halfWidth / BASE_DURATION;
         offset += direction * pxPerSec * dt;
-        // Wrap seamlessly
         if (offset <= -halfWidth) offset += halfWidth;
         if (offset >= 0) offset -= halfWidth;
         track.style.transform = `translate3d(${offset}px, 0, 0)`;
       }
-      // Ease speed multiplier back to 1
-      speedMul += (1 - speedMul) * Math.min(1, dt * 2.2);
       raf = requestAnimationFrame(tick);
     };
 
@@ -995,6 +988,7 @@ function MarqueeBand() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
 
   return (
     <section aria-hidden style={{ paddingTop: 32, paddingBottom: 32 }}>
