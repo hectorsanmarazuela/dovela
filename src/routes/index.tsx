@@ -1305,24 +1305,24 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 120 }}>
+    <section style={{ background: "#FAFAFA", paddingTop: 120, paddingBottom: 120 }}>
       <style>{`
-        .fq-card { background:rgba(255,255,255,0.03); border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
-        .fq-card:hover { background:rgba(255,255,255,0.05); }
+        .fq-card { background:#F0F0F0; border:1px solid #E5E5E5; border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
+        .fq-card:hover { background:#EBEBEB; }
         .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:22px 26px; gap:16px; max-height:96px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
         .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
         .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
         .fq-c2inner { padding:12px 12px 14px; }
-        .fq-c2 { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .fq-c2 { background:#0A0A0A; border:1px solid #0A0A0A; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
         .fq-c2 .fq-qtext { color:#FAFAFA; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
         .fq-answbody { padding:6px 26px 22px; }
-        .fq-answbody p { font-size:15px; color:rgba(250,250,250,0.65); line-height:1.7; }
-        .fq-qtext { font-size:19px; font-weight:500; color:#FAFAFA; line-height:1.35; flex:1; letter-spacing:-0.01em; }
-        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(229,229,229,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
-        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#FAFAFA; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .fq-answbody p { font-size:15px; color:#888888; line-height:1.7; }
+        .fq-qtext { font-size:19px; font-weight:500; color:#0A0A0A; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(10,10,10,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
         .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
@@ -1330,8 +1330,8 @@ function Faq() {
       `}</style>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
-          <div className="label-eyebrow mb-4" style={{ color: "rgba(250,250,250,0.55)" }}>FAQ</div>
-          <h2 className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}>
+          <div className="label-eyebrow mb-4">FAQ</div>
+          <h2 className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A" }}>
             Preguntas frecuentes.
           </h2>
         </div>
@@ -1410,12 +1410,12 @@ function LeadMagnet() {
           style={{
             background: "#0A0A0A",
             borderRadius: 24,
-            padding: "72px 40px",
+            padding: "56px clamp(20px, 3vw, 40px)",
             color: "#FAFAFA",
           }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 items-start">
+            <div className="min-w-0">
               <div
                 className="label-eyebrow"
                 style={{ color: "#C7F751" }}
@@ -1424,10 +1424,10 @@ function LeadMagnet() {
               </div>
               <h2
                 className="h-display mt-6"
-                style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}
+                style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
               >
-                <span style={{ color: "#FAFAFA" }}>El progreso</span>{" "}
-                <span style={{ color: "#C7F751" }}>consiste en renovarse.</span>
+                <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
+                <span style={{ color: "#C7F751" }}>aparece en Google?</span>
               </h2>
 
               <p
@@ -1464,7 +1464,7 @@ function LeadMagnet() {
 
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col justify-center gap-3"
+              className="flex flex-col justify-center gap-3 min-w-0 w-full"
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "0.5px solid rgba(255,255,255,0.15)",
@@ -1537,12 +1537,12 @@ function ContactForm() {
       className="bg-[#FAFAFA]"
       style={{ paddingTop: 140, paddingBottom: 140 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-16">
-        <div>
+      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] gap-12 lg:gap-16">
+        <div className="min-w-0">
           <div className="label-eyebrow mb-8">Contacto</div>
           <h2
             className="h-display text-[#0A0A0A]"
-            style={{ fontSize: "clamp(48px, 7vw, 96px)" }}
+            style={{ fontSize: "clamp(44px, 6vw, 84px)" }}
           >
             ¿Hablamos?
           </h2>
@@ -1553,17 +1553,79 @@ function ContactForm() {
             Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
             compromiso.
           </p>
-          <div
-            className="mt-10 flex flex-col gap-2"
-            style={{ fontSize: 14, color: "#0A0A0A" }}
-          >
-            <div>hola@dovelaestudio.es</div>
-            <div style={{ color: "#888" }}>Segovia, España</div>
+
+          {/* Contact info cards */}
+          <div className="mt-10 flex flex-col gap-3">
+            <a
+              href="mailto:hola@dovelaestudio.es"
+              className="group flex items-center gap-4 rounded-2xl transition hover:bg-white"
+              style={{
+                background: "var(--color-lime-subtle)",
+                border: "0.5px solid #E5E5E5",
+                padding: "16px 18px",
+              }}
+            >
+              <span
+                className="inline-flex items-center justify-center rounded-full shrink-0"
+                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <polyline points="3 7 12 13 21 7" />
+                </svg>
+              </span>
+              <div className="min-w-0 flex-1">
+                <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
+                  Email
+                </div>
+                <div className="truncate" style={{ fontSize: 15, color: "#0A0A0A", fontWeight: 500 }}>
+                  hola@dovelaestudio.es
+                </div>
+              </div>
+            </a>
+            <div
+              className="flex items-center gap-4 rounded-2xl"
+              style={{
+                background: "#F5F5F5",
+                border: "0.5px solid #E5E5E5",
+                padding: "16px 18px",
+              }}
+            >
+              <span
+                className="inline-flex items-center justify-center rounded-full shrink-0"
+                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+              </span>
+              <div className="min-w-0 flex-1">
+                <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
+                  Estudio
+                </div>
+                <div style={{ fontSize: 15, color: "#0A0A0A", fontWeight: 500 }}>
+                  Segovia, España
+                </div>
+              </div>
+              <span
+                className="rounded-full shrink-0"
+                style={{
+                  border: "0.5px solid #0A0A0A",
+                  color: "#0A0A0A",
+                  fontSize: 11,
+                  padding: "3px 10px",
+                  fontWeight: 500,
+                }}
+              >
+                <span style={{ color: "#C7F751" }}>●</span> Disponible
+              </span>
+            </div>
           </div>
         </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 min-w-0 w-full"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Field label="Nombre" placeholder="Tu nombre" />
@@ -1729,7 +1791,7 @@ function Footer() {
 
 function Index() {
   return (
-    <main className="bg-[#FAFAFA] text-[#0A0A0A]">
+    <main className="bg-[#FAFAFA] text-[#0A0A0A] overflow-x-clip">
       <Nav />
       <Hero />
       <PorQueDovela />
