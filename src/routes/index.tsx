@@ -1358,24 +1358,24 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 120 }}>
+    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 80 }}>
       <style>{`
-        .fq-card { background:rgba(255,255,255,0.03); border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
-        .fq-card:hover { background:rgba(255,255,255,0.05); }
+        .fq-card { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
+        .fq-card:hover { background:#1F1F1F; }
         .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:22px 26px; gap:16px; max-height:96px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
         .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
         .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
         .fq-c2inner { padding:12px 12px 14px; }
-        .fq-c2 { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-        .fq-c2 .fq-qtext { color:#FAFAFA; }
+        .fq-c2 { background:#FAFAFA; border:1px solid #FAFAFA; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .fq-c2 .fq-qtext { color:#0A0A0A; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
         .fq-answbody { padding:6px 26px 22px; }
-        .fq-answbody p { font-size:15px; color:rgba(250,250,250,0.65); line-height:1.7; }
+        .fq-answbody p { font-size:15px; color:#888888; line-height:1.7; }
         .fq-qtext { font-size:19px; font-weight:500; color:#FAFAFA; line-height:1.35; flex:1; letter-spacing:-0.01em; }
-        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(229,229,229,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
-        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#FAFAFA; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid #333333; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
         .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
