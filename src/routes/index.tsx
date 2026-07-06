@@ -745,7 +745,7 @@ function ProjectCard({
           ))}
         </div>
         <div className="absolute top-4 right-4">
-          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
+          <ArrowCircleDiag size={36} bg="#FAFAFA" fg="#0A0A0A" />
         </div>
       </ImagePlaceholder>
       <div className="mt-4 flex items-center justify-between gap-3">
