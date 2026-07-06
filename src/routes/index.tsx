@@ -1729,7 +1729,7 @@ function Footer() {
 
 function Index() {
   return (
-    <main className="bg-[#FAFAFA] text-[#0A0A0A]">
+    <main className="bg-[#FAFAFA] text-[#0A0A0A] overflow-x-clip">
       <Nav />
       <Hero />
       <PorQueDovela />
