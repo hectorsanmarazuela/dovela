@@ -1590,7 +1590,7 @@ function ContactForm() {
       className="bg-[#FAFAFA]"
       style={{ paddingTop: 140, paddingBottom: 140 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-16">
+      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>
           <div className="label-eyebrow mb-8">Contacto</div>
           <h2
