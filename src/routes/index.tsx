@@ -1537,12 +1537,12 @@ function ContactForm() {
       className="bg-[#FAFAFA]"
       style={{ paddingTop: 140, paddingBottom: 140 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-16">
-        <div>
+      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] gap-12 lg:gap-16">
+        <div className="min-w-0">
           <div className="label-eyebrow mb-8">Contacto</div>
           <h2
             className="h-display text-[#0A0A0A]"
-            style={{ fontSize: "clamp(48px, 7vw, 96px)" }}
+            style={{ fontSize: "clamp(44px, 6vw, 84px)" }}
           >
             ¿Hablamos?
           </h2>
@@ -1553,12 +1553,74 @@ function ContactForm() {
             Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
             compromiso.
           </p>
-          <div
-            className="mt-10 flex flex-col gap-2"
-            style={{ fontSize: 14, color: "#0A0A0A" }}
-          >
-            <div>hola@dovelaestudio.es</div>
-            <div style={{ color: "#888" }}>Segovia, España</div>
+
+          {/* Contact info cards */}
+          <div className="mt-10 flex flex-col gap-3">
+            <a
+              href="mailto:hola@dovelaestudio.es"
+              className="group flex items-center gap-4 rounded-2xl transition hover:bg-white"
+              style={{
+                background: "var(--color-lime-subtle)",
+                border: "0.5px solid #E5E5E5",
+                padding: "16px 18px",
+              }}
+            >
+              <span
+                className="inline-flex items-center justify-center rounded-full shrink-0"
+                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <polyline points="3 7 12 13 21 7" />
+                </svg>
+              </span>
+              <div className="min-w-0 flex-1">
+                <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
+                  Email
+                </div>
+                <div className="truncate" style={{ fontSize: 15, color: "#0A0A0A", fontWeight: 500 }}>
+                  hola@dovelaestudio.es
+                </div>
+              </div>
+            </a>
+            <div
+              className="flex items-center gap-4 rounded-2xl"
+              style={{
+                background: "#F5F5F5",
+                border: "0.5px solid #E5E5E5",
+                padding: "16px 18px",
+              }}
+            >
+              <span
+                className="inline-flex items-center justify-center rounded-full shrink-0"
+                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+              </span>
+              <div className="min-w-0 flex-1">
+                <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
+                  Estudio
+                </div>
+                <div style={{ fontSize: 15, color: "#0A0A0A", fontWeight: 500 }}>
+                  Segovia, España
+                </div>
+              </div>
+              <span
+                className="rounded-full shrink-0"
+                style={{
+                  border: "0.5px solid #0A0A0A",
+                  color: "#0A0A0A",
+                  fontSize: 11,
+                  padding: "3px 10px",
+                  fontWeight: 500,
+                }}
+              >
+                <span style={{ color: "#C7F751" }}>●</span> Disponible
+              </span>
+            </div>
           </div>
         </div>
         <form
