@@ -941,57 +941,64 @@ function MarqueeBand() {
     "Mantenimiento",
     "UX / UI",
   ];
-  // Duplicate for seamless loop
   const loop = [...items, ...items, ...items, ...items];
   return (
-    <section aria-hidden style={{ paddingTop: 40, paddingBottom: 40 }}>
+    <section aria-hidden style={{ paddingTop: 32, paddingBottom: 32 }}>
       <style>{`
         @keyframes dovela-marquee {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
         }
+        .dovela-stroke-text {
+          font-family: "Anton", "Bebas Neue", "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 900;
+          font-stretch: condensed;
+          text-transform: uppercase;
+          letter-spacing: -0.005em;
+          color: #C7F751;
+          -webkit-text-stroke: 1.6px #0A0A0A;
+          paint-order: stroke fill;
+          line-height: 0.95;
+        }
       `}</style>
-      <div
-        className="relative w-full overflow-hidden"
-        style={{
-          background: "#C7F751",
-          borderTop: "1.5px solid #0A0A0A",
-          borderBottom: "1.5px solid #0A0A0A",
-          paddingTop: 22,
-          paddingBottom: 22,
-        }}
-      >
+      <div className="relative w-full overflow-hidden">
         <div
-          className="flex whitespace-nowrap"
+          className="flex whitespace-nowrap items-center"
           style={{
             width: "max-content",
-            animation: "dovela-marquee 40s linear infinite",
+            animation: "dovela-marquee 45s linear infinite",
           }}
         >
           {loop.map((t, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center"
-              style={{
-                fontSize: "clamp(22px, 2.6vw, 36px)",
-                fontWeight: 600,
-                color: "#0A0A0A",
-                letterSpacing: "-0.02em",
-                paddingLeft: 28,
-                paddingRight: 28,
-              }}
-            >
-              {t}
+            <span key={i} className="inline-flex items-center">
+              <span
+                className="dovela-stroke-text"
+                style={{
+                  fontSize: "clamp(56px, 9vw, 132px)",
+                  paddingLeft: 26,
+                  paddingRight: 26,
+                }}
+              >
+                {t}
+              </span>
               <span
                 aria-hidden
-                className="inline-block ml-14"
-                style={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: "50%",
-                  background: "#0A0A0A",
-                }}
-              />
+                className="inline-flex items-center justify-center"
+                style={{ paddingLeft: 8, paddingRight: 8 }}
+              >
+                <svg
+                  width="46"
+                  height="46"
+                  viewBox="0 0 24 24"
+                  fill="#C7F751"
+                  stroke="#0A0A0A"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" />
+                </svg>
+              </span>
             </span>
           ))}
         </div>
@@ -1244,88 +1251,85 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
-      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[40%_60%] gap-16">
-        <div>
-          <div className="label-eyebrow mb-8">FAQ</div>
-          <h2
-            className="h-display text-[#0A0A0A]"
-            style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
-          >
+    <section className="bg-[#FAFAFA]" style={{ paddingTop: 120, paddingBottom: 120 }}>
+      <style>{`
+        .fq-card { background:#F0F0E6; border-radius:16px; box-shadow:0 1px 3px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65); cursor:pointer; }
+        .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; gap:14px; max-height:80px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
+        .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
+        .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
+        .fq-card.open .fq-c2wrap { max-height:120px; opacity:1; overflow:visible; }
+        .fq-c2inner { padding:10px 10px 12px; }
+        .fq-c2 { background:#111; border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; box-shadow:0 6px 16px rgba(0,0,0,.28), 0 14px 36px rgba(0,0,0,.18); }
+        .fq-c2 .fq-qtext { color:#FAFAFA; }
+        .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
+        .fq-card.open .fq-answ { max-height:220px; }
+        .fq-answbody { padding:4px 20px 18px; }
+        .fq-answbody p { font-size:13.5px; color:#666; line-height:1.68; }
+        .fq-qtext { font-size:14.5px; font-weight:500; color:#111; line-height:1.4; flex:1; }
+        .fq-icon { width:26px; height:26px; border-radius:50%; border:1.5px solid #C0C0B4; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
+        .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
+        .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
+        .fq-card.open .fq-c2 .fq-icon .fq-chev { opacity:1; transform:rotate(0deg); }
+      `}</style>
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div className="text-center mb-12">
+          <div className="label-eyebrow mb-4">FAQ</div>
+          <h2 className="h-display text-[#0A0A0A]" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
             Preguntas frecuentes.
           </h2>
-          <div className="relative mt-12" style={{ height: 380 }}>
-            <div
-              className="absolute"
-              style={{
-                width: "70%",
-                height: 220,
-                background: "#2A2A2A",
-                borderRadius: 12,
-                top: 0,
-                left: 0,
-              }}
-            />
-            <div
-              className="absolute"
-              style={{
-                width: "55%",
-                height: 160,
-                background: "#2A2A2A",
-                borderRadius: 12,
-                bottom: 0,
-                right: 0,
-              }}
-            />
-          </div>
         </div>
-        <div>
-          {FAQ.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={f.q} style={{ borderTop: "0.5px solid #E5E5E5" }}>
-                <button
+        <div
+          style={{
+            background: "#EAEAE0",
+            borderRadius: 24,
+            padding: 20,
+            maxWidth: 700,
+            margin: "0 auto",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {FAQ.map((f, i) => {
+              const isOpen = open === i;
+              return (
+                <div
+                  key={f.q}
+                  className={`fq-card${isOpen ? " open" : ""}`}
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center gap-4 text-left py-6"
                 >
-                  <span
-                    style={{ fontSize: 16, fontWeight: 500, color: "#0A0A0A" }}
-                  >
-                    {f.q}
-                  </span>
-                  <span
-                    className="ml-auto inline-flex items-center justify-center rounded-full"
-                    style={{
-                      width: 28,
-                      height: 28,
-                      background: "#C7F751",
-                      color: "#0A0A0A",
-                      transform: isOpen ? "rotate(180deg)" : "none",
-                      transition: "transform 200ms",
-                    }}
-                  >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </span>
-                </button>
-                {isOpen && (
-                  <p className="pb-6" style={{ fontSize: 14, color: "#888" }}>
-                    {f.a}
-                  </p>
-                )}
-              </div>
-            );
-          })}
+                  <div className="fq-closed">
+                    <span className="fq-qtext">{f.q}</span>
+                    <span className="fq-icon">
+                      <svg className="fq-arrow" width="12" height="12" viewBox="0 0 24 24">
+                        <path d="M7 17 L17 7 M17 7 H9 M17 7 V15" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div className="fq-c2wrap">
+                    <div className="fq-c2inner">
+                      <div className="fq-c2">
+                        <span className="fq-qtext">{f.q}</span>
+                        <span className="fq-icon">
+                          <svg className="fq-arrow" width="12" height="12" viewBox="0 0 24 24">
+                            <path d="M7 17 L17 7 M17 7 H9 M17 7 V15" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <svg className="fq-chev" width="12" height="12" viewBox="0 0 24 24">
+                            <polyline points="6 9 12 15 18 9" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="fq-answ">
+                    <div className="fq-answbody">
+                      <p>{f.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -1677,8 +1681,8 @@ function Index() {
       <Hero />
       <PorQueDovela />
       
-      <Projects />
       <MarqueeBand />
+      <Projects />
       <Plan />
       <CtaBanner />
       <Testimonials />
