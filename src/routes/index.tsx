@@ -25,9 +25,9 @@ export const Route = createFileRoute("/")({
 /* ---------- Shared bits ---------- */
 
 /**
- * Modern arrow: on hover, the current arrow slides diagonally out to the top-right
- * (fading out) while a second copy slides in diagonally from the bottom-left.
- * No naive tilt. Uses grid-stack so both arrows overlap perfectly.
+ * Variant A — arrow points right at rest.
+ * Hover: current arrow slides right (fast) and disappears; duplicate enters from the left (fast).
+ * Leave: reverses slowly — duplicate exits back to the left, original returns from the right.
  */
 function ArrowCircle({
   size = 36,
@@ -45,14 +45,48 @@ function ArrowCircle({
       style={{ width: size, height: size, backgroundColor: bg, color: fg }}
     >
       <span
-        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
+        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.5,0,0.75,0)] group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:duration-[220ms] group-hover:translate-x-full group-hover:opacity-0"
       >
         <ArrowSvg size={iconSize} />
       </span>
       <span
-        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+        className="absolute inset-0 grid place-items-center -translate-x-full opacity-0 transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:duration-[220ms] group-hover:translate-x-0 group-hover:opacity-100"
       >
         <ArrowSvg size={iconSize} />
+      </span>
+    </span>
+  );
+}
+
+/**
+ * Variant B — arrow points up-right (diagonal 45°) at rest.
+ * Hover: exits toward upper-right (fast); duplicate enters from lower-left (fast).
+ * Leave: reverses slowly.
+ */
+function ArrowCircleDiag({
+  size = 36,
+  bg = "#0A0A0A",
+  fg = "#FAFAFA",
+}: {
+  size?: number;
+  bg?: string;
+  fg?: string;
+}) {
+  const iconSize = Math.round(size * 0.42);
+  return (
+    <span
+      className="group/arrow relative inline-flex items-center justify-center rounded-full shrink-0 overflow-hidden"
+      style={{ width: size, height: size, backgroundColor: bg, color: fg }}
+    >
+      <span
+        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.5,0,0.75,0)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:duration-[220ms] group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
+      >
+        <ArrowSvgDiag size={iconSize} />
+      </span>
+      <span
+        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:duration-[220ms] group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+      >
+        <ArrowSvgDiag size={iconSize} />
       </span>
     </span>
   );
@@ -75,6 +109,25 @@ function ArrowSvg({ size }: { size: number }) {
     </svg>
   );
 }
+
+function ArrowSvgDiag({ size }: { size: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="9 7 17 7 17 15" />
+    </svg>
+  );
+}
+
 
 function ImagePlaceholder({
   ratio = "4 / 3",
