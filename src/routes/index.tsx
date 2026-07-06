@@ -25,9 +25,9 @@ export const Route = createFileRoute("/")({
 /* ---------- Shared bits ---------- */
 
 /**
- * Modern arrow: on hover, the current arrow slides diagonally out to the top-right
- * (fading out) while a second copy slides in diagonally from the bottom-left.
- * No naive tilt. Uses grid-stack so both arrows overlap perfectly.
+ * Variant A — arrow points right at rest.
+ * Hover: current arrow slides right (fast) and disappears; duplicate enters from the left (fast).
+ * Leave: reverses slowly — duplicate exits back to the left, original returns from the right.
  */
 function ArrowCircle({
   size = 36,
@@ -45,14 +45,48 @@ function ArrowCircle({
       style={{ width: size, height: size, backgroundColor: bg, color: fg }}
     >
       <span
-        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
+        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.5,0,0.75,0)] group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:duration-[220ms] group-hover:translate-x-full group-hover:opacity-0"
       >
         <ArrowSvg size={iconSize} />
       </span>
       <span
-        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+        className="absolute inset-0 grid place-items-center -translate-x-full opacity-0 transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:duration-[220ms] group-hover:translate-x-0 group-hover:opacity-100"
       >
         <ArrowSvg size={iconSize} />
+      </span>
+    </span>
+  );
+}
+
+/**
+ * Variant B — arrow points up-right (diagonal 45°) at rest.
+ * Hover: exits toward upper-right (fast); duplicate enters from lower-left (fast).
+ * Leave: reverses slowly.
+ */
+function ArrowCircleDiag({
+  size = 36,
+  bg = "#0A0A0A",
+  fg = "#FAFAFA",
+}: {
+  size?: number;
+  bg?: string;
+  fg?: string;
+}) {
+  const iconSize = Math.round(size * 0.42);
+  return (
+    <span
+      className="group/arrow relative inline-flex items-center justify-center rounded-full shrink-0 overflow-hidden"
+      style={{ width: size, height: size, backgroundColor: bg, color: fg }}
+    >
+      <span
+        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.5,0,0.75,0)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:duration-[220ms] group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
+      >
+        <ArrowSvgDiag size={iconSize} />
+      </span>
+      <span
+        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[520ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/arrow:duration-[220ms] group-hover/arrow:ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:duration-[220ms] group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+      >
+        <ArrowSvgDiag size={iconSize} />
       </span>
     </span>
   );
@@ -75,6 +109,25 @@ function ArrowSvg({ size }: { size: number }) {
     </svg>
   );
 }
+
+function ArrowSvgDiag({ size }: { size: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="9 7 17 7 17 15" />
+    </svg>
+  );
+}
+
 
 function ImagePlaceholder({
   ratio = "4 / 3",
@@ -692,7 +745,7 @@ function ProjectCard({
           ))}
         </div>
         <div className="absolute top-4 right-4">
-          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
+          <ArrowCircleDiag size={36} bg="#FAFAFA" fg="#0A0A0A" />
         </div>
       </ImagePlaceholder>
       <div className="mt-4 flex items-center justify-between gap-3">
@@ -1305,24 +1358,24 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 120 }}>
+    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 80 }}>
       <style>{`
-        .fq-card { background:rgba(255,255,255,0.03); border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
-        .fq-card:hover { background:rgba(255,255,255,0.05); }
+        .fq-card { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
+        .fq-card:hover { background:#1F1F1F; }
         .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:22px 26px; gap:16px; max-height:96px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
         .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
         .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
         .fq-c2inner { padding:12px 12px 14px; }
-        .fq-c2 { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-        .fq-c2 .fq-qtext { color:#FAFAFA; }
+        .fq-c2 { background:#FAFAFA; border:1px solid #FAFAFA; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .fq-c2 .fq-qtext { color:#0A0A0A; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
         .fq-answbody { padding:6px 26px 22px; }
-        .fq-answbody p { font-size:15px; color:rgba(250,250,250,0.65); line-height:1.7; }
+        .fq-answbody p { font-size:15px; color:#888888; line-height:1.7; }
         .fq-qtext { font-size:19px; font-weight:500; color:#FAFAFA; line-height:1.35; flex:1; letter-spacing:-0.01em; }
-        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(229,229,229,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
-        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#FAFAFA; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid #333333; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
         .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
@@ -1402,16 +1455,19 @@ function LeadMagnet() {
   return (
     <section
       id="auditoria"
-      style={{ paddingTop: 40, paddingBottom: 40 }}
+      style={{ paddingTop: 0, paddingBottom: 40 }}
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <div
           className="relative overflow-hidden"
           style={{
             background: "#0A0A0A",
-            borderRadius: 24,
+            borderRadius: "24px 24px 0 0",
             padding: "72px 40px",
             color: "#FAFAFA",
+            marginTop: -40,
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12">
@@ -1426,8 +1482,9 @@ function LeadMagnet() {
                 className="h-display mt-6"
                 style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}
               >
-                <span style={{ color: "#FAFAFA" }}>El progreso</span>{" "}
-                <span style={{ color: "#C7F751" }}>consiste en renovarse.</span>
+                <span style={{ color: "#FAFAFA" }}>¿Tu negocio </span>
+                <span style={{ color: "#C7F751" }}>aparece en Google</span>
+                <span style={{ color: "#FAFAFA" }}>?</span>
               </h2>
 
               <p
@@ -1537,7 +1594,7 @@ function ContactForm() {
       className="bg-[#FAFAFA]"
       style={{ paddingTop: 140, paddingBottom: 140 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[45%_55%] gap-16">
+      <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
         <div>
           <div className="label-eyebrow mb-8">Contacto</div>
           <h2
