@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import jose2 from "@/assets/jose2.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -942,41 +942,92 @@ function MarqueeBand() {
     "UX / UI",
   ];
   const loop = [...items, ...items, ...items, ...items];
+
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [dir, setDir] = useState<1 | -1>(-1); // -1 = moves left (scroll down default)
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    // Base speed: 40s to translate half the track width (seamless loop)
+    const BASE_DURATION = 40; // seconds
+    let offset = 0;
+    let speedMul = 1; // scroll-velocity boost, decays to 1
+    let direction = -1;
+    let lastScrollY = window.scrollY;
+    let lastTs = performance.now();
+    let raf = 0;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastScrollY;
+      if (delta > 0) direction = -1;
+      else if (delta < 0) direction = 1;
+      // Boost speed based on scroll velocity magnitude
+      const boost = Math.min(6, Math.abs(delta) * 0.15);
+      speedMul = Math.max(speedMul, 1 + boost);
+      lastScrollY = y;
+      setDir(direction as 1 | -1);
+    };
+
+    const tick = (ts: number) => {
+      const dt = Math.min(0.05, (ts - lastTs) / 1000);
+      lastTs = ts;
+      const halfWidth = track.scrollWidth / 2;
+      if (halfWidth > 0) {
+        const pxPerSec = (halfWidth / BASE_DURATION) * speedMul;
+        offset += direction * pxPerSec * dt;
+        // Wrap seamlessly
+        if (offset <= -halfWidth) offset += halfWidth;
+        if (offset >= 0) offset -= halfWidth;
+        track.style.transform = `translate3d(${offset}px, 0, 0)`;
+      }
+      // Ease speed multiplier back to 1
+      speedMul += (1 - speedMul) * Math.min(1, dt * 2.2);
+      raf = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    raf = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section aria-hidden style={{ paddingTop: 32, paddingBottom: 32 }}>
       <style>{`
-        @keyframes dovela-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
         .dovela-stroke-text {
-          font-family: "Anton", "Bebas Neue", "Inter", ui-sans-serif, system-ui, sans-serif;
-          font-weight: 900;
-          font-stretch: condensed;
+          font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 800;
           text-transform: uppercase;
-          letter-spacing: -0.005em;
+          letter-spacing: -0.02em;
           color: #C7F751;
-          -webkit-text-stroke: 1.6px #0A0A0A;
+          -webkit-text-stroke: 3px #0A0A0A;
           paint-order: stroke fill;
           line-height: 0.95;
+        }
+        .dovela-sep-icon {
+          transition: transform 700ms cubic-bezier(.65,0,.35,1);
+          transform-origin: center;
         }
       `}</style>
       <div className="relative w-full overflow-hidden">
         <div
+          ref={trackRef}
           className="flex whitespace-nowrap items-center"
-          style={{
-            width: "max-content",
-            animation: "dovela-marquee 45s linear infinite",
-          }}
+          style={{ width: "max-content", willChange: "transform" }}
         >
           {loop.map((t, i) => (
             <span key={i} className="inline-flex items-center">
               <span
                 className="dovela-stroke-text"
                 style={{
-                  fontSize: "clamp(56px, 9vw, 132px)",
-                  paddingLeft: 26,
-                  paddingRight: 26,
+                  fontSize: "clamp(72px, 11vw, 168px)",
+                  paddingLeft: 32,
+                  paddingRight: 32,
                 }}
               >
                 {t}
@@ -987,14 +1038,16 @@ function MarqueeBand() {
                 style={{ paddingLeft: 8, paddingRight: 8 }}
               >
                 <svg
-                  width="46"
-                  height="46"
+                  className="dovela-sep-icon"
+                  width="56"
+                  height="56"
                   viewBox="0 0 24 24"
                   fill="#C7F751"
                   stroke="#0A0A0A"
-                  strokeWidth="1.4"
+                  strokeWidth="1.6"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  style={{ transform: `rotate(${dir === -1 ? 0 : 180}deg)` }}
                 >
                   <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" />
                 </svg>
