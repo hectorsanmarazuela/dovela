@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import jose2 from "@/assets/jose2.png.asset.json";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -104,15 +103,8 @@ function Nav() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center gap-6 rounded-full w-full max-w-[1200px]"
-        style={{
-          border: "0.5px solid rgba(10,10,10,0.08)",
-          height: 52,
-          padding: "0 8px",
-          background: "rgba(250,250,250,0.72)",
-          backdropFilter: "blur(14px) saturate(140%)",
-          boxShadow: "0 6px 24px rgba(10,10,10,0.06)",
-        }}
+        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1200px]"
+        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 8px" }}
       >
         <a
           href="/"
@@ -176,54 +168,28 @@ function Hero() {
   return (
     <section
       className="relative w-full overflow-hidden"
-      style={{
-        minHeight: "100vh",
-      }}
+      style={{ backgroundColor: "#111111", minHeight: "100vh" }}
     >
-      <iframe
-        src="https://hectorsanmarazuela.github.io/dovela-mapa/?v=2"
-        className="absolute inset-0 w-full h-full"
-        style={{ border: "none", zIndex: 0 }}
-        title="Mapa Segovia"
-      />
-      {/* Left white translucent overlay for legibility */}
       <div
         aria-hidden
-        className="absolute inset-y-0 left-0 pointer-events-none"
+        className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
         style={{
-          width: "70%",
-          zIndex: 1,
-          pointerEvents: "none",
-          background:
-            "linear-gradient(90deg, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.82) 40%, rgba(250,250,250,0.55) 75%, rgba(250,250,250,0) 100%)",
-        }}
-      />
-      {/* Subtle grain */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.05] mix-blend-multiply pointer-events-none"
-        style={{
-          zIndex: 1,
-          pointerEvents: "none",
           backgroundImage:
-            "radial-gradient(rgba(10,10,10,0.6) 1px, transparent 1px)",
+            "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
           backgroundSize: "3px 3px",
         }}
       />
 
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-
-
       <div
         className="absolute"
-        style={{ top: 110, left: 40, color: "rgba(10,10,10,0.5)", fontSize: 12 }}
+        style={{ top: 110, left: 40, color: "rgba(255,255,255,0.4)", fontSize: 12 }}
       >
         08/06/2026
       </div>
 
       <div
         className="absolute text-right max-w-[320px]"
-        style={{ top: 110, right: 40, color: "rgba(10,10,10,0.6)", fontSize: 12 }}
+        style={{ top: 110, right: 40, color: "rgba(255,255,255,0.5)", fontSize: 12 }}
       >
         Agencia de diseño web y SEO local — Segovia, España
       </div>
@@ -233,10 +199,10 @@ function Hero() {
         style={{ right: 40, top: "50%", transform: "translateY(-50%)" }}
       >
         <div className="text-right">
-          <div style={{ color: "rgba(10,10,10,0.5)", fontSize: 11 }}>
+          <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11 }}>
             Hora local Segovia:
           </div>
-          <div style={{ color: "#0A0A0A", fontSize: 13, fontWeight: 500 }}>
+          <div style={{ color: "#FAFAFA", fontSize: 13, fontWeight: 500 }}>
             {time || "17:32"}
           </div>
         </div>
@@ -246,10 +212,8 @@ function Hero() {
               key={s}
               className="rounded-full"
               style={{
-                border: "0.5px solid rgba(10,10,10,0.2)",
-                background: "rgba(250,250,250,0.75)",
-                backdropFilter: "blur(8px)",
-                color: "rgba(10,10,10,0.7)",
+                border: "0.5px solid rgba(255,255,255,0.3)",
+                color: "rgba(255,255,255,0.6)",
                 fontSize: 11,
                 padding: "4px 12px",
               }}
@@ -264,54 +228,52 @@ function Hero() {
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
         <h1
           className="h-display"
-          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#0A0A0A" }}
+          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA" }}
         >
-          <span style={{ color: "rgba(10,10,10,0.45)", fontWeight: 600 }}>
+          <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
             Si te buscan
           </span>{" "}
-          <span style={{ color: "#0A0A0A", fontWeight: 600 }}>
+          <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
             que te encuentren.
           </span>
         </h1>
       </div>
 
       {/* Bottom-left copy + CTAs */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px] pointer-events-auto" style={{ bottom: 48 }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
         <p
           className="max-w-[560px]"
-          style={{ color: "rgba(10,10,10,0.72)", fontSize: 16 }}
+          style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}
         >
           Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
         <div className="flex flex-wrap items-center gap-3 mt-6">
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] text-[#FAFAFA] hover:bg-[#1a1a1a] transition"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
             style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14 }}
           >
             Reserva una llamada gratuita
-            <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+            <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
           </a>
           <a
             href="/servicios"
-            className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(10,10,10,0.05)]"
+            className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
             style={{
-              border: "0.5px solid rgba(10,10,10,0.25)",
-              background: "rgba(250,250,250,0.6)",
-              backdropFilter: "blur(8px)",
+              border: "0.5px solid rgba(255,255,255,0.35)",
               padding: "14px 24px",
               fontWeight: 500,
               fontSize: 14,
-              color: "#0A0A0A",
+              color: "#FAFAFA",
             }}
           >
             Conoce nuestros servicios
-            <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
+            <ArrowCircle size={28} bg="#FAFAFA" fg="#0A0A0A" />
           </a>
         </div>
         <div
           className="mt-4"
-          style={{ color: "rgba(10,10,10,0.55)", fontSize: 12 }}
+          style={{ color: "rgba(255,255,255,0.45)", fontSize: 12 }}
         >
           20 minutos, sin compromiso.
         </div>
@@ -319,10 +281,9 @@ function Hero() {
 
 
 
-
       {/* Bottom right floating card */}
       <div
-        className="absolute hidden md:block pointer-events-auto"
+        className="absolute hidden md:block"
         style={{ right: 24, bottom: 24, width: 260 }}
       >
         <div
@@ -366,22 +327,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      </div>
-
-      {/* Bottom fade to page background */}
-      <div
-        aria-hidden
-        className="absolute bottom-0 left-0 right-0 pointer-events-none"
-        style={{
-          height: 120,
-          zIndex: 5,
-          pointerEvents: "none",
-          background: "linear-gradient(to bottom, transparent, white)",
-        }}
-      />
     </section>
-
-
   );
 }
 
@@ -1296,32 +1242,9 @@ const FAQ = [
 ];
 
 function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
+  const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 140 }}>
-      <style>{`
-        .faq-section { background:#EAEAE0; border-radius:24px; padding:20px; max-width:700px; margin:0 auto; }
-        .faq-stack { display:flex; flex-direction:column; gap:8px; }
-        .faq-card1 { background:#F0F0E6; border-radius:16px; box-shadow:0 1px 3px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65); cursor:pointer; }
-        .faq-closed-row { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; gap:14px; max-height:80px; opacity:1; overflow:hidden; transition:max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease; }
-        .faq-card1.open .faq-closed-row { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
-        .faq-card2-wrap { max-height:0; opacity:0; overflow:hidden; transition:max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
-        .faq-card1.open .faq-card2-wrap { max-height:120px; opacity:1; overflow:visible; }
-        .faq-card2-inner { padding:10px 10px 0; padding-bottom:12px; }
-        .faq-card2 { background:#111111; border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; box-shadow:0 6px 16px rgba(0,0,0,0.28), 0 14px 36px rgba(0,0,0,0.18); }
-        .faq-card2 .faq-q-text { color:#FAFAFA; }
-        .faq-answer-wrap { max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.4,0,.2,1); }
-        .faq-card1.open .faq-answer-wrap { max-height:200px; }
-        .faq-answer-body { padding:4px 20px 18px; }
-        .faq-answer-body p { font-size:13.5px; color:#666; line-height:1.68; }
-        .faq-q-text { font-size:14.5px; font-weight:500; color:#111; line-height:1.4; flex:1; }
-        .faq-icon { width:26px; height:26px; border-radius:50%; border:1.5px solid #C0C0B4; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition:background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
-        .icon-arrow { position:absolute; transition:opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
-        .icon-chevron { position:absolute; transition:opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
-        .faq-card1.open .faq-card2 .faq-icon { background:#C7F751; border-color:#C7F751; }
-        .faq-card1.open .faq-card2 .faq-icon .icon-arrow { opacity:0; transform:rotate(90deg); }
-        .faq-card1.open .faq-card2 .faq-icon .icon-chevron { opacity:1; transform:rotate(0deg); }
-      `}</style>
       <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[40%_60%] gap-16">
         <div>
           <div className="label-eyebrow mb-8">FAQ</div>
@@ -1356,90 +1279,58 @@ function Faq() {
             />
           </div>
         </div>
-        <div className="w-full" style={{ maxWidth: 720 }}>
-          <div className="faq-section">
-            <div className="faq-stack">
-              {FAQ.map((f, i) => {
-                const isOpen = open === i;
-                return (
-                  <div
-                    key={f.q}
-                    className={isOpen ? "faq-card1 open" : "faq-card1"}
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setOpen(isOpen ? null : i);
-                      }
+        <div>
+          {FAQ.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={f.q} style={{ borderTop: "0.5px solid #E5E5E5" }}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center gap-4 text-left py-6"
+                >
+                  <span
+                    style={{ fontSize: 16, fontWeight: 500, color: "#0A0A0A" }}
+                  >
+                    {f.q}
+                  </span>
+                  <span
+                    className="ml-auto inline-flex items-center justify-center rounded-full"
+                    style={{
+                      width: 28,
+                      height: 28,
+                      background: "#C7F751",
+                      color: "#0A0A0A",
+                      transform: isOpen ? "rotate(180deg)" : "none",
+                      transition: "transform 200ms",
                     }}
                   >
-                    <div className="faq-closed-row">
-                      <span className="faq-q-text">{f.q}</span>
-                      <div className="faq-icon">
-                        <svg
-                          className="icon-arrow"
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="13 6 19 12 13 18" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="faq-card2-wrap">
-                      <div className="faq-card2-inner">
-                        <div className="faq-card2">
-                          <span className="faq-q-text">{f.q}</span>
-                          <div className="faq-icon">
-                            <svg
-                              className="icon-arrow"
-                              width="12"
-                              height="12"
-                              viewBox="0 0 24 24"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <line x1="5" y1="12" x2="19" y2="12" />
-                              <polyline points="13 6 19 12 13 18" />
-                            </svg>
-                            <svg
-                              className="icon-chevron"
-                              width="12"
-                              height="12"
-                              viewBox="0 0 24 24"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <polyline points="6 9 12 15 18 9" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="faq-answer-wrap">
-                      <div className="faq-answer-body">
-                        <p>{f.a}</p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
+                </button>
+                {isOpen && (
+                  <p className="pb-6" style={{ fontSize: 14, color: "#888" }}>
+                    {f.a}
+                  </p>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
-
 
 /* ---------- LEAD MAGNET ---------- */
 
