@@ -941,57 +941,64 @@ function MarqueeBand() {
     "Mantenimiento",
     "UX / UI",
   ];
-  // Duplicate for seamless loop
   const loop = [...items, ...items, ...items, ...items];
   return (
-    <section aria-hidden style={{ paddingTop: 40, paddingBottom: 40 }}>
+    <section aria-hidden style={{ paddingTop: 32, paddingBottom: 32 }}>
       <style>{`
         @keyframes dovela-marquee {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
         }
+        .dovela-stroke-text {
+          font-family: "Anton", "Bebas Neue", "Inter", ui-sans-serif, system-ui, sans-serif;
+          font-weight: 900;
+          font-stretch: condensed;
+          text-transform: uppercase;
+          letter-spacing: -0.005em;
+          color: #C7F751;
+          -webkit-text-stroke: 1.6px #0A0A0A;
+          paint-order: stroke fill;
+          line-height: 0.95;
+        }
       `}</style>
-      <div
-        className="relative w-full overflow-hidden"
-        style={{
-          background: "#C7F751",
-          borderTop: "1.5px solid #0A0A0A",
-          borderBottom: "1.5px solid #0A0A0A",
-          paddingTop: 22,
-          paddingBottom: 22,
-        }}
-      >
+      <div className="relative w-full overflow-hidden">
         <div
-          className="flex whitespace-nowrap"
+          className="flex whitespace-nowrap items-center"
           style={{
             width: "max-content",
-            animation: "dovela-marquee 40s linear infinite",
+            animation: "dovela-marquee 45s linear infinite",
           }}
         >
           {loop.map((t, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center"
-              style={{
-                fontSize: "clamp(22px, 2.6vw, 36px)",
-                fontWeight: 600,
-                color: "#0A0A0A",
-                letterSpacing: "-0.02em",
-                paddingLeft: 28,
-                paddingRight: 28,
-              }}
-            >
-              {t}
+            <span key={i} className="inline-flex items-center">
+              <span
+                className="dovela-stroke-text"
+                style={{
+                  fontSize: "clamp(56px, 9vw, 132px)",
+                  paddingLeft: 26,
+                  paddingRight: 26,
+                }}
+              >
+                {t}
+              </span>
               <span
                 aria-hidden
-                className="inline-block ml-14"
-                style={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: "50%",
-                  background: "#0A0A0A",
-                }}
-              />
+                className="inline-flex items-center justify-center"
+                style={{ paddingLeft: 8, paddingRight: 8 }}
+              >
+                <svg
+                  width="46"
+                  height="46"
+                  viewBox="0 0 24 24"
+                  fill="#C7F751"
+                  stroke="#0A0A0A"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" />
+                </svg>
+              </span>
             </span>
           ))}
         </div>
