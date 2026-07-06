@@ -1305,23 +1305,24 @@ const FAQ = [
 function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="bg-[#FAFAFA]" style={{ paddingTop: 120, paddingBottom: 120 }}>
+    <section style={{ background: "#0A0A0A", paddingTop: 120, paddingBottom: 120 }}>
       <style>{`
-        .fq-card { background:#F0F0E6; border-radius:16px; box-shadow:0 1px 3px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.65); cursor:pointer; }
-        .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; gap:14px; max-height:80px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
+        .fq-card { background:rgba(255,255,255,0.03); border:1px solid rgba(229,229,229,0.15); border-radius:16px; cursor:pointer; transition: background .3s ease, border-color .3s ease; }
+        .fq-card:hover { background:rgba(255,255,255,0.05); }
+        .fq-closed { display:flex; align-items:center; justify-content:space-between; padding:22px 26px; gap:16px; max-height:96px; opacity:1; overflow:hidden; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease; }
         .fq-card.open .fq-closed { max-height:0; opacity:0; padding-top:0; padding-bottom:0; }
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
-        .fq-card.open .fq-c2wrap { max-height:120px; opacity:1; overflow:visible; }
-        .fq-c2inner { padding:10px 10px 12px; }
-        .fq-c2 { background:#111; border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; box-shadow:0 6px 16px rgba(0,0,0,.28), 0 14px 36px rgba(0,0,0,.18); }
+        .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
+        .fq-c2inner { padding:12px 12px 14px; }
+        .fq-c2 { background:#1A1A1A; border:1px solid rgba(229,229,229,0.15); border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
         .fq-c2 .fq-qtext { color:#FAFAFA; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
-        .fq-card.open .fq-answ { max-height:220px; }
-        .fq-answbody { padding:4px 20px 18px; }
-        .fq-answbody p { font-size:13.5px; color:#666; line-height:1.68; }
-        .fq-qtext { font-size:14.5px; font-weight:500; color:#111; line-height:1.4; flex:1; }
-        .fq-icon { width:26px; height:26px; border-radius:50%; border:1.5px solid #C0C0B4; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
-        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
+        .fq-card.open .fq-answ { max-height:260px; }
+        .fq-answbody { padding:6px 26px 22px; }
+        .fq-answbody p { font-size:15px; color:rgba(250,250,250,0.65); line-height:1.7; }
+        .fq-qtext { font-size:19px; font-weight:500; color:#FAFAFA; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+        .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(229,229,229,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
+        .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#FAFAFA; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
         .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
@@ -1329,20 +1330,18 @@ function Faq() {
       `}</style>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
-          <div className="label-eyebrow mb-4">FAQ</div>
-          <h2 className="h-display text-[#0A0A0A]" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+          <div className="label-eyebrow mb-4" style={{ color: "rgba(250,250,250,0.55)" }}>FAQ</div>
+          <h2 className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}>
             Preguntas frecuentes.
           </h2>
         </div>
         <div
           style={{
-            background: "#EAEAE0",
-            borderRadius: 24,
-            padding: 20,
-            maxWidth: 700,
+            maxWidth: 760,
             margin: "0 auto",
           }}
         >
+
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {FAQ.map((f, i) => {
               const isOpen = open === i;
