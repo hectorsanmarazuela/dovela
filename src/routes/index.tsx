@@ -1414,8 +1414,8 @@ function LeadMagnet() {
             color: "#FAFAFA",
           }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 items-start">
+            <div className="min-w-0">
               <div
                 className="label-eyebrow"
                 style={{ color: "#C7F751" }}
@@ -1424,10 +1424,10 @@ function LeadMagnet() {
               </div>
               <h2
                 className="h-display mt-6"
-                style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#FAFAFA" }}
+                style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
               >
-                <span style={{ color: "#FAFAFA" }}>El progreso</span>{" "}
-                <span style={{ color: "#C7F751" }}>consiste en renovarse.</span>
+                <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
+                <span style={{ color: "#C7F751" }}>aparece en Google?</span>
               </h2>
 
               <p
