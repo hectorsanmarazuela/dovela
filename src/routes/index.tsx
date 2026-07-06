@@ -1464,7 +1464,7 @@ function LeadMagnet() {
 
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col justify-center gap-3"
+              className="flex flex-col justify-center gap-3 min-w-0 w-full"
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "0.5px solid rgba(255,255,255,0.15)",
