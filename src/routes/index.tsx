@@ -2289,6 +2289,7 @@ function ServicesAccordion() {
     <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
       <div className="w-full px-6">
 
+
         <div
           style={{
             position: "relative",
