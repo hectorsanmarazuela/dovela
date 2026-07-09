@@ -420,9 +420,9 @@ function PorQueDovela() {
 }
 
 
-/* ---------- SERVICES_ACCORDION ACCORDION ---------- */
+/* ---------- SERVICES ACCORDION ---------- */
 
-const SERVICES_ACCORDION = [
+const SERVICES = [
   {
     n: "01",
     name: "Diseño web",
@@ -518,7 +518,7 @@ function Services() {
           cta="Trabajar con nosotros →"
         />
         <div>
-          {SERVICES_ACCORDION.map((s, i) => {
+          {SERVICES.map((s, i) => {
             const isOpen = open === i;
             return (
               <div
@@ -1977,7 +1977,7 @@ function Wireframe() {
   );
 }
 
-type ServiceItem = {
+type Service = {
   n: string;
   title: string;
   intro: string;
@@ -1986,7 +1986,7 @@ type ServiceItem = {
   notes?: string[];
 };
 
-const SERVICES_ACCORDION: ServiceItem[] = [
+const SERVICES: Service[] = [
   {
     n: "001",
     title: "Diseño y desarrollo web",
@@ -2036,7 +2036,7 @@ function ServiceRow({
   open,
   onToggle,
 }: {
-  service: ServiceItem;
+  service: Service;
   open: boolean;
   onToggle: () => void;
 }) {
@@ -2264,7 +2264,7 @@ function ServicesAccordion() {
             </h2>
 
             <div>
-              {SERVICES_ACCORDION.map((s, i) => (
+              {SERVICES.map((s, i) => (
                 <ServiceRow
                   key={s.n}
                   service={s}
