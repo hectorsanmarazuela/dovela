@@ -1790,6 +1790,497 @@ function Footer() {
 
 /* ---------- PAGE ---------- */
 
+/* ============================================================
+   Services Accordion (dark rounded card, designhoist-inspired)
+   ============================================================ */
+
+function AltRotator({ a, b }: { a: string; b: string }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((x) => (x + 1) % 2), 3500);
+    return () => clearInterval(t);
+  }, []);
+  const items = [a, b];
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        position: "relative",
+        overflow: "hidden",
+        verticalAlign: "bottom",
+        minHeight: "1.1em",
+      }}
+    >
+      {items.map((t, idx) => (
+        <span
+          key={idx}
+          style={{
+            display: idx === i ? "inline-block" : "block",
+            position: idx === i ? "relative" : "absolute",
+            top: 0,
+            left: 0,
+            transition:
+              "transform 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
+            transform: idx === i ? "translateY(0)" : "translateY(-110%)",
+            opacity: idx === i ? 1 : 0,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {t}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function FeaturePill({ text }: { text: string }) {
+  const parts = text.split("/").map((s) => s.trim());
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "8px 14px",
+        borderRadius: 999,
+        background: "rgba(255,255,255,0.05)",
+        border: "0.5px solid rgba(255,255,255,0.14)",
+        color: "#FAFAFA",
+        fontSize: 13.5,
+        lineHeight: 1.2,
+        fontWeight: 500,
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span
+        aria-hidden
+        style={{
+          width: 5,
+          height: 5,
+          borderRadius: 999,
+          background: "#C7F751",
+          boxShadow: "0 0 8px rgba(199,247,81,0.6)",
+          flexShrink: 0,
+        }}
+      />
+      {parts.length === 2 ? <AltRotator a={parts[0]} b={parts[1]} /> : text}
+    </span>
+  );
+}
+
+function StarNote({ text }: { text: string }) {
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 10,
+        padding: "8px 14px",
+        borderRadius: 999,
+        background: "rgba(199,247,81,0.10)",
+        border: "0.5px solid rgba(199,247,81,0.35)",
+        color: "#C7F751",
+        fontSize: 13,
+        fontWeight: 500,
+      }}
+    >
+      <span aria-hidden style={{ fontSize: 14, lineHeight: 1 }}>✦</span>
+      {text}
+    </div>
+  );
+}
+
+function Wireframe() {
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: "2 / 1",
+        borderRadius: 16,
+        background:
+          "linear-gradient(135deg, #141414 0%, #1c1c1c 60%, #1a1e14 100%)",
+        border: "0.5px solid rgba(255,255,255,0.12)",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.18), transparent 60%)",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: 16,
+          left: 16,
+          right: 16,
+          height: 22,
+          borderRadius: 6,
+          background: "rgba(255,255,255,0.05)",
+          border: "0.5px solid rgba(255,255,255,0.10)",
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          padding: "0 10px",
+        }}
+      >
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
+      </div>
+      <div style={{ position: "absolute", left: 24, right: "42%", top: 60 }}>
+        <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.18)", width: "78%", marginBottom: 8 }} />
+        <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.10)", width: "58%", marginBottom: 14 }} />
+        <div style={{ height: 8, borderRadius: 4, background: "rgba(255,255,255,0.07)", width: "90%", marginBottom: 6 }} />
+        <div style={{ height: 8, borderRadius: 4, background: "rgba(255,255,255,0.07)", width: "80%", marginBottom: 14 }} />
+        <div
+          style={{
+            display: "inline-block",
+            padding: "6px 14px",
+            borderRadius: 999,
+            background: "#C7F751",
+            color: "#0A0A0A",
+            fontSize: 10,
+            fontWeight: 600,
+          }}
+        >
+          Comenzar
+        </div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          right: 24,
+          top: 60,
+          bottom: 24,
+          width: "34%",
+          borderRadius: 10,
+          background:
+            "linear-gradient(160deg, rgba(199,247,81,0.10), rgba(255,255,255,0.03))",
+          border: "0.5px solid rgba(255,255,255,0.10)",
+        }}
+      />
+    </div>
+  );
+}
+
+type Service = {
+  n: string;
+  title: string;
+  intro: string;
+  extras?: string[];
+  features?: string[];
+  notes?: string[];
+};
+
+const SERVICES: Service[] = [
+  {
+    n: "001",
+    title: "Diseño y desarrollo web",
+    intro:
+      "Webs a medida para tu negocio. Diseñadas para que el visitante entienda en 3 segundos qué haces, por qué y cómo llamarte.",
+    extras: [
+      "Todo proyecto se perfecciona hasta que carga de forma instantánea y se adapta a cualquier dispositivo.",
+    ],
+    features: [
+      "Propuesta visual gratuita",
+      "Copywriting / Texto persuasivo para tu cliente",
+      "Web Core Vitals / Métricas vitales de Google",
+      "SEO básico / Headers, meta tags, sitemap",
+      "Diseño responsive móvil",
+      "1er mes de mantenimiento incluido",
+    ],
+    notes: [
+      "Mantenimiento mensual aparte — 2 horas de ediciones incluidas",
+      "Entrega promedio en 14 días",
+    ],
+  },
+  {
+    n: "002",
+    title: "Posicionamiento SEO",
+    intro:
+      "Estrategia personalizada para llevar y mantener a tu negocio al inicio de los resultados de búsqueda.",
+    features: [
+      "Estudio de palabras clave gratuito",
+      "Optimización on-page",
+      "Optimización de Google Business Profile",
+      "Construcción de backlinks",
+      "Estrategia de contenido / Por separado",
+    ],
+    notes: ["Tarifa única de proyecto + cuota de SEO mensual"],
+  },
+  {
+    n: "003",
+    title: "Pack completo",
+    intro:
+      "La forma más eficiente de crecer online con el mayor retorno de inversión. Al construirse todo desde cero bajo la misma dirección y con un plan conjunto, el resultado es mucho más que la suma de sus partes.",
+    notes: ["Incluye 45 días de mantenimiento web y SEO mensual"],
+  },
+];
+
+function ServiceRow({
+  service,
+  open,
+  onToggle,
+}: {
+  service: Service;
+  open: boolean;
+  onToggle: () => void;
+}) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState(0);
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const el = contentRef.current;
+    const update = () => setMaxH(el.scrollHeight);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [service]);
+
+  return (
+    <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.10)" }}>
+      <button
+        onClick={onToggle}
+        aria-expanded={open}
+        className="w-full text-left"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(80px, 22%) 1fr auto",
+          alignItems: "center",
+          gap: 24,
+          padding: "28px 0",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          color: "#FAFAFA",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 13,
+            letterSpacing: "0.14em",
+            color: "rgba(250,250,250,0.45)",
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
+          ({service.n})
+        </span>
+        <span
+          className="h-display"
+          style={{
+            fontSize: "clamp(22px, 2.4vw, 32px)",
+            color: "#FAFAFA",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {service.title}
+        </span>
+        <span
+          aria-hidden
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 999,
+            background: open ? "#C7F751" : "transparent",
+            border: `0.5px solid ${open ? "#C7F751" : "rgba(255,255,255,0.35)"}`,
+            color: open ? "#0A0A0A" : "#FAFAFA",
+            display: "inline-grid",
+            placeItems: "center",
+            transition: "all 300ms cubic-bezier(.7,0,.2,1)",
+          }}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            {!open && <line x1="12" y1="5" x2="12" y2="19" />}
+          </svg>
+        </span>
+      </button>
+
+      <div
+        style={{
+          maxHeight: open ? maxH : 0,
+          opacity: open ? 1 : 0,
+          overflow: "hidden",
+          transition:
+            "max-height 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
+        }}
+      >
+        <div ref={contentRef} style={{ paddingBottom: 40 }}>
+          <div
+            className="grid grid-cols-1 lg:grid-cols-[22%_1fr] gap-8"
+            style={{ alignItems: "start" }}
+          >
+            <div />
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-8 lg:gap-10">
+              <Wireframe />
+              <div className="min-w-0">
+                <p
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 1.55,
+                    color: "#FAFAFA",
+                    marginBottom: 12,
+                  }}
+                >
+                  {service.intro}
+                </p>
+                {service.extras?.map((e, i) => (
+                  <p
+                    key={i}
+                    style={{
+                      fontSize: 14,
+                      lineHeight: 1.6,
+                      color: "rgba(250,250,250,0.55)",
+                      marginBottom: 10,
+                    }}
+                  >
+                    {e}
+                  </p>
+                ))}
+
+                {service.features && service.features.length > 0 && (
+                  <>
+                    <div
+                      className="label-eyebrow"
+                      style={{ marginTop: 22, marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                    >
+                      Incluye
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {service.features.map((f) => (
+                        <FeaturePill key={f} text={f} />
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {service.notes && service.notes.length > 0 && (
+                  <div className="flex flex-wrap gap-2" style={{ marginTop: 18 }}>
+                    {service.notes.map((n) => (
+                      <StarNote key={n} text={n} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ServicesAccordion() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div
+          style={{
+            position: "relative",
+            background: "#0A0A0A",
+            borderRadius: 32,
+            padding: "72px clamp(24px, 4vw, 64px) 56px",
+            overflow: "hidden",
+            boxShadow: "0 30px 80px -20px rgba(10,10,10,0.35)",
+          }}
+        >
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.08), transparent 60%)",
+            }}
+          />
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: 0.35,
+              mixBlendMode: "overlay",
+              pointerEvents: "none",
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+              backgroundSize: "3px 3px",
+            }}
+          />
+
+          <div style={{ position: "relative" }}>
+            <div
+              className="label-eyebrow"
+              style={{
+                color: "rgba(250,250,250,0.55)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                marginBottom: 40,
+              }}
+            >
+              <span
+                aria-hidden
+                style={{
+                  width: 7,
+                  height: 7,
+                  borderRadius: 999,
+                  background: "#C7F751",
+                  boxShadow: "0 0 12px rgba(199,247,81,0.7)",
+                }}
+              />
+              Servicios
+            </div>
+            <h2
+              className="h-display"
+              style={{
+                fontSize: "clamp(48px, 8vw, 112px)",
+                lineHeight: 0.95,
+                color: "#FAFAFA",
+                letterSpacing: "-0.03em",
+                marginBottom: 56,
+                maxWidth: 1100,
+              }}
+            >
+              Somos los mejores en
+              <span style={{ color: "rgba(250,250,250,0.28)" }}>…</span>
+            </h2>
+
+            <div>
+              {SERVICES.map((s, i) => (
+                <ServiceRow
+                  key={s.n}
+                  service={s}
+                  open={open === i}
+                  onToggle={() => setOpen(open === i ? null : i)}
+                />
+              ))}
+              <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.10)" }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <main className="bg-[#FAFAFA] text-[#0A0A0A] overflow-x-clip">
@@ -1799,6 +2290,7 @@ function Index() {
       
       <MarqueeBand />
       <Projects />
+      <ServicesAccordion />
       <Plan />
       <CtaBanner />
       <Testimonials />
