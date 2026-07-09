@@ -2026,11 +2026,12 @@ const SERVICE_BLOCKS: SvcBlock[] = [
       "Estrategia personalizada para llevar y mantener a tu negocio al inicio de los resultados de búsqueda.",
     features: [
       "Estudio de palabras clave gratuito",
-      "Optimización on-page",
+      "Optimización on-page y off-page",
       "Optimización de Google Business Profile",
       "Construcción de backlinks",
-      "Estrategia de contenido / Por separado",
+      "Estrategia de blogs / Por separado",
     ],
+
     notes: ["Tarifa única de proyecto + cuota de SEO mensual"],
   },
   {
