@@ -345,7 +345,8 @@ function Hero() {
 function PorQueDovela() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 80 }}>
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1480px] mx-auto px-6">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="label-eyebrow mb-8">Por qué Dovela</div>
