@@ -1,45 +1,74 @@
+# Nueva sección "Servicios" en home
 
-## Hero
+Añadir un bloque de servicios en `src/routes/index.tsx` entre la sección de proyectos y la de "Hablamos de tu proyecto" (contacto), inspirado en designhoist.com y en la captura adjunta, adaptado al lenguaje visual de Dovela (negro #0A0A0A, lima #C7F751, off-white #FAFAFA).
 
-- Cambiar el gris de "Si te buscan" de `rgba(255,255,255,0.28)` a `rgba(255,255,255,0.55)` para mejor legibilidad.
-- Devolver los CTA a su posición original abajo-izquierda (revisar el contenedor del hero: el H1, párrafo y botones deben quedar apilados a la izquierda tal como estaban).
-- Añadir `ArrowCircle` (variante outline sobre fondo oscuro, ej. `bg="#FAFAFA" fg="#0A0A0A"` dentro del pill) al botón "Conoce nuestros servicios" para que iguale el patrón del CTA verde.
+## Estructura visual
 
-## Por qué Dovela
+- Contenedor exterior con fondo `#FAFAFA` (el de la web) que deja ver márgenes laterales.
+- Dentro, una **tarjeta rectangular con esquinas redondeadas grandes** (radius ~28px), fondo `#0A0A0A`, con padding generoso y un sutil grano/ruido + glow lima muy tenue en las esquinas para dar profundidad (igual que la referencia).
+- Ancho máximo alineado al resto del home (`max-w-[1280px]`), con `px-6` laterales para que se vea el blanco alrededor.
 
-- Reformatear el H2 en dos líneas exactas:
-  - Línea 1: "Construimos webs usables" en gris (`#888`).
-  - Línea 2: "para que vendas" en negro (`#0A0A0A`), sin resaltado lima.
-- Eliminar por completo el grid de 4 bullets (Estudio en Segovia / Entrega en 2 semanas / Comunicación directa / Resultados medibles) y borrar el array `items`.
-- Cambiar el texto del botón de "Conocer el estudio →" a "Descubre el servicio" (mantener flecha con `ArrowCircle`).
+## Layout interno (2 columnas)
 
-## Sección Plan (tarjetas)
+```text
+┌─ Tarjeta negra ──────────────────────────────────────────┐
+│  [25%]                    [75%]                          │
+│  ● Eyebrow (Somos los mejores en...) Título gigante      |
+|                            "Servicios" centrado          │
+│                                                          │
+│  ── divider ─────────────────────────────────────────    │
+│  (001)   Diseño y desarrollo web            [ – / + ]    │
+│          ▼ (expandido)                                   │
+│          Wireframe 2:1  |  Descripción + Incluye (pills) │
+│  ── divider ─────────────────────────────────────────    │
+│  (002)   Posicionamiento SEO                [ + ]        │
+│  ── divider ─────────────────────────────────────────    │
+│  (003)   Pack completo                      [ + ]        │
+└──────────────────────────────────────────────────────────┘
+```
 
-- Invertir la paleta entre las dos tarjetas: la que ahora es oscura pasa a clara y viceversa (fondo, texto y acentos).
-- Renombrar títulos:
-  - "Antes de decidir" → "3 sencillos pasos".
-  - "Cuando dices que sí, esto te garantizamos" → "Garantías".
-- Alinear verticalmente los bullets de ambas tarjetas: usar la misma estructura (mismo padding superior, mismo gap, misma altura por item) para que cada bullet de la izquierda esté a la misma altura que su equivalente de la derecha. Si el número de items difiere, igualar el conteo o usar filas de altura fija con `grid-auto-rows`.
-- Reemplazar el contenido del punto 3 de "3 sencillos pasos" por un componente nuevo `RotatingSeal`:
-  - Badge circular con el texto "PERSONALIZADA Y GRATUITA · " repetido alrededor del círculo, en mayúsculas, rotando lentamente sobre sí mismo (animación CSS `@keyframes spin` ~20s linear infinite).
-  - Icono estático centrado (por ejemplo una flecha o check en negro).
-  - Fondo `#C7F751`, texto `#0A0A0A`. Sin borde, sin sombra.
-  - Texto curvo con SVG `<textPath>` sobre un `<path>` circular.
-  - Etiqueta del paso: "Recibe tu propuesta visual".
-- Añadir un botón "Reserva tu llamada" al final de la tarjeta "3 sencillos pasos" (pill verde lima con `ArrowCircle`, mismo estilo que el CTA del hero).
+- Columna izquierda ~25%: numeración `(001)`, `(002)`, `(003)` en gris tenue, alineada arriba de cada fila.
+- Columna derecha ~75%: título del servicio grande (blanco), botón circular `+ / –` a la derecha, y al abrir muestra el panel del servicio.
+- Filas separadas por hairline `rgba(255,255,255,0.08)`.
+- Solo un servicio abierto a la vez (acordeón). Por defecto abierto el primero.
+- Animación de apertura y cierre del acordeón es mecánica y extremadamente smooth y moderna.
 
-## Lead magnet
+## Contenido del panel abierto
 
-- Invertir colores del texto destacado en el titular:
-  - "El progreso" → blanco (`#FAFAFA`).
-  - "consiste en renovarse" → lima (`#C7F751`).
-- Mantener el resto del componente igual.
+Dos sub-columnas dentro del panel:
 
-## Animación de flechas
+- **Izquierda**: wireframe con `aspect-ratio: 2/1`, borde `0.5px rgba(255,255,255,0.15)`, fondo con grid lines sutiles + glow lima. Un simple mockup abstracto (header bar, bloques de contenido, botón lima) hecho en SVG/divs — sin imagen real.
+- **Derecha**:
+  - Descripción principal (blanca).
+  - Texto secundario/extras (extras del copy) en `#888`.
+  - Encabezado `Incluye` en label-eyebrow.
+  - **Pills** para cada feature (estilo píldora blanca sobre negro como la referencia): fondo `rgba(255,255,255,0.06)`, borde `0.5px rgba(255,255,255,0.15)`, texto blanco.
+  - Las features con `/` usan un componente `AltPill` que rota entre los dos textos cada 3.5s con transición mecánica (reutilizamos la lógica de `AltPair` de `servicios.tsx`, pero adaptada al estilo pill).
+  - Notas con `*` renderizadas fuera de la lista como chips destacados con fondo `var(--color-lime-subtle)` y borde negro sutil, o como texto con punto lima al inicio — visualmente distintas de las pills.
 
-- Sin cambios (ya se rehizo en el turno anterior).
+## Detalles verdes (lima #C7F751)
 
-## Archivos afectados
+- Punto lima brillante junto al eyebrow "Somos los mejores en…".
+- Botón `+` de la fila abierta: fondo lima, ícono negro. Cerradas: borde blanco tenue, ícono blanco.
+- Glow lima radial en dos esquinas de la tarjeta.
+- Un pequeño acento lima dentro del wireframe (botón/pill).
+- Notas `*` con dot lima.
 
-- `src/routes/index.tsx` (todos los cambios).
-- Posible añadido de keyframe `spin-slow` en `src/styles.css` para el sello rotatorio.
+## Contenido (copy exacto del usuario)
+
+1. **Diseño y desarrollo web** — intro + extra + 6 features (algunas con `/`) + 2 notas `*`.
+2. **Posicionamiento SEO** — intro + 5 features + 1 nota `*`.
+3. **Pack completo** — intro + 1 nota `*` (sin lista de features).
+
+## Comportamiento
+
+- Acordeón controlado con `useState<number | null>`.
+- Transición de apertura: `max-height` + `opacity` con `transition: 400ms cubic-bezier(.7,0,.2,1)`.
+- `AltPill` interno para textos con `/`, rotación cada 3.5s con `translateY` + `opacity`.
+- Sin dependencias nuevas.
+
+## Detalles técnicos
+
+- Todo el código va en `src/routes/index.tsx` como un nuevo componente `ServicesSection` insertado entre `<ProjectsSection />` y `<ContactSection />` (los nombres reales se confirmarán al leer el archivo en build).
+- Sin cambios de rutas, sin tocar `servicios.tsx`, sin nuevas deps.
+- Sin cambios de lógica de negocio ni backend.
