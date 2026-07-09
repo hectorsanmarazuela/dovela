@@ -2057,7 +2057,7 @@ const SERVICE_BLOCKS: SvcBlock[] = [
       "Web Core Vitals / Métricas vitales de Google",
       "SEO básico / Headers, meta tags, sitemap",
       "Diseño responsive móvil",
-      "1er mes de mantenimiento incluido",
+      "1 mes de mantenimiento incluido",
     ],
     notes: [
       "Mantenimiento mensual aparte — 2 horas de ediciones incluidas",
@@ -2208,8 +2208,20 @@ function ServiceRow({
           >
             <div />
             <div className="min-w-0">
-              <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-8 lg:gap-10">
-                <Wireframe />
+              <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-8 lg:gap-10 items-start">
+                {/* Left: wireframe + brief notes */}
+                <div className="min-w-0 flex flex-col gap-5">
+                  <Wireframe />
+                  {service.notes && service.notes.length > 0 && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                      {service.notes.map((n) => (
+                        <StarNote key={n} text={n} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right: text + pills + CTA */}
                 <div className="min-w-0">
                   <p
                     style={{
@@ -2234,45 +2246,30 @@ function ServiceRow({
                       {e}
                     </p>
                   ))}
-                </div>
-              </div>
 
-              {service.features && service.features.length > 0 && (
-                <>
-                  <div
-                    className="label-eyebrow"
-                    style={{ marginTop: 28, marginBottom: 14, color: "rgba(250,250,250,0.5)" }}
-                  >
-                    Incluye
+                  {service.features && service.features.length > 0 && (
+                    <>
+                      <div
+                        className="label-eyebrow"
+                        style={{ marginTop: 24, marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                      >
+                        Incluye
+                      </div>
+                      <div
+                        className="grid gap-2"
+                        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))" }}
+                      >
+                        {service.features.map((f) => (
+                          <FeaturePill key={f} text={f} />
+                        ))}
+                      </div>
+                    </>
+                  )}
+
+                  <div style={{ display: "flex", marginTop: 24 }}>
+                    <ServiceCta />
                   </div>
-                  <div
-                    className="grid gap-2"
-                    style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
-                  >
-                    {service.features.map((f) => (
-                      <FeaturePill key={f} text={f} />
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {service.notes && service.notes.length > 0 && (
-                <div
-                  style={{
-                    marginTop: 20,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 2,
-                  }}
-                >
-                  {service.notes.map((n) => (
-                    <StarNote key={n} text={n} />
-                  ))}
                 </div>
-              )}
-
-              <div style={{ display: "flex" }}>
-                <ServiceCta />
               </div>
             </div>
           </div>
@@ -2287,7 +2284,9 @@ function ServicesAccordion() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
-      <div className="max-w-[1480px] mx-auto px-6">
+      <div className="w-full px-6">
+
+
         <div
           style={{
             position: "relative",
@@ -2343,10 +2342,9 @@ function ServicesAccordion() {
                 maxWidth: 1100,
               }}
             >
-              Somos los mejores en
-              <span style={{ color: "#FAFAFA" }}>.</span>
-              <span style={{ color: "rgba(250,250,250,0.35)" }}>.</span>
-              <span style={{ color: "#C7F751" }}>.</span>
+              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Somos</span>{" "}
+              <span style={{ color: "#FAFAFA", fontWeight: 600 }}>los mejores</span>{" "}
+              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>en...</span>
             </h2>
 
             <div>
