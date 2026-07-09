@@ -2345,10 +2345,9 @@ function ServicesAccordion() {
                 maxWidth: 1100,
               }}
             >
-              Somos los mejores en
-              <span style={{ color: "#FAFAFA" }}>.</span>
-              <span style={{ color: "rgba(250,250,250,0.35)" }}>.</span>
-              <span style={{ color: "#C7F751" }}>.</span>
+              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Somos</span>{" "}
+              <span style={{ color: "#FAFAFA", fontWeight: 600 }}>los mejores</span>{" "}
+              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>en...</span>
             </h2>
 
             <div>
