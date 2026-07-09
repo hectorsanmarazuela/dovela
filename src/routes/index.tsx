@@ -103,15 +103,23 @@ function Nav() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1200px]"
-        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 8px" }}
+        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 20px" }}
       >
         <a
           href="/"
-          className="flex items-center bg-[#0A0A0A] text-[#FAFAFA] rounded-full"
-          style={{ padding: "8px 20px", fontWeight: 600, fontSize: 18 }}
+          className="flex items-center"
+          style={{
+            fontFamily: "Inter, system-ui, sans-serif",
+            fontWeight: 800,
+            fontSize: 22,
+            color: "#0A0A0A",
+            letterSpacing: "-0.02em",
+            textTransform: "lowercase",
+            lineHeight: 1,
+          }}
         >
-          Dovela
+          dovela<span style={{ color: "#C7F751" }}>.</span>
         </a>
         <div className="hidden md:flex items-center gap-7 ml-2">
           {[
@@ -144,6 +152,7 @@ function Nav() {
     </header>
   );
 }
+
 
 /* ---------- HERO ---------- */
 
@@ -336,7 +345,8 @@ function Hero() {
 function PorQueDovela() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 80 }}>
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1480px] mx-auto px-6">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="label-eyebrow mb-8">Por qué Dovela</div>
@@ -643,7 +653,8 @@ function Projects() {
       className="bg-[#FAFAFA]"
       style={{ paddingTop: 80, paddingBottom: 80 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="w-full px-6">
+
         <SectionHeader
           label="Proyectos"
           title="Proyectos recientes."
@@ -1804,25 +1815,21 @@ function AltRotator({ a, b }: { a: string; b: string }) {
   return (
     <span
       style={{
-        display: "inline-block",
-        position: "relative",
-        overflow: "hidden",
+        display: "inline-grid",
         verticalAlign: "bottom",
-        minHeight: "1.1em",
+        lineHeight: 1.2,
       }}
     >
       {items.map((t, idx) => (
         <span
           key={idx}
           style={{
-            display: idx === i ? "inline-block" : "block",
-            position: idx === i ? "relative" : "absolute",
-            top: 0,
-            left: 0,
+            gridArea: "1 / 1",
             transition:
               "transform 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
             transform: idx === i ? "translateY(0)" : "translateY(-110%)",
             opacity: idx === i ? 1 : 0,
+            pointerEvents: idx === i ? "auto" : "none",
             whiteSpace: "nowrap",
           }}
         >
@@ -1840,8 +1847,8 @@ function FeaturePill({ text }: { text: string }) {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: 8,
-        padding: "8px 14px",
+        gap: 10,
+        padding: "10px 16px",
         borderRadius: 999,
         background: "rgba(255,255,255,0.05)",
         border: "0.5px solid rgba(255,255,255,0.14)",
@@ -1849,7 +1856,8 @@ function FeaturePill({ text }: { text: string }) {
         fontSize: 13.5,
         lineHeight: 1.2,
         fontWeight: 500,
-        whiteSpace: "nowrap",
+        width: "100%",
+        minWidth: 0,
       }}
     >
       <span
@@ -1863,7 +1871,9 @@ function FeaturePill({ text }: { text: string }) {
           flexShrink: 0,
         }}
       />
-      {parts.length === 2 ? <AltRotator a={parts[0]} b={parts[1]} /> : text}
+      <span style={{ minWidth: 0, overflow: "hidden" }}>
+        {parts.length === 2 ? <AltRotator a={parts[0]} b={parts[1]} /> : text}
+      </span>
     </span>
   );
 }
@@ -1872,23 +1882,69 @@ function StarNote({ text }: { text: string }) {
   return (
     <div
       style={{
-        display: "inline-flex",
+        display: "flex",
         alignItems: "center",
-        gap: 10,
-        padding: "8px 14px",
-        borderRadius: 999,
-        background: "rgba(199,247,81,0.10)",
-        border: "0.5px solid rgba(199,247,81,0.35)",
-        color: "#C7F751",
+        gap: 12,
+        padding: "6px 0",
+        color: "rgba(250,250,250,0.7)",
         fontSize: 13,
-        fontWeight: 500,
+        fontWeight: 400,
+        whiteSpace: "nowrap",
       }}
     >
-      <span aria-hidden style={{ fontSize: 14, lineHeight: 1 }}>✦</span>
-      {text}
+      <span
+        aria-hidden
+        style={{
+          color: "#C7F751",
+          fontSize: 16,
+          lineHeight: 1,
+          flexShrink: 0,
+        }}
+      >
+        ✦
+      </span>
+      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{text}</span>
     </div>
   );
 }
+
+function ServiceCta() {
+  return (
+    <a
+      href="#contacto"
+      className="group inline-flex items-center gap-3 transition hover:brightness-95"
+      style={{
+        marginTop: 24,
+        padding: "12px 12px 12px 22px",
+        borderRadius: 999,
+        background: "#C7F751",
+        color: "#0A0A0A",
+        fontSize: 14,
+        fontWeight: 600,
+        alignSelf: "flex-start",
+      }}
+    >
+      Comenzar proyecto
+      <span
+        style={{
+          width: 28,
+          height: 28,
+          borderRadius: 999,
+          background: "#0A0A0A",
+          color: "#C7F751",
+          display: "inline-grid",
+          placeItems: "center",
+        }}
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </span>
+    </a>
+  );
+}
+
 
 function Wireframe() {
   return (
@@ -2015,11 +2071,12 @@ const SERVICE_BLOCKS: SvcBlock[] = [
       "Estrategia personalizada para llevar y mantener a tu negocio al inicio de los resultados de búsqueda.",
     features: [
       "Estudio de palabras clave gratuito",
-      "Optimización on-page",
+      "Optimización on-page y off-page",
       "Optimización de Google Business Profile",
       "Construcción de backlinks",
-      "Estrategia de contenido / Por separado",
+      "Estrategia de blogs / Por separado",
     ],
+
     notes: ["Tarifa única de proyecto + cuota de SEO mensual"],
   },
   {
@@ -2064,19 +2121,22 @@ function ServiceRow({
           gridTemplateColumns: "minmax(80px, 22%) 1fr auto",
           alignItems: "center",
           gap: 24,
-          padding: "28px 0",
+          padding: open ? "44px 0 24px" : "28px 0",
           background: "transparent",
           border: "none",
           cursor: "pointer",
           color: "#FAFAFA",
+          transition:
+            "padding 500ms cubic-bezier(.7,0,.2,1)",
         }}
       >
         <span
           style={{
             fontSize: 13,
             letterSpacing: "0.14em",
-            color: "rgba(250,250,250,0.45)",
+            color: open ? "#C7F751" : "rgba(250,250,250,0.45)",
             fontVariantNumeric: "tabular-nums",
+            transition: "color 400ms cubic-bezier(.7,0,.2,1)",
           }}
         >
           ({service.n})
@@ -2094,20 +2154,40 @@ function ServiceRow({
         <span
           aria-hidden
           style={{
-            width: 40,
-            height: 40,
+            position: "relative",
+            width: 44,
+            height: 44,
             borderRadius: 999,
             background: open ? "#C7F751" : "transparent",
             border: `0.5px solid ${open ? "#C7F751" : "rgba(255,255,255,0.35)"}`,
             color: open ? "#0A0A0A" : "#FAFAFA",
             display: "inline-grid",
             placeItems: "center",
-            transition: "all 300ms cubic-bezier(.7,0,.2,1)",
+            transition:
+              "background 400ms cubic-bezier(.7,0,.2,1), border-color 400ms cubic-bezier(.7,0,.2,1), color 400ms cubic-bezier(.7,0,.2,1), transform 600ms cubic-bezier(.2,.9,.2,1)",
+            transform: open ? "rotate(360deg)" : "rotate(0deg)",
           }}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ position: "absolute" }}>
             <line x1="5" y1="12" x2="19" y2="12" />
-            {!open && <line x1="12" y1="5" x2="12" y2="19" />}
+          </svg>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            style={{
+              position: "absolute",
+              transition:
+                "transform 600ms cubic-bezier(.2,.9,.2,1), opacity 300ms cubic-bezier(.7,0,.2,1)",
+              transform: open ? "rotate(90deg) scale(0)" : "rotate(0deg) scale(1)",
+              opacity: open ? 0 : 1,
+            }}
+          >
+            <line x1="12" y1="5" x2="12" y2="19" />
           </svg>
         </span>
       </button>
@@ -2121,62 +2201,78 @@ function ServiceRow({
             "max-height 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
         }}
       >
-        <div ref={contentRef} style={{ paddingBottom: 40 }}>
+        <div ref={contentRef} style={{ paddingBottom: 48 }}>
           <div
             className="grid grid-cols-1 lg:grid-cols-[22%_1fr] gap-8"
             style={{ alignItems: "start" }}
           >
             <div />
-            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-8 lg:gap-10">
-              <Wireframe />
-              <div className="min-w-0">
-                <p
-                  style={{
-                    fontSize: 16,
-                    lineHeight: 1.55,
-                    color: "#FAFAFA",
-                    marginBottom: 12,
-                  }}
-                >
-                  {service.intro}
-                </p>
-                {service.extras?.map((e, i) => (
+            <div className="min-w-0">
+              <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-8 lg:gap-10">
+                <Wireframe />
+                <div className="min-w-0">
                   <p
-                    key={i}
                     style={{
-                      fontSize: 14,
-                      lineHeight: 1.6,
-                      color: "rgba(250,250,250,0.55)",
-                      marginBottom: 10,
+                      fontSize: 16,
+                      lineHeight: 1.55,
+                      color: "#FAFAFA",
+                      marginBottom: 12,
                     }}
                   >
-                    {e}
+                    {service.intro}
                   </p>
-                ))}
-
-                {service.features && service.features.length > 0 && (
-                  <>
-                    <div
-                      className="label-eyebrow"
-                      style={{ marginTop: 22, marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                  {service.extras?.map((e, i) => (
+                    <p
+                      key={i}
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 1.6,
+                        color: "rgba(250,250,250,0.55)",
+                        marginBottom: 10,
+                      }}
                     >
-                      Incluye
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((f) => (
-                        <FeaturePill key={f} text={f} />
-                      ))}
-                    </div>
-                  </>
-                )}
+                      {e}
+                    </p>
+                  ))}
+                </div>
+              </div>
 
-                {service.notes && service.notes.length > 0 && (
-                  <div className="flex flex-wrap gap-2" style={{ marginTop: 18 }}>
-                    {service.notes.map((n) => (
-                      <StarNote key={n} text={n} />
+              {service.features && service.features.length > 0 && (
+                <>
+                  <div
+                    className="label-eyebrow"
+                    style={{ marginTop: 28, marginBottom: 14, color: "rgba(250,250,250,0.5)" }}
+                  >
+                    Incluye
+                  </div>
+                  <div
+                    className="grid gap-2"
+                    style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
+                  >
+                    {service.features.map((f) => (
+                      <FeaturePill key={f} text={f} />
                     ))}
                   </div>
-                )}
+                </>
+              )}
+
+              {service.notes && service.notes.length > 0 && (
+                <div
+                  style={{
+                    marginTop: 20,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                  }}
+                >
+                  {service.notes.map((n) => (
+                    <StarNote key={n} text={n} />
+                  ))}
+                </div>
+              )}
+
+              <div style={{ display: "flex" }}>
+                <ServiceCta />
               </div>
             </div>
           </div>
@@ -2186,17 +2282,18 @@ function ServiceRow({
   );
 }
 
+
 function ServicesAccordion() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1480px] mx-auto px-6">
         <div
           style={{
             position: "relative",
             background: "#0A0A0A",
             borderRadius: 32,
-            padding: "72px clamp(24px, 4vw, 64px) 56px",
+            padding: "72px clamp(24px, 4vw, 72px) 72px",
             overflow: "hidden",
             boxShadow: "0 30px 80px -20px rgba(10,10,10,0.35)",
           }}
@@ -2229,38 +2326,27 @@ function ServicesAccordion() {
             <div
               className="label-eyebrow"
               style={{
-                color: "rgba(250,250,250,0.55)",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
+                color: "#C7F751",
                 marginBottom: 40,
               }}
             >
-              <span
-                aria-hidden
-                style={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: 999,
-                  background: "#C7F751",
-                  boxShadow: "0 0 12px rgba(199,247,81,0.7)",
-                }}
-              />
               Servicios
             </div>
             <h2
               className="h-display"
               style={{
-                fontSize: "clamp(48px, 8vw, 112px)",
-                lineHeight: 0.95,
+                fontSize: "clamp(36px, 5.2vw, 76px)",
+                lineHeight: 1.02,
                 color: "#FAFAFA",
-                letterSpacing: "-0.03em",
+                letterSpacing: "-0.02em",
                 marginBottom: 56,
                 maxWidth: 1100,
               }}
             >
               Somos los mejores en
-              <span style={{ color: "rgba(250,250,250,0.28)" }}>…</span>
+              <span style={{ color: "#FAFAFA" }}>.</span>
+              <span style={{ color: "rgba(250,250,250,0.35)" }}>.</span>
+              <span style={{ color: "#C7F751" }}>.</span>
             </h2>
 
             <div>
@@ -2277,6 +2363,7 @@ function ServicesAccordion() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }
