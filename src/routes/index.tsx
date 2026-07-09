@@ -2057,7 +2057,7 @@ const SERVICE_BLOCKS: SvcBlock[] = [
       "Web Core Vitals / Métricas vitales de Google",
       "SEO básico / Headers, meta tags, sitemap",
       "Diseño responsive móvil",
-      "1er mes de mantenimiento incluido",
+      "1 mes de mantenimiento incluido",
     ],
     notes: [
       "Mantenimiento mensual aparte — 2 horas de ediciones incluidas",
