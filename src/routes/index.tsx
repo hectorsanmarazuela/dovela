@@ -1977,7 +1977,7 @@ function Wireframe() {
   );
 }
 
-type Service = {
+type SvcBlock = {
   n: string;
   title: string;
   intro: string;
@@ -1986,7 +1986,7 @@ type Service = {
   notes?: string[];
 };
 
-const SERVICES: Service[] = [
+const SERVICE_BLOCKS: SvcBlock[] = [
   {
     n: "001",
     title: "Diseño y desarrollo web",
@@ -2036,7 +2036,7 @@ function ServiceRow({
   open,
   onToggle,
 }: {
-  service: Service;
+  service: SvcBlock;
   open: boolean;
   onToggle: () => void;
 }) {
@@ -2264,7 +2264,7 @@ function ServicesAccordion() {
             </h2>
 
             <div>
-              {SERVICES.map((s, i) => (
+              {SERVICE_BLOCKS.map((s, i) => (
                 <ServiceRow
                   key={s.n}
                   service={s}
