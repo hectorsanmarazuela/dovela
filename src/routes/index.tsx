@@ -2287,13 +2287,13 @@ function ServicesAccordion() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1480px] mx-auto px-6">
         <div
           style={{
             position: "relative",
             background: "#0A0A0A",
             borderRadius: 32,
-            padding: "72px clamp(24px, 4vw, 64px) 56px",
+            padding: "72px clamp(24px, 4vw, 72px) 72px",
             overflow: "hidden",
             boxShadow: "0 30px 80px -20px rgba(10,10,10,0.35)",
           }}
@@ -2326,38 +2326,27 @@ function ServicesAccordion() {
             <div
               className="label-eyebrow"
               style={{
-                color: "rgba(250,250,250,0.55)",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
+                color: "#C7F751",
                 marginBottom: 40,
               }}
             >
-              <span
-                aria-hidden
-                style={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: 999,
-                  background: "#C7F751",
-                  boxShadow: "0 0 12px rgba(199,247,81,0.7)",
-                }}
-              />
               Servicios
             </div>
             <h2
               className="h-display"
               style={{
-                fontSize: "clamp(48px, 8vw, 112px)",
-                lineHeight: 0.95,
+                fontSize: "clamp(36px, 5.2vw, 76px)",
+                lineHeight: 1.02,
                 color: "#FAFAFA",
-                letterSpacing: "-0.03em",
+                letterSpacing: "-0.02em",
                 marginBottom: 56,
                 maxWidth: 1100,
               }}
             >
               Somos los mejores en
-              <span style={{ color: "rgba(250,250,250,0.28)" }}>…</span>
+              <span style={{ color: "#FAFAFA" }}>.</span>
+              <span style={{ color: "rgba(250,250,250,0.35)" }}>.</span>
+              <span style={{ color: "#C7F751" }}>.</span>
             </h2>
 
             <div>
@@ -2374,6 +2363,7 @@ function ServicesAccordion() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }
