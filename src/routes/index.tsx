@@ -103,15 +103,23 @@ function Nav() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1200px]"
-        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 8px" }}
+        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 20px" }}
       >
         <a
           href="/"
-          className="flex items-center bg-[#0A0A0A] text-[#FAFAFA] rounded-full"
-          style={{ padding: "8px 20px", fontWeight: 600, fontSize: 18 }}
+          className="flex items-center"
+          style={{
+            fontFamily: "Inter, system-ui, sans-serif",
+            fontWeight: 800,
+            fontSize: 22,
+            color: "#0A0A0A",
+            letterSpacing: "-0.02em",
+            textTransform: "lowercase",
+            lineHeight: 1,
+          }}
         >
-          Dovela
+          dovela<span style={{ color: "#C7F751" }}>.</span>
         </a>
         <div className="hidden md:flex items-center gap-7 ml-2">
           {[
@@ -144,6 +152,7 @@ function Nav() {
     </header>
   );
 }
+
 
 /* ---------- HERO ---------- */
 
