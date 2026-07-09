@@ -1815,25 +1815,21 @@ function AltRotator({ a, b }: { a: string; b: string }) {
   return (
     <span
       style={{
-        display: "inline-block",
-        position: "relative",
-        overflow: "hidden",
+        display: "inline-grid",
         verticalAlign: "bottom",
-        minHeight: "1.1em",
+        lineHeight: 1.2,
       }}
     >
       {items.map((t, idx) => (
         <span
           key={idx}
           style={{
-            display: idx === i ? "inline-block" : "block",
-            position: idx === i ? "relative" : "absolute",
-            top: 0,
-            left: 0,
+            gridArea: "1 / 1",
             transition:
               "transform 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
             transform: idx === i ? "translateY(0)" : "translateY(-110%)",
             opacity: idx === i ? 1 : 0,
+            pointerEvents: idx === i ? "auto" : "none",
             whiteSpace: "nowrap",
           }}
         >
@@ -1851,8 +1847,8 @@ function FeaturePill({ text }: { text: string }) {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: 8,
-        padding: "8px 14px",
+        gap: 10,
+        padding: "10px 16px",
         borderRadius: 999,
         background: "rgba(255,255,255,0.05)",
         border: "0.5px solid rgba(255,255,255,0.14)",
@@ -1860,7 +1856,8 @@ function FeaturePill({ text }: { text: string }) {
         fontSize: 13.5,
         lineHeight: 1.2,
         fontWeight: 500,
-        whiteSpace: "nowrap",
+        width: "100%",
+        minWidth: 0,
       }}
     >
       <span
@@ -1874,7 +1871,9 @@ function FeaturePill({ text }: { text: string }) {
           flexShrink: 0,
         }}
       />
-      {parts.length === 2 ? <AltRotator a={parts[0]} b={parts[1]} /> : text}
+      <span style={{ minWidth: 0, overflow: "hidden" }}>
+        {parts.length === 2 ? <AltRotator a={parts[0]} b={parts[1]} /> : text}
+      </span>
     </span>
   );
 }
@@ -1883,23 +1882,69 @@ function StarNote({ text }: { text: string }) {
   return (
     <div
       style={{
-        display: "inline-flex",
+        display: "flex",
         alignItems: "center",
-        gap: 10,
-        padding: "8px 14px",
-        borderRadius: 999,
-        background: "rgba(199,247,81,0.10)",
-        border: "0.5px solid rgba(199,247,81,0.35)",
-        color: "#C7F751",
+        gap: 12,
+        padding: "6px 0",
+        color: "rgba(250,250,250,0.7)",
         fontSize: 13,
-        fontWeight: 500,
+        fontWeight: 400,
+        whiteSpace: "nowrap",
       }}
     >
-      <span aria-hidden style={{ fontSize: 14, lineHeight: 1 }}>✦</span>
-      {text}
+      <span
+        aria-hidden
+        style={{
+          color: "#C7F751",
+          fontSize: 16,
+          lineHeight: 1,
+          flexShrink: 0,
+        }}
+      >
+        ✦
+      </span>
+      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{text}</span>
     </div>
   );
 }
+
+function ServiceCta() {
+  return (
+    <a
+      href="#contacto"
+      className="group inline-flex items-center gap-3 transition hover:brightness-95"
+      style={{
+        marginTop: 24,
+        padding: "12px 12px 12px 22px",
+        borderRadius: 999,
+        background: "#C7F751",
+        color: "#0A0A0A",
+        fontSize: 14,
+        fontWeight: 600,
+        alignSelf: "flex-start",
+      }}
+    >
+      Comenzar proyecto
+      <span
+        style={{
+          width: 28,
+          height: 28,
+          borderRadius: 999,
+          background: "#0A0A0A",
+          color: "#C7F751",
+          display: "inline-grid",
+          placeItems: "center",
+        }}
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </span>
+    </a>
+  );
+}
+
 
 function Wireframe() {
   return (
