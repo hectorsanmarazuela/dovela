@@ -653,7 +653,8 @@ function Projects() {
       className="bg-[#FAFAFA]"
       style={{ paddingTop: 80, paddingBottom: 80 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="w-full px-6">
+
         <SectionHeader
           label="Proyectos"
           title="Proyectos recientes."
