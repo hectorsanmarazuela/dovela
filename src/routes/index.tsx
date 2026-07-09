@@ -2287,7 +2287,8 @@ function ServicesAccordion() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section style={{ background: "#FAFAFA", padding: "80px 0" }}>
-      <div className="max-w-[1480px] mx-auto px-6">
+      <div className="w-full px-6">
+
         <div
           style={{
             position: "relative",
