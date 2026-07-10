@@ -1436,19 +1436,19 @@ function LeadMagnet() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 items-start">
             <div className="min-w-0">
-              <div
+              <h2
                 className="label-eyebrow"
                 style={{ color: "#C7F751" }}
               >
-                Auditoría digital gratuita
-              </div>
-              <h2
+                Auditoría SEO gratuita para tu negocio
+              </h2>
+              <p
                 className="h-display mt-6"
-                style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
+                style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA", margin: 0 }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
                 <span style={{ color: "#C7F751" }}>aparece en Google?</span>
-              </h2>
+              </p>
 
               <p
                 className="mt-6"
