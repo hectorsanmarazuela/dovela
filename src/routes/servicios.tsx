@@ -479,22 +479,23 @@ function ServiciosPage() {
       <Nav />
       <section style={{ paddingTop: 160, paddingBottom: 40 }}>
         <div className="max-w-[1280px] mx-auto px-6">
-          <div className="label-eyebrow" style={{ marginBottom: 24 }}>
-            Servicios
-          </div>
-          <h1
+          <h1 className="label-eyebrow" style={{ marginBottom: 24 }}>
+            Servicios de diseño web y SEO local en Segovia
+          </h1>
+          <p
             className="h-display"
             style={{
               fontSize: "clamp(48px, 7vw, 96px)",
               color: "#0A0A0A",
               maxWidth: 1100,
+              margin: 0,
             }}
           >
             Somos los mejores en{" "}
             <span style={{ color: "rgba(10,10,10,0.25)" }}>
               diseño web y SEO local.
             </span>
-          </h1>
+          </p>
         </div>
       </section>
 
