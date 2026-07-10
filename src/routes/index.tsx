@@ -1199,14 +1199,14 @@ function Testimonials() {
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 60 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="mb-12">
-          <div className="label-eyebrow mb-8">Clientes</div>
-          <h2
+          <h2 className="label-eyebrow mb-8">Opiniones de clientes</h2>
+          <p
             className="h-display text-[#0A0A0A]"
-            style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
+            style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0 }}
           >
             <span style={{ color: "rgba(10,10,10,0.2)" }}>No te fíes solo </span>
             <span>de nuestra palabra.</span>
-          </h2>
+          </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4 items-stretch">
           <div
