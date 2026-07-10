@@ -1350,10 +1350,10 @@ function Faq() {
       `}</style>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
-          <div className="label-eyebrow mb-4">FAQ</div>
-          <h2 className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A" }}>
+          <h2 className="label-eyebrow mb-4">Preguntas frecuentes sobre diseño web y SEO</h2>
+          <p className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A", margin: 0 }}>
             Preguntas frecuentes.
-          </h2>
+          </p>
         </div>
         <div
           style={{
