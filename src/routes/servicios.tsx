@@ -387,21 +387,22 @@ function ServiceBlock({ block, isFirst }: { block: Block; isFirst: boolean }) {
       <div className="grid grid-cols-1 lg:grid-cols-[60fr_40fr] gap-10 lg:gap-16 items-start">
         {/* Text left */}
         <div className="min-w-0">
-          <div className="label-eyebrow" style={{ marginBottom: 20 }}>
-            <span style={{ color: "#888" }}>{block.n}</span>
-            <span style={{ margin: "0 10px", color: "#E5E5E5" }}>/</span>
-            <span>{block.eyebrow}</span>
-          </div>
-          <h2
+          <h2 className="label-eyebrow" style={{ marginBottom: 20 }}>
+            {block.n === "01" && "Diseño y desarrollo web profesional"}
+            {block.n === "02" && "Posicionamiento SEO local en Segovia"}
+            {block.n === "03" && "Pack completo web y SEO para negocios locales"}
+          </h2>
+          <p
             className="h-display"
             style={{
               fontSize: "clamp(36px, 4.4vw, 56px)",
               color: "#0A0A0A",
               marginBottom: 24,
+              margin: 0,
             }}
           >
             {block.title}
-          </h2>
+          </p>
           <p
             style={{
               fontSize: 18,
