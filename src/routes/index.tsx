@@ -659,7 +659,7 @@ function Projects() {
       <div className="w-full px-6">
 
         <SectionHeader
-          label="Proyectos"
+          label="Proyectos de diseño web en Segovia"
           title="Proyectos recientes."
           paragraph="Negocios locales que ya están recibiendo más clientes desde Google gracias a su nueva web."
           cta="Ver todos →"
