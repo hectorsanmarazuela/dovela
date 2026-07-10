@@ -235,9 +235,12 @@ function Hero() {
 
       {/* Centered H1 */}
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
-        <h1
+        <h1 className="label-eyebrow" style={{ marginBottom: 16 }}>
+          Diseño web y SEO local en Segovia
+        </h1>
+        <p
           className="h-display"
-          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA" }}
+          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA", margin: 0 }}
         >
           <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
             Si te buscan
@@ -245,7 +248,7 @@ function Hero() {
           <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
             que te encuentren.
           </span>
-        </h1>
+        </p>
       </div>
 
       {/* Bottom-left copy + CTAs */}
@@ -349,10 +352,10 @@ function PorQueDovela() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="label-eyebrow mb-8">Por qué Dovela</div>
-            <h2
+            <h2 className="label-eyebrow mb-8">Webs profesionales para negocios locales</h2>
+            <p
               className="h-display"
-              style={{ fontSize: "clamp(44px, 6.4vw, 84px)" }}
+              style={{ fontSize: "clamp(44px, 6.4vw, 84px)", margin: 0 }}
             >
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
                 Construimos
@@ -374,7 +377,7 @@ function PorQueDovela() {
                   para que vendas
                 </span>
               </span>
-            </h2>
+            </p>
             <p
               className="mt-8"
               style={{ fontSize: 15, color: "#888", maxWidth: 520 }}
@@ -475,10 +478,10 @@ function SectionHeader({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-16">
       <div className="lg:col-span-3">
-        <div className="label-eyebrow mb-8">{label}</div>
-        <h2
+        <h2 className="label-eyebrow mb-8">{label}</h2>
+        <p
           className="h-display text-[#0A0A0A]"
-          style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
+          style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0 }}
         >
           {ghost ? (
             <>
@@ -488,7 +491,7 @@ function SectionHeader({
           ) : (
             title
           )}
-        </h2>
+        </p>
       </div>
       <div className="lg:col-span-1 flex flex-col justify-end gap-4">
         <p style={{ fontSize: 15, color: "#888" }}>{paragraph}</p>
@@ -522,7 +525,7 @@ function Services() {
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
-          label="Servicios"
+          label="Servicios de diseño web y SEO en Segovia"
           title="Nuestros servicios."
           paragraph="Estamos especializados en diseño web, posicionamiento SEO y Google Business. Trabajamos mejor cuando un proyecto requiere los tres servicios, pero si solo necesitas uno, cuéntanoslo."
           cta="Trabajar con nosotros →"
@@ -656,7 +659,7 @@ function Projects() {
       <div className="w-full px-6">
 
         <SectionHeader
-          label="Proyectos"
+          label="Proyectos de diseño web en Segovia"
           title="Proyectos recientes."
           paragraph="Negocios locales que ya están recibiendo más clientes desde Google gracias a su nueva web."
           cta="Ver todos →"
@@ -799,11 +802,15 @@ function Plan() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 40, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <h2 className="h-display mb-16" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+        <h2 className="label-eyebrow mb-8">Cómo trabajamos</h2>
+        <p
+          className="h-display mb-16"
+          style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0, marginBottom: 64 }}
+        >
           <span style={{ color: "#888" }}>¿Hablamos de tu </span>
           <span style={{ color: "#0A0A0A" }}>proyecto</span>
           <span style={{ color: "#888" }}>?</span>
-        </h2>
+        </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
           {/* Steps — dark */}
           <div
@@ -871,12 +878,12 @@ function Plan() {
               color: "#0A0A0A",
             }}
           >
-            <h3
+            <h2
               className="h-display text-[#0A0A0A]"
               style={titleStyle}
             >
-              Garantías
-            </h3>
+              Garantías para tu negocio
+            </h2>
             <ul
               className="mt-10 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
@@ -1111,19 +1118,20 @@ function CtaBanner() {
             }}
           />
           <div className="relative flex flex-col items-center text-center">
-            <div
+            <h2
               className="label-eyebrow mb-6"
               style={{ color: "rgba(250,250,250,0.55)" }}
             >
-              Empieza hoy
-            </div>
-            <h2
+              Agencia web local en Segovia
+            </h2>
+            <p
               className="h-display"
               style={{
                 fontSize: "clamp(40px, 6vw, 76px)",
                 color: "#FAFAFA",
                 maxWidth: "16ch",
                 marginBottom: 40,
+                margin: 0,
               }}
             >
               Tu próximo{" "}
@@ -1140,7 +1148,7 @@ function CtaBanner() {
                 cliente
               </span>{" "}
               te está buscando.
-            </h2>
+            </p>
             <a
               href="#contacto"
               className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
@@ -1191,14 +1199,14 @@ function Testimonials() {
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 140, paddingBottom: 60 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="mb-12">
-          <div className="label-eyebrow mb-8">Clientes</div>
-          <h2
+          <h2 className="label-eyebrow mb-8">Opiniones de clientes</h2>
+          <p
             className="h-display text-[#0A0A0A]"
-            style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
+            style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0 }}
           >
             <span style={{ color: "rgba(10,10,10,0.2)" }}>No te fíes solo </span>
             <span>de nuestra palabra.</span>
-          </h2>
+          </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4 items-stretch">
           <div
@@ -1342,10 +1350,10 @@ function Faq() {
       `}</style>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
-          <div className="label-eyebrow mb-4">FAQ</div>
-          <h2 className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A" }}>
+          <h2 className="label-eyebrow mb-4">Preguntas frecuentes sobre diseño web y SEO</h2>
+          <p className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A", margin: 0 }}>
             Preguntas frecuentes.
-          </h2>
+          </p>
         </div>
         <div
           style={{
@@ -1428,19 +1436,19 @@ function LeadMagnet() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 items-start">
             <div className="min-w-0">
-              <div
+              <h2
                 className="label-eyebrow"
                 style={{ color: "#C7F751" }}
               >
-                Auditoría digital gratuita
-              </div>
-              <h2
+                Auditoría SEO gratuita para tu negocio
+              </h2>
+              <p
                 className="h-display mt-6"
                 style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
                 <span style={{ color: "#C7F751" }}>aparece en Google?</span>
-              </h2>
+              </p>
 
               <p
                 className="mt-6"
@@ -1551,13 +1559,13 @@ function ContactForm() {
     >
       <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] gap-12 lg:gap-16">
         <div className="min-w-0">
-          <div className="label-eyebrow mb-8">Contacto</div>
-          <h2
+          <h2 className="label-eyebrow mb-8">Contacto — Dovela Estudio Segovia</h2>
+          <p
             className="h-display text-[#0A0A0A]"
-            style={{ fontSize: "clamp(44px, 6vw, 84px)" }}
+            style={{ fontSize: "clamp(44px, 6vw, 84px)", margin: 0 }}
           >
             ¿Hablamos?
-          </h2>
+          </p>
           <p
             className="mt-8"
             style={{ fontSize: 16, color: "#888", maxWidth: 420 }}
@@ -2322,16 +2330,16 @@ function ServicesAccordion() {
           />
 
           <div style={{ position: "relative" }}>
-            <div
+            <h2
               className="label-eyebrow"
               style={{
                 color: "#C7F751",
                 marginBottom: 40,
               }}
             >
-              Servicios
-            </div>
-            <h2
+              Servicios de diseño web y SEO en Segovia
+            </h2>
+            <p
               className="h-display"
               style={{
                 fontSize: "clamp(36px, 5.2vw, 76px)",
@@ -2339,13 +2347,14 @@ function ServicesAccordion() {
                 color: "#FAFAFA",
                 letterSpacing: "-0.02em",
                 marginBottom: 56,
+                margin: 0,
                 maxWidth: 1100,
               }}
             >
               <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Somos</span>{" "}
               <span style={{ color: "#FAFAFA", fontWeight: 600 }}>los mejores</span>{" "}
               <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>en...</span>
-            </h2>
+            </p>
 
             <div>
               {SERVICE_BLOCKS.map((s, i) => (
