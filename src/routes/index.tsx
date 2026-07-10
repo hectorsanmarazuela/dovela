@@ -525,7 +525,7 @@ function Services() {
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <SectionHeader
-          label="Servicios"
+          label="Servicios de diseño web y SEO en Segovia"
           title="Nuestros servicios."
           paragraph="Estamos especializados en diseño web, posicionamiento SEO y Google Business. Trabajamos mejor cuando un proyecto requiere los tres servicios, pero si solo necesitas uno, cuéntanoslo."
           cta="Trabajar con nosotros →"
