@@ -105,9 +105,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
+        <link rel="canonical" href="https://dovelaestudio.es/" />
+        <meta property="og:url" content="https://dovelaestudio.es/" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: '{"@context":"https://schema.org","@type":"LocalBusiness","name":"Dovela Estudio","url":"https://dovelaestudio.es","email":"hola@dovelaestudio.es","telephone":"+34637227171","address":{"@type":"PostalAddress","streetAddress":"Calle Sexmo del Espinar 5","addressLocality":"Segovia","postalCode":"40006","addressCountry":"ES"},"areaServed":{"@type":"City","name":"Segovia"},"description":"Agencia de diseño web y SEO local en Segovia para negocios locales.","priceRange":"€€"}' }} />
       </head>
       <body>
         {children}
