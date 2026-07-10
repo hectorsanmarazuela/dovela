@@ -1118,19 +1118,20 @@ function CtaBanner() {
             }}
           />
           <div className="relative flex flex-col items-center text-center">
-            <div
+            <h2
               className="label-eyebrow mb-6"
               style={{ color: "rgba(250,250,250,0.55)" }}
             >
-              Empieza hoy
-            </div>
-            <h2
+              Agencia web local en Segovia
+            </h2>
+            <p
               className="h-display"
               style={{
                 fontSize: "clamp(40px, 6vw, 76px)",
                 color: "#FAFAFA",
                 maxWidth: "16ch",
                 marginBottom: 40,
+                margin: 0,
               }}
             >
               Tu próximo{" "}
@@ -1147,7 +1148,7 @@ function CtaBanner() {
                 cliente
               </span>{" "}
               te está buscando.
-            </h2>
+            </p>
             <a
               href="#contacto"
               className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
