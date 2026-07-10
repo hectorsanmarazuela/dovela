@@ -802,11 +802,15 @@ function Plan() {
   return (
     <section className="bg-[#FAFAFA]" style={{ paddingTop: 40, paddingBottom: 140 }}>
       <div className="max-w-[1280px] mx-auto px-6">
-        <h2 className="h-display mb-16" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
+        <h2 className="label-eyebrow mb-8">Cómo trabajamos</h2>
+        <p
+          className="h-display mb-16"
+          style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0, marginBottom: 64 }}
+        >
           <span style={{ color: "#888" }}>¿Hablamos de tu </span>
           <span style={{ color: "#0A0A0A" }}>proyecto</span>
           <span style={{ color: "#888" }}>?</span>
-        </h2>
+        </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
           {/* Steps — dark */}
           <div
