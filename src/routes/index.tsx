@@ -2325,16 +2325,16 @@ function ServicesAccordion() {
           />
 
           <div style={{ position: "relative" }}>
-            <div
+            <h2
               className="label-eyebrow"
               style={{
                 color: "#C7F751",
                 marginBottom: 40,
               }}
             >
-              Servicios
-            </div>
-            <h2
+              Servicios de diseño web y SEO en Segovia
+            </h2>
+            <p
               className="h-display"
               style={{
                 fontSize: "clamp(36px, 5.2vw, 76px)",
@@ -2342,13 +2342,14 @@ function ServicesAccordion() {
                 color: "#FAFAFA",
                 letterSpacing: "-0.02em",
                 marginBottom: 56,
+                margin: 0,
                 maxWidth: 1100,
               }}
             >
               <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Somos</span>{" "}
               <span style={{ color: "#FAFAFA", fontWeight: 600 }}>los mejores</span>{" "}
               <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>en...</span>
-            </h2>
+            </p>
 
             <div>
               {SERVICE_BLOCKS.map((s, i) => (
