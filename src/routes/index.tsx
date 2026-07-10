@@ -878,12 +878,12 @@ function Plan() {
               color: "#0A0A0A",
             }}
           >
-            <h3
+            <h2
               className="h-display text-[#0A0A0A]"
               style={titleStyle}
             >
-              Garantías
-            </h3>
+              Garantías para tu negocio
+            </h2>
             <ul
               className="mt-10 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
