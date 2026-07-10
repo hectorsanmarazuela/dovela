@@ -17,7 +17,9 @@ export const Route = createFileRoute("/")({
         content:
           "Estudio de diseño web y SEO local en Segovia. Diseñamos y posicionamos webs fáciles de usar para negocios locales en dos semanas.",
       },
+      { property: "og:url", content: "https://dovelaestudio.es/" },
     ],
+    links: [{ rel: "canonical", href: "https://dovelaestudio.es/" }],
   }),
   component: Index,
 });
