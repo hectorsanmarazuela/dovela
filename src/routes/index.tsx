@@ -5,17 +5,17 @@ import jose2 from "@/assets/jose2.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dovela — Webs que trabajan. Clientes que llegan." },
+      { title: "Dovela - Estudio de Diseño Web y SEO en Segovia" },
       {
         name: "description",
         content:
-          "Agencia de diseño web y SEO local en Segovia. Diseñamos y posicionamos webs para negocios locales en dos semanas.",
+          "Estudio de diseño web y SEO local en Segovia. Diseñamos y posicionamos webs fáciles de usar para negocios locales en dos semanas.",
       },
-      { property: "og:title", content: "Dovela — Diseño web y SEO local en Segovia" },
+      { property: "og:title", content: "Dovela - Estudio de Diseño Web y SEO en Segovia" },
       {
         property: "og:description",
         content:
-          "Diseñamos y posicionamos webs para negocios locales de Segovia. En dos semanas, sin rodeos.",
+          "Estudio de diseño web y SEO local en Segovia. Diseñamos y posicionamos webs fáciles de usar para negocios locales en dos semanas.",
       },
     ],
   }),
