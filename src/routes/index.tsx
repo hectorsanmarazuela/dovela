@@ -235,9 +235,12 @@ function Hero() {
 
       {/* Centered H1 */}
       <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
-        <h1
+        <h1 className="label-eyebrow" style={{ marginBottom: 16 }}>
+          Diseño web y SEO local en Segovia
+        </h1>
+        <p
           className="h-display"
-          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA" }}
+          style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA", margin: 0 }}
         >
           <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
             Si te buscan
@@ -245,7 +248,7 @@ function Hero() {
           <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
             que te encuentren.
           </span>
-        </h1>
+        </p>
       </div>
 
       {/* Bottom-left copy + CTAs */}
@@ -349,10 +352,10 @@ function PorQueDovela() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="label-eyebrow mb-8">Por qué Dovela</div>
-            <h2
+            <h2 className="label-eyebrow mb-8">Webs profesionales para negocios locales</h2>
+            <p
               className="h-display"
-              style={{ fontSize: "clamp(44px, 6.4vw, 84px)" }}
+              style={{ fontSize: "clamp(44px, 6.4vw, 84px)", margin: 0 }}
             >
               <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
                 Construimos
@@ -374,7 +377,7 @@ function PorQueDovela() {
                   para que vendas
                 </span>
               </span>
-            </h2>
+            </p>
             <p
               className="mt-8"
               style={{ fontSize: 15, color: "#888", maxWidth: 520 }}
@@ -475,10 +478,10 @@ function SectionHeader({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 mb-16">
       <div className="lg:col-span-3">
-        <div className="label-eyebrow mb-8">{label}</div>
-        <h2
+        <h2 className="label-eyebrow mb-8">{label}</h2>
+        <p
           className="h-display text-[#0A0A0A]"
-          style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
+          style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0 }}
         >
           {ghost ? (
             <>
@@ -488,7 +491,7 @@ function SectionHeader({
           ) : (
             title
           )}
-        </h2>
+        </p>
       </div>
       <div className="lg:col-span-1 flex flex-col justify-end gap-4">
         <p style={{ fontSize: 15, color: "#888" }}>{paragraph}</p>
