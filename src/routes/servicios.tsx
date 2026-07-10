@@ -17,6 +17,15 @@ export const Route = createFileRoute("/servicios")({
         content:
           "Diseño web y SEO local pensados para que tu negocio reciba más clientes.",
       },
+      {
+        name: "twitter:title",
+        content: "Servicios — Dovela | Diseño web y SEO local en Segovia",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Diseño y desarrollo web, posicionamiento SEO y pack completo para negocios locales de Segovia.",
+      },
     ],
   }),
   component: ServiciosPage,
