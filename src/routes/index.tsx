@@ -343,7 +343,7 @@ function Nav() {
             gap: 16,
           }}
         >
-          <span>llamada gratuita</span>
+          <span>Llamada gratuita</span>
           <ArrowCircle size={34} />
         </a>
         <a
