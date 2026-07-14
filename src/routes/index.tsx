@@ -2208,6 +2208,7 @@ function Wireframe() {
 type SvcBlock = {
   n: string;
   title: string;
+  mobileTitle?: string;
   intro: string;
   extras?: string[];
   features?: string[];
