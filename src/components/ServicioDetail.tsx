@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FeaturePill, StarNote, ServiceCta } from "@/routes/index";
 import ICHO1 from "@/assets/ICHO1.png.asset.json";
 import ICHO2 from "@/assets/ICHO2.png.asset.json";
