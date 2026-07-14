@@ -204,12 +204,8 @@ function Nav() {
         {/* Logo — left on desktop, centered on mobile */}
         <a
           href="/"
-          className="md:flex md:items-center md:justify-start md:mr-2 md:ml-2"
+          className="flex items-center justify-center md:justify-start md:mr-2 md:ml-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0"
           style={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
             fontSize: 22,
