@@ -16,6 +16,7 @@ type Props = {
   notes?: string[];
   pills?: string[]; // no longer rendered; kept for backwards compat
   heroLabel: string;
+  variant?: "diseno" | "seo";
 };
 
 const RADIUS = 18; // uniform border radius for all imagery
