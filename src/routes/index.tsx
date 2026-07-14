@@ -104,8 +104,6 @@ function ImagePlaceholder({
 function Nav() {
   const [pathname, setPathname] = useState("/");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [rotateIdx, setRotateIdx] = useState(0);
-  const [hidden, setHidden] = useState(false);
   useEffect(() => {
     setPathname(window.location.pathname);
   }, []);
@@ -115,26 +113,6 @@ function Nav() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
-  useEffect(() => {
-    const id = window.setInterval(() => setRotateIdx((i) => (i + 1) % 2), 4000);
-    return () => window.clearInterval(id);
-  }, []);
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (window.innerWidth < 768) {
-        setHidden(false);
-      } else if (y > lastY && y > 80) {
-        setHidden(true);
-      } else if (y < lastY) {
-        setHidden(false);
-      }
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   const links = [
     { label: "Inicio", href: "/", match: "/" },
     { label: "Proyectos", href: "/#proyectos", match: "__none__" },
@@ -143,17 +121,10 @@ function Nav() {
   ];
   const borderColor = "#D4D4D4";
   const pillBorder = `1px solid ${borderColor}`;
-  const rotateWords = ["Llamada", "gratuita"];
   return (
-    <header
-      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none"
-      style={{
-        transform: hidden ? "translateY(calc(-100% - 24px))" : "translateY(0)",
-        transition: "transform 400ms cubic-bezier(.7,0,.2,1)",
-      }}
-    >
+    <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto relative grid grid-cols-[auto_1fr_auto] md:flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        className="pointer-events-auto grid grid-cols-[auto_1fr_auto] md:flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
         style={{
           border: `1px solid ${borderColor}`,
           height: 60,
@@ -166,7 +137,7 @@ function Nav() {
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
-          className="md:hidden inline-flex items-center justify-center rounded-full justify-self-start"
+          className="md:hidden inline-flex items-center justify-center rounded-full"
           style={{
             width: 44,
             height: 44,
@@ -211,10 +182,10 @@ function Nav() {
           </span>
         </button>
 
-        {/* Logo — left on desktop, absolutely centered on mobile */}
+        {/* Logo — left on desktop, centered on mobile */}
         <a
           href="/"
-          className="flex items-center md:static md:justify-start md:mr-2 md:ml-2 md:translate-x-0 absolute left-1/2 -translate-x-1/2 md:left-auto"
+          className="flex items-center justify-center md:justify-start md:mr-2 md:ml-2"
           style={{
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
@@ -255,7 +226,7 @@ function Nav() {
         {/* Audit CTA — long on desktop, compact on mobile */}
         <a
           href="#auditoria"
-          className="hidden md:flex items-center justify-between rounded-full transition justify-self-end"
+          className="hidden md:flex items-center justify-between rounded-full transition"
           style={{
             height: 44,
             padding: "0 6px 0 22px",
@@ -268,13 +239,12 @@ function Nav() {
             gap: 16,
           }}
         >
-          <span>Llamada gratuita</span>
+          <span>Pedir auditoría</span>
           <ArrowCircle size={34} />
         </a>
         <a
           href="#auditoria"
-          aria-label="Llamada gratuita"
-          className="md:hidden flex items-center justify-between rounded-full transition justify-self-end"
+          className="md:hidden flex items-center justify-between rounded-full transition"
           style={{
             height: 44,
             padding: "0 4px 0 14px",
@@ -286,40 +256,7 @@ function Nav() {
             gap: 8,
           }}
         >
-          <span
-            style={{
-              position: "relative",
-              display: "inline-block",
-              width: 64,
-              height: 16,
-              overflow: "hidden",
-            }}
-          >
-            {rotateWords.map((w, i) => {
-              const active = i === rotateIdx;
-              return (
-                <span
-                  key={w}
-                  aria-hidden={!active}
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    transform: active
-                      ? "translateY(0)"
-                      : "translateY(-110%)",
-                    opacity: active ? 1 : 0,
-                    transition:
-                      "transform 600ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
-                  }}
-                >
-                  {w}
-                </span>
-              );
-            })}
-          </span>
+          <span>Auditoría</span>
           <ArrowCircle size={34} />
         </a>
       </nav>
