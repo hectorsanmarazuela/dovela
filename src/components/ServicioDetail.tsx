@@ -33,7 +33,7 @@ const GALLERY = [
 
 function PackBanner() {
   return (
-    <div className="max-w-[1480px] mx-auto px-6 md:px-10" style={{ marginTop: 96 }}>
+    <div className="max-w-[1480px] mx-auto px-6 md:px-10" style={{ marginTop: 48 }}>
       <div
         style={{
           position: "relative",
