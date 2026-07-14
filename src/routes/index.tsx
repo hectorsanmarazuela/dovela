@@ -2323,7 +2323,8 @@ function ServiceRow({
             letterSpacing: "-0.01em",
           }}
         >
-          {service.title}
+          <span className="md:hidden">{service.mobileTitle ?? service.title}</span>
+          <span className="hidden md:inline">{service.title}</span>
         </span>
         <span
           aria-hidden
