@@ -2239,6 +2239,7 @@ const SERVICE_BLOCKS: SvcBlock[] = [
   {
     n: "002",
     title: "Posicionamiento SEO",
+    mobileTitle: "SEO",
     intro:
       "Estrategia personalizada para llevar y mantener a tu negocio al inicio de los resultados de búsqueda.",
     features: [
