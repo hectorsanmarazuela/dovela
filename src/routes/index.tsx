@@ -143,7 +143,7 @@ function Nav() {
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative grid grid-cols-[44px_1fr_auto] md:flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
         style={{
           border: `1px solid ${borderColor}`,
           height: 60,
