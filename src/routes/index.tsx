@@ -102,8 +102,17 @@ function ImagePlaceholder({
 /* ---------- NAV ---------- */
 
 function Nav() {
-  const pathname =
-    typeof window !== "undefined" ? window.location.pathname : "/";
+  const [pathname, setPathname] = useState("/");
+  const [mobileOpen, setMobileOpen] = useState(false);
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
   const links = [
     { label: "Inicio", href: "/", match: "/" },
     { label: "Proyectos", href: "/#proyectos", match: "__none__" },
@@ -115,12 +124,68 @@ function Nav() {
   return (
     <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
-        style={{ border: `1px solid ${borderColor}`, height: 60, padding: "0 8px 0 20px" }}
+        className="pointer-events-auto grid grid-cols-[auto_1fr_auto] md:flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        style={{
+          border: `1px solid ${borderColor}`,
+          height: 60,
+          padding: "0 8px 0 12px",
+        }}
       >
+        {/* Mobile hamburger (left) */}
+        <button
+          type="button"
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((v) => !v)}
+          className="md:hidden inline-flex items-center justify-center rounded-full"
+          style={{
+            width: 44,
+            height: 44,
+            background: "#0A0A0A",
+            color: "#FAFAFA",
+            border: "none",
+          }}
+        >
+          <span
+            aria-hidden
+            style={{
+              position: "relative",
+              width: 18,
+              height: 14,
+              display: "inline-block",
+            }}
+          >
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  height: 2,
+                  background: "#FAFAFA",
+                  borderRadius: 2,
+                  transition:
+                    "transform 450ms cubic-bezier(.7,0,.2,1), opacity 250ms cubic-bezier(.7,0,.2,1), top 450ms cubic-bezier(.7,0,.2,1)",
+                  top: mobileOpen ? 6 : i === 0 ? 0 : i === 1 ? 6 : 12,
+                  transform: mobileOpen
+                    ? i === 0
+                      ? "rotate(45deg)"
+                      : i === 2
+                        ? "rotate(-45deg)"
+                        : "scaleX(0)"
+                    : "none",
+                  opacity: mobileOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </span>
+        </button>
+
+        {/* Logo — left on desktop, centered on mobile */}
         <a
           href="/"
-          className="flex items-center mr-2"
+          className="flex items-center justify-center md:justify-start md:mr-2 md:ml-2"
           style={{
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
@@ -133,6 +198,8 @@ function Nav() {
         >
           dovela<span style={{ color: "#C7F751" }}>.</span>
         </a>
+
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-2 flex-1">
           {links.map((l) => {
             const active = pathname === l.match;
@@ -156,6 +223,7 @@ function Nav() {
           })}
         </div>
 
+        {/* Audit CTA — long on desktop, compact on mobile */}
         <a
           href="#auditoria"
           className="hidden md:flex items-center justify-between rounded-full transition"
@@ -174,7 +242,77 @@ function Nav() {
           <span>Pedir auditoría</span>
           <ArrowCircle size={34} />
         </a>
+        <a
+          href="#auditoria"
+          className="md:hidden flex items-center justify-between rounded-full transition"
+          style={{
+            height: 44,
+            padding: "0 4px 0 14px",
+            background: "#C7F751",
+            color: "#0A0A0A",
+            fontWeight: 700,
+            fontSize: 12,
+            border: pillBorder,
+            gap: 8,
+          }}
+        >
+          <span>Auditoría</span>
+          <ArrowCircle size={34} />
+        </a>
       </nav>
+
+      {/* Mobile menu overlay */}
+      <div
+        className="md:hidden pointer-events-auto fixed left-4 right-4 z-40"
+        style={{
+          top: 84,
+          background: "#FAFAFA",
+          border: `1px solid ${borderColor}`,
+          borderRadius: 24,
+          padding: 12,
+          transformOrigin: "top center",
+          transform: mobileOpen
+            ? "translateY(0) scaleY(1)"
+            : "translateY(-8px) scaleY(0.96)",
+          opacity: mobileOpen ? 1 : 0,
+          pointerEvents: mobileOpen ? "auto" : "none",
+          transition:
+            "transform 450ms cubic-bezier(.7,0,.2,1), opacity 300ms cubic-bezier(.7,0,.2,1)",
+          boxShadow: mobileOpen ? "0 20px 50px rgba(10,10,10,0.10)" : "none",
+        }}
+        aria-hidden={!mobileOpen}
+      >
+        <div className="flex flex-col gap-2">
+          {links.map((l, idx) => {
+            const active = pathname === l.match;
+            return (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between rounded-full transition-colors"
+                style={{
+                  height: 48,
+                  padding: "0 20px",
+                  border: pillBorder,
+                  background: active ? "#0A0A0A" : "transparent",
+                  color: active ? "#FAFAFA" : "#0A0A0A",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
+                  opacity: mobileOpen ? 1 : 0,
+                  transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, background 200ms, color 200ms`,
+                }}
+              >
+                <span>{l.label}</span>
+                <span aria-hidden style={{ fontSize: 18, opacity: 0.6 }}>
+                  →
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </header>
   );
 }
