@@ -226,8 +226,133 @@ function PortfolioMarquee() {
   );
 }
 
+function HeroLabelPill({ text }: { text: string }) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 14,
+        bottom: 14,
+        padding: "6px 12px",
+        borderRadius: 999,
+        background: "rgba(10,10,10,0.7)",
+        backdropFilter: "blur(8px)",
+        fontSize: 11,
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        color: "#C7F751",
+        zIndex: 2,
+      }}
+    >
+      {text}
+    </div>
+  );
+}
+
+function DisenoVerticalMarquee({ label }: { label: string }) {
+  const items = [...GALLERY, ...GALLERY];
+  return (
+    <div
+      style={{
+        position: "relative",
+        height: "clamp(520px, 72vh, 780px)",
+        overflow: "hidden",
+        maskImage:
+          "linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 20,
+          animation: "dovela-marquee-y 45s linear infinite",
+        }}
+      >
+        {items.map((it, i) => (
+          <img
+            key={i}
+            src={it.src}
+            alt={it.label}
+            loading="lazy"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          />
+        ))}
+      </div>
+      <HeroLabelPill text={label} />
+      <style>{`@keyframes dovela-marquee-y { from { transform: translateY(0);} to { transform: translateY(-50%);} }`}</style>
+    </div>
+  );
+}
+
+function SeoImageFader({ label }: { label: string }) {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % GALLERY.length), 3500);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: "4 / 3",
+      }}
+    >
+      {GALLERY.map((it, i) => (
+        <img
+          key={it.src}
+          src={it.src}
+          alt={it.label}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            opacity: i === idx ? 1 : 0,
+            transition: "opacity 900ms ease",
+          }}
+        />
+      ))}
+      <HeroLabelPill text={label} />
+      <div
+        style={{
+          position: "absolute",
+          right: 14,
+          bottom: 14,
+          display: "flex",
+          gap: 6,
+          zIndex: 2,
+        }}
+      >
+        {GALLERY.map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Ver imagen ${i + 1}`}
+            onClick={() => setIdx(i)}
+            style={{
+              width: i === idx ? 22 : 8,
+              height: 8,
+              borderRadius: 999,
+              border: "none",
+              background: i === idx ? "#C7F751" : "rgba(250,250,250,0.35)",
+              cursor: "pointer",
+              transition: "all 300ms ease",
+              padding: 0,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ServicioDetail(props: Props) {
-  const featured = GALLERY.slice(0, 3);
 
   return (
     <>
