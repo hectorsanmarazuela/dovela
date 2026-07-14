@@ -2710,4 +2710,4 @@ function Index() {
   );
 }
 
-export { Nav, Services, Footer };
+export { Nav, Services, Footer, FeaturePill, StarNote, ServiceCta, Wireframe };
