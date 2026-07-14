@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FeaturePill, StarNote, ServiceCta } from "@/routes/index";
 import ICHO1 from "@/assets/ICHO1.png.asset.json";
 import ICHO2 from "@/assets/ICHO2.png.asset.json";
@@ -16,6 +17,7 @@ type Props = {
   notes?: string[];
   pills?: string[]; // no longer rendered; kept for backwards compat
   heroLabel: string;
+  variant?: "diseno" | "seo";
 };
 
 const RADIUS = 18; // uniform border radius for all imagery
@@ -31,7 +33,7 @@ const GALLERY = [
 
 function PackBanner() {
   return (
-    <div className="max-w-[1480px] mx-auto px-6 md:px-10" style={{ marginTop: 96 }}>
+    <div className="max-w-[1480px] mx-auto px-6 md:px-10" style={{ marginTop: 48 }}>
       <div
         style={{
           position: "relative",
@@ -224,8 +226,133 @@ function PortfolioMarquee() {
   );
 }
 
+function HeroLabelPill({ text }: { text: string }) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 14,
+        bottom: 14,
+        padding: "6px 12px",
+        borderRadius: 999,
+        background: "rgba(10,10,10,0.7)",
+        backdropFilter: "blur(8px)",
+        fontSize: 11,
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        color: "#C7F751",
+        zIndex: 2,
+      }}
+    >
+      {text}
+    </div>
+  );
+}
+
+function DisenoVerticalMarquee({ label }: { label: string }) {
+  const items = [...GALLERY, ...GALLERY];
+  return (
+    <div
+      style={{
+        position: "relative",
+        height: "clamp(520px, 72vh, 780px)",
+        overflow: "hidden",
+        maskImage:
+          "linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 20,
+          animation: "dovela-marquee-y 45s linear infinite",
+        }}
+      >
+        {items.map((it, i) => (
+          <img
+            key={i}
+            src={it.src}
+            alt={it.label}
+            loading="lazy"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          />
+        ))}
+      </div>
+      <HeroLabelPill text={label} />
+      <style>{`@keyframes dovela-marquee-y { from { transform: translateY(0);} to { transform: translateY(-50%);} }`}</style>
+    </div>
+  );
+}
+
+function SeoImageFader({ label }: { label: string }) {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % GALLERY.length), 3500);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: "4 / 3",
+      }}
+    >
+      {GALLERY.map((it, i) => (
+        <img
+          key={it.src}
+          src={it.src}
+          alt={it.label}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            opacity: i === idx ? 1 : 0,
+            transition: "opacity 900ms ease",
+          }}
+        />
+      ))}
+      <HeroLabelPill text={label} />
+      <div
+        style={{
+          position: "absolute",
+          right: 14,
+          bottom: 14,
+          display: "flex",
+          gap: 6,
+          zIndex: 2,
+        }}
+      >
+        {GALLERY.map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Ver imagen ${i + 1}`}
+            onClick={() => setIdx(i)}
+            style={{
+              width: i === idx ? 22 : 8,
+              height: 8,
+              borderRadius: 999,
+              border: "none",
+              background: i === idx ? "#C7F751" : "rgba(250,250,250,0.35)",
+              cursor: "pointer",
+              transition: "all 300ms ease",
+              padding: 0,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ServicioDetail(props: Props) {
-  const featured = GALLERY.slice(0, 3);
 
   return (
     <>
@@ -236,7 +363,7 @@ export function ServicioDetail(props: Props) {
           background: "#0A0A0A",
           color: "#FAFAFA",
           paddingTop: 140,
-          paddingBottom: 120,
+          paddingBottom: 60,
           overflow: "hidden",
         }}
       >
@@ -366,55 +493,13 @@ export function ServicioDetail(props: Props) {
               </div>
             </div>
 
-            {/* Right column — images at their natural aspect, uniform 18px radius */}
+            {/* Right column — variant-based imagery */}
             <div className="lg:col-span-7 min-w-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {featured.map((f, i) => (
-                  <div
-                    key={f.src}
-                    style={{
-                      borderRadius: RADIUS,
-                      overflow: "hidden",
-                      border: "0.5px solid rgba(255,255,255,0.12)",
-                      background: "#0A0A0A",
-                      position: "relative",
-                      boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
-                      // stagger visual rhythm without changing frame proportions
-                      transform:
-                        i === 0
-                          ? "translateY(0)"
-                          : i === 1
-                            ? "translateY(28px)"
-                            : "translateY(-14px)",
-                    }}
-                  >
-                    <img
-                      src={f.src}
-                      alt={f.label}
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                    />
-                    {i === 0 && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          left: 14,
-                          bottom: 14,
-                          padding: "6px 12px",
-                          borderRadius: 999,
-                          background: "rgba(10,10,10,0.7)",
-                          backdropFilter: "blur(8px)",
-                          fontSize: 11,
-                          letterSpacing: "0.12em",
-                          textTransform: "uppercase",
-                          color: "#C7F751",
-                        }}
-                      >
-                        {props.heroLabel}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+              {props.variant === "seo" ? (
+                <SeoImageFader label={props.heroLabel} />
+              ) : (
+                <DisenoVerticalMarquee label={props.heroLabel} />
+              )}
             </div>
           </div>
         </div>

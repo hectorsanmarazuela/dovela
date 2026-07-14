@@ -37,6 +37,7 @@ function SeoPage() {
     <main className="bg-[#FAFAFA] text-[#0A0A0A]" style={{ overflowX: "clip" }}>
       <Nav />
       <ServicioDetail
+        variant="seo"
         n="002"
         eyebrow="Posicionamiento SEO local en Segovia"
         title="Posicionamiento SEO"

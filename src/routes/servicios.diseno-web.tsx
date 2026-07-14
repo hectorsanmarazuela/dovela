@@ -37,6 +37,7 @@ function DisenoWebPage() {
     <main className="bg-[#FAFAFA] text-[#0A0A0A]" style={{ overflowX: "clip" }}>
       <Nav />
       <ServicioDetail
+        variant="diseno"
         n="001"
         eyebrow="Servicios de diseño web en Segovia"
         title="Diseño y desarrollo web"
