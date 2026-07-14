@@ -14,9 +14,11 @@ type Props = {
   extras?: string[];
   features?: string[];
   notes?: string[];
-  pills: string[];
+  pills?: string[]; // no longer rendered; kept for backwards compat
   heroLabel: string;
 };
+
+const RADIUS = 18; // uniform border radius for all imagery
 
 const GALLERY = [
   { src: ICHO1.url, label: "Icho — Joyería", tag: "E-commerce" },
@@ -29,104 +31,103 @@ const GALLERY = [
 
 function PackBanner() {
   return (
-    <section style={{ background: "#0A0A0A", paddingBottom: 80 }}>
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div className="max-w-[1480px] mx-auto px-6 md:px-10" style={{ marginTop: 96 }}>
+      <div
+        style={{
+          position: "relative",
+          background: "linear-gradient(90deg, rgba(15,15,15,0.85) 0%, rgba(20,20,20,0.85) 100%)",
+          backdropFilter: "blur(6px)",
+          border: "0.5px solid rgba(199,247,81,0.35)",
+          borderRadius: 20,
+          padding: "22px clamp(20px, 3vw, 32px)",
+          overflow: "hidden",
+        }}
+      >
         <div
+          aria-hidden
           style={{
-            position: "relative",
-            background: "linear-gradient(90deg, #0F0F0F 0%, #141414 100%)",
-            border: "0.5px solid rgba(199,247,81,0.35)",
-            borderRadius: 20,
-            padding: "22px clamp(20px, 3vw, 32px)",
-            overflow: "hidden",
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.15), transparent 65%)",
+            pointerEvents: "none",
           }}
-        >
+        />
+        <div className="relative grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-5 md:gap-8 items-center">
           <div
-            aria-hidden
             style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.15), transparent 65%)",
-              pointerEvents: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              padding: "6px 12px",
+              borderRadius: 999,
+              background: "rgba(199,247,81,0.14)",
+              color: "#C7F751",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              width: "fit-content",
             }}
-          />
-          <div className="relative grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-5 md:gap-8 items-center">
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "6px 12px",
-                borderRadius: 999,
-                background: "rgba(199,247,81,0.14)",
-                color: "#C7F751",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                width: "fit-content",
-              }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
-              Pack completo · Ahorra
-            </div>
-            <p
-              style={{
-                fontSize: 15,
-                lineHeight: 1.5,
-                color: "rgba(250,250,250,0.85)",
-                margin: 0,
-              }}
-            >
-              <strong style={{ color: "#FAFAFA" }}>¿Y si lo hacemos todo junto?</strong>{" "}
-              Diseño web + SEO bajo la misma dirección: mejor precio, mejor
-              coordinación y mucho más ROI que contratarlos por separado.
-            </p>
-            <a
-              href="/#contacto"
-              className="inline-flex items-center gap-3 hover:brightness-95 transition"
-              style={{
-                padding: "12px 12px 12px 20px",
-                borderRadius: 999,
-                background: "#C7F751",
-                color: "#0A0A0A",
-                fontSize: 14,
-                fontWeight: 700,
-                whiteSpace: "nowrap",
-                justifySelf: "start",
-              }}
-            >
-              Ver Pack Completo
-              <span
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 999,
-                  background: "#0A0A0A",
-                  color: "#C7F751",
-                  display: "inline-grid",
-                  placeItems: "center",
-                }}
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="13 6 19 12 13 18" />
-                </svg>
-              </span>
-            </a>
+          >
+            <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
+            Pack completo · Ahorra
           </div>
+          <p
+            style={{
+              fontSize: 15,
+              lineHeight: 1.5,
+              color: "rgba(250,250,250,0.85)",
+              margin: 0,
+            }}
+          >
+            <strong style={{ color: "#FAFAFA" }}>¿Y si lo hacemos todo junto?</strong>{" "}
+            Diseño web + SEO bajo la misma dirección: mejor precio, mejor
+            coordinación y mucho más ROI que contratarlos por separado.
+          </p>
+          <a
+            href="/#contacto"
+            className="inline-flex items-center gap-3 hover:brightness-95 transition"
+            style={{
+              padding: "12px 12px 12px 20px",
+              borderRadius: 999,
+              background: "#C7F751",
+              color: "#0A0A0A",
+              fontSize: 14,
+              fontWeight: 700,
+              whiteSpace: "nowrap",
+              justifySelf: "start",
+            }}
+          >
+            Ver Pack Completo
+            <span
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 999,
+                background: "#0A0A0A",
+                color: "#C7F751",
+                display: "inline-grid",
+                placeItems: "center",
+              }}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="13 6 19 12 13 18" />
+              </svg>
+            </span>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
 function PortfolioMarquee() {
   const items = [...GALLERY, ...GALLERY];
   return (
-    <section style={{ background: "#FAFAFA", padding: "100px 0 40px" }}>
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 mb-10">
+    <section style={{ background: "#FAFAFA", padding: "120px 0 60px" }}>
+      <div className="max-w-[1480px] mx-auto px-6 md:px-10 mb-12">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
             <div
@@ -142,10 +143,12 @@ function PortfolioMarquee() {
                 letterSpacing: "-0.02em",
                 lineHeight: 1,
                 margin: 0,
-                color: "#0A0A0A",
               }}
             >
-              Webs que <em style={{ fontStyle: "italic", fontWeight: 400 }}>ya funcionan</em>.
+              <span style={{ color: "rgba(10,10,10,0.45)" }}>Proyectos </span>
+              <span style={{ color: "#0A0A0A" }}>increíbles</span>
+              <span style={{ color: "rgba(10,10,10,0.45)" }}> funcionando</span>
+              <span style={{ color: "#0A0A0A" }}>.</span>
             </h2>
           </div>
           <p style={{ maxWidth: 360, color: "rgba(10,10,10,0.6)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
@@ -168,6 +171,7 @@ function PortfolioMarquee() {
             gap: 20,
             animation: "dovela-marquee 40s linear infinite",
             width: "max-content",
+            alignItems: "flex-end",
           }}
         >
           {items.map((it, i) => (
@@ -176,21 +180,19 @@ function PortfolioMarquee() {
               style={{
                 margin: 0,
                 width: "clamp(280px, 32vw, 460px)",
-                borderRadius: 18,
+                borderRadius: RADIUS,
                 overflow: "hidden",
                 background: "#0A0A0A",
                 border: "0.5px solid rgba(10,10,10,0.08)",
                 boxShadow: "0 20px 40px -20px rgba(10,10,10,0.25)",
               }}
             >
-              <div style={{ aspectRatio: "4/3", overflow: "hidden" }}>
-                <img
-                  src={it.src}
-                  alt={it.label}
-                  loading="lazy"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                />
-              </div>
+              <img
+                src={it.src}
+                alt={it.label}
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
               <figcaption
                 style={{
                   display: "flex",
@@ -227,18 +229,18 @@ export function ServicioDetail(props: Props) {
 
   return (
     <>
-      {/* HERO — full-bleed black, edge-to-edge, asymmetric */}
+      {/* HERO — full-bleed black, glow extends behind pack banner */}
       <section
         style={{
           position: "relative",
           background: "#0A0A0A",
           color: "#FAFAFA",
           paddingTop: 140,
-          paddingBottom: 80,
+          paddingBottom: 120,
           overflow: "hidden",
         }}
       >
-        {/* ambient glows */}
+        {/* ambient glows — cover entire section so they continue behind pack banner */}
         <div
           aria-hidden
           style={{
@@ -246,7 +248,7 @@ export function ServicioDetail(props: Props) {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(50% 40% at 90% 0%, rgba(199,247,81,0.18), transparent 60%), radial-gradient(50% 40% at 5% 100%, rgba(199,247,81,0.10), transparent 60%)",
+              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.10), transparent 70%)",
           }}
         />
         <div
@@ -263,7 +265,7 @@ export function ServicioDetail(props: Props) {
           }}
         />
 
-        <div className="relative max-w-[1440px] mx-auto px-6 md:px-10">
+        <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
           <div
             className="label-eyebrow"
             style={{ color: "#C7F751", marginBottom: 32 }}
@@ -271,9 +273,9 @@ export function ServicioDetail(props: Props) {
             {props.eyebrow}
           </div>
 
-          {/* Row 1: number + huge title spanning full width */}
+          {/* Row 1: number + title (kept to 2 lines) */}
           <div
-            className="grid grid-cols-1 lg:grid-cols-[minmax(80px,10%)_1fr] gap-6 lg:gap-10 items-start"
+            className="grid grid-cols-1 lg:grid-cols-[minmax(80px,8%)_1fr] gap-6 lg:gap-10 items-start"
             style={{ paddingBottom: 48, borderBottom: "0.5px solid rgba(255,255,255,0.10)" }}
           >
             <span
@@ -290,23 +292,24 @@ export function ServicioDetail(props: Props) {
             <h1
               className="h-display"
               style={{
-                fontSize: "clamp(56px, 10vw, 176px)",
+                fontSize: "clamp(44px, 7.4vw, 128px)",
                 letterSpacing: "-0.035em",
-                lineHeight: 0.92,
+                lineHeight: 0.95,
                 margin: 0,
                 color: "#FAFAFA",
+                textWrap: "balance" as unknown as undefined,
               }}
             >
               {props.title}.
             </h1>
           </div>
 
-          {/* Row 2: asymmetric — text (5) / imagery collage (7) */}
+          {/* Row 2: asymmetric text/images layout */}
           <div
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14"
             style={{ paddingTop: 64 }}
           >
-            {/* Left column: intro + pills + CTA */}
+            {/* Left column */}
             <div className="lg:col-span-5 lg:col-start-1 min-w-0">
               <p
                 style={{
@@ -333,27 +336,22 @@ export function ServicioDetail(props: Props) {
                 </p>
               ))}
 
-              <div className="flex flex-wrap gap-2" style={{ marginTop: 24 }}>
-                {props.pills.map((p) => (
-                  <span
-                    key={p}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      padding: "6px 14px",
-                      borderRadius: 999,
-                      background: "rgba(255,255,255,0.06)",
-                      color: "#FAFAFA",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      letterSpacing: "0.02em",
-                      border: "0.5px solid rgba(255,255,255,0.18)",
-                    }}
+              {/* Incluye pills — replacing tech pills */}
+              {props.features && props.features.length > 0 && (
+                <div style={{ marginTop: 28 }}>
+                  <div
+                    className="label-eyebrow"
+                    style={{ marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
                   >
-                    {p}
-                  </span>
-                ))}
-              </div>
+                    Incluye
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {props.features.map((f) => (
+                      <FeaturePill key={f} text={f} />
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {props.notes && props.notes.length > 0 && (
                 <div style={{ marginTop: 28, display: "flex", flexDirection: "column", gap: 2 }}>
@@ -363,125 +361,71 @@ export function ServicioDetail(props: Props) {
                 </div>
               )}
 
-              <div style={{ display: "flex", marginTop: 20 }}>
+              <div style={{ display: "flex", marginTop: 24 }}>
                 <ServiceCta />
               </div>
             </div>
 
-            {/* Right column: image collage — asymmetric */}
+            {/* Right column — images at their natural aspect, uniform 18px radius */}
             <div className="lg:col-span-7 min-w-0">
-              <div
-                className="grid gap-4"
-                style={{
-                  gridTemplateColumns: "1.4fr 1fr",
-                  gridTemplateRows: "auto auto",
-                }}
-              >
-                {/* Big feature image */}
-                <div
-                  style={{
-                    gridRow: "1 / span 2",
-                    borderRadius: 20,
-                    overflow: "hidden",
-                    border: "0.5px solid rgba(255,255,255,0.12)",
-                    background: "#0A0A0A",
-                    position: "relative",
-                    aspectRatio: "3 / 4",
-                    boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
-                    transform: "translateY(0)",
-                  }}
-                >
-                  <img
-                    src={featured[0].src}
-                    alt={featured[0].label}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {featured.map((f, i) => (
                   <div
+                    key={f.src}
                     style={{
-                      position: "absolute",
-                      left: 16,
-                      bottom: 16,
-                      padding: "6px 12px",
-                      borderRadius: 999,
-                      background: "rgba(10,10,10,0.7)",
-                      backdropFilter: "blur(8px)",
-                      fontSize: 11,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: "#C7F751",
+                      borderRadius: RADIUS,
+                      overflow: "hidden",
+                      border: "0.5px solid rgba(255,255,255,0.12)",
+                      background: "#0A0A0A",
+                      position: "relative",
+                      boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
+                      // stagger visual rhythm without changing frame proportions
+                      transform:
+                        i === 0
+                          ? "translateY(0)"
+                          : i === 1
+                            ? "translateY(28px)"
+                            : "translateY(-14px)",
                     }}
                   >
-                    {props.heroLabel}
+                    <img
+                      src={f.src}
+                      alt={f.label}
+                      style={{ width: "100%", height: "auto", display: "block" }}
+                    />
+                    {i === 0 && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: 14,
+                          bottom: 14,
+                          padding: "6px 12px",
+                          borderRadius: 999,
+                          background: "rgba(10,10,10,0.7)",
+                          backdropFilter: "blur(8px)",
+                          fontSize: 11,
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "#C7F751",
+                        }}
+                      >
+                        {props.heroLabel}
+                      </div>
+                    )}
                   </div>
-                </div>
-                {/* Top right */}
-                <div
-                  style={{
-                    borderRadius: 18,
-                    overflow: "hidden",
-                    border: "0.5px solid rgba(255,255,255,0.12)",
-                    aspectRatio: "4 / 3",
-                    transform: "translateY(24px)",
-                  }}
-                >
-                  <img
-                    src={featured[1].src}
-                    alt={featured[1].label}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  />
-                </div>
-                {/* Bottom right */}
-                <div
-                  style={{
-                    borderRadius: 18,
-                    overflow: "hidden",
-                    border: "0.5px solid rgba(255,255,255,0.12)",
-                    aspectRatio: "4 / 3",
-                    transform: "translateY(48px)",
-                  }}
-                >
-                  <img
-                    src={featured[2].src}
-                    alt={featured[2].label}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  />
-                </div>
+                ))}
               </div>
-
-              {/* Features grid, integrated below imagery */}
-              {props.features && props.features.length > 0 && (
-                <div style={{ marginTop: 80 }}>
-                  <div
-                    className="label-eyebrow"
-                    style={{
-                      marginBottom: 14,
-                      color: "rgba(250,250,250,0.5)",
-                    }}
-                  >
-                    Incluye
-                  </div>
-                  <div
-                    className="grid gap-2"
-                    style={{
-                      gridTemplateColumns:
-                        "repeat(auto-fill, minmax(220px, 1fr))",
-                    }}
-                  >
-                    {props.features.map((f) => (
-                      <FeaturePill key={f} text={f} />
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
+
+        {/* Pack banner — inside hero so the glow passes behind it */}
+        <div className="relative">
+          <PackBanner />
+        </div>
       </section>
 
-      {/* Pack banner — early visibility, still on black to bridge into gallery */}
-      <PackBanner />
-
-      {/* Portfolio marquee — creative use of reference images */}
+      {/* Portfolio marquee */}
       <PortfolioMarquee />
     </>
   );
