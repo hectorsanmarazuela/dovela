@@ -1251,11 +1251,10 @@ function CtaBanner() {
     <section style={{ paddingTop: 40, paddingBottom: 40 }}>
       <div className="max-w-[1280px] mx-auto px-6">
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-hidden px-6 py-14 md:px-14 md:py-[72px]"
           style={{
             background: "#0A0A0A",
             borderRadius: 24,
-            padding: "72px 56px",
           }}
         >
           <div
@@ -1315,10 +1314,18 @@ function CtaBanner() {
             </p>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-              style={{ padding: "18px 30px", fontWeight: 600, fontSize: 16 }}
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              style={{
+                padding: "14px 14px 14px 26px",
+                fontWeight: 600,
+                fontSize: 15,
+                whiteSpace: "nowrap",
+                maxWidth: "100%",
+              }}
             >
-              Reserva una llamada gratuita
+              <span style={{ whiteSpace: "nowrap" }}>
+                Reserva una llamada gratuita
+              </span>
               <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
             </a>
             <div
