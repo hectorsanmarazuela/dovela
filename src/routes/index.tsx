@@ -153,7 +153,7 @@ function Nav() {
   const pillBorder = `1px solid ${borderColor}`;
   return (
     <header
-      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none md:transition-transform md:duration-300 md:ease-[cubic-bezier(.7,0,.2,1)]"
+      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-300 ease-[cubic-bezier(.7,0,.2,1)]"
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
@@ -215,10 +215,10 @@ function Nav() {
           </span>
         </button>
 
-        {/* Logo — left on desktop, centered on mobile */}
+        {/* Logo — flex auto layout on mobile, static on desktop */}
         <a
           href="/"
-          className="flex items-center justify-center md:justify-start md:mr-2 md:ml-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0"
+          className="flex-1 flex items-center justify-center md:flex-none md:justify-start md:mr-2 md:ml-2"
           style={{
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
@@ -343,7 +343,7 @@ function Nav() {
             gap: 16,
           }}
         >
-          <span>llamada gratuita</span>
+          <span>Llamada gratuita</span>
           <ArrowCircle size={34} />
         </a>
         <a
