@@ -129,12 +129,26 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const links = [
+  const links: Array<{
+    label: string;
+    href: string;
+    match: string;
+    children?: Array<{ label: string; href: string; match: string }>;
+  }> = [
     { label: "Inicio", href: "/", match: "/" },
     { label: "Proyectos", href: "/#proyectos", match: "__none__" },
-    { label: "Servicios", href: "/servicios", match: "/servicios" },
+    {
+      label: "Servicios",
+      href: "/servicios/diseno-web",
+      match: "/servicios",
+      children: [
+        { label: "Diseño Web", href: "/servicios/diseno-web", match: "/servicios/diseno-web" },
+        { label: "SEO", href: "/servicios/seo", match: "/servicios/seo" },
+      ],
+    },
     { label: "Blog", href: "#blog", match: "__none__" },
   ];
+  const isServiciosActive = pathname.startsWith("/servicios");
   const borderColor = "#D4D4D4";
   const pillBorder = `1px solid ${borderColor}`;
   return (
