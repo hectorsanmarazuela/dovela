@@ -238,7 +238,7 @@ export function ServicioDetail(props: Props) {
           background: "#0A0A0A",
           color: "#FAFAFA",
           paddingTop: 140,
-          paddingBottom: 120,
+          paddingBottom: 60,
           overflow: "hidden",
         }}
       >
