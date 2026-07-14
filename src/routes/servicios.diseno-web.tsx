@@ -58,7 +58,6 @@ function DisenoWebPage() {
         ]}
         pills={["Figma", "React", "Framer Motion", "Accesibilidad AA"]}
         heroLabel="Web Design"
-        tint="linear-gradient(135deg, #1a1a1a 0%, #2A2A2A 60%, #3a3a2a 100%)"
       />
       <Footer />
     </main>
