@@ -235,7 +235,77 @@ function Nav() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-2 flex-1">
           {links.map((l) => {
-            const active = pathname === l.match;
+            const active =
+              l.match === "/servicios"
+                ? isServiciosActive
+                : pathname === l.match;
+            if (l.children) {
+              return (
+                <div key={l.label} className="group relative flex-1">
+                  <a
+                    href={l.href}
+                    className="w-full flex items-center justify-center rounded-full transition-colors"
+                    style={{
+                      height: 44,
+                      border: pillBorder,
+                      background: active ? "#0A0A0A" : "transparent",
+                      color: active ? "#FAFAFA" : "#0A0A0A",
+                      fontWeight: 700,
+                      fontSize: 13,
+                    }}
+                  >
+                    {l.label}
+                  </a>
+                  <div
+                    className="absolute left-0 right-0 top-full pt-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto"
+                    style={{
+                      transition:
+                        "opacity 320ms cubic-bezier(.7,0,.2,1), transform 380ms cubic-bezier(.7,0,.2,1)",
+                    }}
+                  >
+                    <div
+                      className="flex flex-col bg-[#FAFAFA] rounded-2xl overflow-hidden"
+                      style={{ border: pillBorder, boxShadow: "0 20px 40px rgba(10,10,10,0.08)" }}
+                    >
+                      {l.children.map((c, ci) => {
+                        const cActive = pathname === c.match;
+                        return (
+                          <div key={c.label}>
+                            {ci > 0 && (
+                              <div
+                                aria-hidden
+                                style={{
+                                  height: 1,
+                                  margin: "0 14px",
+                                  background:
+                                    "linear-gradient(90deg, transparent, rgba(10,10,10,0.18), transparent)",
+                                }}
+                              />
+                            )}
+                            <a
+                              href={c.href}
+                              className="flex items-center justify-between transition-colors"
+                              style={{
+                                padding: "12px 18px",
+                                fontWeight: 700,
+                                fontSize: 13,
+                                background: cActive ? "#0A0A0A" : "transparent",
+                                color: cActive ? "#FAFAFA" : "#0A0A0A",
+                              }}
+                            >
+                              <span>{c.label}</span>
+                              <span aria-hidden style={{ opacity: 0.55, fontSize: 14 }}>
+                                →
+                              </span>
+                            </a>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <a
                 key={l.label}
@@ -255,6 +325,7 @@ function Nav() {
             );
           })}
         </div>
+
 
         {/* Audit CTA — long on desktop, compact on mobile */}
         <a
