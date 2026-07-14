@@ -153,7 +153,7 @@ function Nav() {
   const pillBorder = `1px solid ${borderColor}`;
   return (
     <header
-      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none md:transition-transform md:duration-300 md:ease-[cubic-bezier(.7,0,.2,1)]"
+      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-300 ease-[cubic-bezier(.7,0,.2,1)]"
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
