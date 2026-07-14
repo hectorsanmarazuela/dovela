@@ -2055,13 +2055,13 @@ function StarNote({ text }: { text: string }) {
     <div
       style={{
         display: "flex",
-        alignItems: "center",
+        alignItems: "flex-start",
         gap: 12,
         padding: "6px 0",
         color: "rgba(250,250,250,0.7)",
         fontSize: 13,
         fontWeight: 400,
-        whiteSpace: "nowrap",
+        lineHeight: 1.45,
       }}
     >
       <span
@@ -2069,13 +2069,13 @@ function StarNote({ text }: { text: string }) {
         style={{
           color: "#C7F751",
           fontSize: 16,
-          lineHeight: 1,
+          lineHeight: 1.45,
           flexShrink: 0,
         }}
       >
         ✦
       </span>
-      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{text}</span>
+      <span style={{ minWidth: 0 }}>{text}</span>
     </div>
   );
 }
