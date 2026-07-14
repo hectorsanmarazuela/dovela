@@ -388,31 +388,67 @@ function Nav() {
       >
         <div className="flex flex-col gap-2">
           {links.map((l, idx) => {
-            const active = pathname === l.match;
+            const active =
+              l.match === "/servicios"
+                ? isServiciosActive
+                : pathname === l.match;
             return (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-between rounded-full transition-colors"
-                style={{
-                  height: 48,
-                  padding: "0 20px",
-                  border: pillBorder,
-                  background: active ? "#0A0A0A" : "transparent",
-                  color: active ? "#FAFAFA" : "#0A0A0A",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
-                  opacity: mobileOpen ? 1 : 0,
-                  transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, background 200ms, color 200ms`,
-                }}
-              >
-                <span>{l.label}</span>
-                <span aria-hidden style={{ fontSize: 18, opacity: 0.6 }}>
-                  →
-                </span>
-              </a>
+              <div key={l.label} className="flex flex-col gap-2">
+                <a
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between rounded-full transition-colors"
+                  style={{
+                    height: 48,
+                    padding: "0 20px",
+                    border: pillBorder,
+                    background: active ? "#0A0A0A" : "transparent",
+                    color: active ? "#FAFAFA" : "#0A0A0A",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
+                    opacity: mobileOpen ? 1 : 0,
+                    transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, background 200ms, color 200ms`,
+                  }}
+                >
+                  <span>{l.label}</span>
+                  <span aria-hidden style={{ fontSize: 18, opacity: 0.6 }}>
+                    →
+                  </span>
+                </a>
+                {l.children && (
+                  <div className="flex flex-col gap-2" style={{ paddingLeft: 16 }}>
+                    {l.children.map((c, ci) => {
+                      const cActive = pathname === c.match;
+                      return (
+                        <a
+                          key={c.label}
+                          href={c.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center justify-between rounded-full transition-colors"
+                          style={{
+                            height: 42,
+                            padding: "0 18px",
+                            border: pillBorder,
+                            background: cActive ? "#0A0A0A" : "transparent",
+                            color: cActive ? "#FAFAFA" : "#0A0A0A",
+                            fontWeight: 600,
+                            fontSize: 13,
+                            transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
+                            opacity: mobileOpen ? 1 : 0,
+                            transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${120 + (idx + ci) * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${120 + (idx + ci) * 60}ms, background 200ms, color 200ms`,
+                          }}
+                        >
+                          <span>— {c.label}</span>
+                          <span aria-hidden style={{ fontSize: 16, opacity: 0.5 }}>
+                            →
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
