@@ -51,7 +51,6 @@ function SeoPage() {
         notes={["Tarifa única de proyecto + cuota de SEO mensual"]}
         pills={["Google Search Console", "Ahrefs", "SEO Local", "Analytics 4"]}
         heroLabel="SEO Strategy"
-        tint="linear-gradient(135deg, #0f1a14 0%, #1a2a1e 60%, #24352a 100%)"
       />
       <Footer />
     </main>
