@@ -104,6 +104,8 @@ function ImagePlaceholder({
 function Nav() {
   const [pathname, setPathname] = useState("/");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   useEffect(() => {
     setPathname(window.location.pathname);
   }, []);
@@ -113,6 +115,20 @@ function Nav() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const dy = y - lastScrollY.current;
+      if (y > 80 && dy > 0) {
+        setHidden(true);
+      } else if (dy < 0) {
+        setHidden(false);
+      }
+      lastScrollY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const links = [
     { label: "Inicio", href: "/", match: "/" },
     { label: "Proyectos", href: "/#proyectos", match: "__none__" },
@@ -122,9 +138,12 @@ function Nav() {
   const borderColor = "#D4D4D4";
   const pillBorder = `1px solid ${borderColor}`;
   return (
-    <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
+    <header
+      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none md:transition-transform md:duration-300 md:ease-[cubic-bezier(.7,0,.2,1)]"
+      style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
+    >
       <nav
-        className="pointer-events-auto grid grid-cols-[auto_1fr_auto] md:flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
         style={{
           border: `1px solid ${borderColor}`,
           height: 60,
@@ -185,7 +204,7 @@ function Nav() {
         {/* Logo — left on desktop, centered on mobile */}
         <a
           href="/"
-          className="flex items-center justify-center md:justify-start md:mr-2 md:ml-2"
+          className="flex items-center justify-center md:justify-start md:mr-2 md:ml-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0"
           style={{
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
@@ -239,7 +258,7 @@ function Nav() {
             gap: 16,
           }}
         >
-          <span>Pedir auditoría</span>
+          <span>llamada gratuita</span>
           <ArrowCircle size={34} />
         </a>
         <a
@@ -256,7 +275,7 @@ function Nav() {
             gap: 8,
           }}
         >
-          <span>Auditoría</span>
+          <span>Contacta</span>
           <ArrowCircle size={34} />
         </a>
       </nav>
