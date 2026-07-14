@@ -102,15 +102,25 @@ function ImagePlaceholder({
 /* ---------- NAV ---------- */
 
 function Nav() {
+  const pathname =
+    typeof window !== "undefined" ? window.location.pathname : "/";
+  const links = [
+    { label: "Inicio", href: "/", match: "/" },
+    { label: "Proyectos", href: "/#proyectos", match: "__none__" },
+    { label: "Servicios", href: "/servicios", match: "/servicios" },
+    { label: "Blog", href: "#blog", match: "__none__" },
+  ];
+  const borderColor = "#D4D4D4";
+  const pillBorder = `1px solid ${borderColor}`;
   return (
     <header className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center gap-6 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
-        style={{ border: "0.5px solid #E5E5E5", height: 52, padding: "0 20px" }}
+        className="pointer-events-auto flex items-center gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        style={{ border: `1px solid ${borderColor}`, height: 60, padding: "0 8px 0 20px" }}
       >
         <a
           href="/"
-          className="flex items-center"
+          className="flex items-center mr-2"
           style={{
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
@@ -123,33 +133,47 @@ function Nav() {
         >
           dovela<span style={{ color: "#C7F751" }}>.</span>
         </a>
-        <div className="hidden md:flex items-center gap-7 ml-2">
-          {[
-            { label: "Proyectos", href: "/#proyectos" },
-            { label: "Servicios", href: "/servicios" },
-            { label: "Blog", href: "#blog" },
-          ].map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className="text-[15px] text-[#888] hover:text-[#0A0A0A] transition-colors"
-              style={{ fontWeight: 400 }}
-            >
-              {l.label}
-            </a>
-          ))}
+        <div className="hidden md:flex items-center gap-2 flex-1">
+          {links.map((l) => {
+            const active = pathname === l.match;
+            return (
+              <a
+                key={l.label}
+                href={l.href}
+                className="flex-1 flex items-center justify-center rounded-full transition-colors"
+                style={{
+                  height: 44,
+                  border: pillBorder,
+                  background: active ? "#0A0A0A" : "transparent",
+                  color: active ? "#FAFAFA" : "#0A0A0A",
+                  fontWeight: 700,
+                  fontSize: 13,
+                }}
+              >
+                {l.label}
+              </a>
+            );
+          })}
         </div>
 
-        <div className="flex items-center gap-2 ml-auto group">
-          <a
-            href="#auditoria"
-            className="rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
-            style={{ padding: "10px 20px", fontWeight: 600, fontSize: 14 }}
-          >
-            Pedir auditoría
-          </a>
-          <ArrowCircle size={36} />
-        </div>
+        <a
+          href="#auditoria"
+          className="hidden md:flex items-center justify-between rounded-full transition"
+          style={{
+            height: 44,
+            padding: "0 6px 0 22px",
+            background: "#C7F751",
+            color: "#0A0A0A",
+            fontWeight: 700,
+            fontSize: 13,
+            border: pillBorder,
+            minWidth: 240,
+            gap: 16,
+          }}
+        >
+          <span>Pedir auditoría</span>
+          <ArrowCircle size={34} />
+        </a>
       </nav>
     </header>
   );
