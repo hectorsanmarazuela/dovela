@@ -129,12 +129,26 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  const links = [
+  const links: Array<{
+    label: string;
+    href: string;
+    match: string;
+    children?: Array<{ label: string; href: string; match: string }>;
+  }> = [
     { label: "Inicio", href: "/", match: "/" },
     { label: "Proyectos", href: "/#proyectos", match: "__none__" },
-    { label: "Servicios", href: "/servicios", match: "/servicios" },
+    {
+      label: "Servicios",
+      href: "/servicios/diseno-web",
+      match: "/servicios",
+      children: [
+        { label: "Diseño Web", href: "/servicios/diseno-web", match: "/servicios/diseno-web" },
+        { label: "SEO", href: "/servicios/seo", match: "/servicios/seo" },
+      ],
+    },
     { label: "Blog", href: "#blog", match: "__none__" },
   ];
+  const isServiciosActive = pathname.startsWith("/servicios");
   const borderColor = "#D4D4D4";
   const pillBorder = `1px solid ${borderColor}`;
   return (
@@ -221,7 +235,77 @@ function Nav() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-2 flex-1">
           {links.map((l) => {
-            const active = pathname === l.match;
+            const active =
+              l.match === "/servicios"
+                ? isServiciosActive
+                : pathname === l.match;
+            if (l.children) {
+              return (
+                <div key={l.label} className="group relative flex-1">
+                  <a
+                    href={l.href}
+                    className="w-full flex items-center justify-center rounded-full transition-colors"
+                    style={{
+                      height: 44,
+                      border: pillBorder,
+                      background: active ? "#0A0A0A" : "transparent",
+                      color: active ? "#FAFAFA" : "#0A0A0A",
+                      fontWeight: 700,
+                      fontSize: 13,
+                    }}
+                  >
+                    {l.label}
+                  </a>
+                  <div
+                    className="absolute left-0 right-0 top-full pt-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto"
+                    style={{
+                      transition:
+                        "opacity 320ms cubic-bezier(.7,0,.2,1), transform 380ms cubic-bezier(.7,0,.2,1)",
+                    }}
+                  >
+                    <div
+                      className="flex flex-col bg-[#FAFAFA] rounded-2xl overflow-hidden"
+                      style={{ border: pillBorder, boxShadow: "0 20px 40px rgba(10,10,10,0.08)" }}
+                    >
+                      {l.children.map((c, ci) => {
+                        const cActive = pathname === c.match;
+                        return (
+                          <div key={c.label}>
+                            {ci > 0 && (
+                              <div
+                                aria-hidden
+                                style={{
+                                  height: 1,
+                                  margin: "0 14px",
+                                  background:
+                                    "linear-gradient(90deg, transparent, rgba(10,10,10,0.18), transparent)",
+                                }}
+                              />
+                            )}
+                            <a
+                              href={c.href}
+                              className="flex items-center justify-between transition-colors"
+                              style={{
+                                padding: "12px 18px",
+                                fontWeight: 700,
+                                fontSize: 13,
+                                background: cActive ? "#0A0A0A" : "transparent",
+                                color: cActive ? "#FAFAFA" : "#0A0A0A",
+                              }}
+                            >
+                              <span>{c.label}</span>
+                              <span aria-hidden style={{ opacity: 0.55, fontSize: 14 }}>
+                                →
+                              </span>
+                            </a>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <a
                 key={l.label}
@@ -241,6 +325,7 @@ function Nav() {
             );
           })}
         </div>
+
 
         {/* Audit CTA — long on desktop, compact on mobile */}
         <a
@@ -303,31 +388,67 @@ function Nav() {
       >
         <div className="flex flex-col gap-2">
           {links.map((l, idx) => {
-            const active = pathname === l.match;
+            const active =
+              l.match === "/servicios"
+                ? isServiciosActive
+                : pathname === l.match;
             return (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-between rounded-full transition-colors"
-                style={{
-                  height: 48,
-                  padding: "0 20px",
-                  border: pillBorder,
-                  background: active ? "#0A0A0A" : "transparent",
-                  color: active ? "#FAFAFA" : "#0A0A0A",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
-                  opacity: mobileOpen ? 1 : 0,
-                  transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, background 200ms, color 200ms`,
-                }}
-              >
-                <span>{l.label}</span>
-                <span aria-hidden style={{ fontSize: 18, opacity: 0.6 }}>
-                  →
-                </span>
-              </a>
+              <div key={l.label} className="flex flex-col gap-2">
+                <a
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between rounded-full transition-colors"
+                  style={{
+                    height: 48,
+                    padding: "0 20px",
+                    border: pillBorder,
+                    background: active ? "#0A0A0A" : "transparent",
+                    color: active ? "#FAFAFA" : "#0A0A0A",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
+                    opacity: mobileOpen ? 1 : 0,
+                    transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${80 + idx * 60}ms, background 200ms, color 200ms`,
+                  }}
+                >
+                  <span>{l.label}</span>
+                  <span aria-hidden style={{ fontSize: 18, opacity: 0.6 }}>
+                    →
+                  </span>
+                </a>
+                {l.children && (
+                  <div className="flex flex-col gap-2" style={{ paddingLeft: 16 }}>
+                    {l.children.map((c, ci) => {
+                      const cActive = pathname === c.match;
+                      return (
+                        <a
+                          key={c.label}
+                          href={c.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center justify-between rounded-full transition-colors"
+                          style={{
+                            height: 42,
+                            padding: "0 18px",
+                            border: pillBorder,
+                            background: cActive ? "#0A0A0A" : "transparent",
+                            color: cActive ? "#FAFAFA" : "#0A0A0A",
+                            fontWeight: 600,
+                            fontSize: 13,
+                            transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
+                            opacity: mobileOpen ? 1 : 0,
+                            transition: `transform 500ms cubic-bezier(.7,0,.2,1) ${120 + (idx + ci) * 60}ms, opacity 400ms cubic-bezier(.7,0,.2,1) ${120 + (idx + ci) * 60}ms, background 200ms, color 200ms`,
+                          }}
+                        >
+                          <span>— {c.label}</span>
+                          <span aria-hidden style={{ fontSize: 16, opacity: 0.5 }}>
+                            →
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>

@@ -9,55 +9,58 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiciosSeoRouteImport } from './routes/servicios.seo'
+import { Route as ServiciosDisenoWebRouteImport } from './routes/servicios.diseno-web'
 
-const ServiciosRoute = ServiciosRouteImport.update({
-  id: '/servicios',
-  path: '/servicios',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiciosSeoRoute = ServiciosSeoRouteImport.update({
+  id: '/servicios/seo',
+  path: '/servicios/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciosDisenoWebRoute = ServiciosDisenoWebRouteImport.update({
+  id: '/servicios/diseno-web',
+  path: '/servicios/diseno-web',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/servicios': typeof ServiciosRoute
+  '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
+  '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/servicios': typeof ServiciosRoute
+  '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
+  '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/servicios': typeof ServiciosRoute
+  '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
+  '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/servicios'
+  fullPaths: '/' | '/servicios/diseno-web' | '/servicios/seo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/servicios'
-  id: '__root__' | '/' | '/servicios'
+  to: '/' | '/servicios/diseno-web' | '/servicios/seo'
+  id: '__root__' | '/' | '/servicios/diseno-web' | '/servicios/seo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ServiciosRoute: typeof ServiciosRoute
+  ServiciosDisenoWebRoute: typeof ServiciosDisenoWebRoute
+  ServiciosSeoRoute: typeof ServiciosSeoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/servicios': {
-      id: '/servicios'
-      path: '/servicios'
-      fullPath: '/servicios'
-      preLoaderRoute: typeof ServiciosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -65,12 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servicios/seo': {
+      id: '/servicios/seo'
+      path: '/servicios/seo'
+      fullPath: '/servicios/seo'
+      preLoaderRoute: typeof ServiciosSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicios/diseno-web': {
+      id: '/servicios/diseno-web'
+      path: '/servicios/diseno-web'
+      fullPath: '/servicios/diseno-web'
+      preLoaderRoute: typeof ServiciosDisenoWebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ServiciosRoute: ServiciosRoute,
+  ServiciosDisenoWebRoute: ServiciosDisenoWebRoute,
+  ServiciosSeoRoute: ServiciosSeoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
