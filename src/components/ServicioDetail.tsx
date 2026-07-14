@@ -368,55 +368,13 @@ export function ServicioDetail(props: Props) {
               </div>
             </div>
 
-            {/* Right column — images at their natural aspect, uniform 18px radius */}
+            {/* Right column — variant-based imagery */}
             <div className="lg:col-span-7 min-w-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {featured.map((f, i) => (
-                  <div
-                    key={f.src}
-                    style={{
-                      borderRadius: RADIUS,
-                      overflow: "hidden",
-                      border: "0.5px solid rgba(255,255,255,0.12)",
-                      background: "#0A0A0A",
-                      position: "relative",
-                      boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
-                      // stagger visual rhythm without changing frame proportions
-                      transform:
-                        i === 0
-                          ? "translateY(0)"
-                          : i === 1
-                            ? "translateY(28px)"
-                            : "translateY(-14px)",
-                    }}
-                  >
-                    <img
-                      src={f.src}
-                      alt={f.label}
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                    />
-                    {i === 0 && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          left: 14,
-                          bottom: 14,
-                          padding: "6px 12px",
-                          borderRadius: 999,
-                          background: "rgba(10,10,10,0.7)",
-                          backdropFilter: "blur(8px)",
-                          fontSize: 11,
-                          letterSpacing: "0.12em",
-                          textTransform: "uppercase",
-                          color: "#C7F751",
-                        }}
-                      >
-                        {props.heroLabel}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+              {props.variant === "seo" ? (
+                <SeoImageFader label={props.heroLabel} />
+              ) : (
+                <DisenoVerticalMarquee label={props.heroLabel} />
+              )}
             </div>
           </div>
         </div>
