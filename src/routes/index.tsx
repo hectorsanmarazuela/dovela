@@ -229,7 +229,7 @@ function Nav() {
             lineHeight: 1,
           }}
         >
-          dovela<span style={{ color: "#C7F751" }}>.</span>
+          dovela<span style={{ color: "#EF5D60" }}>.</span>
         </a>
 
         {/* Desktop links */}
@@ -334,7 +334,7 @@ function Nav() {
           style={{
             height: 44,
             padding: "0 6px 0 22px",
-            background: "#C7F751",
+            background: "#EF5D60",
             color: "#0A0A0A",
             fontWeight: 700,
             fontSize: 13,
@@ -352,7 +352,7 @@ function Nav() {
           style={{
             height: 44,
             padding: "0 4px 0 14px",
-            background: "#C7F751",
+            background: "#EF5D60",
             color: "#0A0A0A",
             fontWeight: 700,
             fontSize: 12,
@@ -566,11 +566,11 @@ function Hero() {
         <div className="flex flex-wrap items-center gap-3 mt-6">
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#EF5D60] text-[#0A0A0A] hover:brightness-95 transition"
             style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14 }}
           >
             Reserva una llamada gratuita
-            <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+            <ArrowCircle size={28} bg="#0A0A0A" fg="#EF5D60" />
           </a>
           <a
             href="/servicios"
@@ -639,7 +639,7 @@ function Hero() {
             >
               Pedir auditoría gratuita
             </a>
-            <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+            <ArrowCircle size={28} bg="#EF5D60" fg="#0A0A0A" />
           </div>
         </div>
       </div>
@@ -670,7 +670,7 @@ function PorQueDovela() {
               <span className="block" style={{ whiteSpace: "nowrap" }}>
                 <span
                   style={{
-                    background: "#C7F751",
+                    background: "#EF5D60",
                     color: "#0A0A0A",
                     padding: "0 0.18em",
                     borderRadius: 6,
@@ -724,7 +724,7 @@ function PorQueDovela() {
               />
               <div
                 className="absolute top-6 right-6 grid place-items-center rounded-full"
-                style={{ width: 44, height: 44, background: "#C7F751" }}
+                style={{ width: 44, height: 44, background: "#EF5D60" }}
               >
                 <span style={{ fontSize: 11, fontWeight: 700, color: "#0A0A0A" }}>WEB</span>
               </div>
@@ -868,7 +868,7 @@ function Services() {
                     >
                       {s.n}
                     </span>
-                    <span style={{ color: "#C7F751", fontSize: 18 }}>•</span>
+                    <span style={{ color: "#EF5D60", fontSize: 18 }}>•</span>
                     <span
                       style={{
                         fontSize: 18,
@@ -884,7 +884,7 @@ function Services() {
                         width: 32,
                         height: 32,
                         background: "#0A0A0A",
-                        color: isOpen ? "#C7F751" : "#FAFAFA",
+                        color: isOpen ? "#EF5D60" : "#FAFAFA",
                         border: isOpen ? "0.5px solid rgba(255,255,255,0.2)" : "none",
                         fontSize: 18,
                         lineHeight: 1,
@@ -1054,7 +1054,7 @@ function RotatingSeal({ size = 140 }: { size?: number }) {
             d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
           />
         </defs>
-        <circle cx="50" cy="50" r="50" fill="#C7F751" />
+        <circle cx="50" cy="50" r="50" fill="#EF5D60" />
         <text
           fill="#0A0A0A"
           style={{
@@ -1140,7 +1140,7 @@ function Plan() {
                     style={{
                       width: 32,
                       height: 32,
-                      background: "#C7F751",
+                      background: "#EF5D60",
                       color: "#0A0A0A",
                       fontSize: 13,
                       fontWeight: 600,
@@ -1163,11 +1163,11 @@ function Plan() {
             </ol>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start bg-[#EF5D60] text-[#0A0A0A] hover:brightness-95 transition"
               style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
             >
               Reserva tu llamada
-              <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+              <ArrowCircle size={28} bg="#0A0A0A" fg="#EF5D60" />
             </a>
           </div>
 
@@ -1200,7 +1200,7 @@ function Plan() {
                       width: 32,
                       height: 32,
                       background: "#0A0A0A",
-                      color: "#C7F751",
+                      color: "#EF5D60",
                     }}
                   >
                     <svg
@@ -1239,7 +1239,7 @@ function Plan() {
                 style={{ padding: "12px 20px" }}
               >
                 Ver el Pack Completo
-                <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+                <ArrowCircle size={28} bg="#EF5D60" fg="#0A0A0A" />
               </span>
             </a>
           </div>
@@ -1316,7 +1316,7 @@ function MarqueeBand() {
     <section
       aria-hidden
       style={{
-        background: "#C7F751",
+        background: "#EF5D60",
         paddingTop: 28,
         paddingBottom: 28,
         borderTop: "1px solid #0A0A0A",
@@ -1416,7 +1416,7 @@ function CtaBanner() {
               right: -120,
               top: -140,
               background:
-                "radial-gradient(circle, rgba(199,247,81,0.22), rgba(199,247,81,0) 65%)",
+                "radial-gradient(circle, rgba(239, 93, 96,0.22), rgba(239, 93, 96,0) 65%)",
               filter: "blur(20px)",
             }}
           />
@@ -1440,7 +1440,7 @@ function CtaBanner() {
               Tu próximo{" "}
               <span
                 style={{
-                  background: "#C7F751",
+                  background: "#EF5D60",
                   color: "#0A0A0A",
                   padding: "0 0.18em",
                   borderRadius: 6,
@@ -1454,7 +1454,7 @@ function CtaBanner() {
             </p>
             <a
               href="#contacto"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#EF5D60] text-[#0A0A0A] hover:brightness-95 transition"
               style={{
                 padding: "14px 14px 14px 26px",
                 fontWeight: 600,
@@ -1466,7 +1466,7 @@ function CtaBanner() {
               <span style={{ whiteSpace: "nowrap" }}>
                 Reserva una llamada gratuita
               </span>
-              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+              <ArrowCircle size={32} bg="#0A0A0A" fg="#EF5D60" />
             </a>
             <div
               style={{
@@ -1522,7 +1522,7 @@ function Testimonials() {
         <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-4 items-stretch">
           <div
             className="relative"
-            style={{ background: "#C7F751", borderRadius: 16, padding: 32 }}
+            style={{ background: "#EF5D60", borderRadius: 16, padding: 32 }}
           >
             <div
               style={{
@@ -1655,7 +1655,7 @@ function Faq() {
         .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(10,10,10,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
         .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
-        .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
+        .fq-card.open .fq-c2 .fq-icon { background:#EF5D60; border-color:#EF5D60; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
         .fq-card.open .fq-c2 .fq-icon .fq-chev { opacity:1; transform:rotate(0deg); }
       `}</style>
@@ -1749,7 +1749,7 @@ function LeadMagnet() {
             <div className="min-w-0">
               <h2
                 className="label-eyebrow"
-                style={{ color: "#C7F751" }}
+                style={{ color: "#EF5D60" }}
               >
                 Auditoría SEO gratuita para tu negocio
               </h2>
@@ -1758,7 +1758,7 @@ function LeadMagnet() {
                 style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
-                <span style={{ color: "#C7F751" }}>aparece en Google?</span>
+                <span style={{ color: "#EF5D60" }}>aparece en Google?</span>
               </p>
 
               <p
@@ -1776,7 +1776,7 @@ function LeadMagnet() {
               <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {items.map((it) => (
                   <li key={it} className="flex items-start gap-3">
-                    <span style={{ color: "#C7F751", fontSize: 16, lineHeight: 1.4 }}>
+                    <span style={{ color: "#EF5D60", fontSize: 16, lineHeight: 1.4 }}>
                       ◆
                     </span>
                     <span
@@ -1830,7 +1830,7 @@ function LeadMagnet() {
               />
               <button
                 type="submit"
-                className="group inline-flex items-center justify-between gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                className="group inline-flex items-center justify-between gap-2 rounded-full bg-[#EF5D60] text-[#0A0A0A] hover:brightness-95 transition"
                 style={{
                   padding: "14px 22px",
                   fontWeight: 600,
@@ -1840,7 +1840,7 @@ function LeadMagnet() {
                 }}
               >
                 Recibe tu auditoría gratuita
-                <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+                <ArrowCircle size={28} bg="#0A0A0A" fg="#EF5D60" />
               </button>
               <p
                 style={{
@@ -1898,7 +1898,7 @@ function ContactForm() {
             >
               <span
                 className="inline-flex items-center justify-center rounded-full shrink-0"
-                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#EF5D60" }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -1924,7 +1924,7 @@ function ContactForm() {
             >
               <span
                 className="inline-flex items-center justify-center rounded-full shrink-0"
-                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#EF5D60" }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12z" />
@@ -1949,7 +1949,7 @@ function ContactForm() {
                   fontWeight: 500,
                 }}
               >
-                <span style={{ color: "#C7F751" }}>●</span> Disponible
+                <span style={{ color: "#EF5D60" }}>●</span> Disponible
               </span>
             </div>
           </div>
@@ -1995,7 +1995,7 @@ function ContactForm() {
             style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14, minHeight: 48 }}
           >
             Enviar mensaje
-            <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+            <ArrowCircle size={28} bg="#EF5D60" fg="#0A0A0A" />
           </button>
         </form>
       </div>
@@ -2185,8 +2185,8 @@ function FeaturePill({ text }: { text: string }) {
           width: 5,
           height: 5,
           borderRadius: 999,
-          background: "#C7F751",
-          boxShadow: "0 0 8px rgba(199,247,81,0.6)",
+          background: "#EF5D60",
+          boxShadow: "0 0 8px rgba(239, 93, 96,0.6)",
           flexShrink: 0,
         }}
       />
@@ -2214,7 +2214,7 @@ function StarNote({ text }: { text: string }) {
       <span
         aria-hidden
         style={{
-          color: "#C7F751",
+          color: "#EF5D60",
           fontSize: 16,
           lineHeight: 1.45,
           flexShrink: 0,
@@ -2236,7 +2236,7 @@ function ServiceCta() {
         marginTop: 24,
         padding: "12px 12px 12px 22px",
         borderRadius: 999,
-        background: "#C7F751",
+        background: "#EF5D60",
         color: "#0A0A0A",
         fontSize: 14,
         fontWeight: 600,
@@ -2250,7 +2250,7 @@ function ServiceCta() {
           height: 28,
           borderRadius: 999,
           background: "#0A0A0A",
-          color: "#C7F751",
+          color: "#EF5D60",
           display: "inline-grid",
           placeItems: "center",
         }}
@@ -2293,7 +2293,7 @@ function Wireframe() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.18), transparent 60%)",
+            "radial-gradient(60% 80% at 90% 10%, rgba(239, 93, 96,0.18), transparent 60%)",
         }}
       />
       <div
@@ -2314,7 +2314,7 @@ function Wireframe() {
       >
         <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
         <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
-        <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "#EF5D60" }} />
       </div>
       <div style={{ position: "absolute", left: 24, right: "42%", top: 60 }}>
         <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.18)", width: "78%", marginBottom: 8 }} />
@@ -2326,7 +2326,7 @@ function Wireframe() {
             display: "inline-block",
             padding: "6px 14px",
             borderRadius: 999,
-            background: "#C7F751",
+            background: "#EF5D60",
             color: "#0A0A0A",
             fontSize: 10,
             fontWeight: 600,
@@ -2344,7 +2344,7 @@ function Wireframe() {
           width: "34%",
           borderRadius: 10,
           background:
-            "linear-gradient(160deg, rgba(199,247,81,0.10), rgba(255,255,255,0.03))",
+            "linear-gradient(160deg, rgba(239, 93, 96,0.10), rgba(255,255,255,0.03))",
           border: "0.5px solid rgba(255,255,255,0.10)",
         }}
       />
@@ -2455,7 +2455,7 @@ function ServiceRow({
           style={{
             fontSize: 13,
             letterSpacing: "0.14em",
-            color: open ? "#C7F751" : "rgba(250,250,250,0.45)",
+            color: open ? "#EF5D60" : "rgba(250,250,250,0.45)",
             fontVariantNumeric: "tabular-nums",
             transition: "color 400ms cubic-bezier(.7,0,.2,1)",
           }}
@@ -2480,8 +2480,8 @@ function ServiceRow({
             width: 44,
             height: 44,
             borderRadius: 999,
-            background: open ? "#C7F751" : "transparent",
-            border: `0.5px solid ${open ? "#C7F751" : "rgba(255,255,255,0.35)"}`,
+            background: open ? "#EF5D60" : "transparent",
+            border: `0.5px solid ${open ? "#EF5D60" : "rgba(255,255,255,0.35)"}`,
             color: open ? "#0A0A0A" : "#FAFAFA",
             display: "inline-grid",
             placeItems: "center",
@@ -2626,7 +2626,7 @@ function ServicesAccordion() {
               inset: 0,
               pointerEvents: "none",
               background:
-                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.08), transparent 60%)",
+                "radial-gradient(45% 40% at 95% 5%, rgba(239, 93, 96,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(239, 93, 96,0.08), transparent 60%)",
             }}
           />
           <div
@@ -2647,7 +2647,7 @@ function ServicesAccordion() {
             <h2
               className="label-eyebrow"
               style={{
-                color: "#C7F751",
+                color: "#EF5D60",
                 marginBottom: 40,
               }}
             >

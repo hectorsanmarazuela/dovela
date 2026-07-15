@@ -34,7 +34,7 @@ export const Route = createFileRoute("/servicios/diseno-web")({
 
 function DisenoWebPage() {
   return (
-    <main className="bg-[#FAFAFA] text-[#0A0A0A]" style={{ overflowX: "clip" }}>
+    <main className="bg-mesh-warm bg-grain text-[#0A0A0A]" style={{ overflowX: "clip" }}>
       <Nav />
       <ServicioDetail
         variant="diseno"
