@@ -64,7 +64,7 @@ function PackBanner() {
               padding: "6px 12px",
               borderRadius: 999,
               background: "rgba(199,247,81,0.14)",
-              color: "#C7F751",
+              color: "#EF5D60",
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: "0.14em",
@@ -72,7 +72,7 @@ function PackBanner() {
               width: "fit-content",
             }}
           >
-            <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
+            <span style={{ width: 6, height: 6, borderRadius: 999, background: "#EF5D60" }} />
             Pack completo · Ahorra
           </div>
           <p
@@ -93,7 +93,7 @@ function PackBanner() {
             style={{
               padding: "12px 12px 12px 20px",
               borderRadius: 999,
-              background: "#C7F751",
+              background: "#EF5D60",
               color: "#0A0A0A",
               fontSize: 14,
               fontWeight: 700,
@@ -108,7 +108,7 @@ function PackBanner() {
                 height: 28,
                 borderRadius: 999,
                 background: "#0A0A0A",
-                color: "#C7F751",
+                color: "#EF5D60",
                 display: "inline-grid",
                 placeItems: "center",
               }}
@@ -208,7 +208,7 @@ function PortfolioMarquee() {
                 <span style={{ fontWeight: 600 }}>{it.label}</span>
                 <span
                   style={{
-                    color: "#C7F751",
+                    color: "#EF5D60",
                     fontSize: 11,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -240,7 +240,7 @@ function HeroLabelPill({ text }: { text: string }) {
         fontSize: 11,
         letterSpacing: "0.12em",
         textTransform: "uppercase",
-        color: "#C7F751",
+        color: "#EF5D60",
         zIndex: 2,
       }}
     >
@@ -340,7 +340,7 @@ function SeoImageFader({ label }: { label: string }) {
               height: 8,
               borderRadius: 999,
               border: "none",
-              background: i === idx ? "#C7F751" : "rgba(250,250,250,0.35)",
+              background: i === idx ? "#EF5D60" : "rgba(250,250,250,0.35)",
               cursor: "pointer",
               transition: "all 300ms ease",
               padding: 0,
@@ -395,7 +395,7 @@ export function ServicioDetail(props: Props) {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
           <div
             className="label-eyebrow"
-            style={{ color: "#C7F751", marginBottom: 32 }}
+            style={{ color: "#EF5D60", marginBottom: 32 }}
           >
             {props.eyebrow}
           </div>
@@ -409,7 +409,7 @@ export function ServicioDetail(props: Props) {
               style={{
                 fontSize: 14,
                 letterSpacing: "0.14em",
-                color: "#C7F751",
+                color: "#EF5D60",
                 fontVariantNumeric: "tabular-nums",
                 paddingTop: 20,
               }}
