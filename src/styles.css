@@ -15,14 +15,36 @@
 
 :root {
   --white: #FAFAFA;
+  --off-white: #FBF9F2;
   --black: #0A0A0A;
-  --lime: #EF5D60;
+  --lime: #EF5D60;               /* accent (kept var name for compat) */
+  --accent: #EF5D60;
+  --secondary: #F4F1BB;
   --color-lime-subtle: rgba(239, 93, 96, 0.12);
   --gray: #888888;
   --border: #E5E5E5;
-  --background: #FAFAFA;
+  --background: #FBF9F2;
   --foreground: #0A0A0A;
 }
+
+/* Subtle grain / noise texture — layered as a background-image */
+@utility bg-grain {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+  background-size: 240px 240px;
+}
+
+@utility bg-mesh-warm {
+  background-image:
+    radial-gradient(60% 45% at 8% 10%, rgba(244, 241, 187, 0.55), transparent 60%),
+    radial-gradient(50% 40% at 100% 0%, rgba(239, 93, 96, 0.10), transparent 65%),
+    radial-gradient(70% 60% at 90% 100%, rgba(244, 241, 187, 0.35), transparent 65%);
+}
+
+@utility bg-secondary-soft {
+  background-color: #F4F1BB;
+}
+
 
 @layer base {
   * {
