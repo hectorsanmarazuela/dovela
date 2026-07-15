@@ -128,7 +128,13 @@ function PackBanner() {
 function PortfolioMarquee() {
   const items = [...GALLERY, ...GALLERY];
   return (
-    <section style={{ background: "#FAFAFA", padding: "120px 0 60px" }}>
+    <section className="bg-secondary-soft bg-grain relative" style={{ padding: "120px 0 60px" }}>
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-24 pointer-events-none"
+        style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.06), transparent)" }}
+      />
+
       <div className="max-w-[1480px] mx-auto px-6 md:px-10 mb-12">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
