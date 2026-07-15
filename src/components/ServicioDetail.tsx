@@ -39,7 +39,7 @@ function PackBanner() {
           position: "relative",
           background: "linear-gradient(90deg, rgba(15,15,15,0.85) 0%, rgba(20,20,20,0.85) 100%)",
           backdropFilter: "blur(6px)",
-          border: "0.5px solid rgba(199,247,81,0.35)",
+          border: "0.5px solid rgba(239, 93, 96,0.35)",
           borderRadius: 20,
           padding: "22px clamp(20px, 3vw, 32px)",
           overflow: "hidden",
@@ -51,7 +51,7 @@ function PackBanner() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.15), transparent 65%)",
+              "radial-gradient(60% 100% at 100% 50%, rgba(239, 93, 96,0.15), transparent 65%)",
             pointerEvents: "none",
           }}
         />
@@ -63,7 +63,7 @@ function PackBanner() {
               gap: 10,
               padding: "6px 12px",
               borderRadius: 999,
-              background: "rgba(199,247,81,0.14)",
+              background: "rgba(239, 93, 96,0.14)",
               color: "#EF5D60",
               fontSize: 11,
               fontWeight: 700,
@@ -375,7 +375,7 @@ export function ServicioDetail(props: Props) {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.10), transparent 70%)",
+              "radial-gradient(45% 35% at 92% 5%, rgba(239, 93, 96,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(239, 93, 96,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(239, 93, 96,0.10), transparent 70%)",
           }}
         />
         <div

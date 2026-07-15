@@ -1416,7 +1416,7 @@ function CtaBanner() {
               right: -120,
               top: -140,
               background:
-                "radial-gradient(circle, rgba(199,247,81,0.22), rgba(199,247,81,0) 65%)",
+                "radial-gradient(circle, rgba(239, 93, 96,0.22), rgba(239, 93, 96,0) 65%)",
               filter: "blur(20px)",
             }}
           />
@@ -2186,7 +2186,7 @@ function FeaturePill({ text }: { text: string }) {
           height: 5,
           borderRadius: 999,
           background: "#EF5D60",
-          boxShadow: "0 0 8px rgba(199,247,81,0.6)",
+          boxShadow: "0 0 8px rgba(239, 93, 96,0.6)",
           flexShrink: 0,
         }}
       />
@@ -2293,7 +2293,7 @@ function Wireframe() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.18), transparent 60%)",
+            "radial-gradient(60% 80% at 90% 10%, rgba(239, 93, 96,0.18), transparent 60%)",
         }}
       />
       <div
@@ -2344,7 +2344,7 @@ function Wireframe() {
           width: "34%",
           borderRadius: 10,
           background:
-            "linear-gradient(160deg, rgba(199,247,81,0.10), rgba(255,255,255,0.03))",
+            "linear-gradient(160deg, rgba(239, 93, 96,0.10), rgba(255,255,255,0.03))",
           border: "0.5px solid rgba(255,255,255,0.10)",
         }}
       />
@@ -2626,7 +2626,7 @@ function ServicesAccordion() {
               inset: 0,
               pointerEvents: "none",
               background:
-                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.08), transparent 60%)",
+                "radial-gradient(45% 40% at 95% 5%, rgba(239, 93, 96,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(239, 93, 96,0.08), transparent 60%)",
             }}
           />
           <div
