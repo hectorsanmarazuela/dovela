@@ -1742,7 +1742,7 @@ function Testimonials() {
                   <div style={{ fontSize: 12, color: "#888" }}>{t.r}</div>
                 </div>
               </div>
-              <p className="mt-4" style={{ fontSize: 14, color: "#0A0A0A" }}>
+              <p className="mt-4" style={{ fontSize: "clamp(17px, 1.8vw, 25px)", color: "#0A0A0A" }}>
                 {t.q}
               </p>
             </div>
