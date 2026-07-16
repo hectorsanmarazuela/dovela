@@ -498,14 +498,14 @@ function Hero() {
       {/* Masked dark background with notch cut-out at bottom-right (desktop only) */}
       <style>{`
         .hero-notch-mask {
-          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L292 0 L292 296 L0 296 L0 32 Q0 0 32 0 Z'/></svg>");
-          -webkit-mask-position: 0 0, 100% 100%;
-          -webkit-mask-size: 100% 100%, 292px 296px;
+          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 304'><path fill='black' d='M40 0 L300 0 L300 304 L0 304 L0 40 Q0 0 40 0 Z'/></svg>");
+          -webkit-mask-position: 0 0, calc(100% + 4px) calc(100% + 4px);
+          -webkit-mask-size: 100% 100%, 300px 304px;
           -webkit-mask-repeat: no-repeat, no-repeat;
           -webkit-mask-composite: xor;
-          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L292 0 L292 296 L0 296 L0 32 Q0 0 32 0 Z'/></svg>");
-          mask-position: 0 0, 100% 100%;
-          mask-size: 100% 100%, 292px 296px;
+          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 304'><path fill='black' d='M40 0 L300 0 L300 304 L0 304 L0 40 Q0 0 40 0 Z'/></svg>");
+          mask-position: 0 0, calc(100% + 4px) calc(100% + 4px);
+          mask-size: 100% 100%, 300px 304px;
           mask-repeat: no-repeat, no-repeat;
           mask-composite: exclude;
         }
