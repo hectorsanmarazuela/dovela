@@ -403,7 +403,7 @@ export function ServicioDetail(props: Props) {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
           <div
             className="label-eyebrow"
-            style={{ color: "#C7F751", marginBottom: 32 }}
+            style={{ color: "rgba(24,24,27,0.6)", marginBottom: 32 }}
           >
             {props.eyebrow}
           </div>
@@ -411,13 +411,13 @@ export function ServicioDetail(props: Props) {
           {/* Row 1: number + title (kept to 2 lines) */}
           <div
             className="grid grid-cols-1 lg:grid-cols-[minmax(80px,8%)_1fr] gap-6 lg:gap-10 items-start"
-            style={{ paddingBottom: 48, borderBottom: "0.5px solid rgba(255,255,255,0.10)" }}
+            style={{ paddingBottom: 48, borderBottom: "0.5px solid rgba(24,24,27,0.10)" }}
           >
             <span
               style={{
                 fontSize: 14,
                 letterSpacing: "0.14em",
-                color: "#C7F751",
+                color: "#18181B",
                 fontVariantNumeric: "tabular-nums",
                 paddingTop: 20,
               }}
@@ -431,7 +431,7 @@ export function ServicioDetail(props: Props) {
                 letterSpacing: "-0.035em",
                 lineHeight: 0.95,
                 margin: 0,
-                color: "#FAFAFA",
+                color: "#18181B",
                 textWrap: "balance" as unknown as undefined,
               }}
             >
@@ -450,7 +450,7 @@ export function ServicioDetail(props: Props) {
                 style={{
                   fontSize: 22,
                   lineHeight: 1.4,
-                  color: "#FAFAFA",
+                  color: "#18181B",
                   marginBottom: 18,
                   fontWeight: 500,
                 }}
@@ -463,7 +463,7 @@ export function ServicioDetail(props: Props) {
                   style={{
                     fontSize: 15,
                     lineHeight: 1.65,
-                    color: "rgba(250,250,250,0.6)",
+                    color: "rgba(24,24,27,0.65)",
                     marginBottom: 10,
                   }}
                 >
