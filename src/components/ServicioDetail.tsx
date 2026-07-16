@@ -39,7 +39,7 @@ function PackBanner() {
           position: "relative",
           background: "linear-gradient(90deg, rgba(15,15,15,0.85) 0%, rgba(20,20,20,0.85) 100%)",
           backdropFilter: "blur(6px)",
-          border: "0.5px solid rgba(239, 93, 96,0.35)",
+          border: "0.5px solid rgba(199,247,81,0.35)",
           borderRadius: 20,
           padding: "22px clamp(20px, 3vw, 32px)",
           overflow: "hidden",
@@ -51,7 +51,7 @@ function PackBanner() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(60% 100% at 100% 50%, rgba(239, 93, 96,0.15), transparent 65%)",
+              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.15), transparent 65%)",
             pointerEvents: "none",
           }}
         />
@@ -63,8 +63,8 @@ function PackBanner() {
               gap: 10,
               padding: "6px 12px",
               borderRadius: 999,
-              background: "rgba(239, 93, 96,0.14)",
-              color: "#EF5D60",
+              background: "rgba(199,247,81,0.14)",
+              color: "#C7F751",
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: "0.14em",
@@ -72,7 +72,7 @@ function PackBanner() {
               width: "fit-content",
             }}
           >
-            <span style={{ width: 6, height: 6, borderRadius: 999, background: "#EF5D60" }} />
+            <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
             Pack completo · Ahorra
           </div>
           <p
@@ -93,7 +93,7 @@ function PackBanner() {
             style={{
               padding: "12px 12px 12px 20px",
               borderRadius: 999,
-              background: "#EF5D60",
+              background: "#C7F751",
               color: "#0A0A0A",
               fontSize: 14,
               fontWeight: 700,
@@ -108,7 +108,7 @@ function PackBanner() {
                 height: 28,
                 borderRadius: 999,
                 background: "#0A0A0A",
-                color: "#EF5D60",
+                color: "#C7F751",
                 display: "inline-grid",
                 placeItems: "center",
               }}
@@ -128,13 +128,7 @@ function PackBanner() {
 function PortfolioMarquee() {
   const items = [...GALLERY, ...GALLERY];
   return (
-    <section className="bg-secondary-soft bg-grain relative" style={{ padding: "120px 0 60px" }}>
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-24 pointer-events-none"
-        style={{ background: "linear-gradient(180deg, rgba(10,10,10,0.06), transparent)" }}
-      />
-
+    <section style={{ background: "#FAFAFA", padding: "120px 0 60px" }}>
       <div className="max-w-[1480px] mx-auto px-6 md:px-10 mb-12">
         <div className="flex items-end justify-between gap-6 flex-wrap">
           <div>
@@ -214,7 +208,7 @@ function PortfolioMarquee() {
                 <span style={{ fontWeight: 600 }}>{it.label}</span>
                 <span
                   style={{
-                    color: "#EF5D60",
+                    color: "#C7F751",
                     fontSize: 11,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -246,7 +240,7 @@ function HeroLabelPill({ text }: { text: string }) {
         fontSize: 11,
         letterSpacing: "0.12em",
         textTransform: "uppercase",
-        color: "#EF5D60",
+        color: "#C7F751",
         zIndex: 2,
       }}
     >
@@ -346,7 +340,7 @@ function SeoImageFader({ label }: { label: string }) {
               height: 8,
               borderRadius: 999,
               border: "none",
-              background: i === idx ? "#EF5D60" : "rgba(250,250,250,0.35)",
+              background: i === idx ? "#C7F751" : "rgba(250,250,250,0.35)",
               cursor: "pointer",
               transition: "all 300ms ease",
               padding: 0,
@@ -381,7 +375,7 @@ export function ServicioDetail(props: Props) {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(45% 35% at 92% 5%, rgba(239, 93, 96,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(239, 93, 96,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(239, 93, 96,0.10), transparent 70%)",
+              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.10), transparent 70%)",
           }}
         />
         <div
@@ -401,7 +395,7 @@ export function ServicioDetail(props: Props) {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
           <div
             className="label-eyebrow"
-            style={{ color: "#EF5D60", marginBottom: 32 }}
+            style={{ color: "#C7F751", marginBottom: 32 }}
           >
             {props.eyebrow}
           </div>
@@ -415,7 +409,7 @@ export function ServicioDetail(props: Props) {
               style={{
                 fontSize: 14,
                 letterSpacing: "0.14em",
-                color: "#EF5D60",
+                color: "#C7F751",
                 fontVariantNumeric: "tabular-nums",
                 paddingTop: 20,
               }}
