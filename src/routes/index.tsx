@@ -1438,16 +1438,16 @@ function CtaBanner() {
         <div
           className="relative overflow-hidden px-6 py-14 md:px-14 md:py-[72px]"
           style={{
-            background: "#121214",
+            background: "#F0F0ED",
             borderRadius: 24,
           }}
         >
           <div
             aria-hidden
-            className="absolute inset-0 opacity-[0.06] pointer-events-none"
+            className="absolute inset-0 opacity-[0.08] pointer-events-none"
             style={{
               backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
+                "radial-gradient(rgba(24,24,27,0.6) 1px, transparent 1px)",
               backgroundSize: "3px 3px",
             }}
           />
@@ -1456,19 +1456,32 @@ function CtaBanner() {
             aria-hidden
             className="absolute pointer-events-none"
             style={{
-              width: 380,
-              height: 380,
-              right: -120,
-              top: -140,
+              width: 520,
+              height: 520,
+              right: -160,
+              top: -180,
               background:
-                "radial-gradient(circle, rgba(199,247,81,0.22), rgba(199,247,81,0) 65%)",
-              filter: "blur(20px)",
+                "radial-gradient(circle, rgba(199,247,81,0.55), rgba(199,247,81,0) 65%)",
+              filter: "blur(30px)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              width: 420,
+              height: 420,
+              left: -140,
+              bottom: -160,
+              background:
+                "radial-gradient(circle, rgba(199,247,81,0.35), rgba(199,247,81,0) 65%)",
+              filter: "blur(30px)",
             }}
           />
           <div className="relative flex flex-col items-center text-center">
             <h2
               className="label-eyebrow mb-6"
-              style={{ color: "rgba(250,250,250,0.55)" }}
+              style={{ color: "rgba(24,24,27,0.6)" }}
             >
               Agencia web local en Segovia
             </h2>
@@ -1476,7 +1489,7 @@ function CtaBanner() {
               className="h-display"
               style={{
                 fontSize: "clamp(40px, 6vw, 76px)",
-                color: "#FAFAFA",
+                color: "#18181B",
                 maxWidth: "16ch",
                 marginBottom: 40,
                 margin: 0,
@@ -1486,7 +1499,7 @@ function CtaBanner() {
               <span
                 style={{
                   background: "#C7F751",
-                  color: "#0A0A0A",
+                  color: "#18181B",
                   padding: "0 0.18em",
                   borderRadius: 6,
                   boxDecorationBreak: "clone",
@@ -1499,7 +1512,7 @@ function CtaBanner() {
             </p>
             <a
               href="#contacto"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#C7F751] text-[#18181B] hover:brightness-95 transition"
               style={{
                 padding: "14px 14px 14px 26px",
                 fontWeight: 600,
@@ -1511,11 +1524,11 @@ function CtaBanner() {
               <span style={{ whiteSpace: "nowrap" }}>
                 Reserva una llamada gratuita
               </span>
-              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+              <ArrowCircle size={32} bg="#18181B" fg="#C7F751" />
             </a>
             <div
               style={{
-                color: "rgba(250,250,250,0.5)",
+                color: "rgba(24,24,27,0.6)",
                 fontSize: 13,
                 marginTop: 16,
               }}
