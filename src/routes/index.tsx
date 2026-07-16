@@ -167,7 +167,7 @@ function Nav() {
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
           padding: scrolled ? "0 8px 0 16px" : "0 10px 0 20px",
-          maxWidth: scrolled ? 1180 : 1480,
+          maxWidth: scrolled ? 1180 : "none",
         }}
       >
 
