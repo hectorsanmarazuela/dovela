@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import jose2 from "@/assets/jose2.png.asset.json";
 
@@ -495,14 +496,17 @@ function Hero() {
         className="relative w-full"
         style={{ minHeight: "calc(100vh - 120px)" }}
       >
-      {/* Dark hero container with a clean concave notch cut at bottom-right (desktop only) */}
+      {/* Dark hero container with inverted-radius notch cut at bottom-right (desktop only) */}
       <div
         aria-hidden
-        className="absolute inset-0 overflow-hidden"
+        className="hero-notch-shell absolute inset-0 overflow-hidden"
         style={{
           backgroundColor: "#121214",
+          "--hero-bg": "#121214",
+          "--notch-width": "300px",
+          "--notch-height": "304px",
           borderRadius: 28,
-        }}
+        } as CSSProperties}
       >
         <div
           aria-hidden
@@ -513,19 +517,17 @@ function Hero() {
             backgroundSize: "3px 3px",
           }}
         />
-        {/* Notch: white rectangle punched into the bottom-right, with a rounded
-            inner corner (top-left) giving a perfect concave curve. The other two
-            visible corners are clipped by the container's own 28px radius. */}
+        {/* Notch: white rectangle punched into the bottom-right. The concave dark
+            corners are drawn by .hero-notch-shell::before and ::after. */}
         <div
           aria-hidden
           className="hidden md:block absolute"
           style={{
-            right: -1,
-            bottom: -1,
-            width: 300,
-            height: 304,
+            right: 0,
+            bottom: 0,
+            width: "var(--notch-width)",
+            height: "var(--notch-height)",
             background: "#FAFAFA",
-            borderTopLeftRadius: 40,
           }}
         />
       </div>
