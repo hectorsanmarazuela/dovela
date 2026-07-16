@@ -37,7 +37,7 @@ function PackBanner() {
       <div
         style={{
           position: "relative",
-          background: "linear-gradient(90deg, rgba(15,15,15,0.85) 0%, rgba(20,20,20,0.85) 100%)",
+          background: "linear-gradient(90deg, rgba(24,24,27,0.85) 0%, rgba(30,30,34,0.85) 100%)",
           backdropFilter: "blur(6px)",
           border: "0.5px solid rgba(199,247,81,0.35)",
           borderRadius: 20,
@@ -366,7 +366,7 @@ export function ServicioDetail(props: Props) {
       <div
         style={{
           position: "relative",
-          background: "#0A0A0A",
+          background: "#121214",
           color: "#FAFAFA",
           borderRadius: 28,
           paddingTop: 72,
