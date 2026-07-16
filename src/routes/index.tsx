@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import jose2 from "@/assets/jose2.png.asset.json";
 
@@ -505,7 +506,7 @@ function Hero() {
           "--notch-width": "300px",
           "--notch-height": "304px",
           borderRadius: 28,
-        } as React.CSSProperties}
+        } as CSSProperties}
       >
         <div
           aria-hidden
