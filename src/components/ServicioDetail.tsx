@@ -517,7 +517,9 @@ export function ServicioDetail(props: Props) {
         <div className="relative">
           <PackBanner />
         </div>
+      </div>
       </section>
+
 
       {/* Portfolio marquee */}
       <PortfolioMarquee />
