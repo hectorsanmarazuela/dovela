@@ -120,9 +120,10 @@ function Nav() {
     const onScroll = () => {
       const y = window.scrollY;
       const dy = y - lastScrollY.current;
-      if (y > 80 && dy > 0) {
+      const isDesktop = window.innerWidth >= 768;
+      if (isDesktop && y > 80 && dy > 0) {
         setHidden(true);
-      } else if (dy < 0) {
+      } else if (dy < 0 || !isDesktop) {
         setHidden(false);
       }
       setScrolled(y > 8);
@@ -131,6 +132,7 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   const links: Array<{
     label: string;
     href: string;
@@ -152,21 +154,23 @@ function Nav() {
   ];
   const isServiciosActive = pathname.startsWith("/servicios");
   const borderColor = "#D4D4D4";
-  const pillBorder = `1px solid ${borderColor}`;
+  const pillBorder = `1px solid ${scrolled ? borderColor : "transparent"}`;
   return (
     <header
       className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-300 ease-[cubic-bezier(.7,0,.2,1)]"
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto max-w-[1480px] transition-[border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(.4,0,.2,1)]"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-all duration-[500ms] ease-[cubic-bezier(.4,0,.2,1)]"
         style={{
           border: `1px solid ${scrolled ? borderColor : "transparent"}`,
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
-          padding: "0 10px 0 20px",
+          padding: scrolled ? "0 8px 0 16px" : "0 10px 0 20px",
+          maxWidth: scrolled ? 1180 : 1480,
         }}
       >
+
 
         {/* Mobile hamburger (left) */}
         <button
@@ -494,12 +498,12 @@ function Hero() {
       {/* Masked dark background with notch cut-out at bottom-right (desktop only) */}
       <style>{`
         .hero-notch-mask {
-          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>");
+          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L292 0 L292 296 L0 296 L0 32 Q0 0 32 0 Z'/></svg>");
           -webkit-mask-position: 0 0, 100% 100%;
           -webkit-mask-size: 100% 100%, 292px 296px;
           -webkit-mask-repeat: no-repeat, no-repeat;
           -webkit-mask-composite: xor;
-          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>");
+          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L292 0 L292 296 L0 296 L0 32 Q0 0 32 0 Z'/></svg>");
           mask-position: 0 0, 100% 100%;
           mask-size: 100% 100%, 292px 296px;
           mask-repeat: no-repeat, no-repeat;
@@ -528,18 +532,16 @@ function Hero() {
         />
       </div>
 
-
-
-
+      {/* Date + agency label — desktop only */}
       <div
-        className="absolute"
+        className="absolute hidden md:block"
         style={{ top: 110, left: 40, color: "rgba(255,255,255,0.4)", fontSize: 12 }}
       >
         08/06/2026
       </div>
 
       <div
-        className="absolute text-right max-w-[320px]"
+        className="absolute text-right max-w-[320px] hidden md:block"
         style={{ top: 110, right: 40, color: "rgba(255,255,255,0.5)", fontSize: 12 }}
       >
         Agencia de diseño web y SEO local — Segovia, España
@@ -575,9 +577,92 @@ function Hero() {
         </div>
       </div>
 
-      {/* Centered H1 */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%]" style={{ top: "50%", transform: "translateY(-50%)" }}>
-        <h1 className="label-eyebrow" style={{ marginBottom: 16 }}>
+      {/* Mobile flow: title + copy + CTAs + integrated card (no absolute positioning) */}
+      <div className="relative md:hidden flex flex-col" style={{ padding: "40px 24px 0" }}>
+        <h1 className="label-eyebrow" style={{ marginBottom: 16, fontSize: 14 }}>
+          Diseño web y SEO local en Segovia
+        </h1>
+        <p
+          className="h-display"
+          style={{ fontSize: "clamp(48px, 12vw, 72px)", color: "#FAFAFA", margin: 0 }}
+        >
+          <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
+            Si te buscan
+          </span>{" "}
+          <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
+            que te encuentren.
+          </span>
+        </p>
+        <p
+          style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, lineHeight: 1.5, marginTop: 28 }}
+        >
+          Diseño web y SEO en Segovia para negocios que quieren más clientes.
+        </p>
+        <div className="flex flex-wrap items-center gap-3 mt-6">
+          <a
+            href="#contacto"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+            style={{ padding: "14px 20px", fontWeight: 600, fontSize: 14 }}
+          >
+            Reserva una llamada gratuita
+            <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+          </a>
+        </div>
+        <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, marginTop: 16 }}>
+          20 minutos, sin compromiso.
+        </div>
+
+        {/* Fontanería card integrated at bottom of hero on mobile */}
+        <div
+          className="flex flex-col mt-10"
+          style={{
+            background: "#FAFAFA",
+            borderRadius: 18,
+            padding: 16,
+            marginBottom: 16,
+          }}
+        >
+          <div
+            style={{
+              aspectRatio: "16 / 9",
+              backgroundColor: "#2A2A2A",
+              borderRadius: 10,
+            }}
+          />
+          <div className="mt-3 flex items-center justify-between gap-2">
+            <div style={{ fontSize: 14, fontWeight: 500, color: "#0A0A0A" }}>
+              Fontanería Valverde — Segovia
+            </div>
+          </div>
+          <div className="mt-2">
+            <span
+              className="inline-block rounded-full"
+              style={{
+                border: "0.5px solid #888",
+                color: "#888",
+                fontSize: 11,
+                padding: "2px 10px",
+              }}
+            >
+              SEO Local
+            </span>
+          </div>
+          <div className="mt-4 flex items-center gap-2">
+            <a
+              href="#auditoria"
+              className="rounded-full bg-[#121214] text-[#FAFAFA]"
+              style={{ padding: "8px 16px", fontSize: 13, fontWeight: 600 }}
+            >
+              Pedir auditoría gratuita
+            </a>
+            <ArrowCircle size={30} bg="#C7F751" fg="#121214" />
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop H1 */}
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: "50%", transform: "translateY(-50%)" }}>
+        <h1 className="label-eyebrow" style={{ marginBottom: 16, fontSize: 14 }}>
           Diseño web y SEO local en Segovia
         </h1>
         <p
@@ -593,11 +678,11 @@ function Hero() {
         </p>
       </div>
 
-      {/* Bottom-left copy + CTAs */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px]" style={{ bottom: 48 }}>
+      {/* Desktop bottom-left copy + CTAs */}
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[640px] hidden md:block" style={{ bottom: 48 }}>
         <p
           className="max-w-[560px]"
-          style={{ color: "rgba(255,255,255,0.7)", fontSize: 16 }}
+          style={{ color: "rgba(255,255,255,0.75)", fontSize: 19, lineHeight: 1.5 }}
         >
           Diseño web y SEO en Segovia para negocios que quieren más clientes.
         </p>
@@ -627,15 +712,13 @@ function Hero() {
         </div>
         <div
           className="mt-4"
-          style={{ color: "rgba(255,255,255,0.45)", fontSize: 12 }}
+          style={{ color: "rgba(255,255,255,0.55)", fontSize: 14 }}
         >
           20 minutos, sin compromiso.
         </div>
       </div>
 
-
-
-      {/* Floating card sits inside the mask cut-out (16px from container's right/bottom) */}
+      {/* Floating card sits inside the mask cut-out (desktop only) */}
       <div
         className="absolute hidden md:flex flex-col"
         style={{
@@ -691,6 +774,7 @@ function Hero() {
 
   );
 }
+
 
 /* ---------- POR QUÉ DOVELA ---------- */
 
