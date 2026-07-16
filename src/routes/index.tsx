@@ -1089,10 +1089,10 @@ function Services() {
 /* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
-  { name: "Fontanería Valverde", pills: ["Diseño web", "SEO Local"], cat: "SEO Local" },
-  { name: "Clínica Montero Psicología", pills: ["Diseño web"], cat: "Diseño web" },
-  { name: "Viento de Ladera", pills: ["SEO Local", "GBP"], cat: "SEO Local" },
-  { name: "Electricidad Segura SL", pills: ["Diseño web", "SEO Local"], cat: "Diseño web" },
+  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoImg.url },
+  { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url },
+  { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url },
+  { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url },
 ];
 
 function Projects() {
@@ -1125,53 +1125,80 @@ function ProjectCard({
   name,
   pills,
   cat,
+  img,
 }: {
   name: string;
   pills: string[];
   cat: string;
+  img: string;
 }) {
+  const [hovering, setHovering] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
   return (
     <div className="group">
-      <ImagePlaceholder ratio="4 / 3" radius={14}>
-        <div className="absolute top-4 left-4 flex flex-col gap-[6px]">
+      <div
+        className="relative w-full overflow-hidden md:cursor-none"
+        style={{ aspectRatio: "4 / 3", backgroundColor: "#2A2A2A", borderRadius: 14 }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onMouseMove={(e) => {
+          const r = e.currentTarget.getBoundingClientRect();
+          setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
+        }}
+      >
+        <img
+          src={img}
+          alt={name}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        />
+        {/* Static arrow — mobile only */}
+        <div className="absolute top-4 right-4 md:hidden">
+          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
+        </div>
+        {/* Custom cursor — desktop only */}
+        <div
+          aria-hidden
+          className="hidden md:grid pointer-events-none absolute place-items-center rounded-full text-[#0A0A0A] transition-opacity duration-200 ease-out"
+          style={{
+            width: 72,
+            height: 72,
+            background: "#C7F751",
+            top: pos.y,
+            left: pos.x,
+            transform: "translate(-50%, -50%)",
+            opacity: hovering ? 1 : 0,
+            fontSize: 26,
+            fontWeight: 600,
+            lineHeight: 1,
+          }}
+        >
+          ↗
+        </div>
+      </div>
+      <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
+        <div style={{ fontSize: 15, fontWeight: 500, color: "#0A0A0A" }}>{name}</div>
+        <div className="flex gap-2 flex-wrap">
           {pills.map((p) => (
             <span
               key={p}
-              className="rounded-full"
+              className="rounded-full whitespace-nowrap"
               style={{
-                background: "rgba(255,255,255,0.15)",
-                border: "0.5px solid rgba(255,255,255,0.3)",
-                color: "#FAFAFA",
-                fontSize: 11,
-                fontWeight: 500,
-                padding: "4px 12px",
+                border: "0.5px solid #888",
+                color: "#888",
+                fontSize: 12,
+                padding: "3px 12px",
               }}
             >
               {p}
             </span>
           ))}
         </div>
-        <div className="absolute top-4 right-4">
-          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
-        </div>
-      </ImagePlaceholder>
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <div style={{ fontSize: 15, fontWeight: 500, color: "#0A0A0A" }}>{name}</div>
-        <span
-          className="rounded-full whitespace-nowrap"
-          style={{
-            border: "0.5px solid #888",
-            color: "#888",
-            fontSize: 12,
-            padding: "3px 12px",
-          }}
-        >
-          {cat}
-        </span>
       </div>
     </div>
   );
 }
+
 
 /* ---------- PLAN ---------- */
 
