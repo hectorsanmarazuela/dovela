@@ -1135,13 +1135,13 @@ function Plan() {
           <div
             className="flex flex-col"
             style={{
-              background: "#0A0A0A",
+              background: "#C7F751",
               borderRadius: 20,
               padding: 32,
-              color: "#FAFAFA",
+              color: "#121214",
             }}
           >
-            <h3 className="h-display" style={{ ...titleStyle, color: "#FAFAFA" }}>
+            <h3 className="h-display" style={{ ...titleStyle, color: "#121214" }}>
               3 sencillos pasos
             </h3>
             <ol
@@ -1155,8 +1155,8 @@ function Plan() {
                     style={{
                       width: 32,
                       height: 32,
-                      background: "#C7F751",
-                      color: "#0A0A0A",
+                      background: "#121214",
+                      color: "#C7F751",
                       fontSize: 13,
                       fontWeight: 600,
                     }}
@@ -1166,7 +1166,7 @@ function Plan() {
                   <span
                     style={{
                       fontSize: 16,
-                      color: "rgba(250,250,250,0.92)",
+                      color: "rgba(18,18,20,0.88)",
                       lineHeight: 1.5,
                       paddingTop: 4,
                     }}
@@ -1178,11 +1178,11 @@ function Plan() {
             </ol>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start bg-[#121214] text-[#C7F751] hover:brightness-110 transition"
               style={{ padding: "12px 20px", fontWeight: 600, fontSize: 14 }}
             >
               Reserva tu llamada
-              <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+              <ArrowCircle size={28} bg="#C7F751" fg="#121214" />
             </a>
           </div>
 
