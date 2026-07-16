@@ -1279,7 +1279,7 @@ function Plan() {
                   </span>
                   <span
                     style={{
-                      fontSize: 16,
+                      fontSize: 19,
                       color: "rgba(18,18,20,0.88)",
                       lineHeight: 1.5,
                       paddingTop: 4,
