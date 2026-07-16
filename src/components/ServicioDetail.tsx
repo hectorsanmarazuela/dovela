@@ -37,9 +37,9 @@ function PackBanner() {
       <div
         style={{
           position: "relative",
-          background: "linear-gradient(90deg, rgba(24,24,27,0.85) 0%, rgba(30,30,34,0.85) 100%)",
+          background: "rgba(255,255,255,0.65)",
           backdropFilter: "blur(6px)",
-          border: "0.5px solid rgba(199,247,81,0.35)",
+          border: "0.5px solid rgba(24,24,27,0.12)",
           borderRadius: 20,
           padding: "22px clamp(20px, 3vw, 32px)",
           overflow: "hidden",
@@ -51,7 +51,7 @@ function PackBanner() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.15), transparent 65%)",
+              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.35), transparent 65%)",
             pointerEvents: "none",
           }}
         />
@@ -63,8 +63,8 @@ function PackBanner() {
               gap: 10,
               padding: "6px 12px",
               borderRadius: 999,
-              background: "rgba(199,247,81,0.14)",
-              color: "#C7F751",
+              background: "rgba(24,24,27,0.06)",
+              color: "#18181B",
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: "0.14em",
@@ -79,11 +79,11 @@ function PackBanner() {
             style={{
               fontSize: 15,
               lineHeight: 1.5,
-              color: "rgba(250,250,250,0.85)",
+              color: "rgba(24,24,27,0.75)",
               margin: 0,
             }}
           >
-            <strong style={{ color: "#FAFAFA" }}>¿Y si lo hacemos todo junto?</strong>{" "}
+            <strong style={{ color: "#18181B" }}>¿Y si lo hacemos todo junto?</strong>{" "}
             Diseño web + SEO bajo la misma dirección: mejor precio, mejor
             coordinación y mucho más ROI que contratarlos por separado.
           </p>
@@ -94,7 +94,7 @@ function PackBanner() {
               padding: "12px 12px 12px 20px",
               borderRadius: 999,
               background: "#C7F751",
-              color: "#0A0A0A",
+              color: "#18181B",
               fontSize: 14,
               fontWeight: 700,
               whiteSpace: "nowrap",
@@ -107,7 +107,7 @@ function PackBanner() {
                 width: 28,
                 height: 28,
                 borderRadius: 999,
-                background: "#0A0A0A",
+                background: "#18181B",
                 color: "#C7F751",
                 display: "inline-grid",
                 placeItems: "center",
