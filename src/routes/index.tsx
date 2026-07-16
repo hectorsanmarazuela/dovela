@@ -495,27 +495,10 @@ function Hero() {
         className="relative w-full"
         style={{ minHeight: "calc(100vh - 120px)" }}
       >
-      {/* Masked dark background with notch cut-out at bottom-right (desktop only) */}
-      <style>{`
-        .hero-notch-mask {
-          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 304'><path fill='black' d='M40 0 L300 0 L300 304 L0 304 L0 40 Q0 0 40 0 Z'/></svg>");
-          -webkit-mask-position: 0 0, calc(100% + 4px) calc(100% + 4px);
-          -webkit-mask-size: 100% 100%, 300px 304px;
-          -webkit-mask-repeat: no-repeat, no-repeat;
-          -webkit-mask-composite: xor;
-          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 304'><path fill='black' d='M40 0 L300 0 L300 304 L0 304 L0 40 Q0 0 40 0 Z'/></svg>");
-          mask-position: 0 0, calc(100% + 4px) calc(100% + 4px);
-          mask-size: 100% 100%, 300px 304px;
-          mask-repeat: no-repeat, no-repeat;
-          mask-composite: exclude;
-        }
-        @media (max-width: 767px) {
-          .hero-notch-mask { -webkit-mask-image: none; mask-image: none; }
-        }
-      `}</style>
+      {/* Dark hero container with a clean concave notch cut at bottom-right (desktop only) */}
       <div
         aria-hidden
-        className="absolute inset-0 hero-notch-mask"
+        className="absolute inset-0 overflow-hidden"
         style={{
           backgroundColor: "#121214",
           borderRadius: 28,
@@ -530,7 +513,23 @@ function Hero() {
             backgroundSize: "3px 3px",
           }}
         />
+        {/* Notch: white rectangle punched into the bottom-right, with a rounded
+            inner corner (top-left) giving a perfect concave curve. The other two
+            visible corners are clipped by the container's own 28px radius. */}
+        <div
+          aria-hidden
+          className="hidden md:block absolute"
+          style={{
+            right: -1,
+            bottom: -1,
+            width: 300,
+            height: 304,
+            background: "#FAFAFA",
+            borderTopLeftRadius: 40,
+          }}
+        />
       </div>
+
 
       {/* Date + agency label — desktop only */}
       <div
