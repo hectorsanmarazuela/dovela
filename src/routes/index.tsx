@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import jose2 from "@/assets/jose2.png.asset.json";
+
 import ichoImg from "@/assets/icho.webp.asset.json";
 import solaraImg from "@/assets/solara.webp.asset.json";
 import fontaneroImg from "@/assets/fontanero.webp.asset.json";
