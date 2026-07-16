@@ -2698,8 +2698,8 @@ function ServiceRow({
                 <div className="min-w-0">
                   <p
                     style={{
-                      fontSize: 16,
-                      lineHeight: 1.55,
+                      fontSize: "clamp(19px, 2.2vw, 29px)",
+                      lineHeight: 1.5,
                       color: "#18181B",
                       marginBottom: 12,
                     }}
@@ -2710,7 +2710,7 @@ function ServiceRow({
                     <p
                       key={i}
                       style={{
-                        fontSize: 14,
+                        fontSize: "clamp(17px, 1.8vw, 25px)",
                         lineHeight: 1.6,
                         color: "rgba(24,24,27,0.6)",
                         marginBottom: 10,
