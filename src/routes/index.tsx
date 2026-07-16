@@ -2053,7 +2053,7 @@ function ContactForm() {
     >
       <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] gap-12 lg:gap-16">
         <div className="min-w-0">
-          <h2 className="label-eyebrow mb-8">Contacto — Dovela Estudio Segovia</h2>
+          <h2 className="label-eyebrow mb-8" style={{ fontSize: 13 }}>Contacto — Dovela Estudio Segovia</h2>
           <p
             className="h-display text-[#0A0A0A]"
             style={{ fontSize: "clamp(44px, 6vw, 84px)", margin: 0 }}
@@ -2062,8 +2062,9 @@ function ContactForm() {
           </p>
           <p
             className="mt-8"
-            style={{ fontSize: "clamp(19px, 2.2vw, 29px)", color: "#888", maxWidth: 620 }}
+            style={{ fontSize: 16, color: "#888", maxWidth: 620, lineHeight: 1.6 }}
           >
+
             Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
             compromiso.
           </p>
