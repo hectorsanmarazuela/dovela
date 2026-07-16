@@ -60,36 +60,6 @@
   line-height: 1;
 }
 
-.hero-notch-shell::before,
-.hero-notch-shell::after {
-  content: "";
-  position: absolute;
-  display: none;
-  width: 40px;
-  height: 40px;
-  right: var(--notch-width);
-  border-bottom-right-radius: 40px;
-  background-color: transparent;
-  box-shadow: 20px 20px 0 20px var(--hero-bg);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hero-notch-shell::before {
-  bottom: var(--notch-height);
-}
-
-.hero-notch-shell::after {
-  bottom: 0;
-}
-
-@media (min-width: 768px) {
-  .hero-notch-shell::before,
-  .hero-notch-shell::after {
-    display: block;
-  }
-}
-
 /* Body text scaling utilities.
    .body-scale-80  → +20% mobile, +80% desktop (default rule)
    .body-scale-20  → +20% both viewports (¿Hablamos de tu proyecto? exception)
