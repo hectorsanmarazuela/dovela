@@ -2670,11 +2670,11 @@ function ServicesAccordion() {
         <div
           style={{
             position: "relative",
-            background: "#121214",
+            background: "#F0F0ED",
             borderRadius: 32,
             padding: "72px clamp(24px, 4vw, 72px) 72px",
             overflow: "hidden",
-            boxShadow: "0 30px 80px -20px rgba(10,10,10,0.35)",
+            boxShadow: "0 30px 80px -30px rgba(10,10,10,0.15)",
           }}
         >
           <div
@@ -2684,7 +2684,7 @@ function ServicesAccordion() {
               inset: 0,
               pointerEvents: "none",
               background:
-                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.08), transparent 60%)",
+                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.28), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.20), transparent 60%)",
             }}
           />
           <div
@@ -2692,11 +2692,10 @@ function ServicesAccordion() {
             style={{
               position: "absolute",
               inset: 0,
-              opacity: 0.35,
-              mixBlendMode: "overlay",
+              opacity: 0.5,
               pointerEvents: "none",
               backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+                "radial-gradient(rgba(24,24,27,0.06) 1px, transparent 1px)",
               backgroundSize: "3px 3px",
             }}
           />
@@ -2705,7 +2704,7 @@ function ServicesAccordion() {
             <h2
               className="label-eyebrow"
               style={{
-                color: "#C7F751",
+                color: "rgba(24,24,27,0.6)",
                 marginBottom: 40,
               }}
             >
@@ -2716,19 +2715,19 @@ function ServicesAccordion() {
               style={{
                 fontSize: "clamp(36px, 5.2vw, 76px)",
                 lineHeight: 1.02,
-                color: "#FAFAFA",
+                color: "#18181B",
                 letterSpacing: "-0.02em",
                 marginBottom: 56,
                 margin: 0,
                 maxWidth: 1100,
               }}
             >
-              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Somos</span>{" "}
-              <span style={{ color: "#FAFAFA", fontWeight: 600 }}>los mejores</span>{" "}
-              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>en...</span>
+              <span style={{ color: "rgba(24,24,27,0.45)", fontWeight: 600 }}>Somos</span>{" "}
+              <span style={{ color: "#18181B", fontWeight: 600 }}>los mejores</span>{" "}
+              <span style={{ color: "rgba(24,24,27,0.45)", fontWeight: 600 }}>en...</span>
             </p>
 
-            <div>
+            <div className="flex flex-col gap-3">
               {SERVICE_BLOCKS.map((s, i) => (
                 <ServiceRow
                   key={s.n}
@@ -2737,7 +2736,6 @@ function ServicesAccordion() {
                   onToggle={() => setOpen(open === i ? null : i)}
                 />
               ))}
-              <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.10)" }} />
             </div>
           </div>
         </div>
