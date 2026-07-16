@@ -448,7 +448,7 @@ export function ServicioDetail(props: Props) {
             <div className="lg:col-span-5 lg:col-start-1 min-w-0">
               <p
                 style={{
-                  fontSize: 22,
+                  fontSize: 28,
                   lineHeight: 1.4,
                   color: "#18181B",
                   marginBottom: 18,
@@ -461,7 +461,7 @@ export function ServicioDetail(props: Props) {
                 <p
                   key={i}
                   style={{
-                    fontSize: 15,
+                    fontSize: 19,
                     lineHeight: 1.65,
                     color: "rgba(24,24,27,0.65)",
                     marginBottom: 10,

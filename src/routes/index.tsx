@@ -167,7 +167,7 @@ function Nav() {
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
           padding: scrolled ? "0 8px 0 16px" : "0 10px 0 20px",
-          maxWidth: scrolled ? 1180 : 1480,
+          maxWidth: scrolled ? 1180 : "none",
         }}
       >
 
@@ -498,14 +498,14 @@ function Hero() {
       {/* Masked dark background with notch cut-out at bottom-right (desktop only) */}
       <style>{`
         .hero-notch-mask {
-          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L292 0 L292 296 L0 296 L0 32 Q0 0 32 0 Z'/></svg>");
-          -webkit-mask-position: 0 0, 100% 100%;
-          -webkit-mask-size: 100% 100%, 292px 296px;
+          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 304'><path fill='black' d='M40 0 L300 0 L300 304 L0 304 L0 40 Q0 0 40 0 Z'/></svg>");
+          -webkit-mask-position: 0 0, calc(100% + 4px) calc(100% + 4px);
+          -webkit-mask-size: 100% 100%, 300px 304px;
           -webkit-mask-repeat: no-repeat, no-repeat;
           -webkit-mask-composite: xor;
-          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L292 0 L292 296 L0 296 L0 32 Q0 0 32 0 Z'/></svg>");
-          mask-position: 0 0, 100% 100%;
-          mask-size: 100% 100%, 292px 296px;
+          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 304'><path fill='black' d='M40 0 L300 0 L300 304 L0 304 L0 40 Q0 0 40 0 Z'/></svg>");
+          mask-position: 0 0, calc(100% + 4px) calc(100% + 4px);
+          mask-size: 100% 100%, 300px 304px;
           mask-repeat: no-repeat, no-repeat;
           mask-composite: exclude;
         }
@@ -813,7 +813,7 @@ function PorQueDovela() {
             </p>
             <p
               className="mt-8"
-              style={{ fontSize: 15, color: "#888", maxWidth: 520 }}
+              style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888", maxWidth: 640 }}
             >
               <span className="block">De la mano de una estrategia</span>
               <span className="block">para posicionarte sobre la competencia.</span>
@@ -927,7 +927,7 @@ function SectionHeader({
         </p>
       </div>
       <div className="lg:col-span-1 flex flex-col justify-end gap-4">
-        <p style={{ fontSize: 15, color: "#888" }}>{paragraph}</p>
+        <p style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888" }}>{paragraph}</p>
         <a
           href="#"
           className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
@@ -1279,7 +1279,7 @@ function Plan() {
                   </span>
                   <span
                     style={{
-                      fontSize: 16,
+                      fontSize: 19,
                       color: "rgba(18,18,20,0.88)",
                       lineHeight: 1.5,
                       paddingTop: 4,
@@ -1347,7 +1347,7 @@ function Plan() {
                   </span>
                   <span
                     style={{
-                      fontSize: 16,
+                      fontSize: 19,
                       color: "#0A0A0A",
                       lineHeight: 1.5,
                       paddingTop: 4,
@@ -1613,7 +1613,7 @@ function CtaBanner() {
             <div
               style={{
                 color: "rgba(24,24,27,0.6)",
-                fontSize: 13,
+                fontSize: "clamp(16px, 1.6vw, 23px)",
                 marginTop: 16,
               }}
             >
@@ -1742,7 +1742,7 @@ function Testimonials() {
                   <div style={{ fontSize: 12, color: "#888" }}>{t.r}</div>
                 </div>
               </div>
-              <p className="mt-4" style={{ fontSize: 14, color: "#0A0A0A" }}>
+              <p className="mt-4" style={{ fontSize: "clamp(17px, 1.8vw, 25px)", color: "#0A0A0A" }}>
                 {t.q}
               </p>
             </div>
@@ -1792,8 +1792,8 @@ function Faq() {
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
         .fq-answbody { padding:6px 26px 22px; }
-        .fq-answbody p { font-size:15px; color:#888888; line-height:1.7; }
-        .fq-qtext { font-size:19px; font-weight:500; color:#0A0A0A; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+        .fq-answbody p { font-size:clamp(18px, 2vw, 27px); color:#888888; line-height:1.7; }
+        .fq-qtext { font-size:clamp(19px, 2vw, 30px); font-weight:500; color:#0A0A0A; line-height:1.35; flex:1; letter-spacing:-0.01em; }
         .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(10,10,10,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
         .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
@@ -1907,8 +1907,8 @@ function LeadMagnet() {
                 className="mt-6"
                 style={{
                   color: "rgba(255,255,255,0.65)",
-                  fontSize: 15,
-                  maxWidth: 520,
+                  fontSize: "clamp(18px, 2vw, 27px)",
+                  maxWidth: 720,
                 }}
               >
                 Introduce el nombre de tu negocio o tu web y descubre si tu
@@ -1918,12 +1918,12 @@ function LeadMagnet() {
               <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {items.map((it) => (
                   <li key={it} className="flex items-start gap-3">
-                    <span style={{ color: "#C7F751", fontSize: 16, lineHeight: 1.4 }}>
+                    <span style={{ color: "#C7F751", fontSize: 18, lineHeight: 1.4 }}>
                       ◆
                     </span>
                     <span
                       style={{
-                        fontSize: 14,
+                        fontSize: "clamp(17px, 1.8vw, 25px)",
                         color: "rgba(255,255,255,0.85)",
                         lineHeight: 1.5,
                       }}
@@ -2021,7 +2021,7 @@ function ContactForm() {
           </p>
           <p
             className="mt-8"
-            style={{ fontSize: 16, color: "#888", maxWidth: 420 }}
+            style={{ fontSize: "clamp(19px, 2.2vw, 29px)", color: "#888", maxWidth: 620 }}
           >
             Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
             compromiso.
@@ -2698,8 +2698,8 @@ function ServiceRow({
                 <div className="min-w-0">
                   <p
                     style={{
-                      fontSize: 16,
-                      lineHeight: 1.55,
+                      fontSize: "clamp(19px, 2.2vw, 29px)",
+                      lineHeight: 1.5,
                       color: "#18181B",
                       marginBottom: 12,
                     }}
@@ -2710,7 +2710,7 @@ function ServiceRow({
                     <p
                       key={i}
                       style={{
-                        fontSize: 14,
+                        fontSize: "clamp(17px, 1.8vw, 25px)",
                         lineHeight: 1.6,
                         color: "rgba(24,24,27,0.6)",
                         marginBottom: 10,

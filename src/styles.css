@@ -44,17 +44,43 @@
 }
 
 @utility label-eyebrow {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--gray);
+}
+@media (min-width: 768px) {
+  .label-eyebrow { font-size: 20px; }
 }
 
 @utility h-display {
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1;
+}
+
+/* Body text scaling utilities.
+   .body-scale-80  → +20% mobile, +80% desktop (default rule)
+   .body-scale-20  → +20% both viewports (¿Hablamos de tu proyecto? exception)
+   .body-scale-25  → +25% both viewports (services URLs first section) */
+@utility body-scale-80 {
+  font-size: 18px;
+  line-height: 1.55;
+}
+@media (min-width: 768px) {
+  .body-scale-80 { font-size: 27px; line-height: 1.45; }
+}
+@utility body-scale-20 {
+  font-size: 18px;
+  line-height: 1.55;
+}
+@utility body-scale-25 {
+  font-size: 19px;
+  line-height: 1.55;
+}
+@media (min-width: 768px) {
+  .body-scale-25 { font-size: 20px; }
 }
 
 @keyframes dovela-marquee {
