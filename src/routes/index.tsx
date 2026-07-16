@@ -154,21 +154,23 @@ function Nav() {
   ];
   const isServiciosActive = pathname.startsWith("/servicios");
   const borderColor = "#D4D4D4";
-  const pillBorder = `1px solid ${borderColor}`;
+  const pillBorder = `1px solid ${scrolled ? borderColor : "transparent"}`;
   return (
     <header
       className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-300 ease-[cubic-bezier(.7,0,.2,1)]"
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto max-w-[1480px] transition-[border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(.4,0,.2,1)]"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-all duration-[500ms] ease-[cubic-bezier(.4,0,.2,1)]"
         style={{
           border: `1px solid ${scrolled ? borderColor : "transparent"}`,
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
-          padding: "0 10px 0 20px",
+          padding: scrolled ? "0 8px 0 16px" : "0 10px 0 20px",
+          maxWidth: scrolled ? 1180 : 1480,
         }}
       >
+
 
         {/* Mobile hamburger (left) */}
         <button
