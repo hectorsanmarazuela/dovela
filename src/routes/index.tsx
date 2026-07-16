@@ -848,7 +848,7 @@ function PorQueDovela() {
 
           <div className="relative">
             <div
-              className="relative overflow-hidden bg-[#FAFAFA]"
+              className="relative overflow-hidden bg-white"
               style={{
                 borderRadius: 28,
                 border: "0.5px solid #E5E5E5",
@@ -857,19 +857,20 @@ function PorQueDovela() {
               }}
             >
               <img
-                src={jose2.url}
-                alt="Mockup de web y móvil para un proyecto de instalaciones eléctricas y solares"
-                className="w-full h-auto"
+                src={webFacilImg.url}
+                alt="Mockups de webs fáciles de usar en escritorio, tablet y móvil"
+                className="w-full h-auto object-contain"
                 style={{ borderRadius: 18, display: "block" }}
                 loading="lazy"
               />
               <div
-                className="absolute top-6 right-6 grid place-items-center rounded-full"
-                style={{ width: 44, height: 44, background: "#C7F751" }}
+                className="absolute top-6 right-6 grid place-items-center rounded-full bg-[#18181B] text-[#C7F751]"
+                style={{ width: 44, height: 44 }}
               >
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#0A0A0A" }}>WEB</span>
+                <span style={{ fontSize: 11, fontWeight: 700 }}>WEB</span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
