@@ -163,8 +163,9 @@ function Nav() {
   const pillBorder = `1px solid ${scrolled ? borderColor : "transparent"}`;
   return (
     <header
-      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-300 ease-[cubic-bezier(.7,0,.2,1)]"
+      className={`fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-500 ease-out ${hidden ? "" : "delay-100"}`}
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
+
     >
       <nav
         className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-all duration-[500ms] ease-[cubic-bezier(.4,0,.2,1)]"
