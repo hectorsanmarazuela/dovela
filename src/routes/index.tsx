@@ -1613,7 +1613,7 @@ function CtaBanner() {
             <div
               style={{
                 color: "rgba(24,24,27,0.6)",
-                fontSize: 13,
+                fontSize: "clamp(16px, 1.6vw, 23px)",
                 marginTop: 16,
               }}
             >
