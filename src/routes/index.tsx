@@ -484,9 +484,17 @@ function Hero() {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
-      style={{ backgroundColor: "#111111", minHeight: "100vh" }}
+      className="relative w-full"
+      style={{ background: "#FAFAFA", padding: "96px 16px 24px" }}
     >
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          backgroundColor: "#0A0A0A",
+          borderRadius: 28,
+          minHeight: "calc(100vh - 120px)",
+        }}
+      >
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
@@ -496,6 +504,7 @@ function Hero() {
           backgroundSize: "3px 3px",
         }}
       />
+
 
       <div
         className="absolute"
