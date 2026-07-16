@@ -366,8 +366,8 @@ export function ServicioDetail(props: Props) {
       <div
         style={{
           position: "relative",
-          background: "#121214",
-          color: "#FAFAFA",
+          background: "#F0F0ED",
+          color: "#18181B",
           borderRadius: 28,
           paddingTop: 72,
           paddingBottom: 48,
@@ -382,7 +382,7 @@ export function ServicioDetail(props: Props) {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.10), transparent 70%)",
+              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.55), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.35), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.25), transparent 70%)",
           }}
         />
         <div
@@ -390,11 +390,10 @@ export function ServicioDetail(props: Props) {
           style={{
             position: "absolute",
             inset: 0,
-            opacity: 0.4,
-            mixBlendMode: "overlay",
+            opacity: 0.5,
             pointerEvents: "none",
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+              "linear-gradient(rgba(24,24,27,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.05) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
           }}
         />
