@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import jose2 from "@/assets/jose2.png.asset.json";
 
@@ -496,17 +495,16 @@ function Hero() {
         className="relative w-full"
         style={{ minHeight: "calc(100vh - 120px)" }}
       >
-      {/* Dark hero container with inverted-radius notch cut at bottom-right (desktop only) */}
+      {/* Dark hero container */}
       <div
         aria-hidden
-        className="hero-notch-shell absolute inset-0 overflow-hidden"
+        className="absolute inset-0 overflow-hidden"
         style={{
           backgroundColor: "#121214",
-          "--hero-bg": "#121214",
-          "--notch-width": "300px",
-          "--notch-height": "304px",
           borderRadius: 28,
-        } as CSSProperties}
+          border: "none",
+          outline: "none",
+        }}
       >
         <div
           aria-hidden
@@ -515,19 +513,6 @@ function Hero() {
             backgroundImage:
               "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
             backgroundSize: "3px 3px",
-          }}
-        />
-        {/* Notch: white rectangle punched into the bottom-right. The concave dark
-            corners are drawn by .hero-notch-shell::before and ::after. */}
-        <div
-          aria-hidden
-          className="hidden md:block absolute"
-          style={{
-            right: 0,
-            bottom: 0,
-            width: "var(--notch-width)",
-            height: "var(--notch-height)",
-            background: "#FAFAFA",
           }}
         />
       </div>
@@ -719,20 +704,32 @@ function Hero() {
         </div>
       </div>
 
-      {/* Floating card sits inside the mask cut-out (desktop only) */}
+      {/* Floating card notch (desktop only) */}
       <div
-        className="absolute hidden md:flex flex-col"
+        data-hero-notch
+        className="absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px]"
         style={{
-          right: 16,
-          bottom: 16,
-          width: 260,
-          height: 264,
-          background: "#FAFAFA",
-          borderRadius: 14,
-          padding: 14,
+          width: 300,
+          height: 304,
+          padding: "24px 16px 16px 24px",
           zIndex: 3,
         }}
       >
+        {/* Curva cóncava Izquierda */}
+        <svg className="absolute bottom-0 left-[-40px] w-10 h-10 text-[#F0F0ED] pointer-events-none" fill="currentColor" viewBox="0 0 40 40">
+
+          <path d="M40 40V0C40 22.0914 22.0914 40 0 40H40Z" />
+
+        </svg>
+
+        {/* Curva cóncava Superior */}
+        <svg className="absolute top-[-40px] right-0 w-10 h-10 text-[#F0F0ED] pointer-events-none" fill="currentColor" viewBox="0 0 40 40">
+
+          <path d="M40 40V0C40 22.0914 22.0914 40 0 40H40Z" />
+
+        </svg>
+
+        <div className="relative flex h-full flex-col">
         <div
           style={{
             aspectRatio: "16 / 9",
@@ -766,7 +763,14 @@ function Hero() {
           >
             Pedir auditoría gratuita
           </a>
-          <ArrowCircle size={28} bg="#C7F751" fg="#121214" />
+          <span
+            aria-hidden
+            className="inline-grid shrink-0 place-items-center rounded-full bg-[#C7F751] text-[#121214]"
+            style={{ width: 28, height: 28, fontSize: 16, lineHeight: 1 }}
+          >
+            →
+          </span>
+        </div>
         </div>
       </div>
 
