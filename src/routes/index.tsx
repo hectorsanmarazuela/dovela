@@ -491,7 +491,7 @@ function Hero() {
       <div
         className="relative w-full overflow-hidden"
         style={{
-          backgroundColor: "#0A0A0A",
+          backgroundColor: "#121214",
           borderRadius: 28,
           minHeight: "calc(100vh - 120px)",
         }}
@@ -1447,7 +1447,7 @@ function CtaBanner() {
         <div
           className="relative overflow-hidden px-6 py-14 md:px-14 md:py-[72px]"
           style={{
-            background: "#0A0A0A",
+            background: "#121214",
             borderRadius: 24,
           }}
         >
@@ -1793,7 +1793,7 @@ function LeadMagnet() {
         <div
           className="relative overflow-hidden"
           style={{
-            background: "#0A0A0A",
+            background: "#121214",
             borderRadius: 24,
             padding: "56px clamp(20px, 3vw, 40px)",
             color: "#FAFAFA",
@@ -2666,7 +2666,7 @@ function ServicesAccordion() {
         <div
           style={{
             position: "relative",
-            background: "#0A0A0A",
+            background: "#121214",
             borderRadius: 32,
             padding: "72px clamp(24px, 4vw, 72px) 72px",
             overflow: "hidden",
