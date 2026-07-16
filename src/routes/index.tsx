@@ -120,9 +120,10 @@ function Nav() {
     const onScroll = () => {
       const y = window.scrollY;
       const dy = y - lastScrollY.current;
-      if (y > 80 && dy > 0) {
+      const isDesktop = window.innerWidth >= 768;
+      if (isDesktop && y > 80 && dy > 0) {
         setHidden(true);
-      } else if (dy < 0) {
+      } else if (dy < 0 || !isDesktop) {
         setHidden(false);
       }
       setScrolled(y > 8);
@@ -131,6 +132,7 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   const links: Array<{
     label: string;
     href: string;
