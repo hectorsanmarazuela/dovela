@@ -2490,7 +2490,16 @@ function ServiceRow({
   }, [service]);
 
   return (
-    <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.10)" }}>
+    <div
+      style={{
+        background: "#FFFFFF",
+        borderRadius: 20,
+        border: "0.5px solid rgba(24,24,27,0.08)",
+        boxShadow: open ? "0 12px 32px -20px rgba(10,10,10,0.15)" : "none",
+        transition: "box-shadow 400ms cubic-bezier(.7,0,.2,1)",
+        overflow: "hidden",
+      }}
+    >
       <button
         onClick={onToggle}
         aria-expanded={open}
@@ -2500,11 +2509,11 @@ function ServiceRow({
           gridTemplateColumns: "minmax(80px, 22%) 1fr auto",
           alignItems: "center",
           gap: 24,
-          padding: open ? "44px 0 24px" : "28px 0",
+          padding: open ? "36px 28px 20px" : "24px 28px",
           background: "transparent",
           border: "none",
           cursor: "pointer",
-          color: "#FAFAFA",
+          color: "#18181B",
           transition:
             "padding 500ms cubic-bezier(.7,0,.2,1)",
         }}
@@ -2513,7 +2522,7 @@ function ServiceRow({
           style={{
             fontSize: 13,
             letterSpacing: "0.14em",
-            color: open ? "#C7F751" : "rgba(250,250,250,0.45)",
+            color: open ? "#18181B" : "rgba(24,24,27,0.45)",
             fontVariantNumeric: "tabular-nums",
             transition: "color 400ms cubic-bezier(.7,0,.2,1)",
           }}
@@ -2524,7 +2533,7 @@ function ServiceRow({
           className="h-display"
           style={{
             fontSize: "clamp(22px, 2.4vw, 32px)",
-            color: "#FAFAFA",
+            color: "#18181B",
             letterSpacing: "-0.01em",
           }}
         >
@@ -2539,8 +2548,8 @@ function ServiceRow({
             height: 44,
             borderRadius: 999,
             background: open ? "#C7F751" : "transparent",
-            border: `0.5px solid ${open ? "#C7F751" : "rgba(255,255,255,0.35)"}`,
-            color: open ? "#0A0A0A" : "#FAFAFA",
+            border: `0.5px solid ${open ? "#C7F751" : "rgba(24,24,27,0.25)"}`,
+            color: "#18181B",
             display: "inline-grid",
             placeItems: "center",
             transition:
@@ -2581,7 +2590,7 @@ function ServiceRow({
             "max-height 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
         }}
       >
-        <div ref={contentRef} style={{ paddingBottom: 48 }}>
+        <div ref={contentRef} style={{ padding: "0 28px 36px" }}>
           <div
             className="grid grid-cols-1 lg:grid-cols-[22%_1fr] gap-8"
             style={{ alignItems: "start" }}
@@ -2607,7 +2616,7 @@ function ServiceRow({
                     style={{
                       fontSize: 16,
                       lineHeight: 1.55,
-                      color: "#FAFAFA",
+                      color: "#18181B",
                       marginBottom: 12,
                     }}
                   >
@@ -2619,7 +2628,7 @@ function ServiceRow({
                       style={{
                         fontSize: 14,
                         lineHeight: 1.6,
-                        color: "rgba(250,250,250,0.55)",
+                        color: "rgba(24,24,27,0.6)",
                         marginBottom: 10,
                       }}
                     >
@@ -2631,7 +2640,7 @@ function ServiceRow({
                     <>
                       <div
                         className="label-eyebrow"
-                        style={{ marginTop: 24, marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                        style={{ marginTop: 24, marginBottom: 12, color: "rgba(24,24,27,0.55)" }}
                       >
                         Incluye
                       </div>
