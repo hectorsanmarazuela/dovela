@@ -37,9 +37,9 @@ function PackBanner() {
       <div
         style={{
           position: "relative",
-          background: "linear-gradient(90deg, rgba(24,24,27,0.85) 0%, rgba(30,30,34,0.85) 100%)",
+          background: "rgba(255,255,255,0.65)",
           backdropFilter: "blur(6px)",
-          border: "0.5px solid rgba(199,247,81,0.35)",
+          border: "0.5px solid rgba(24,24,27,0.12)",
           borderRadius: 20,
           padding: "22px clamp(20px, 3vw, 32px)",
           overflow: "hidden",
@@ -51,7 +51,7 @@ function PackBanner() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.15), transparent 65%)",
+              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.35), transparent 65%)",
             pointerEvents: "none",
           }}
         />
@@ -63,8 +63,8 @@ function PackBanner() {
               gap: 10,
               padding: "6px 12px",
               borderRadius: 999,
-              background: "rgba(199,247,81,0.14)",
-              color: "#C7F751",
+              background: "rgba(24,24,27,0.06)",
+              color: "#18181B",
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: "0.14em",
@@ -79,11 +79,11 @@ function PackBanner() {
             style={{
               fontSize: 15,
               lineHeight: 1.5,
-              color: "rgba(250,250,250,0.85)",
+              color: "rgba(24,24,27,0.75)",
               margin: 0,
             }}
           >
-            <strong style={{ color: "#FAFAFA" }}>¿Y si lo hacemos todo junto?</strong>{" "}
+            <strong style={{ color: "#18181B" }}>¿Y si lo hacemos todo junto?</strong>{" "}
             Diseño web + SEO bajo la misma dirección: mejor precio, mejor
             coordinación y mucho más ROI que contratarlos por separado.
           </p>
@@ -94,7 +94,7 @@ function PackBanner() {
               padding: "12px 12px 12px 20px",
               borderRadius: 999,
               background: "#C7F751",
-              color: "#0A0A0A",
+              color: "#18181B",
               fontSize: 14,
               fontWeight: 700,
               whiteSpace: "nowrap",
@@ -107,7 +107,7 @@ function PackBanner() {
                 width: 28,
                 height: 28,
                 borderRadius: 999,
-                background: "#0A0A0A",
+                background: "#18181B",
                 color: "#C7F751",
                 display: "inline-grid",
                 placeItems: "center",
@@ -366,8 +366,8 @@ export function ServicioDetail(props: Props) {
       <div
         style={{
           position: "relative",
-          background: "#121214",
-          color: "#FAFAFA",
+          background: "#F0F0ED",
+          color: "#18181B",
           borderRadius: 28,
           paddingTop: 72,
           paddingBottom: 48,
@@ -382,7 +382,7 @@ export function ServicioDetail(props: Props) {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.22), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.14), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.10), transparent 70%)",
+              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.55), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.35), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.25), transparent 70%)",
           }}
         />
         <div
@@ -390,11 +390,10 @@ export function ServicioDetail(props: Props) {
           style={{
             position: "absolute",
             inset: 0,
-            opacity: 0.4,
-            mixBlendMode: "overlay",
+            opacity: 0.5,
             pointerEvents: "none",
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+              "linear-gradient(rgba(24,24,27,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.05) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
           }}
         />
@@ -404,7 +403,7 @@ export function ServicioDetail(props: Props) {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
           <div
             className="label-eyebrow"
-            style={{ color: "#C7F751", marginBottom: 32 }}
+            style={{ color: "rgba(24,24,27,0.6)", marginBottom: 32 }}
           >
             {props.eyebrow}
           </div>
@@ -412,13 +411,13 @@ export function ServicioDetail(props: Props) {
           {/* Row 1: number + title (kept to 2 lines) */}
           <div
             className="grid grid-cols-1 lg:grid-cols-[minmax(80px,8%)_1fr] gap-6 lg:gap-10 items-start"
-            style={{ paddingBottom: 48, borderBottom: "0.5px solid rgba(255,255,255,0.10)" }}
+            style={{ paddingBottom: 48, borderBottom: "0.5px solid rgba(24,24,27,0.10)" }}
           >
             <span
               style={{
                 fontSize: 14,
                 letterSpacing: "0.14em",
-                color: "#C7F751",
+                color: "#18181B",
                 fontVariantNumeric: "tabular-nums",
                 paddingTop: 20,
               }}
@@ -432,7 +431,7 @@ export function ServicioDetail(props: Props) {
                 letterSpacing: "-0.035em",
                 lineHeight: 0.95,
                 margin: 0,
-                color: "#FAFAFA",
+                color: "#18181B",
                 textWrap: "balance" as unknown as undefined,
               }}
             >
@@ -451,7 +450,7 @@ export function ServicioDetail(props: Props) {
                 style={{
                   fontSize: 22,
                   lineHeight: 1.4,
-                  color: "#FAFAFA",
+                  color: "#18181B",
                   marginBottom: 18,
                   fontWeight: 500,
                 }}
@@ -464,7 +463,7 @@ export function ServicioDetail(props: Props) {
                   style={{
                     fontSize: 15,
                     lineHeight: 1.65,
-                    color: "rgba(250,250,250,0.6)",
+                    color: "rgba(24,24,27,0.65)",
                     marginBottom: 10,
                   }}
                 >
@@ -477,7 +476,7 @@ export function ServicioDetail(props: Props) {
                 <div style={{ marginTop: 28 }}>
                   <div
                     className="label-eyebrow"
-                    style={{ marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                    style={{ marginBottom: 12, color: "rgba(24,24,27,0.55)" }}
                   >
                     Incluye
                   </div>

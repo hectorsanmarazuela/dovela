@@ -159,13 +159,12 @@ function Nav() {
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-[max-width,padding,border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(.4,0,.2,1)]"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto max-w-[1480px] transition-[border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(.4,0,.2,1)]"
         style={{
-          maxWidth: scrolled ? 960 : 1480,
           border: `1px solid ${scrolled ? borderColor : "transparent"}`,
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
-          padding: scrolled ? "0 8px 0 12px" : "0 10px 0 20px",
+          padding: "0 10px 0 20px",
         }}
       >
 
@@ -1439,16 +1438,16 @@ function CtaBanner() {
         <div
           className="relative overflow-hidden px-6 py-14 md:px-14 md:py-[72px]"
           style={{
-            background: "#121214",
+            background: "#F0F0ED",
             borderRadius: 24,
           }}
         >
           <div
             aria-hidden
-            className="absolute inset-0 opacity-[0.06] pointer-events-none"
+            className="absolute inset-0 opacity-[0.08] pointer-events-none"
             style={{
               backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)",
+                "radial-gradient(rgba(24,24,27,0.6) 1px, transparent 1px)",
               backgroundSize: "3px 3px",
             }}
           />
@@ -1457,19 +1456,32 @@ function CtaBanner() {
             aria-hidden
             className="absolute pointer-events-none"
             style={{
-              width: 380,
-              height: 380,
-              right: -120,
-              top: -140,
+              width: 520,
+              height: 520,
+              right: -160,
+              top: -180,
               background:
-                "radial-gradient(circle, rgba(199,247,81,0.22), rgba(199,247,81,0) 65%)",
-              filter: "blur(20px)",
+                "radial-gradient(circle, rgba(199,247,81,0.55), rgba(199,247,81,0) 65%)",
+              filter: "blur(30px)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              width: 420,
+              height: 420,
+              left: -140,
+              bottom: -160,
+              background:
+                "radial-gradient(circle, rgba(199,247,81,0.35), rgba(199,247,81,0) 65%)",
+              filter: "blur(30px)",
             }}
           />
           <div className="relative flex flex-col items-center text-center">
             <h2
               className="label-eyebrow mb-6"
-              style={{ color: "rgba(250,250,250,0.55)" }}
+              style={{ color: "rgba(24,24,27,0.6)" }}
             >
               Agencia web local en Segovia
             </h2>
@@ -1477,7 +1489,7 @@ function CtaBanner() {
               className="h-display"
               style={{
                 fontSize: "clamp(40px, 6vw, 76px)",
-                color: "#FAFAFA",
+                color: "#18181B",
                 maxWidth: "16ch",
                 marginBottom: 40,
                 margin: 0,
@@ -1487,7 +1499,7 @@ function CtaBanner() {
               <span
                 style={{
                   background: "#C7F751",
-                  color: "#0A0A0A",
+                  color: "#18181B",
                   padding: "0 0.18em",
                   borderRadius: 6,
                   boxDecorationBreak: "clone",
@@ -1500,7 +1512,7 @@ function CtaBanner() {
             </p>
             <a
               href="#contacto"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#C7F751] text-[#18181B] hover:brightness-95 transition"
               style={{
                 padding: "14px 14px 14px 26px",
                 fontWeight: 600,
@@ -1512,11 +1524,11 @@ function CtaBanner() {
               <span style={{ whiteSpace: "nowrap" }}>
                 Reserva una llamada gratuita
               </span>
-              <ArrowCircle size={32} bg="#0A0A0A" fg="#C7F751" />
+              <ArrowCircle size={32} bg="#18181B" fg="#C7F751" />
             </a>
             <div
               style={{
-                color: "rgba(250,250,250,0.5)",
+                color: "rgba(24,24,27,0.6)",
                 fontSize: 13,
                 marginTop: 16,
               }}
@@ -2215,9 +2227,9 @@ function FeaturePill({ text }: { text: string }) {
         gap: 10,
         padding: "10px 16px",
         borderRadius: 999,
-        background: "rgba(255,255,255,0.05)",
-        border: "0.5px solid rgba(255,255,255,0.14)",
-        color: "#FAFAFA",
+        background: "rgba(24,24,27,0.04)",
+        border: "0.5px solid rgba(24,24,27,0.12)",
+        color: "#18181B",
         fontSize: 13.5,
         lineHeight: 1.2,
         fontWeight: 500,
@@ -2251,7 +2263,7 @@ function StarNote({ text }: { text: string }) {
         alignItems: "flex-start",
         gap: 12,
         padding: "6px 0",
-        color: "rgba(250,250,250,0.7)",
+        color: "rgba(24,24,27,0.75)",
         fontSize: 13,
         fontWeight: 400,
         lineHeight: 1.45,
@@ -2260,7 +2272,7 @@ function StarNote({ text }: { text: string }) {
       <span
         aria-hidden
         style={{
-          color: "#C7F751",
+          color: "#7BAA1E",
           fontSize: 16,
           lineHeight: 1.45,
           flexShrink: 0,
@@ -2320,8 +2332,8 @@ function Wireframe() {
         aspectRatio: "2 / 1",
         borderRadius: 16,
         background:
-          "linear-gradient(135deg, #141414 0%, #1c1c1c 60%, #1a1e14 100%)",
-        border: "0.5px solid rgba(255,255,255,0.12)",
+          "linear-gradient(135deg, #F5F5F0 0%, #ECECE6 60%, #EEF3DE 100%)",
+        border: "0.5px solid rgba(24,24,27,0.08)",
         overflow: "hidden",
       }}
     >
@@ -2330,7 +2342,7 @@ function Wireframe() {
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+            "linear-gradient(rgba(24,24,27,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.05) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -2339,7 +2351,7 @@ function Wireframe() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.18), transparent 60%)",
+            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.35), transparent 60%)",
         }}
       />
       <div
@@ -2350,30 +2362,30 @@ function Wireframe() {
           right: 16,
           height: 22,
           borderRadius: 6,
-          background: "rgba(255,255,255,0.05)",
-          border: "0.5px solid rgba(255,255,255,0.10)",
+          background: "rgba(24,24,27,0.05)",
+          border: "0.5px solid rgba(24,24,27,0.10)",
           display: "flex",
           alignItems: "center",
           gap: 6,
           padding: "0 10px",
         }}
       >
-        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
-        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(24,24,27,0.25)" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(24,24,27,0.25)" }} />
         <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
       </div>
       <div style={{ position: "absolute", left: 24, right: "42%", top: 60 }}>
-        <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.18)", width: "78%", marginBottom: 8 }} />
-        <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.10)", width: "58%", marginBottom: 14 }} />
-        <div style={{ height: 8, borderRadius: 4, background: "rgba(255,255,255,0.07)", width: "90%", marginBottom: 6 }} />
-        <div style={{ height: 8, borderRadius: 4, background: "rgba(255,255,255,0.07)", width: "80%", marginBottom: 14 }} />
+        <div style={{ height: 14, borderRadius: 4, background: "rgba(24,24,27,0.25)", width: "78%", marginBottom: 8 }} />
+        <div style={{ height: 14, borderRadius: 4, background: "rgba(24,24,27,0.15)", width: "58%", marginBottom: 14 }} />
+        <div style={{ height: 8, borderRadius: 4, background: "rgba(24,24,27,0.10)", width: "90%", marginBottom: 6 }} />
+        <div style={{ height: 8, borderRadius: 4, background: "rgba(24,24,27,0.10)", width: "80%", marginBottom: 14 }} />
         <div
           style={{
             display: "inline-block",
             padding: "6px 14px",
             borderRadius: 999,
             background: "#C7F751",
-            color: "#0A0A0A",
+            color: "#18181B",
             fontSize: 10,
             fontWeight: 600,
           }}
@@ -2390,8 +2402,8 @@ function Wireframe() {
           width: "34%",
           borderRadius: 10,
           background:
-            "linear-gradient(160deg, rgba(199,247,81,0.10), rgba(255,255,255,0.03))",
-          border: "0.5px solid rgba(255,255,255,0.10)",
+            "linear-gradient(160deg, rgba(199,247,81,0.28), rgba(24,24,27,0.04))",
+          border: "0.5px solid rgba(24,24,27,0.10)",
         }}
       />
     </div>
@@ -2478,7 +2490,16 @@ function ServiceRow({
   }, [service]);
 
   return (
-    <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.10)" }}>
+    <div
+      style={{
+        background: "#FFFFFF",
+        borderRadius: 20,
+        border: "0.5px solid rgba(24,24,27,0.08)",
+        boxShadow: open ? "0 12px 32px -20px rgba(10,10,10,0.15)" : "none",
+        transition: "box-shadow 400ms cubic-bezier(.7,0,.2,1)",
+        overflow: "hidden",
+      }}
+    >
       <button
         onClick={onToggle}
         aria-expanded={open}
@@ -2488,11 +2509,11 @@ function ServiceRow({
           gridTemplateColumns: "minmax(80px, 22%) 1fr auto",
           alignItems: "center",
           gap: 24,
-          padding: open ? "44px 0 24px" : "28px 0",
+          padding: open ? "36px 28px 20px" : "24px 28px",
           background: "transparent",
           border: "none",
           cursor: "pointer",
-          color: "#FAFAFA",
+          color: "#18181B",
           transition:
             "padding 500ms cubic-bezier(.7,0,.2,1)",
         }}
@@ -2501,7 +2522,7 @@ function ServiceRow({
           style={{
             fontSize: 13,
             letterSpacing: "0.14em",
-            color: open ? "#C7F751" : "rgba(250,250,250,0.45)",
+            color: open ? "#18181B" : "rgba(24,24,27,0.45)",
             fontVariantNumeric: "tabular-nums",
             transition: "color 400ms cubic-bezier(.7,0,.2,1)",
           }}
@@ -2512,7 +2533,7 @@ function ServiceRow({
           className="h-display"
           style={{
             fontSize: "clamp(22px, 2.4vw, 32px)",
-            color: "#FAFAFA",
+            color: "#18181B",
             letterSpacing: "-0.01em",
           }}
         >
@@ -2527,8 +2548,8 @@ function ServiceRow({
             height: 44,
             borderRadius: 999,
             background: open ? "#C7F751" : "transparent",
-            border: `0.5px solid ${open ? "#C7F751" : "rgba(255,255,255,0.35)"}`,
-            color: open ? "#0A0A0A" : "#FAFAFA",
+            border: `0.5px solid ${open ? "#C7F751" : "rgba(24,24,27,0.25)"}`,
+            color: "#18181B",
             display: "inline-grid",
             placeItems: "center",
             transition:
@@ -2569,7 +2590,7 @@ function ServiceRow({
             "max-height 500ms cubic-bezier(.7,0,.2,1), opacity 400ms cubic-bezier(.7,0,.2,1)",
         }}
       >
-        <div ref={contentRef} style={{ paddingBottom: 48 }}>
+        <div ref={contentRef} style={{ padding: "0 28px 36px" }}>
           <div
             className="grid grid-cols-1 lg:grid-cols-[22%_1fr] gap-8"
             style={{ alignItems: "start" }}
@@ -2595,7 +2616,7 @@ function ServiceRow({
                     style={{
                       fontSize: 16,
                       lineHeight: 1.55,
-                      color: "#FAFAFA",
+                      color: "#18181B",
                       marginBottom: 12,
                     }}
                   >
@@ -2607,7 +2628,7 @@ function ServiceRow({
                       style={{
                         fontSize: 14,
                         lineHeight: 1.6,
-                        color: "rgba(250,250,250,0.55)",
+                        color: "rgba(24,24,27,0.6)",
                         marginBottom: 10,
                       }}
                     >
@@ -2619,7 +2640,7 @@ function ServiceRow({
                     <>
                       <div
                         className="label-eyebrow"
-                        style={{ marginTop: 24, marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                        style={{ marginTop: 24, marginBottom: 12, color: "rgba(24,24,27,0.55)" }}
                       >
                         Incluye
                       </div>
@@ -2658,11 +2679,11 @@ function ServicesAccordion() {
         <div
           style={{
             position: "relative",
-            background: "#121214",
+            background: "#F0F0ED",
             borderRadius: 32,
             padding: "72px clamp(24px, 4vw, 72px) 72px",
             overflow: "hidden",
-            boxShadow: "0 30px 80px -20px rgba(10,10,10,0.35)",
+            boxShadow: "0 30px 80px -30px rgba(10,10,10,0.15)",
           }}
         >
           <div
@@ -2672,7 +2693,7 @@ function ServicesAccordion() {
               inset: 0,
               pointerEvents: "none",
               background:
-                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.14), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.08), transparent 60%)",
+                "radial-gradient(45% 40% at 95% 5%, rgba(199,247,81,0.28), transparent 60%), radial-gradient(45% 40% at 5% 100%, rgba(199,247,81,0.20), transparent 60%)",
             }}
           />
           <div
@@ -2680,11 +2701,10 @@ function ServicesAccordion() {
             style={{
               position: "absolute",
               inset: 0,
-              opacity: 0.35,
-              mixBlendMode: "overlay",
+              opacity: 0.5,
               pointerEvents: "none",
               backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+                "radial-gradient(rgba(24,24,27,0.06) 1px, transparent 1px)",
               backgroundSize: "3px 3px",
             }}
           />
@@ -2693,7 +2713,7 @@ function ServicesAccordion() {
             <h2
               className="label-eyebrow"
               style={{
-                color: "#C7F751",
+                color: "rgba(24,24,27,0.6)",
                 marginBottom: 40,
               }}
             >
@@ -2704,19 +2724,19 @@ function ServicesAccordion() {
               style={{
                 fontSize: "clamp(36px, 5.2vw, 76px)",
                 lineHeight: 1.02,
-                color: "#FAFAFA",
+                color: "#18181B",
                 letterSpacing: "-0.02em",
                 marginBottom: 56,
                 margin: 0,
                 maxWidth: 1100,
               }}
             >
-              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>Somos</span>{" "}
-              <span style={{ color: "#FAFAFA", fontWeight: 600 }}>los mejores</span>{" "}
-              <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>en...</span>
+              <span style={{ color: "rgba(24,24,27,0.45)", fontWeight: 600 }}>Somos</span>{" "}
+              <span style={{ color: "#18181B", fontWeight: 600 }}>los mejores</span>{" "}
+              <span style={{ color: "rgba(24,24,27,0.45)", fontWeight: 600 }}>en...</span>
             </p>
 
-            <div>
+            <div className="flex flex-col gap-3">
               {SERVICE_BLOCKS.map((s, i) => (
                 <ServiceRow
                   key={s.n}
@@ -2725,7 +2745,6 @@ function ServicesAccordion() {
                   onToggle={() => setOpen(open === i ? null : i)}
                 />
               ))}
-              <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.10)" }} />
             </div>
           </div>
         </div>
