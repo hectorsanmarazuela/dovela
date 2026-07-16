@@ -2332,8 +2332,8 @@ function Wireframe() {
         aspectRatio: "2 / 1",
         borderRadius: 16,
         background:
-          "linear-gradient(135deg, #141414 0%, #1c1c1c 60%, #1a1e14 100%)",
-        border: "0.5px solid rgba(255,255,255,0.12)",
+          "linear-gradient(135deg, #F5F5F0 0%, #ECECE6 60%, #EEF3DE 100%)",
+        border: "0.5px solid rgba(24,24,27,0.08)",
         overflow: "hidden",
       }}
     >
@@ -2342,7 +2342,7 @@ function Wireframe() {
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+            "linear-gradient(rgba(24,24,27,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.05) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -2351,7 +2351,7 @@ function Wireframe() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.18), transparent 60%)",
+            "radial-gradient(60% 80% at 90% 10%, rgba(199,247,81,0.35), transparent 60%)",
         }}
       />
       <div
@@ -2362,30 +2362,30 @@ function Wireframe() {
           right: 16,
           height: 22,
           borderRadius: 6,
-          background: "rgba(255,255,255,0.05)",
-          border: "0.5px solid rgba(255,255,255,0.10)",
+          background: "rgba(24,24,27,0.05)",
+          border: "0.5px solid rgba(24,24,27,0.10)",
           display: "flex",
           alignItems: "center",
           gap: 6,
           padding: "0 10px",
         }}
       >
-        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
-        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(255,255,255,0.25)" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(24,24,27,0.25)" }} />
+        <span style={{ width: 6, height: 6, borderRadius: 999, background: "rgba(24,24,27,0.25)" }} />
         <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
       </div>
       <div style={{ position: "absolute", left: 24, right: "42%", top: 60 }}>
-        <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.18)", width: "78%", marginBottom: 8 }} />
-        <div style={{ height: 14, borderRadius: 4, background: "rgba(255,255,255,0.10)", width: "58%", marginBottom: 14 }} />
-        <div style={{ height: 8, borderRadius: 4, background: "rgba(255,255,255,0.07)", width: "90%", marginBottom: 6 }} />
-        <div style={{ height: 8, borderRadius: 4, background: "rgba(255,255,255,0.07)", width: "80%", marginBottom: 14 }} />
+        <div style={{ height: 14, borderRadius: 4, background: "rgba(24,24,27,0.25)", width: "78%", marginBottom: 8 }} />
+        <div style={{ height: 14, borderRadius: 4, background: "rgba(24,24,27,0.15)", width: "58%", marginBottom: 14 }} />
+        <div style={{ height: 8, borderRadius: 4, background: "rgba(24,24,27,0.10)", width: "90%", marginBottom: 6 }} />
+        <div style={{ height: 8, borderRadius: 4, background: "rgba(24,24,27,0.10)", width: "80%", marginBottom: 14 }} />
         <div
           style={{
             display: "inline-block",
             padding: "6px 14px",
             borderRadius: 999,
             background: "#C7F751",
-            color: "#0A0A0A",
+            color: "#18181B",
             fontSize: 10,
             fontWeight: 600,
           }}
@@ -2402,8 +2402,8 @@ function Wireframe() {
           width: "34%",
           borderRadius: 10,
           background:
-            "linear-gradient(160deg, rgba(199,247,81,0.10), rgba(255,255,255,0.03))",
-          border: "0.5px solid rgba(255,255,255,0.10)",
+            "linear-gradient(160deg, rgba(199,247,81,0.28), rgba(24,24,27,0.04))",
+          border: "0.5px solid rgba(24,24,27,0.10)",
         }}
       />
     </div>
