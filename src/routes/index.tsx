@@ -1,6 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import jose2 from "@/assets/jose2.png.asset.json";
+
+import ichoImg from "@/assets/icho.webp.asset.json";
+import solaraImg from "@/assets/solara.webp.asset.json";
+import fontaneroImg from "@/assets/fontanero.webp.asset.json";
+import voltiaImg from "@/assets/voltia.webp.asset.json";
+import webFacilImg from "@/assets/web_facil.webp.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -157,8 +163,9 @@ function Nav() {
   const pillBorder = `1px solid ${scrolled ? borderColor : "transparent"}`;
   return (
     <header
-      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-300 ease-[cubic-bezier(.7,0,.2,1)]"
+      className={`fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-500 ease-out ${hidden ? "" : "delay-100"}`}
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
+
     >
       <nav
         className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-all duration-[500ms] ease-[cubic-bezier(.4,0,.2,1)]"
@@ -707,7 +714,7 @@ function Hero() {
       {/* Floating card notch (desktop only) */}
       <div
         data-hero-notch
-        className="absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px]"
+        className="absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px] rounded-br-[40px]"
         style={{
           width: 300,
           height: 304,
@@ -841,7 +848,7 @@ function PorQueDovela() {
 
           <div className="relative">
             <div
-              className="relative overflow-hidden bg-[#FAFAFA]"
+              className="relative overflow-hidden bg-white"
               style={{
                 borderRadius: 28,
                 border: "0.5px solid #E5E5E5",
@@ -850,19 +857,20 @@ function PorQueDovela() {
               }}
             >
               <img
-                src={jose2.url}
-                alt="Mockup de web y móvil para un proyecto de instalaciones eléctricas y solares"
-                className="w-full h-auto"
+                src={webFacilImg.url}
+                alt="Mockups de webs fáciles de usar en escritorio, tablet y móvil"
+                className="w-full h-auto object-contain"
                 style={{ borderRadius: 18, display: "block" }}
                 loading="lazy"
               />
               <div
-                className="absolute top-6 right-6 grid place-items-center rounded-full"
-                style={{ width: 44, height: 44, background: "#C7F751" }}
+                className="absolute top-6 right-6 grid place-items-center rounded-full bg-[#18181B] text-[#C7F751]"
+                style={{ width: 44, height: 44 }}
               >
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#0A0A0A" }}>WEB</span>
+                <span style={{ fontSize: 11, fontWeight: 700 }}>WEB</span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -1081,10 +1089,10 @@ function Services() {
 /* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
-  { name: "Fontanería Valverde", pills: ["Diseño web", "SEO Local"], cat: "SEO Local" },
-  { name: "Clínica Montero Psicología", pills: ["Diseño web"], cat: "Diseño web" },
-  { name: "Viento de Ladera", pills: ["SEO Local", "GBP"], cat: "SEO Local" },
-  { name: "Electricidad Segura SL", pills: ["Diseño web", "SEO Local"], cat: "Diseño web" },
+  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoImg.url },
+  { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url },
+  { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url },
+  { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url },
 ];
 
 function Projects() {
@@ -1117,53 +1125,80 @@ function ProjectCard({
   name,
   pills,
   cat,
+  img,
 }: {
   name: string;
   pills: string[];
   cat: string;
+  img: string;
 }) {
+  const [hovering, setHovering] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
   return (
     <div className="group">
-      <ImagePlaceholder ratio="4 / 3" radius={14}>
-        <div className="absolute top-4 left-4 flex flex-col gap-[6px]">
+      <div
+        className="relative w-full overflow-hidden md:cursor-none"
+        style={{ aspectRatio: "4 / 3", backgroundColor: "#2A2A2A", borderRadius: 14 }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onMouseMove={(e) => {
+          const r = e.currentTarget.getBoundingClientRect();
+          setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
+        }}
+      >
+        <img
+          src={img}
+          alt={name}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        />
+        {/* Static arrow — mobile only */}
+        <div className="absolute top-4 right-4 md:hidden">
+          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
+        </div>
+        {/* Custom cursor — desktop only */}
+        <div
+          aria-hidden
+          className="hidden md:grid pointer-events-none absolute place-items-center rounded-full text-[#0A0A0A] transition-opacity duration-200 ease-out"
+          style={{
+            width: 72,
+            height: 72,
+            background: "#C7F751",
+            top: pos.y,
+            left: pos.x,
+            transform: "translate(-50%, -50%)",
+            opacity: hovering ? 1 : 0,
+            fontSize: 26,
+            fontWeight: 600,
+            lineHeight: 1,
+          }}
+        >
+          ↗
+        </div>
+      </div>
+      <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
+        <div style={{ fontSize: 15, fontWeight: 500, color: "#0A0A0A" }}>{name}</div>
+        <div className="flex gap-2 flex-wrap">
           {pills.map((p) => (
             <span
               key={p}
-              className="rounded-full"
+              className="rounded-full whitespace-nowrap"
               style={{
-                background: "rgba(255,255,255,0.15)",
-                border: "0.5px solid rgba(255,255,255,0.3)",
-                color: "#FAFAFA",
-                fontSize: 11,
-                fontWeight: 500,
-                padding: "4px 12px",
+                border: "0.5px solid #888",
+                color: "#888",
+                fontSize: 12,
+                padding: "3px 12px",
               }}
             >
               {p}
             </span>
           ))}
         </div>
-        <div className="absolute top-4 right-4">
-          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
-        </div>
-      </ImagePlaceholder>
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <div style={{ fontSize: 15, fontWeight: 500, color: "#0A0A0A" }}>{name}</div>
-        <span
-          className="rounded-full whitespace-nowrap"
-          style={{
-            border: "0.5px solid #888",
-            color: "#888",
-            fontSize: 12,
-            padding: "3px 12px",
-          }}
-        >
-          {cat}
-        </span>
       </div>
     </div>
   );
 }
+
 
 /* ---------- PLAN ---------- */
 
@@ -1797,8 +1832,9 @@ function Faq() {
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
         .fq-answbody { padding:6px 26px 22px; }
-        .fq-answbody p { font-size:clamp(18px, 2vw, 27px); color:#888888; line-height:1.7; }
-        .fq-qtext { font-size:clamp(19px, 2vw, 30px); font-weight:500; color:#0A0A0A; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+        .fq-answbody p { font-size:15px; color:#888888; line-height:1.7; }
+        .fq-qtext { font-size:16px; font-weight:500; color:#0A0A0A; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+
         .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(10,10,10,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
         .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
         .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
@@ -1808,7 +1844,7 @@ function Faq() {
       `}</style>
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="label-eyebrow mb-4">Preguntas frecuentes sobre diseño web y SEO</h2>
+          <h2 className="label-eyebrow mb-4" style={{ fontSize: 13 }}>Preguntas frecuentes sobre diseño web y SEO</h2>
           <p className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A", margin: 0 }}>
             Preguntas frecuentes.
           </p>
@@ -2017,7 +2053,7 @@ function ContactForm() {
     >
       <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,45%)_minmax(0,55%)] gap-12 lg:gap-16">
         <div className="min-w-0">
-          <h2 className="label-eyebrow mb-8">Contacto — Dovela Estudio Segovia</h2>
+          <h2 className="label-eyebrow mb-8" style={{ fontSize: 13 }}>Contacto — Dovela Estudio Segovia</h2>
           <p
             className="h-display text-[#0A0A0A]"
             style={{ fontSize: "clamp(44px, 6vw, 84px)", margin: 0 }}
@@ -2026,8 +2062,9 @@ function ContactForm() {
           </p>
           <p
             className="mt-8"
-            style={{ fontSize: "clamp(19px, 2.2vw, 29px)", color: "#888", maxWidth: 620 }}
+            style={{ fontSize: 16, color: "#888", maxWidth: 620, lineHeight: 1.6 }}
           >
+
             Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
             compromiso.
           </p>
