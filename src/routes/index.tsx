@@ -159,12 +159,13 @@ function Nav() {
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px] transition-[border-color,box-shadow] duration-300 ease-out"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-[max-width,padding,border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(.4,0,.2,1)]"
         style={{
+          maxWidth: scrolled ? 960 : 1480,
           border: `1px solid ${scrolled ? borderColor : "transparent"}`,
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
-          padding: "0 8px 0 12px",
+          padding: scrolled ? "0 8px 0 12px" : "0 10px 0 20px",
         }}
       >
 
