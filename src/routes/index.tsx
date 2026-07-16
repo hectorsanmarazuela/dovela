@@ -813,7 +813,7 @@ function PorQueDovela() {
             </p>
             <p
               className="mt-8"
-              style={{ fontSize: 15, color: "#888", maxWidth: 520 }}
+              style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888", maxWidth: 640 }}
             >
               <span className="block">De la mano de una estrategia</span>
               <span className="block">para posicionarte sobre la competencia.</span>
