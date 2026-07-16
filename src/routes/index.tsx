@@ -714,7 +714,7 @@ function Hero() {
       {/* Floating card notch (desktop only) */}
       <div
         data-hero-notch
-        className="absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px]"
+        className="absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px] rounded-br-[40px]"
         style={{
           width: 300,
           height: 304,
