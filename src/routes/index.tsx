@@ -159,12 +159,13 @@ function Nav() {
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px] transition-[border-color,box-shadow] duration-300 ease-out"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-[max-width,padding,border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(.4,0,.2,1)]"
         style={{
+          maxWidth: scrolled ? 960 : 1480,
           border: `1px solid ${scrolled ? borderColor : "transparent"}`,
           boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
-          padding: "0 8px 0 12px",
+          padding: scrolled ? "0 8px 0 12px" : "0 10px 0 20px",
         }}
       >
 
@@ -610,14 +611,52 @@ function Hero() {
 
 
 
-      {/* Bottom right floating card */}
+      {/* Bottom-right notch cut-out with inverted radius */}
+      {/* Convex corner: above notch, right edge (curves black container into notch top) */}
       <div
-        className="absolute hidden md:block"
-        style={{ right: 24, bottom: 24, width: 260 }}
+        aria-hidden
+        className="absolute hidden md:block pointer-events-none"
+        style={{
+          right: 0,
+          bottom: 296,
+          width: 28,
+          height: 28,
+          background:
+            "radial-gradient(circle at 0 100%, transparent 27.5px, #FAFAFA 28px)",
+          zIndex: 3,
+        }}
+      />
+      {/* Convex corner: left of notch, bottom edge */}
+      <div
+        aria-hidden
+        className="absolute hidden md:block pointer-events-none"
+        style={{
+          right: 292,
+          bottom: 0,
+          width: 28,
+          height: 28,
+          background:
+            "radial-gradient(circle at 100% 0, transparent 27.5px, #FAFAFA 28px)",
+          zIndex: 3,
+        }}
+      />
+      {/* Notch (page-color pocket) hosting the floating card with inverted top-left corner */}
+      <div
+        className="absolute hidden md:flex items-center justify-center"
+        style={{
+          right: 0,
+          bottom: 0,
+          width: 292,
+          height: 296,
+          background: "#FAFAFA",
+          borderTopLeftRadius: 28,
+          padding: 16,
+          zIndex: 3,
+        }}
       >
         <div
-          className="bg-[#FAFAFA]"
-          style={{ borderRadius: 16, border: "0.5px solid #E5E5E5", padding: 16 }}
+          className="bg-[#FAFAFA] w-full h-full flex flex-col"
+          style={{ borderRadius: 14, border: "0.5px solid #E5E5E5", padding: 14 }}
         >
           <div
             style={{
@@ -644,7 +683,7 @@ function Hero() {
               SEO Local
             </span>
           </div>
-          <div className="mt-3 flex items-center gap-2 group">
+          <div className="mt-auto pt-3 flex items-center gap-2 group">
             <a
               href="#auditoria"
               className="rounded-full bg-[#0A0A0A] text-[#FAFAFA]"
