@@ -489,22 +489,47 @@ function Hero() {
       style={{ background: "#FAFAFA", padding: "96px 16px 24px" }}
     >
       <div
-        className="relative w-full overflow-hidden"
+        className="relative w-full"
+        style={{ minHeight: "calc(100vh - 120px)" }}
+      >
+      {/* Masked dark background with notch cut-out at bottom-right (desktop only) */}
+      <style>{`
+        .hero-notch-mask {
+          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>");
+          -webkit-mask-position: 0 0, 100% 100%;
+          -webkit-mask-size: 100% 100%, 292px 296px;
+          -webkit-mask-repeat: no-repeat, no-repeat;
+          -webkit-mask-composite: xor;
+          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>");
+          mask-position: 0 0, 100% 100%;
+          mask-size: 100% 100%, 292px 296px;
+          mask-repeat: no-repeat, no-repeat;
+          mask-composite: exclude;
+        }
+        @media (max-width: 767px) {
+          .hero-notch-mask { -webkit-mask-image: none; mask-image: none; }
+        }
+      `}</style>
+      <div
+        aria-hidden
+        className="absolute inset-0 hero-notch-mask"
         style={{
           backgroundColor: "#121214",
           borderRadius: 28,
-          minHeight: "calc(100vh - 120px)",
         }}
       >
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "3px 3px",
-        }}
-      />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "3px 3px",
+          }}
+        />
+      </div>
+
+
 
 
       <div
@@ -611,90 +636,57 @@ function Hero() {
 
 
 
-      {/* Bottom-right notch cut-out with inverted radius */}
-      {/* Convex corner: above notch, right edge (curves black container into notch top) */}
+      {/* Floating card sits inside the mask cut-out (16px from container's right/bottom) */}
       <div
-        aria-hidden
-        className="absolute hidden md:block pointer-events-none"
+        className="absolute hidden md:flex flex-col"
         style={{
-          right: 0,
-          bottom: 296,
-          width: 28,
-          height: 28,
-          background:
-            "radial-gradient(circle at 0 100%, transparent 27.5px, #FAFAFA 28px)",
-          zIndex: 3,
-        }}
-      />
-      {/* Convex corner: left of notch, bottom edge */}
-      <div
-        aria-hidden
-        className="absolute hidden md:block pointer-events-none"
-        style={{
-          right: 292,
-          bottom: 0,
-          width: 28,
-          height: 28,
-          background:
-            "radial-gradient(circle at 100% 0, transparent 27.5px, #FAFAFA 28px)",
-          zIndex: 3,
-        }}
-      />
-      {/* Notch (page-color pocket) hosting the floating card with inverted top-left corner */}
-      <div
-        className="absolute hidden md:flex items-center justify-center"
-        style={{
-          right: 0,
-          bottom: 0,
-          width: 292,
-          height: 296,
+          right: 16,
+          bottom: 16,
+          width: 260,
+          height: 264,
           background: "#FAFAFA",
-          borderTopLeftRadius: 28,
-          padding: 16,
+          borderRadius: 14,
+          padding: 14,
           zIndex: 3,
         }}
       >
         <div
-          className="bg-[#FAFAFA] w-full h-full flex flex-col"
-          style={{ borderRadius: 14, border: "0.5px solid #E5E5E5", padding: 14 }}
-        >
-          <div
-            style={{
-              aspectRatio: "16 / 9",
-              backgroundColor: "#2A2A2A",
-              borderRadius: 8,
-            }}
-          />
-          <div className="mt-3 flex items-center justify-between gap-2">
-            <div style={{ fontSize: 13, fontWeight: 500, color: "#0A0A0A" }}>
-              Fontanería Valverde — Segovia
-            </div>
-          </div>
-          <div className="mt-2">
-            <span
-              className="inline-block rounded-full"
-              style={{
-                border: "0.5px solid #888",
-                color: "#888",
-                fontSize: 11,
-                padding: "2px 10px",
-              }}
-            >
-              SEO Local
-            </span>
-          </div>
-          <div className="mt-auto pt-3 flex items-center gap-2 group">
-            <a
-              href="#auditoria"
-              className="rounded-full bg-[#0A0A0A] text-[#FAFAFA]"
-              style={{ padding: "6px 14px", fontSize: 12, fontWeight: 600 }}
-            >
-              Pedir auditoría gratuita
-            </a>
-            <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+          style={{
+            aspectRatio: "16 / 9",
+            backgroundColor: "#2A2A2A",
+            borderRadius: 8,
+          }}
+        />
+        <div className="mt-3 flex items-center justify-between gap-2">
+          <div style={{ fontSize: 13, fontWeight: 500, color: "#0A0A0A" }}>
+            Fontanería Valverde — Segovia
           </div>
         </div>
+        <div className="mt-2">
+          <span
+            className="inline-block rounded-full"
+            style={{
+              border: "0.5px solid #888",
+              color: "#888",
+              fontSize: 11,
+              padding: "2px 10px",
+            }}
+          >
+            SEO Local
+          </span>
+        </div>
+        <div className="mt-auto pt-3 flex items-center gap-2 group">
+          <a
+            href="#auditoria"
+            className="rounded-full bg-[#121214] text-[#FAFAFA]"
+            style={{ padding: "6px 14px", fontSize: 12, fontWeight: 600 }}
+          >
+            Pedir auditoría gratuita
+          </a>
+          <ArrowCircle size={28} bg="#C7F751" fg="#121214" />
+        </div>
       </div>
+
       </div>
     </section>
 
