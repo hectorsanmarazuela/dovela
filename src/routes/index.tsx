@@ -1907,8 +1907,8 @@ function LeadMagnet() {
                 className="mt-6"
                 style={{
                   color: "rgba(255,255,255,0.65)",
-                  fontSize: 15,
-                  maxWidth: 520,
+                  fontSize: "clamp(18px, 2vw, 27px)",
+                  maxWidth: 720,
                 }}
               >
                 Introduce el nombre de tu negocio o tu web y descubre si tu
@@ -1918,12 +1918,12 @@ function LeadMagnet() {
               <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {items.map((it) => (
                   <li key={it} className="flex items-start gap-3">
-                    <span style={{ color: "#C7F751", fontSize: 16, lineHeight: 1.4 }}>
+                    <span style={{ color: "#C7F751", fontSize: 18, lineHeight: 1.4 }}>
                       ◆
                     </span>
                     <span
                       style={{
-                        fontSize: 14,
+                        fontSize: "clamp(17px, 1.8vw, 25px)",
                         color: "rgba(255,255,255,0.85)",
                         lineHeight: 1.5,
                       }}
