@@ -476,7 +476,7 @@ export function ServicioDetail(props: Props) {
                 <div style={{ marginTop: 28 }}>
                   <div
                     className="label-eyebrow"
-                    style={{ marginBottom: 12, color: "rgba(250,250,250,0.5)" }}
+                    style={{ marginBottom: 12, color: "rgba(24,24,27,0.55)" }}
                   >
                     Incluye
                   </div>
