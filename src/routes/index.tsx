@@ -763,7 +763,13 @@ function Hero() {
           >
             Pedir auditoría gratuita
           </a>
-          <ArrowCircle size={28} bg="#C7F751" fg="#121214" />
+          <span
+            aria-hidden
+            className="inline-grid shrink-0 place-items-center rounded-full bg-[#C7F751] text-[#121214]"
+            style={{ width: 28, height: 28, fontSize: 16, lineHeight: 1 }}
+          >
+            →
+          </span>
         </div>
         </div>
       </div>
