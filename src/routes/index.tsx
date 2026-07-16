@@ -1347,7 +1347,7 @@ function Plan() {
                   </span>
                   <span
                     style={{
-                      fontSize: 16,
+                      fontSize: 19,
                       color: "#0A0A0A",
                       lineHeight: 1.5,
                       paddingTop: 4,
