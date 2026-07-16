@@ -105,6 +105,7 @@ function Nav() {
   const [pathname, setPathname] = useState("/");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const lastScrollY = useRef(0);
   useEffect(() => {
     setPathname(window.location.pathname);
@@ -124,6 +125,7 @@ function Nav() {
       } else if (dy < 0) {
         setHidden(false);
       }
+      setScrolled(y > 8);
       lastScrollY.current = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -157,13 +159,15 @@ function Nav() {
       style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
     >
       <nav
-        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px]"
+        className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full max-w-[1480px] transition-[border-color,box-shadow] duration-300 ease-out"
         style={{
-          border: `1px solid ${borderColor}`,
+          border: `1px solid ${scrolled ? borderColor : "transparent"}`,
+          boxShadow: scrolled ? "0 8px 24px -12px rgba(10,10,10,0.18)" : "none",
           height: 60,
           padding: "0 8px 0 12px",
         }}
       >
+
         {/* Mobile hamburger (left) */}
         <button
           type="button"

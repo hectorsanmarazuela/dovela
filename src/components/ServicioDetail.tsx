@@ -356,14 +356,21 @@ export function ServicioDetail(props: Props) {
 
   return (
     <>
-      {/* HERO — full-bleed black, glow extends behind pack banner */}
+      {/* HERO — contained black rectangle with white margins */}
       <section
+        style={{
+          background: "#FAFAFA",
+          padding: "96px 16px 24px",
+        }}
+      >
+      <div
         style={{
           position: "relative",
           background: "#0A0A0A",
           color: "#FAFAFA",
-          paddingTop: 140,
-          paddingBottom: 60,
+          borderRadius: 28,
+          paddingTop: 72,
+          paddingBottom: 48,
           overflow: "hidden",
         }}
       >
@@ -391,6 +398,8 @@ export function ServicioDetail(props: Props) {
             backgroundSize: "80px 80px",
           }}
         />
+
+
 
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
           <div
@@ -508,7 +517,9 @@ export function ServicioDetail(props: Props) {
         <div className="relative">
           <PackBanner />
         </div>
+      </div>
       </section>
+
 
       {/* Portfolio marquee */}
       <PortfolioMarquee />
