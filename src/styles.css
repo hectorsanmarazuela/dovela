@@ -60,6 +60,16 @@
   line-height: 1;
 }
 
+[data-hero-notch] {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  [data-hero-notch] {
+    display: block;
+  }
+}
+
 /* Body text scaling utilities.
    .body-scale-80  → +20% mobile, +80% desktop (default rule)
    .body-scale-20  → +20% both viewports (¿Hablamos de tu proyecto? exception)
