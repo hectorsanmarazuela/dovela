@@ -2021,7 +2021,7 @@ function ContactForm() {
           </p>
           <p
             className="mt-8"
-            style={{ fontSize: 16, color: "#888", maxWidth: 420 }}
+            style={{ fontSize: "clamp(19px, 2.2vw, 29px)", color: "#888", maxWidth: 620 }}
           >
             Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Sin
             compromiso.
