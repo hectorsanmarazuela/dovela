@@ -2227,9 +2227,9 @@ function FeaturePill({ text }: { text: string }) {
         gap: 10,
         padding: "10px 16px",
         borderRadius: 999,
-        background: "rgba(255,255,255,0.05)",
-        border: "0.5px solid rgba(255,255,255,0.14)",
-        color: "#FAFAFA",
+        background: "rgba(24,24,27,0.04)",
+        border: "0.5px solid rgba(24,24,27,0.12)",
+        color: "#18181B",
         fontSize: 13.5,
         lineHeight: 1.2,
         fontWeight: 500,
@@ -2263,7 +2263,7 @@ function StarNote({ text }: { text: string }) {
         alignItems: "flex-start",
         gap: 12,
         padding: "6px 0",
-        color: "rgba(250,250,250,0.7)",
+        color: "rgba(24,24,27,0.75)",
         fontSize: 13,
         fontWeight: 400,
         lineHeight: 1.45,
@@ -2272,7 +2272,7 @@ function StarNote({ text }: { text: string }) {
       <span
         aria-hidden
         style={{
-          color: "#C7F751",
+          color: "#7BAA1E",
           fontSize: 16,
           lineHeight: 1.45,
           flexShrink: 0,
