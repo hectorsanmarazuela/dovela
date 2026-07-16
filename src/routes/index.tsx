@@ -492,25 +492,30 @@ function Hero() {
         className="relative w-full"
         style={{ minHeight: "calc(100vh - 120px)" }}
       >
-      {/* Masked dark background with notch cut-out at bottom-right */}
+      {/* Masked dark background with notch cut-out at bottom-right (desktop only) */}
+      <style>{`
+        .hero-notch-mask {
+          -webkit-mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>");
+          -webkit-mask-position: 0 0, 100% 100%;
+          -webkit-mask-size: 100% 100%, 292px 296px;
+          -webkit-mask-repeat: no-repeat, no-repeat;
+          -webkit-mask-composite: xor;
+          mask-image: linear-gradient(#000,#000), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>");
+          mask-position: 0 0, 100% 100%;
+          mask-size: 100% 100%, 292px 296px;
+          mask-repeat: no-repeat, no-repeat;
+          mask-composite: exclude;
+        }
+        @media (max-width: 767px) {
+          .hero-notch-mask { -webkit-mask-image: none; mask-image: none; }
+        }
+      `}</style>
       <div
         aria-hidden
-        className="absolute inset-0"
+        className="absolute inset-0 hero-notch-mask"
         style={{
           backgroundColor: "#121214",
           borderRadius: 28,
-          WebkitMaskImage:
-            "linear-gradient(#000,#000), url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>\")",
-          WebkitMaskPosition: "0 0, 100% 100%",
-          WebkitMaskSize: "100% 100%, 292px 296px",
-          WebkitMaskRepeat: "no-repeat, no-repeat",
-          WebkitMaskComposite: "xor",
-          maskImage:
-            "linear-gradient(#000,#000), url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>\")",
-          maskPosition: "0 0, 100% 100%",
-          maskSize: "100% 100%, 292px 296px",
-          maskRepeat: "no-repeat, no-repeat",
-          maskComposite: "exclude",
         }}
       >
         <div
@@ -523,6 +528,7 @@ function Hero() {
           }}
         />
       </div>
+
 
 
 
