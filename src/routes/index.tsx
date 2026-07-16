@@ -927,7 +927,7 @@ function SectionHeader({
         </p>
       </div>
       <div className="lg:col-span-1 flex flex-col justify-end gap-4">
-        <p style={{ fontSize: 15, color: "#888" }}>{paragraph}</p>
+        <p style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888" }}>{paragraph}</p>
         <a
           href="#"
           className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
