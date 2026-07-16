@@ -489,22 +489,41 @@ function Hero() {
       style={{ background: "#FAFAFA", padding: "96px 16px 24px" }}
     >
       <div
-        className="relative w-full overflow-hidden"
+        className="relative w-full"
+        style={{ minHeight: "calc(100vh - 120px)" }}
+      >
+      {/* Masked dark background with notch cut-out at bottom-right */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
         style={{
           backgroundColor: "#121214",
           borderRadius: 28,
-          minHeight: "calc(100vh - 120px)",
+          WebkitMaskImage:
+            "linear-gradient(#000,#000), url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>\")",
+          WebkitMaskPosition: "0 0, 100% 100%",
+          WebkitMaskSize: "100% 100%, 292px 296px",
+          WebkitMaskRepeat: "no-repeat, no-repeat",
+          WebkitMaskComposite: "xor",
+          maskImage:
+            "linear-gradient(#000,#000), url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 292 296'><path fill='black' d='M32 0 L260 0 Q292 0 292 32 L292 296 L32 296 Q0 296 0 264 L0 32 Q0 0 32 0 Z'/></svg>\")",
+          maskPosition: "0 0, 100% 100%",
+          maskSize: "100% 100%, 292px 296px",
+          maskRepeat: "no-repeat, no-repeat",
+          maskComposite: "exclude",
         }}
       >
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "3px 3px",
-        }}
-      />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "3px 3px",
+          }}
+        />
+      </div>
+
 
 
       <div
