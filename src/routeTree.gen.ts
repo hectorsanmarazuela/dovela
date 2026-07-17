@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosSeoRouteImport } from './routes/servicios.seo'
 import { Route as ServiciosDisenoWebRouteImport } from './routes/servicios.diseno-web'
+import { Route as CasosSolaraRouteImport } from './routes/casos.solara'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,33 +29,47 @@ const ServiciosDisenoWebRoute = ServiciosDisenoWebRouteImport.update({
   path: '/servicios/diseno-web',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasosSolaraRoute = CasosSolaraRouteImport.update({
+  id: '/casos/solara',
+  path: '/casos/solara',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/casos/solara': typeof CasosSolaraRoute
   '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
   '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/casos/solara': typeof CasosSolaraRoute
   '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
   '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/casos/solara': typeof CasosSolaraRoute
   '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
   '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/servicios/diseno-web' | '/servicios/seo'
+  fullPaths: '/' | '/casos/solara' | '/servicios/diseno-web' | '/servicios/seo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/servicios/diseno-web' | '/servicios/seo'
-  id: '__root__' | '/' | '/servicios/diseno-web' | '/servicios/seo'
+  to: '/' | '/casos/solara' | '/servicios/diseno-web' | '/servicios/seo'
+  id:
+    | '__root__'
+    | '/'
+    | '/casos/solara'
+    | '/servicios/diseno-web'
+    | '/servicios/seo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CasosSolaraRoute: typeof CasosSolaraRoute
   ServiciosDisenoWebRoute: typeof ServiciosDisenoWebRoute
   ServiciosSeoRoute: typeof ServiciosSeoRoute
 }
@@ -82,11 +97,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosDisenoWebRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/casos/solara': {
+      id: '/casos/solara'
+      path: '/casos/solara'
+      fullPath: '/casos/solara'
+      preLoaderRoute: typeof CasosSolaraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CasosSolaraRoute: CasosSolaraRoute,
   ServiciosDisenoWebRoute: ServiciosDisenoWebRoute,
   ServiciosSeoRoute: ServiciosSeoRoute,
 }
