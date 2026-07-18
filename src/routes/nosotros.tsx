@@ -23,25 +23,29 @@ export const Route = createFileRoute("/nosotros")({
   component: NosotrosPage,
 });
 
-const founderImages = [dovela1.url, dovela1.url, dovela1.url];
+type Slide = { img: string; name: string; role: string; number: string };
 
-function FounderPortrait() {
+const slides: Slide[] = [
+  { img: dovela1.url, name: "Héctor", role: "Fundador", number: "01" },
+  { img: dovela1.url, name: "Pablo", role: "Desarrollador web", number: "02" },
+  { img: dovela1.url, name: "Ayoub", role: "SEO local", number: "03" },
+];
+
+function TeamCarousel() {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const id = setInterval(
-      () => setI((v) => (v + 1) % founderImages.length),
-      4000,
-    );
+    const id = setInterval(() => setI((v) => (v + 1) % slides.length), 4000);
     return () => clearInterval(id);
   }, []);
+  const current = slides[i];
   return (
-    <div className="relative">
+    <div className="sticky top-32 self-start">
       <div className="relative rounded-2xl overflow-hidden bg-[#C7F75120] aspect-[4/5]">
-        {founderImages.map((src, idx) => (
+        {slides.map((s, idx) => (
           <img
             key={idx}
-            src={src}
-            alt="Héctor, fundador de Dovela"
+            src={s.img}
+            alt={`${s.name} — ${s.role}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               idx === i ? "opacity-100" : "opacity-0"
             }`}
@@ -49,15 +53,18 @@ function FounderPortrait() {
         ))}
       </div>
       <div className="mt-6 flex items-center justify-between">
-        <p className="uppercase tracking-[0.15em] text-[13px] font-bold text-[#18181B]">
-          Héctor — Fundador
+        <p
+          key={current.name}
+          className="uppercase tracking-[0.15em] text-[13px] font-bold text-[#18181B] transition-opacity duration-500"
+        >
+          {current.name} — {current.role}
         </p>
         <div className="h-[1px] flex-1 mx-6 bg-[#18181B]/10" />
         <span
           className="text-2xl text-[#C7F751]"
           style={{ fontFamily: "'Anton', Inter, sans-serif" }}
         >
-          01
+          {current.number}
         </span>
       </div>
     </div>
@@ -94,14 +101,18 @@ const team: Member[] = [
 
 function NosotrosPage() {
   return (
-    <div className="min-h-screen bg-[#F0F0ED] text-[#18181B]">
+    <div className="min-h-screen bg-white text-[#18181B]">
       <Nav />
-      <main className="pt-[140px] pb-24">
+
+      {/* Franja 1 — Hero, fondo blanco, imagen sticky */}
+      <section className="bg-white pt-[140px] pb-24">
         <div className="max-w-7xl mx-auto px-4">
-          {/* Hero */}
-          <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-32 items-start">
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
             <div className="lg:col-span-7">
-              <span className="block uppercase tracking-[0.12em] text-[13px] leading-5 text-[#18181B]/50 mb-8">
+              <span
+                className="block uppercase tracking-[0.14em] font-semibold text-[#18181B] mb-8"
+                style={{ fontSize: "clamp(18px, 1.6vw, 22px)" }}
+              >
                 Nosotros
               </span>
               <h1
@@ -127,64 +138,71 @@ function NosotrosPage() {
             </div>
 
             <div className="lg:col-span-5">
-              <FounderPortrait />
+              <TeamCarousel />
             </div>
-          </section>
-
-          {/* Equipo */}
-          <section>
-            <div className="flex items-baseline gap-4 mb-16">
-              <h2
-                className="uppercase leading-none text-[#18181B]"
-                style={{
-                  fontFamily: "'Anton', Inter, sans-serif",
-                  fontSize: "clamp(4rem, 10vw, 9rem)",
-                }}
-              >
-                El Equipo
-              </h2>
-              <div className="h-4 w-4 bg-[#C7F751] rounded-full animate-pulse" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {team.map((m) => (
-                <article
-                  key={m.name}
-                  className="flex flex-col h-full bg-white/30 p-8 rounded-2xl border border-transparent hover:border-[#C7F751] transition-colors duration-300"
-                >
-                  <div className="flex items-baseline justify-between mb-8">
-                    <div className="flex flex-wrap gap-2">
-                      {m.roles.map((r) => (
-                        <span
-                          key={r}
-                          className="text-sm bg-[#18181B] text-[#C7F751] px-3 py-1 rounded-full"
-                        >
-                          {r}
-                        </span>
-                      ))}
-                    </div>
-                    <span
-                      className="text-[#18181B]/20 text-2xl"
-                      style={{ fontFamily: "'Anton', Inter, sans-serif" }}
-                    >
-                      {m.number}
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-3xl mb-6 text-[#18181B]">
-                    {m.name}
-                  </h3>
-                  <p className="text-[#18181B]/70 leading-relaxed">{m.text}</p>
-                </article>
-              ))}
-            </div>
-          </section>
+          </div>
         </div>
-      </main>
+      </section>
 
-      {/* Reused home sections */}
-      <Plan />
-      <CtaBanner />
-      <Footer />
+      {/* Franja 2 — El Equipo, fondo gris */}
+      <section className="bg-[#F0F0ED] py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-baseline gap-4 mb-16">
+            <h2
+              className="uppercase leading-none text-[#18181B]"
+              style={{
+                fontFamily: "'Anton', Inter, sans-serif",
+                fontSize: "clamp(4rem, 10vw, 9rem)",
+              }}
+            >
+              El Equipo
+            </h2>
+            <div className="h-4 w-4 bg-[#C7F751] rounded-full animate-pulse" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((m) => (
+              <article
+                key={m.name}
+                className="flex flex-col h-full bg-white/60 p-8 rounded-2xl border border-transparent hover:border-[#C7F751] transition-colors duration-300"
+              >
+                <div className="flex items-baseline justify-between mb-8">
+                  <div className="flex flex-wrap gap-2">
+                    {m.roles.map((r) => (
+                      <span
+                        key={r}
+                        className="text-sm bg-[#18181B] text-[#C7F751] px-3 py-1 rounded-full"
+                      >
+                        {r}
+                      </span>
+                    ))}
+                  </div>
+                  <span
+                    className="text-[#18181B]/20 text-2xl"
+                    style={{ fontFamily: "'Anton', Inter, sans-serif" }}
+                  >
+                    {m.number}
+                  </span>
+                </div>
+                <h3 className="font-bold text-3xl mb-6 text-[#18181B]">
+                  {m.name}
+                </h3>
+                <p className="text-[#18181B]/70 leading-relaxed">{m.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Franja 3 — CTA, fondo blanco */}
+      <div className="bg-white">
+        <Plan />
+        <CtaBanner />
+      </div>
+
+      <div className="bg-white">
+        <Footer />
+      </div>
     </div>
   );
 }
