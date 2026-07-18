@@ -37,21 +37,40 @@ function SeoPage() {
     <main className="bg-[#FAFAFA] text-[#0A0A0A]" style={{ overflowX: "clip" }}>
       <Nav />
       <ServicioDetail
-        variant="seo"
         n="002"
         eyebrow="Posicionamiento SEO local en Segovia"
-        title="Posicionamiento SEO"
-        intro="Estrategia personalizada para llevar y mantener a tu negocio al inicio de los resultados de búsqueda."
-        features={[
-          "Estudio de palabras clave gratuito",
-          "Optimización on-page y off-page",
-          "Optimización de Google Business Profile",
-          "Construcción de backlinks",
-          "Estrategia de blogs / Por separado",
+        title="Una fuente de clientes que no depende de anuncios ni del boca a boca"
+        intro="Diseñamos estrategias SEO a medida para colocar tu negocio en los primeros resultados de búsqueda. Consigue tráfico estable, orgánico y predecible."
+        includeTitle="¿Qué incluye nuestro servicio SEO?"
+        includes={[
+          {
+            title: "Auditoría y estudio de palabras clave",
+            description:
+              "Analizamos qué busca tu cliente y lo incorporamos en tu página para que tu negocio sea el primero que encuentre.",
+          },
+          {
+            title: "Optimización On-Page",
+            description:
+              "Perfeccionamos tu web a nivel técnico, de velocidad y de contenido para que Google te favorezca frente a tu competencia.",
+          },
+          {
+            title: "Optimización de Google Business Profile",
+            description:
+              "Pulimos y actualizamos semanalmente tu ficha de Google Maps para convertirla en un imán de llamadas y visitas.",
+          },
+          {
+            title: "Construcción de Backlinks",
+            description:
+              "Aumentamos la autoridad de tu web en internet para que Google te tome en serio y te suba de posiciones.",
+          },
+          {
+            title: "Estrategia de Contenidos",
+            description:
+              "Publicamos contenido relevante de forma consistente para que tu web gane autoridad progresivamente.",
+          },
         ]}
-        notes={["Tarifa única de proyecto + cuota de SEO mensual"]}
-        pills={["Google Search Console", "Ahrefs", "SEO Local", "Analytics 4"]}
-        heroLabel="SEO Strategy"
+        disclaimerTitle="¿Cómo trabajamos?"
+        disclaimerText="Tarifa única de configuración y optimización inicial, más una cuota mensual que incluye auditorías periódicas, informes de rendimiento y optimización continua."
       />
       <Footer />
     </main>

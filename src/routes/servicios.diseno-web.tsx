@@ -37,28 +37,45 @@ function DisenoWebPage() {
     <main className="bg-[#FAFAFA] text-[#0A0A0A]" style={{ overflowX: "clip" }}>
       <Nav />
       <ServicioDetail
-        variant="diseno"
         n="001"
         eyebrow="Servicios de diseño web en Segovia"
-        title="Diseño y desarrollo web"
-        intro="Webs a medida para tu negocio. Diseñadas para que el visitante entienda en 3 segundos qué haces, por qué y cómo llamarte."
-        extras={[
-          "Todo proyecto se perfecciona hasta que carga de forma instantánea y se adapta a cualquier dispositivo.",
+        title="Un canal de ventas que no requiere de tu tiempo"
+        intro="Desarrollamos páginas web fáciles de usar a medida para tu negocio. Creamos estructuras pensadas para que cualquier visitante entienda en 3 segundos qué haces, por qué eres la solución que busca y cómo contactarte. Cada proyecto se diseña desde cero para tu negocio y tu cliente, optimizado hasta que carga de manera instantánea y se adapta perfectamente a cualquier dispositivo."
+        includeTitle="¿Qué incluye nuestro servicio de Diseño Web?"
+        includes={[
+          {
+            title: "Estrategia y propuesta visual previa",
+            description:
+              "Define con nosotros la estructura y el estilo visual del proyecto, asegurando concordancia total con tu idea.",
+          },
+          {
+            title: "Copywriting profesional",
+            description:
+              "Redactamos textos persuasivos que conectan con tu cliente y le empujan a llamar.",
+          },
+          {
+            title: "Velocidad de carga",
+            description:
+              "Optimizamos el rendimiento técnico según los estándares de Google (Core Web Vitals).",
+          },
+          {
+            title: "SEO Básico de lanzamiento",
+            description:
+              "Dejamos la web lista para que Google la indexe correctamente desde el primer día: estructura de encabezados, metaetiquetas, sitemap y optimización de imágenes.",
+          },
+          {
+            title: "Diseño 100% Responsive",
+            description:
+              "Tu web se verá y funcionará perfectamente en teléfonos móviles.",
+          },
+          {
+            title: "Lanzamiento en 14 días",
+            description:
+              "Nos comprometemos con los plazos. Si tenemos el material listo, tu web estará online en dos semanas.",
+          },
         ]}
-        features={[
-          "Propuesta visual gratuita",
-          "Copywriting / Texto persuasivo para tu cliente",
-          "Web Core Vitals / Métricas vitales de Google",
-          "SEO básico / Headers, meta tags, sitemap",
-          "Diseño responsive móvil",
-          "1 mes de mantenimiento incluido",
-        ]}
-        notes={[
-          "Mantenimiento mensual aparte — 2 horas de ediciones incluidas",
-          "Entrega promedio en 14 días",
-        ]}
-        pills={["Figma", "React", "Framer Motion", "Accesibilidad AA"]}
-        heroLabel="Web Design"
+        disclaimerTitle="¿Y después del lanzamiento?"
+        disclaimerText="El primer mes de soporte técnico va incluido. A partir de ahí, ofrecemos un servicio mensual que incluye hosting, copias de seguridad, actualizaciones técnicas y 2 horas de ediciones para los cambios que necesites."
       />
       <Footer />
     </main>
