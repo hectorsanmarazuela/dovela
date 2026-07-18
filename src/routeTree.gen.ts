@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosSeoRouteImport } from './routes/servicios.seo'
 import { Route as ServiciosDisenoWebRouteImport } from './routes/servicios.diseno-web'
@@ -17,6 +18,11 @@ import { Route as ProyectosSolaraRouteImport } from './routes/proyectos.solara'
 import { Route as ProyectosIchoRouteImport } from './routes/proyectos.icho'
 import { Route as ProyectosFdcFontaneroRouteImport } from './routes/proyectos.fdc-fontanero'
 
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +61,7 @@ const ProyectosFdcFontaneroRoute = ProyectosFdcFontaneroRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/nosotros': typeof NosotrosRoute
   '/proyectos/fdc-fontanero': typeof ProyectosFdcFontaneroRoute
   '/proyectos/icho': typeof ProyectosIchoRoute
   '/proyectos/solara': typeof ProyectosSolaraRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/nosotros': typeof NosotrosRoute
   '/proyectos/fdc-fontanero': typeof ProyectosFdcFontaneroRoute
   '/proyectos/icho': typeof ProyectosIchoRoute
   '/proyectos/solara': typeof ProyectosSolaraRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/nosotros': typeof NosotrosRoute
   '/proyectos/fdc-fontanero': typeof ProyectosFdcFontaneroRoute
   '/proyectos/icho': typeof ProyectosIchoRoute
   '/proyectos/solara': typeof ProyectosSolaraRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/nosotros'
     | '/proyectos/fdc-fontanero'
     | '/proyectos/icho'
     | '/proyectos/solara'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/nosotros'
     | '/proyectos/fdc-fontanero'
     | '/proyectos/icho'
     | '/proyectos/solara'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/nosotros'
     | '/proyectos/fdc-fontanero'
     | '/proyectos/icho'
     | '/proyectos/solara'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  NosotrosRoute: typeof NosotrosRoute
   ProyectosFdcFontaneroRoute: typeof ProyectosFdcFontaneroRoute
   ProyectosIchoRoute: typeof ProyectosIchoRoute
   ProyectosSolaraRoute: typeof ProyectosSolaraRoute
@@ -123,6 +136,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  NosotrosRoute: NosotrosRoute,
   ProyectosFdcFontaneroRoute: ProyectosFdcFontaneroRoute,
   ProyectosIchoRoute: ProyectosIchoRoute,
   ProyectosSolaraRoute: ProyectosSolaraRoute,

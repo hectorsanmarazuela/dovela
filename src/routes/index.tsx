@@ -146,7 +146,6 @@ function Nav() {
     children?: Array<{ label: string; href: string; match: string }>;
   }> = [
     { label: "Inicio", href: "/", match: "/" },
-    { label: "Proyectos", href: "/#proyectos", match: "__none__" },
     {
       label: "Servicios",
       href: "/servicios/diseno-web",
@@ -156,6 +155,7 @@ function Nav() {
         { label: "SEO", href: "/servicios/seo", match: "/servicios/seo" },
       ],
     },
+    { label: "Nosotros", href: "/nosotros", match: "/nosotros" },
     { label: "Blog", href: "#blog", match: "__none__" },
   ];
   const isServiciosActive = pathname.startsWith("/servicios");
