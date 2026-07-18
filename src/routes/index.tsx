@@ -1089,10 +1089,10 @@ function Services() {
 /* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
-  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoImg.url },
-  { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url },
-  { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url },
-  { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url },
+  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoImg.url, href: "/proyectos/icho" },
+  { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url, href: "/proyectos/solara" },
+  { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url, href: "/proyectos/fdc-fontanero" },
+  { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url, href: "/proyectos/voltiarural" },
 ];
 
 function Projects() {
@@ -1126,16 +1126,18 @@ function ProjectCard({
   pills,
   cat,
   img,
+  href,
 }: {
   name: string;
   pills: string[];
   cat: string;
   img: string;
+  href: string;
 }) {
   const [hovering, setHovering] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   return (
-    <div className="group">
+    <a href={href} className="group block">
       <div
         className="relative w-full overflow-hidden md:cursor-none"
         style={{ aspectRatio: "4 / 3", backgroundColor: "#2A2A2A", borderRadius: 14 }}
@@ -1195,7 +1197,7 @@ function ProjectCard({
           ))}
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

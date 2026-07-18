@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiciosSeoRouteImport } from './routes/servicios.seo'
 import { Route as ServiciosDisenoWebRouteImport } from './routes/servicios.diseno-web'
-import { Route as CasosSolaraRouteImport } from './routes/casos.solara'
+import { Route as ProyectosVoltiaruralRouteImport } from './routes/proyectos.voltiarural'
+import { Route as ProyectosSolaraRouteImport } from './routes/proyectos.solara'
+import { Route as ProyectosIchoRouteImport } from './routes/proyectos.icho'
+import { Route as ProyectosFdcFontaneroRouteImport } from './routes/proyectos.fdc-fontanero'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,47 +32,91 @@ const ServiciosDisenoWebRoute = ServiciosDisenoWebRouteImport.update({
   path: '/servicios/diseno-web',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CasosSolaraRoute = CasosSolaraRouteImport.update({
-  id: '/casos/solara',
-  path: '/casos/solara',
+const ProyectosVoltiaruralRoute = ProyectosVoltiaruralRouteImport.update({
+  id: '/proyectos/voltiarural',
+  path: '/proyectos/voltiarural',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProyectosSolaraRoute = ProyectosSolaraRouteImport.update({
+  id: '/proyectos/solara',
+  path: '/proyectos/solara',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProyectosIchoRoute = ProyectosIchoRouteImport.update({
+  id: '/proyectos/icho',
+  path: '/proyectos/icho',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProyectosFdcFontaneroRoute = ProyectosFdcFontaneroRouteImport.update({
+  id: '/proyectos/fdc-fontanero',
+  path: '/proyectos/fdc-fontanero',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/casos/solara': typeof CasosSolaraRoute
+  '/proyectos/fdc-fontanero': typeof ProyectosFdcFontaneroRoute
+  '/proyectos/icho': typeof ProyectosIchoRoute
+  '/proyectos/solara': typeof ProyectosSolaraRoute
+  '/proyectos/voltiarural': typeof ProyectosVoltiaruralRoute
   '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
   '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/casos/solara': typeof CasosSolaraRoute
+  '/proyectos/fdc-fontanero': typeof ProyectosFdcFontaneroRoute
+  '/proyectos/icho': typeof ProyectosIchoRoute
+  '/proyectos/solara': typeof ProyectosSolaraRoute
+  '/proyectos/voltiarural': typeof ProyectosVoltiaruralRoute
   '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
   '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/casos/solara': typeof CasosSolaraRoute
+  '/proyectos/fdc-fontanero': typeof ProyectosFdcFontaneroRoute
+  '/proyectos/icho': typeof ProyectosIchoRoute
+  '/proyectos/solara': typeof ProyectosSolaraRoute
+  '/proyectos/voltiarural': typeof ProyectosVoltiaruralRoute
   '/servicios/diseno-web': typeof ServiciosDisenoWebRoute
   '/servicios/seo': typeof ServiciosSeoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/casos/solara' | '/servicios/diseno-web' | '/servicios/seo'
+  fullPaths:
+    | '/'
+    | '/proyectos/fdc-fontanero'
+    | '/proyectos/icho'
+    | '/proyectos/solara'
+    | '/proyectos/voltiarural'
+    | '/servicios/diseno-web'
+    | '/servicios/seo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/casos/solara' | '/servicios/diseno-web' | '/servicios/seo'
+  to:
+    | '/'
+    | '/proyectos/fdc-fontanero'
+    | '/proyectos/icho'
+    | '/proyectos/solara'
+    | '/proyectos/voltiarural'
+    | '/servicios/diseno-web'
+    | '/servicios/seo'
   id:
     | '__root__'
     | '/'
-    | '/casos/solara'
+    | '/proyectos/fdc-fontanero'
+    | '/proyectos/icho'
+    | '/proyectos/solara'
+    | '/proyectos/voltiarural'
     | '/servicios/diseno-web'
     | '/servicios/seo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CasosSolaraRoute: typeof CasosSolaraRoute
+  ProyectosFdcFontaneroRoute: typeof ProyectosFdcFontaneroRoute
+  ProyectosIchoRoute: typeof ProyectosIchoRoute
+  ProyectosSolaraRoute: typeof ProyectosSolaraRoute
+  ProyectosVoltiaruralRoute: typeof ProyectosVoltiaruralRoute
   ServiciosDisenoWebRoute: typeof ServiciosDisenoWebRoute
   ServiciosSeoRoute: typeof ServiciosSeoRoute
 }
@@ -97,11 +144,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiciosDisenoWebRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/casos/solara': {
-      id: '/casos/solara'
-      path: '/casos/solara'
-      fullPath: '/casos/solara'
-      preLoaderRoute: typeof CasosSolaraRouteImport
+    '/proyectos/voltiarural': {
+      id: '/proyectos/voltiarural'
+      path: '/proyectos/voltiarural'
+      fullPath: '/proyectos/voltiarural'
+      preLoaderRoute: typeof ProyectosVoltiaruralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proyectos/solara': {
+      id: '/proyectos/solara'
+      path: '/proyectos/solara'
+      fullPath: '/proyectos/solara'
+      preLoaderRoute: typeof ProyectosSolaraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proyectos/icho': {
+      id: '/proyectos/icho'
+      path: '/proyectos/icho'
+      fullPath: '/proyectos/icho'
+      preLoaderRoute: typeof ProyectosIchoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proyectos/fdc-fontanero': {
+      id: '/proyectos/fdc-fontanero'
+      path: '/proyectos/fdc-fontanero'
+      fullPath: '/proyectos/fdc-fontanero'
+      preLoaderRoute: typeof ProyectosFdcFontaneroRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -109,7 +177,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CasosSolaraRoute: CasosSolaraRoute,
+  ProyectosFdcFontaneroRoute: ProyectosFdcFontaneroRoute,
+  ProyectosIchoRoute: ProyectosIchoRoute,
+  ProyectosSolaraRoute: ProyectosSolaraRoute,
+  ProyectosVoltiaruralRoute: ProyectosVoltiaruralRoute,
   ServiciosDisenoWebRoute: ServiciosDisenoWebRoute,
   ServiciosSeoRoute: ServiciosSeoRoute,
 }
