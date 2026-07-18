@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import ichoProjectImg from "@/assets/ICHO_1.webp.asset.json";
+import ichoProjectImg from "@/assets/ICHO_PROYECTO.webp.asset.json";
 
-import ichoImg from "@/assets/icho.webp.asset.json";
 import solaraImg from "@/assets/solara.webp.asset.json";
 import fontaneroImg from "@/assets/fontanero.webp.asset.json";
 import voltiaImg from "@/assets/voltia.webp.asset.json";
-import webFacilImg from "@/assets/web_facil.webp.asset.json";
+import webFacilImg from "@/assets/VOLTIA_MAC_Y_IPHONE.webp.asset.json";
 
 
 export const Route = createFileRoute("/")({
