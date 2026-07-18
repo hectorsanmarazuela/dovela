@@ -685,10 +685,11 @@ function Hero() {
         </div>
       </div>
 
-      {/* Floating card notch (desktop only) */}
-      <div
+      {/* Floating card notch (desktop only) — links to Icho case study */}
+      <Link
+        to="/proyectos/icho"
         data-hero-notch
-        className="absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px] rounded-br-[40px]"
+        className="group absolute bottom-0 right-0 bg-[#F0F0ED] rounded-tl-[40px] rounded-br-[28px] block"
         style={{
           width: 300,
           height: 304,
@@ -698,62 +699,39 @@ function Hero() {
       >
         {/* Curva cóncava Izquierda */}
         <svg className="absolute bottom-0 left-[-40px] w-10 h-10 text-[#F0F0ED] pointer-events-none" fill="currentColor" viewBox="0 0 40 40">
-
           <path d="M40 40V0C40 22.0914 22.0914 40 0 40H40Z" />
-
         </svg>
 
         {/* Curva cóncava Superior */}
         <svg className="absolute top-[-40px] right-0 w-10 h-10 text-[#F0F0ED] pointer-events-none" fill="currentColor" viewBox="0 0 40 40">
-
           <path d="M40 40V0C40 22.0914 22.0914 40 0 40H40Z" />
-
         </svg>
 
         <div className="relative flex h-full flex-col">
-        <div
-          style={{
-            aspectRatio: "16 / 9",
-            backgroundColor: "#2A2A2A",
-            borderRadius: 8,
-          }}
-        />
-        <div className="mt-3 flex items-center justify-between gap-2">
-          <div style={{ fontSize: 13, fontWeight: 500, color: "#0A0A0A" }}>
-            Fontanería Valverde — Segovia
-          </div>
-        </div>
-        <div className="mt-2">
-          <span
-            className="inline-block rounded-full"
+          <div
+            className="overflow-hidden"
             style={{
-              border: "0.5px solid #888",
-              color: "#888",
-              fontSize: 11,
-              padding: "2px 10px",
+              aspectRatio: "16 / 10",
+              backgroundColor: "#FAFAFA",
+              borderRadius: 8,
             }}
           >
-            SEO Local
-          </span>
+            <img
+              src={ichoProjectImg.url}
+              alt="Icho — Joyería de autor"
+              className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+            />
+          </div>
+          <div className="mt-auto pt-3 flex flex-col gap-1">
+            <span style={{ fontSize: 10, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              Proyecto destacado
+            </span>
+            <div style={{ fontSize: 16, fontWeight: 600, color: "#0A0A0A" }}>
+              Icho
+            </div>
+          </div>
         </div>
-        <div className="mt-auto pt-3 flex items-center gap-2 group">
-          <a
-            href="#auditoria"
-            className="rounded-full bg-[#121214] text-[#FAFAFA]"
-            style={{ padding: "6px 14px", fontSize: 12, fontWeight: 600 }}
-          >
-            Pedir auditoría gratuita
-          </a>
-          <span
-            aria-hidden
-            className="inline-grid shrink-0 place-items-center rounded-full bg-[#C7F751] text-[#121214]"
-            style={{ width: 28, height: 28, fontSize: 16, lineHeight: 1 }}
-          >
-            →
-          </span>
-        </div>
-        </div>
-      </div>
+      </Link>
 
       </div>
     </section>
