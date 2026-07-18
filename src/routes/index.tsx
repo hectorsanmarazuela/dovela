@@ -797,7 +797,7 @@ function PorQueDovela() {
             </p>
             <p
               className="mt-8"
-              style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888", maxWidth: 640 }}
+              style={{ fontSize: "clamp(15px, 1.6vw, 22px)", color: "#888", maxWidth: 640 }}
             >
               <span className="block">De la mano de una estrategia</span>
               <span className="block">para posicionarte sobre la competencia.</span>
@@ -912,7 +912,7 @@ function SectionHeader({
         </p>
       </div>
       <div className="lg:col-span-1 flex flex-col justify-end gap-4">
-        <p style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888" }}>{paragraph}</p>
+        <p style={{ fontSize: "clamp(15px, 1.6vw, 22px)", color: "#888" }}>{paragraph}</p>
         <a
           href="#"
           className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
@@ -1922,7 +1922,7 @@ function LeadMagnet() {
                 className="mt-6"
                 style={{
                   color: "rgba(255,255,255,0.65)",
-                  fontSize: "clamp(18px, 2vw, 27px)",
+                  fontSize: "clamp(15px, 1.6vw, 22px)",
                   maxWidth: 720,
                 }}
               >
