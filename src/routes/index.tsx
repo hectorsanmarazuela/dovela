@@ -753,10 +753,10 @@ function Hero() {
             </div>
           </div>
           <div className="mt-auto pt-3 flex flex-col gap-1">
-            <span style={{ fontSize: 10, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            <span style={{ fontSize: 12, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Proyecto destacado
             </span>
-            <div style={{ fontSize: 15, fontWeight: 600, color: "#0A0A0A" }}>
+            <div style={{ fontSize: 22, fontWeight: 600, color: "#0A0A0A" }}>
               Icho <span style={{ color: "rgba(24,24,27,0.4)" }}>—</span> Joyería artesanal
             </div>
           </div>
