@@ -525,14 +525,19 @@ function Hero() {
       </div>
 
 
+      {/* Top-left date — desktop only */}
+      <div
+        className="absolute hidden lg:block"
+        style={{ left: 40, top: 40, color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500 }}
+      >
+        08/06/2026
+      </div>
+
       {/* Top-right meta block — desktop only */}
       <div
-        className="absolute hidden lg:flex flex-col gap-4 text-right"
-        style={{ right: 40, top: 110, maxWidth: 320 }}
+        className="absolute hidden lg:flex flex-col gap-3 text-right"
+        style={{ right: 40, top: 40, maxWidth: 320 }}
       >
-        <div style={{ color: "#FAFAFA", fontSize: 13, fontWeight: 500 }}>
-          08/06/2026
-        </div>
         <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, lineHeight: 1.5 }}>
           Agencia de diseño web y SEO local — Segovia, España
         </div>
@@ -544,11 +549,16 @@ function Hero() {
             {time || "17:32"}
           </div>
         </div>
-        <div className="flex flex-wrap justify-end gap-x-3 gap-y-1" style={{ fontSize: 11, color: "rgba(255,255,255,0.7)" }}>
-          <span>● Diseño web</span>
-          <span>● SEO Local</span>
-          <span>● Google Business</span>
-        </div>
+      </div>
+
+      {/* Floating service pills — desktop only */}
+      <div
+        className="absolute hidden lg:flex flex-col items-end gap-2"
+        style={{ right: 40, top: 320, fontSize: 11, color: "rgba(255,255,255,0.7)" }}
+      >
+        <span>● Diseño web</span>
+        <span>● SEO Local</span>
+        <span>● Google Business</span>
       </div>
 
 
