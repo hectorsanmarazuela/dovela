@@ -2885,4 +2885,4 @@ function Index() {
   );
 }
 
-export { Nav, Services, Footer, FeaturePill, StarNote, ServiceCta, Wireframe };
+export { Nav, Services, Footer, FeaturePill, StarNote, ServiceCta, Wireframe, Plan, CtaBanner };
