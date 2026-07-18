@@ -525,14 +525,19 @@ function Hero() {
       </div>
 
 
+      {/* Top-left date — desktop only */}
+      <div
+        className="absolute hidden lg:block"
+        style={{ left: 40, top: 40, color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500 }}
+      >
+        08/06/2026
+      </div>
+
       {/* Top-right meta block — desktop only */}
       <div
-        className="absolute hidden lg:flex flex-col gap-4 text-right"
-        style={{ right: 40, top: 110, maxWidth: 320 }}
+        className="absolute hidden lg:flex flex-col gap-3 text-right"
+        style={{ right: 40, top: 40, maxWidth: 320 }}
       >
-        <div style={{ color: "#FAFAFA", fontSize: 13, fontWeight: 500 }}>
-          08/06/2026
-        </div>
         <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, lineHeight: 1.5 }}>
           Agencia de diseño web y SEO local — Segovia, España
         </div>
@@ -544,11 +549,16 @@ function Hero() {
             {time || "17:32"}
           </div>
         </div>
-        <div className="flex flex-wrap justify-end gap-x-3 gap-y-1" style={{ fontSize: 11, color: "rgba(255,255,255,0.7)" }}>
-          <span>● Diseño web</span>
-          <span>● SEO Local</span>
-          <span>● Google Business</span>
-        </div>
+      </div>
+
+      {/* Floating service pills — desktop only */}
+      <div
+        className="absolute hidden lg:flex flex-col items-end gap-2"
+        style={{ right: 40, top: 320, fontSize: 11, color: "rgba(255,255,255,0.7)" }}
+      >
+        <span>● Diseño web</span>
+        <span>● SEO Local</span>
+        <span>● Google Business</span>
       </div>
 
 
@@ -638,7 +648,7 @@ function Hero() {
       </div>
 
       {/* Desktop H1 */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: 110 }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: 180 }}>
         <h1 className="label-eyebrow" style={{ marginBottom: 16, fontSize: 14 }}>
           Diseño web y SEO local en Segovia
         </h1>
@@ -743,10 +753,10 @@ function Hero() {
             </div>
           </div>
           <div className="mt-auto pt-3 flex flex-col gap-1">
-            <span style={{ fontSize: 10, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            <span style={{ fontSize: 12, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Proyecto destacado
             </span>
-            <div style={{ fontSize: 15, fontWeight: 600, color: "#0A0A0A" }}>
+            <div style={{ fontSize: 22, fontWeight: 600, color: "#0A0A0A" }}>
               Icho <span style={{ color: "rgba(24,24,27,0.4)" }}>—</span> Joyería artesanal
             </div>
           </div>
