@@ -526,24 +526,10 @@ function Hero() {
       </div>
 
 
-      {/* Date + agency label — desktop only */}
-      <div
-        className="absolute hidden md:block"
-        style={{ top: 110, left: 40, color: "rgba(255,255,255,0.4)", fontSize: 12 }}
-      >
-        08/06/2026
-      </div>
-
-      <div
-        className="absolute text-right max-w-[320px] hidden md:block"
-        style={{ top: 110, right: 40, color: "rgba(255,255,255,0.5)", fontSize: 12 }}
-      >
-        Agencia de diseño web y SEO local — Segovia, España
-      </div>
-
+      {/* Local time — desktop only (kept, pills removed) */}
       <div
         className="absolute hidden lg:flex flex-col gap-3"
-        style={{ right: 40, top: "50%", transform: "translateY(-50%)" }}
+        style={{ right: 40, top: 110 }}
       >
         <div className="text-right">
           <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11 }}>
@@ -553,23 +539,8 @@ function Hero() {
             {time || "17:32"}
           </div>
         </div>
-        <div className="flex flex-col items-end gap-2 mt-2">
-          {["Diseño web", "SEO Local", "Google Business"].map((s) => (
-            <span
-              key={s}
-              className="rounded-full"
-              style={{
-                border: "0.5px solid rgba(255,255,255,0.3)",
-                color: "rgba(255,255,255,0.6)",
-                fontSize: 11,
-                padding: "4px 12px",
-              }}
-            >
-              ● {s}
-            </span>
-          ))}
-        </div>
       </div>
+
 
       {/* Mobile flow: title + copy + CTAs + integrated card (no absolute positioning) */}
       <div className="relative md:hidden flex flex-col" style={{ padding: "40px 24px 0" }}>
