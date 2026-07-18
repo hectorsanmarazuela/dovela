@@ -572,14 +572,29 @@ function Hero() {
             Reserva una llamada gratuita
             <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
           </a>
+          <Link
+            to="/servicios/diseno-web"
+            className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
+            style={{
+              border: "0.5px solid rgba(255,255,255,0.35)",
+              padding: "14px 20px",
+              fontWeight: 500,
+              fontSize: 14,
+              color: "#FAFAFA",
+            }}
+          >
+            Explorar nuestros servicios
+            <ArrowCircle size={28} bg="#FAFAFA" fg="#0A0A0A" />
+          </Link>
         </div>
-        <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, marginTop: 16 }}>
+        <div className="hidden md:block" style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, marginTop: 16 }}>
           20 minutos, sin compromiso.
         </div>
 
-        {/* Fontanería card integrated at bottom of hero on mobile */}
-        <div
-          className="flex flex-col mt-10"
+        {/* Icho project card integrated at bottom of hero on mobile */}
+        <Link
+          to="/proyectos/icho"
+          className="group flex flex-col mt-10 overflow-hidden"
           style={{
             background: "#FAFAFA",
             borderRadius: 18,
@@ -588,41 +603,28 @@ function Hero() {
           }}
         >
           <div
+            className="overflow-hidden"
             style={{
               aspectRatio: "16 / 9",
-              backgroundColor: "#2A2A2A",
+              backgroundColor: "#FAFAFA",
               borderRadius: 10,
             }}
-          />
-          <div className="mt-3 flex items-center justify-between gap-2">
-            <div style={{ fontSize: 14, fontWeight: 500, color: "#0A0A0A" }}>
-              Fontanería Valverde — Segovia
+          >
+            <img
+              src={ichoProjectImg.url}
+              alt="Icho — Joyería de autor"
+              className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+            />
+          </div>
+          <div className="mt-3 flex flex-col gap-1">
+            <span style={{ fontSize: 11, color: "rgba(24,24,27,0.55)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              Proyecto destacado
+            </span>
+            <div style={{ fontSize: 16, fontWeight: 600, color: "#0A0A0A" }}>
+              Icho
             </div>
           </div>
-          <div className="mt-2">
-            <span
-              className="inline-block rounded-full"
-              style={{
-                border: "0.5px solid #888",
-                color: "#888",
-                fontSize: 11,
-                padding: "2px 10px",
-              }}
-            >
-              SEO Local
-            </span>
-          </div>
-          <div className="mt-4 flex items-center gap-2">
-            <a
-              href="#auditoria"
-              className="rounded-full bg-[#121214] text-[#FAFAFA]"
-              style={{ padding: "8px 16px", fontSize: 13, fontWeight: 600 }}
-            >
-              Pedir auditoría gratuita
-            </a>
-            <ArrowCircle size={30} bg="#C7F751" fg="#121214" />
-          </div>
-        </div>
+        </Link>
       </div>
 
       {/* Desktop H1 */}
