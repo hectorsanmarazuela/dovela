@@ -1040,7 +1040,7 @@ function Services() {
 /* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
-  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoImg.url, href: "/proyectos/icho" },
+  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoProjectImg.url, href: "/proyectos/icho" },
   { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url, href: "/proyectos/solara" },
   { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url, href: "/proyectos/fdc-fontanero" },
   { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url, href: "/proyectos/voltiarural" },
