@@ -541,25 +541,31 @@ function Hero() {
         <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, lineHeight: 1.5 }}>
           Agencia de diseño web y SEO local — Segovia, España
         </div>
-        <div>
-          <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11 }}>
-            Hora local Segovia:
-          </div>
-          <div style={{ color: "#FAFAFA", fontSize: 13, fontWeight: 500 }}>
-            {time || "17:32"}
-          </div>
-        </div>
       </div>
 
       {/* Floating service pills — desktop only */}
       <div
-        className="absolute hidden lg:flex flex-col items-end gap-2"
-        style={{ right: 40, top: 320, fontSize: 11, color: "rgba(255,255,255,0.7)" }}
+        className="absolute hidden lg:flex flex-wrap justify-end gap-2"
+        style={{ right: 40, top: 320, maxWidth: 340 }}
       >
-        <span>● Diseño web</span>
-        <span>● SEO Local</span>
-        <span>● Google Business</span>
+        {["Diseño web", "SEO Local", "Copywrite"].map((p) => (
+          <span
+            key={p}
+            className="rounded-full"
+            style={{
+              padding: "6px 14px",
+              fontSize: 12,
+              fontWeight: 500,
+              color: "rgba(255,255,255,0.85)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              background: "rgba(255,255,255,0.04)",
+            }}
+          >
+            {p}
+          </span>
+        ))}
       </div>
+
 
 
       {/* Mobile flow: title + copy + CTAs + integrated card (no absolute positioning) */}
