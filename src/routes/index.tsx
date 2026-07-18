@@ -719,7 +719,7 @@ function Hero() {
 
         <div className="relative flex h-full flex-col">
           <div
-            className="overflow-hidden"
+            className="relative overflow-hidden"
             style={{
               aspectRatio: "16 / 10",
               backgroundColor: "#FAFAFA",
@@ -728,16 +728,26 @@ function Hero() {
           >
             <img
               src={ichoProjectImg.url}
-              alt="Icho — Joyería de autor"
-              className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              alt="Icho — Joyería artesanal"
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
             />
+            {/* Arrow badge */}
+            <div
+              className="absolute top-2 right-2 grid place-items-center rounded-full bg-[#121214] text-[#C7F751] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              style={{ width: 36, height: 36 }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
           </div>
           <div className="mt-auto pt-3 flex flex-col gap-1">
             <span style={{ fontSize: 10, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Proyecto destacado
             </span>
-            <div style={{ fontSize: 16, fontWeight: 600, color: "#0A0A0A" }}>
-              Icho
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#0A0A0A" }}>
+              Icho <span style={{ color: "rgba(24,24,27,0.4)" }}>—</span> Joyería artesanal
             </div>
           </div>
         </div>
