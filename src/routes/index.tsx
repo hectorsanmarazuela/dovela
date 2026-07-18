@@ -1938,7 +1938,7 @@ function LeadMagnet() {
                     </span>
                     <span
                       style={{
-                        fontSize: "clamp(17px, 1.8vw, 25px)",
+                        fontSize: "clamp(14px, 1.2vw, 16px)",
                         color: "rgba(255,255,255,0.85)",
                         lineHeight: 1.5,
                       }}
