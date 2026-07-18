@@ -648,7 +648,7 @@ function Hero() {
       </div>
 
       {/* Desktop H1 */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: 110 }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: 180 }}>
         <h1 className="label-eyebrow" style={{ marginBottom: 16, fontSize: 14 }}>
           Diseño web y SEO local en Segovia
         </h1>
