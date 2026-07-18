@@ -552,7 +552,7 @@ function Hero() {
           style={{ fontSize: "clamp(48px, 12vw, 72px)", color: "#FAFAFA", margin: 0 }}
         >
           <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
-            Si te buscan
+            Si te buscan,
           </span>{" "}
           <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
             que te encuentren.
