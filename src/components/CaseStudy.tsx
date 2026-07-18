@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Nav, Footer } from "@/routes/index";
-import author from "@/assets/jose2.png.asset.json";
+import author from "@/assets/hector_avatar.webp.asset.json";
 
 export function Pill({ children }: { children: ReactNode }) {
   return (
