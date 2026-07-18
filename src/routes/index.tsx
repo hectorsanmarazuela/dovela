@@ -1912,7 +1912,7 @@ function LeadMagnet() {
               </h2>
               <p
                 className="h-display mt-6"
-                style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
+                style={{ fontSize: "clamp(28px, 3.4vw, 40px)", color: "#FAFAFA" }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
                 <span style={{ color: "#C7F751" }}>aparece en Google?</span>
