@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import ichoProjectImg from "@/assets/ICHO_1.webp.asset.json";
 
 import ichoImg from "@/assets/icho.webp.asset.json";
 import solaraImg from "@/assets/solara.webp.asset.json";
