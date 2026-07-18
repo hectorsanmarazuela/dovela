@@ -1197,7 +1197,7 @@ function ProjectCard({
           ))}
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
