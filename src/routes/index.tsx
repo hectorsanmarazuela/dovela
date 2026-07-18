@@ -628,7 +628,7 @@ function Hero() {
       </div>
 
       {/* Desktop H1 */}
-      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: "50%", transform: "translateY(-50%)" }}>
+      <div className="absolute left-10 right-10 lg:right-auto max-w-[70%] hidden md:block" style={{ top: 110 }}>
         <h1 className="label-eyebrow" style={{ marginBottom: 16, fontSize: 14 }}>
           Diseño web y SEO local en Segovia
         </h1>
@@ -637,7 +637,7 @@ function Hero() {
           style={{ fontSize: "clamp(52px, 9vw, 110px)", color: "#FAFAFA", margin: 0 }}
         >
           <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>
-            Si te buscan
+            Si te buscan,
           </span>{" "}
           <span style={{ color: "#FAFAFA", fontWeight: 600 }}>
             que te encuentren.
