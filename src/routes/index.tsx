@@ -5,7 +5,9 @@ import ichoProjectImg from "@/assets/ICHO_PROYECTO.webp.asset.json";
 import solaraImg from "@/assets/solara.webp.asset.json";
 import fontaneroImg from "@/assets/fontanero.webp.asset.json";
 import voltiaImg from "@/assets/voltia.webp.asset.json";
-import webFacilImg from "@/assets/VOLTIA_MAC_Y_IPHONE.webp.asset.json";
+import webFacilImg from "@/assets/VOLTIA_INICIO.webp.asset.json";
+import retroTvImg from "@/assets/retro_tv.webp.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
