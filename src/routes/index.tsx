@@ -1736,12 +1736,22 @@ function Testimonials() {
             </div>
           </div>
           <div
+            className="relative w-full overflow-hidden"
             style={{
               background: "#1A1A1A",
               borderRadius: 16,
-              minHeight: 360,
+              aspectRatio: "16 / 9",
             }}
-          />
+          >
+            <img
+              src={retroTvImg.url}
+              alt="Dovela — Estudio de diseño web y SEO en Segovia"
+              className="w-full h-full object-cover"
+              style={{ borderRadius: 16, display: "block" }}
+              loading="lazy"
+            />
+          </div>
+
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
           {small.map((t) => (
