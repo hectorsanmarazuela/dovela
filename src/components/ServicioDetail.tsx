@@ -1,527 +1,344 @@
-import { useEffect, useState } from "react";
-import { FeaturePill, StarNote, ServiceCta } from "@/routes/index";
-import ICHO1 from "@/assets/ICHO1.png.asset.json";
-import ICHO2 from "@/assets/ICHO2.png.asset.json";
-import PILATES1 from "@/assets/PILATES1.png.asset.json";
-import PILATES2 from "@/assets/PILATES2.png.asset.json";
-import FONTA1 from "@/assets/FONTA1.png.asset.json";
-import FONTA2 from "@/assets/FONTA2.png.asset.json";
+import { ServiceCta, CtaBanner } from "@/routes/index";
+
+type IncludeItem = { title: string; description: string };
 
 type Props = {
   n: string;
   eyebrow: string;
   title: string;
   intro: string;
-  extras?: string[];
-  features?: string[];
-  notes?: string[];
-  pills?: string[]; // no longer rendered; kept for backwards compat
-  heroLabel: string;
-  variant?: "diseno" | "seo";
+  includeTitle: string;
+  includes: IncludeItem[];
+  disclaimerTitle: string;
+  disclaimerText: string;
 };
 
-const RADIUS = 18; // uniform border radius for all imagery
-
-const GALLERY = [
-  { src: ICHO1.url, label: "Icho — Joyería", tag: "E-commerce" },
-  { src: PILATES1.url, label: "Solara — Pilates", tag: "Landing + reservas" },
-  { src: FONTA1.url, label: "Fernández del Campo", tag: "SEO local" },
-  { src: ICHO2.url, label: "Icho — Ficha producto", tag: "UX" },
-  { src: PILATES2.url, label: "Solara — Comunidad", tag: "Contenido" },
-  { src: FONTA2.url, label: "Fernández — Servicios", tag: "Conversión" },
-];
-
-function PackBanner() {
-  return (
-    <div className="max-w-[1480px] mx-auto px-6 md:px-10" style={{ marginTop: 48 }}>
-      <div
-        style={{
-          position: "relative",
-          background: "rgba(255,255,255,0.65)",
-          backdropFilter: "blur(6px)",
-          border: "0.5px solid rgba(24,24,27,0.12)",
-          borderRadius: 20,
-          padding: "22px clamp(20px, 3vw, 32px)",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(60% 100% at 100% 50%, rgba(199,247,81,0.35), transparent 65%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div className="relative grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-5 md:gap-8 items-center">
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              padding: "6px 12px",
-              borderRadius: 999,
-              background: "rgba(24,24,27,0.06)",
-              color: "#18181B",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              width: "fit-content",
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
-            Pack completo · Ahorra
-          </div>
-          <p
-            style={{
-              fontSize: 15,
-              lineHeight: 1.5,
-              color: "rgba(24,24,27,0.75)",
-              margin: 0,
-            }}
-          >
-            <strong style={{ color: "#18181B" }}>¿Y si lo hacemos todo junto?</strong>{" "}
-            Diseño web + SEO bajo la misma dirección: mejor precio, mejor
-            coordinación y mucho más ROI que contratarlos por separado.
-          </p>
-          <a
-            href="/#contacto"
-            className="inline-flex items-center gap-3 hover:brightness-95 transition"
-            style={{
-              padding: "12px 12px 12px 20px",
-              borderRadius: 999,
-              background: "#C7F751",
-              color: "#18181B",
-              fontSize: 14,
-              fontWeight: 700,
-              whiteSpace: "nowrap",
-              justifySelf: "start",
-            }}
-          >
-            Ver Pack Completo
-            <span
-              style={{
-                width: 28,
-                height: 28,
-                borderRadius: 999,
-                background: "#18181B",
-                color: "#C7F751",
-                display: "inline-grid",
-                placeItems: "center",
-              }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="13 6 19 12 13 18" />
-              </svg>
-            </span>
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PortfolioMarquee() {
-  const items = [...GALLERY, ...GALLERY];
-  return (
-    <section style={{ background: "#FAFAFA", padding: "120px 0 60px" }}>
-      <div className="max-w-[1480px] mx-auto px-6 md:px-10 mb-12">
-        <div className="flex items-end justify-between gap-6 flex-wrap">
-          <div>
-            <div
-              className="label-eyebrow"
-              style={{ color: "#0A0A0A", opacity: 0.55, marginBottom: 12 }}
-            >
-              Proyectos recientes
-            </div>
-            <h2
-              className="h-display"
-              style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
-                letterSpacing: "-0.02em",
-                lineHeight: 1,
-                margin: 0,
-              }}
-            >
-              <span style={{ color: "rgba(10,10,10,0.45)" }}>Proyectos </span>
-              <span style={{ color: "#0A0A0A" }}>increíbles</span>
-              <span style={{ color: "rgba(10,10,10,0.45)" }}> funcionando</span>
-              <span style={{ color: "#0A0A0A" }}>.</span>
-            </h2>
-          </div>
-          <p style={{ maxWidth: 360, color: "rgba(10,10,10,0.6)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-            Un vistazo a algunos negocios que confían en nosotros — desde
-            joyería artesanal hasta fontanería 24h.
-          </p>
-        </div>
-      </div>
-      <div
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          maskImage:
-            "linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%)",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            gap: 20,
-            animation: "dovela-marquee 40s linear infinite",
-            width: "max-content",
-            alignItems: "flex-end",
-          }}
-        >
-          {items.map((it, i) => (
-            <figure
-              key={i}
-              style={{
-                margin: 0,
-                width: "clamp(280px, 32vw, 460px)",
-                borderRadius: RADIUS,
-                overflow: "hidden",
-                background: "#0A0A0A",
-                border: "0.5px solid rgba(10,10,10,0.08)",
-                boxShadow: "0 20px 40px -20px rgba(10,10,10,0.25)",
-              }}
-            >
-              <img
-                src={it.src}
-                alt={it.label}
-                loading="lazy"
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-              <figcaption
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "14px 18px",
-                  color: "#FAFAFA",
-                  fontSize: 13,
-                }}
-              >
-                <span style={{ fontWeight: 600 }}>{it.label}</span>
-                <span
-                  style={{
-                    color: "#C7F751",
-                    fontSize: 11,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {it.tag}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-      <style>{`@keyframes dovela-marquee { from { transform: translateX(0);} to { transform: translateX(-50%);} }`}</style>
-    </section>
-  );
-}
-
-function HeroLabelPill({ text }: { text: string }) {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: 14,
-        bottom: 14,
-        padding: "6px 12px",
-        borderRadius: 999,
-        background: "rgba(10,10,10,0.7)",
-        backdropFilter: "blur(8px)",
-        fontSize: 11,
-        letterSpacing: "0.12em",
-        textTransform: "uppercase",
-        color: "#C7F751",
-        zIndex: 2,
-      }}
-    >
-      {text}
-    </div>
-  );
-}
-
-function DisenoVerticalMarquee({ label }: { label: string }) {
-  const items = [...GALLERY, ...GALLERY];
+function PackCard() {
   return (
     <div
       style={{
         position: "relative",
-        height: "clamp(520px, 72vh, 780px)",
+        background: "rgba(255,255,255,0.7)",
+        backdropFilter: "blur(6px)",
+        border: "0.5px solid rgba(24,24,27,0.12)",
+        borderRadius: 20,
+        padding: 24,
         overflow: "hidden",
-        maskImage:
-          "linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%)",
+        marginTop: 32,
       }}
     >
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 20,
-          animation: "dovela-marquee-y 45s linear infinite",
-        }}
-      >
-        {items.map((it, i) => (
-          <img
-            key={i}
-            src={it.src}
-            alt={it.label}
-            loading="lazy"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-            }}
-          />
-        ))}
-      </div>
-      <HeroLabelPill text={label} />
-      <style>{`@keyframes dovela-marquee-y { from { transform: translateY(0);} to { transform: translateY(-50%);} }`}</style>
-    </div>
-  );
-}
-
-function SeoImageFader({ label }: { label: string }) {
-  const [idx, setIdx] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % GALLERY.length), 3500);
-    return () => clearInterval(t);
-  }, []);
-  return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        aspectRatio: "4 / 3",
-      }}
-    >
-      {GALLERY.map((it, i) => (
-        <img
-          key={it.src}
-          src={it.src}
-          alt={it.label}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-            opacity: i === idx ? 1 : 0,
-            transition: "opacity 900ms ease",
-          }}
-        />
-      ))}
-      <HeroLabelPill text={label} />
-      <div
+        aria-hidden
         style={{
           position: "absolute",
-          right: 14,
-          bottom: 14,
-          display: "flex",
-          gap: 6,
-          zIndex: 2,
+          inset: 0,
+          background:
+            "radial-gradient(80% 100% at 100% 0%, rgba(199,247,81,0.35), transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div className="relative flex flex-col gap-4">
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "6px 12px",
+            borderRadius: 999,
+            background: "rgba(24,24,27,0.06)",
+            color: "#18181B",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            width: "fit-content",
+          }}
+        >
+          <span style={{ width: 6, height: 6, borderRadius: 999, background: "#C7F751" }} />
+          Pack completo · Ahorra
+        </div>
+        <p
+          style={{
+            fontSize: 15,
+            lineHeight: 1.5,
+            color: "rgba(24,24,27,0.75)",
+            margin: 0,
+          }}
+        >
+          <strong style={{ color: "#18181B" }}>¿Y si lo hacemos todo junto?</strong>{" "}
+          Diseño web + SEO bajo la misma dirección: mejor precio, mejor
+          coordinación y mucho más ROI que contratarlos por separado.
+        </p>
+        <a
+          href="/#contacto"
+          className="inline-flex items-center gap-3 hover:brightness-95 transition"
+          style={{
+            padding: "10px 10px 10px 18px",
+            borderRadius: 999,
+            background: "#C7F751",
+            color: "#18181B",
+            fontSize: 13,
+            fontWeight: 700,
+            whiteSpace: "nowrap",
+            alignSelf: "flex-start",
+          }}
+        >
+          Ver Pack Completo
+          <span
+            style={{
+              width: 26,
+              height: 26,
+              borderRadius: 999,
+              background: "#18181B",
+              color: "#C7F751",
+              display: "inline-grid",
+              placeItems: "center",
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <span
+      style={{
+        width: 28,
+        height: 28,
+        borderRadius: 999,
+        background: "#C7F751",
+        color: "#18181B",
+        display: "inline-grid",
+        placeItems: "center",
+        flexShrink: 0,
+        marginTop: 2,
+      }}
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </span>
+  );
+}
+
+function IncludesList({ title, items }: { title: string; items: IncludeItem[] }) {
+  return (
+    <div>
+      <h3
+        className="h-display"
+        style={{
+          fontSize: "clamp(22px, 2.4vw, 30px)",
+          letterSpacing: "-0.01em",
+          margin: 0,
+          marginBottom: 20,
+          color: "#18181B",
         }}
       >
-        {GALLERY.map((_, i) => (
-          <button
-            key={i}
-            aria-label={`Ver imagen ${i + 1}`}
-            onClick={() => setIdx(i)}
+        {title}
+      </h3>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {items.map((it, i) => (
+          <li
+            key={it.title}
             style={{
-              width: i === idx ? 22 : 8,
-              height: 8,
-              borderRadius: 999,
-              border: "none",
-              background: i === idx ? "#C7F751" : "rgba(250,250,250,0.35)",
-              cursor: "pointer",
-              transition: "all 300ms ease",
-              padding: 0,
+              display: "flex",
+              gap: 16,
+              padding: "18px 0",
+              borderTop: i === 0 ? "none" : "0.5px solid rgba(24,24,27,0.12)",
             }}
-          />
+          >
+            <CheckIcon />
+            <div style={{ minWidth: 0 }}>
+              <div
+                style={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  color: "#18181B",
+                  marginBottom: 4,
+                }}
+              >
+                {it.title}
+              </div>
+              <div
+                style={{
+                  fontSize: 14.5,
+                  lineHeight: 1.6,
+                  color: "rgba(24,24,27,0.65)",
+                }}
+              >
+                {it.description}
+              </div>
+            </div>
+          </li>
         ))}
+      </ul>
+    </div>
+  );
+}
+
+function Disclaimer({ title, text }: { title: string; text: string }) {
+  return (
+    <div
+      style={{
+        marginTop: 32,
+        padding: 24,
+        borderRadius: 18,
+        background: "rgba(24,24,27,0.04)",
+        border: "0.5px solid rgba(24,24,27,0.10)",
+      }}
+    >
+      <div
+        className="label-eyebrow"
+        style={{ color: "rgba(24,24,27,0.55)", marginBottom: 8 }}
+      >
+        {title}
       </div>
+      <p
+        style={{
+          fontSize: 14.5,
+          lineHeight: 1.6,
+          color: "rgba(24,24,27,0.75)",
+          margin: 0,
+        }}
+      >
+        {text}
+      </p>
     </div>
   );
 }
 
 export function ServicioDetail(props: Props) {
-
   return (
     <>
-      {/* HERO — contained black rectangle with white margins */}
-      <section
-        style={{
-          background: "#FAFAFA",
-          padding: "96px 16px 24px",
-        }}
-      >
-      <div
-        style={{
-          position: "relative",
-          background: "#F0F0ED",
-          color: "#18181B",
-          borderRadius: 28,
-          paddingTop: 72,
-          paddingBottom: 48,
-          overflow: "hidden",
-        }}
-      >
-        {/* ambient glows — cover entire section so they continue behind pack banner */}
+      <section style={{ background: "#FAFAFA", padding: "96px 16px 24px" }}>
         <div
-          aria-hidden
           style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.55), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.35), transparent 65%), radial-gradient(40% 30% at 90% 92%, rgba(199,247,81,0.25), transparent 70%)",
+            position: "relative",
+            background: "#F0F0ED",
+            color: "#18181B",
+            borderRadius: 28,
+            paddingTop: 72,
+            paddingBottom: 72,
+            overflow: "hidden",
           }}
-        />
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            opacity: 0.5,
-            pointerEvents: "none",
-            backgroundImage:
-              "linear-gradient(rgba(24,24,27,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.05) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
-
-
-
-        <div className="relative max-w-[1480px] mx-auto px-6 md:px-10">
+        >
           <div
-            className="label-eyebrow"
-            style={{ color: "rgba(24,24,27,0.6)", marginBottom: 32 }}
-          >
-            {props.eyebrow}
-          </div>
-
-          {/* Row 1: number + title (kept to 2 lines) */}
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(45% 35% at 92% 5%, rgba(199,247,81,0.55), transparent 65%), radial-gradient(55% 40% at 8% 95%, rgba(199,247,81,0.35), transparent 65%)",
+            }}
+          />
           <div
-            className="grid grid-cols-1 lg:grid-cols-[minmax(80px,8%)_1fr] gap-6 lg:gap-10 items-start"
-            style={{ paddingBottom: 48, borderBottom: "0.5px solid rgba(24,24,27,0.10)" }}
-          >
-            <span
-              style={{
-                fontSize: 14,
-                letterSpacing: "0.14em",
-                color: "#18181B",
-                fontVariantNumeric: "tabular-nums",
-                paddingTop: 20,
-              }}
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: 0.5,
+              pointerEvents: "none",
+              backgroundImage:
+                "linear-gradient(rgba(24,24,27,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.05) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
+
+          <div className="relative max-w-[1280px] mx-auto px-6 md:px-10">
+            <div
+              className="label-eyebrow"
+              style={{ color: "rgba(24,24,27,0.6)", marginBottom: 32 }}
             >
-              ({props.n})
-            </span>
-            <h1
-              className="h-display"
-              style={{
-                fontSize: "clamp(44px, 7.4vw, 128px)",
-                letterSpacing: "-0.035em",
-                lineHeight: 0.95,
-                margin: 0,
-                color: "#18181B",
-                textWrap: "balance" as unknown as undefined,
-              }}
-            >
-              {props.title}.
-            </h1>
-          </div>
+              {props.eyebrow}
+            </div>
 
-          {/* Row 2: asymmetric text/images layout */}
-          <div
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14"
-            style={{ paddingTop: 64 }}
-          >
-            {/* Left column */}
-            <div className="lg:col-span-5 lg:col-start-1 min-w-0">
-              <p
+            <div className="flex items-center gap-4 mb-6">
+              <span
                 style={{
-                  fontSize: 28,
-                  lineHeight: 1.4,
-                  color: "#18181B",
-                  marginBottom: 18,
-                  fontWeight: 500,
+                  fontSize: 13,
+                  letterSpacing: "0.14em",
+                  color: "rgba(24,24,27,0.6)",
+                  fontVariantNumeric: "tabular-nums",
                 }}
               >
-                {props.intro}
-              </p>
-              {props.extras?.map((e, i) => (
-                <p
-                  key={i}
-                  style={{
-                    fontSize: 19,
-                    lineHeight: 1.65,
-                    color: "rgba(24,24,27,0.65)",
-                    marginBottom: 10,
-                  }}
-                >
-                  {e}
-                </p>
-              ))}
-
-              {/* Incluye pills — replacing tech pills */}
-              {props.features && props.features.length > 0 && (
-                <div style={{ marginTop: 28 }}>
-                  <div
-                    className="label-eyebrow"
-                    style={{ marginBottom: 12, color: "rgba(24,24,27,0.55)" }}
-                  >
-                    Incluye
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {props.features.map((f) => (
-                      <FeaturePill key={f} text={f} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {props.notes && props.notes.length > 0 && (
-                <div style={{ marginTop: 28, display: "flex", flexDirection: "column", gap: 2 }}>
-                  {props.notes.map((n) => (
-                    <StarNote key={n} text={n} />
-                  ))}
-                </div>
-              )}
-
-              <div style={{ display: "flex", marginTop: 24 }}>
-                <ServiceCta />
-              </div>
+                ({props.n})
+              </span>
+              <span
+                style={{
+                  height: 1,
+                  flex: 1,
+                  background: "rgba(24,24,27,0.15)",
+                }}
+              />
             </div>
 
-            {/* Right column — variant-based imagery */}
-            <div className="lg:col-span-7 min-w-0">
-              {props.variant === "seo" ? (
-                <SeoImageFader label={props.heroLabel} />
-              ) : (
-                <DisenoVerticalMarquee label={props.heroLabel} />
-              )}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* LEFT column */}
+              <div className="min-w-0">
+                <h1
+                  className="h-display"
+                  style={{
+                    fontSize: "clamp(30px, 4.2vw, 52px)",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.05,
+                    margin: 0,
+                    color: "#18181B",
+                    fontWeight: 700,
+                  }}
+                >
+                  {props.title}
+                </h1>
+                <p
+                  style={{
+                    fontSize: 18,
+                    lineHeight: 1.6,
+                    color: "rgba(24,24,27,0.7)",
+                    marginTop: 24,
+                    marginBottom: 28,
+                  }}
+                >
+                  {props.intro}
+                </p>
+                <ServiceCta />
+                <PackCard />
+              </div>
+
+              {/* RIGHT column */}
+              <div className="min-w-0">
+                <IncludesList title={props.includeTitle} items={props.includes} />
+                <Disclaimer title={props.disclaimerTitle} text={props.disclaimerText} />
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Pack banner — inside hero so the glow passes behind it */}
-        <div className="relative">
-          <PackBanner />
-        </div>
-      </div>
       </section>
 
-
-      {/* Portfolio marquee */}
-      <PortfolioMarquee />
+      <section style={{ background: "#FAFAFA", paddingTop: 40 }}>
+        <div className="max-w-[1280px] mx-auto px-6">
+          <h2
+            className="h-display"
+            style={{
+              fontSize: "clamp(36px, 5vw, 56px)",
+              margin: 0,
+              marginBottom: 24,
+              textAlign: "center",
+            }}
+          >
+            <span style={{ color: "#888" }}>¿Hablamos de tu </span>
+            <span style={{ color: "#18181B" }}>proyecto</span>
+            <span style={{ color: "#888" }}>?</span>
+          </h2>
+        </div>
+      </section>
+      <CtaBanner />
     </>
   );
 }
