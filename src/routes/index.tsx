@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import ichoProjectImg from "@/assets/ICHO_1.webp.asset.json";
+import ichoProjectImg from "@/assets/ICHO_PROYECTO.webp.asset.json";
 
-import ichoImg from "@/assets/icho.webp.asset.json";
 import solaraImg from "@/assets/solara.webp.asset.json";
 import fontaneroImg from "@/assets/fontanero.webp.asset.json";
 import voltiaImg from "@/assets/voltia.webp.asset.json";
-import webFacilImg from "@/assets/web_facil.webp.asset.json";
+import webFacilImg from "@/assets/VOLTIA_MAC_Y_IPHONE.webp.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -526,18 +525,29 @@ function Hero() {
       </div>
 
 
-      {/* Local time — desktop only (kept, pills removed) */}
+      {/* Top-right meta block — desktop only */}
       <div
-        className="absolute hidden lg:flex flex-col gap-3"
-        style={{ right: 40, top: 110 }}
+        className="absolute hidden lg:flex flex-col gap-4 text-right"
+        style={{ right: 40, top: 110, maxWidth: 320 }}
       >
-        <div className="text-right">
+        <div style={{ color: "#FAFAFA", fontSize: 13, fontWeight: 500 }}>
+          08/06/2026
+        </div>
+        <div style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, lineHeight: 1.5 }}>
+          Agencia de diseño web y SEO local — Segovia, España
+        </div>
+        <div>
           <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11 }}>
             Hora local Segovia:
           </div>
           <div style={{ color: "#FAFAFA", fontSize: 13, fontWeight: 500 }}>
             {time || "17:32"}
           </div>
+        </div>
+        <div className="flex flex-wrap justify-end gap-x-3 gap-y-1" style={{ fontSize: 11, color: "rgba(255,255,255,0.7)" }}>
+          <span>● Diseño web</span>
+          <span>● SEO Local</span>
+          <span>● Google Business</span>
         </div>
       </div>
 
@@ -709,7 +719,7 @@ function Hero() {
 
         <div className="relative flex h-full flex-col">
           <div
-            className="overflow-hidden"
+            className="relative overflow-hidden"
             style={{
               aspectRatio: "16 / 10",
               backgroundColor: "#FAFAFA",
@@ -718,16 +728,26 @@ function Hero() {
           >
             <img
               src={ichoProjectImg.url}
-              alt="Icho — Joyería de autor"
-              className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              alt="Icho — Joyería artesanal"
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
             />
+            {/* Arrow badge */}
+            <div
+              className="absolute top-2 right-2 grid place-items-center rounded-full bg-[#121214] text-[#C7F751] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              style={{ width: 36, height: 36 }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
           </div>
           <div className="mt-auto pt-3 flex flex-col gap-1">
             <span style={{ fontSize: 10, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Proyecto destacado
             </span>
-            <div style={{ fontSize: 16, fontWeight: 600, color: "#0A0A0A" }}>
-              Icho
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#0A0A0A" }}>
+              Icho <span style={{ color: "rgba(24,24,27,0.4)" }}>—</span> Joyería artesanal
             </div>
           </div>
         </div>
@@ -777,7 +797,7 @@ function PorQueDovela() {
             </p>
             <p
               className="mt-8"
-              style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888", maxWidth: 640 }}
+              style={{ fontSize: "clamp(15px, 1.6vw, 22px)", color: "#888", maxWidth: 640 }}
             >
               <span className="block">De la mano de una estrategia</span>
               <span className="block">para posicionarte sobre la competencia.</span>
@@ -892,7 +912,7 @@ function SectionHeader({
         </p>
       </div>
       <div className="lg:col-span-1 flex flex-col justify-end gap-4">
-        <p style={{ fontSize: "clamp(18px, 2vw, 27px)", color: "#888" }}>{paragraph}</p>
+        <p style={{ fontSize: "clamp(15px, 1.6vw, 22px)", color: "#888" }}>{paragraph}</p>
         <a
           href="#"
           className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
@@ -1041,7 +1061,7 @@ function Services() {
 /* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
-  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoImg.url, href: "/proyectos/icho" },
+  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoProjectImg.url, href: "/proyectos/icho" },
   { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url, href: "/proyectos/solara" },
   { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url, href: "/proyectos/fdc-fontanero" },
   { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url, href: "/proyectos/voltiarural" },
@@ -1878,7 +1898,7 @@ function LeadMagnet() {
           style={{
             background: "#121214",
             borderRadius: 24,
-            padding: "56px clamp(20px, 3vw, 40px)",
+            padding: "40px clamp(20px, 3vw, 40px)",
             color: "#FAFAFA",
           }}
         >
@@ -1892,7 +1912,7 @@ function LeadMagnet() {
               </h2>
               <p
                 className="h-display mt-6"
-                style={{ fontSize: "clamp(32px, 4.4vw, 52px)", color: "#FAFAFA" }}
+                style={{ fontSize: "clamp(28px, 3.4vw, 40px)", color: "#FAFAFA" }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
                 <span style={{ color: "#C7F751" }}>aparece en Google?</span>
@@ -1902,7 +1922,7 @@ function LeadMagnet() {
                 className="mt-6"
                 style={{
                   color: "rgba(255,255,255,0.65)",
-                  fontSize: "clamp(18px, 2vw, 27px)",
+                  fontSize: "clamp(15px, 1.6vw, 22px)",
                   maxWidth: 720,
                 }}
               >
@@ -1918,7 +1938,7 @@ function LeadMagnet() {
                     </span>
                     <span
                       style={{
-                        fontSize: "clamp(17px, 1.8vw, 25px)",
+                        fontSize: "clamp(14px, 1.2vw, 16px)",
                         color: "rgba(255,255,255,0.85)",
                         lineHeight: 1.5,
                       }}
