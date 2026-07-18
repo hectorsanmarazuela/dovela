@@ -662,8 +662,8 @@ function Hero() {
             Reserva una llamada gratuita
             <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
           </a>
-          <a
-            href="/servicios"
+          <Link
+            to="/servicios/diseno-web"
             className="group inline-flex items-center gap-2 rounded-full transition hover:bg-[rgba(255,255,255,0.08)]"
             style={{
               border: "0.5px solid rgba(255,255,255,0.35)",
@@ -673,9 +673,9 @@ function Hero() {
               color: "#FAFAFA",
             }}
           >
-            Conoce nuestros servicios
+            Explorar nuestros servicios
             <ArrowCircle size={28} bg="#FAFAFA" fg="#0A0A0A" />
-          </a>
+          </Link>
         </div>
         <div
           className="mt-4"
