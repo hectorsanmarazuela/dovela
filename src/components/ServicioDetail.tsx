@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ServiceCta, CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
+import { useEffect, useState, type ReactNode } from "react";
+import { CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
 
 type IncludeItem = { title: string; description: string };
 
@@ -7,12 +7,49 @@ type Props = {
   n: string;
   eyebrow: string;
   title: string;
-  intro: string;
+  intro: ReactNode;
   includeTitle: string;
   includes: IncludeItem[];
   disclaimerTitle: string;
   disclaimerText: string;
 };
+
+function BigServiceCta() {
+  return (
+    <a
+      href="#contacto"
+      className="group inline-flex items-center gap-3 transition hover:brightness-95"
+      style={{
+        marginTop: 8,
+        padding: "17px 17px 17px 30px",
+        borderRadius: 999,
+        background: "#C7F751",
+        color: "#0A0A0A",
+        fontSize: 17,
+        fontWeight: 600,
+        alignSelf: "flex-start",
+      }}
+    >
+      Comenzar proyecto
+      <span
+        style={{
+          width: 36,
+          height: 36,
+          borderRadius: 999,
+          background: "#0A0A0A",
+          color: "#C7F751",
+          display: "inline-grid",
+          placeItems: "center",
+        }}
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </span>
+    </a>
+  );
+}
 
 function PackCard() {
   return (
