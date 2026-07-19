@@ -40,7 +40,14 @@ function SeoPage() {
         n="002"
         eyebrow="Posicionamiento SEO local en Segovia"
         title="Una fuente de clientes que no depende de anuncios ni del boca a boca"
-        intro="Diseñamos estrategias SEO a medida para colocar tu negocio en los primeros resultados de búsqueda. Consigue tráfico estable, orgánico y predecible."
+        intro={
+          <p style={{ margin: 0 }}>
+            <strong className="font-bold underline decoration-[#C7F751] decoration-4 underline-offset-4 text-[#18181B]">
+              Diseñamos estrategias SEO a medida para colocar tu negocio en los primeros resultados de búsqueda.
+            </strong>{" "}
+            Consigue tráfico estable, orgánico y predecible.
+          </p>
+        }
         includeTitle="¿Qué incluye nuestro servicio SEO?"
         includes={[
           {
