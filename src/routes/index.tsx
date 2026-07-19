@@ -869,32 +869,32 @@ function PorQueDovela() {
 }
 
 
-/* ---------- SERVICES ACCORDION ---------- */
+/* ---------- SERVICES BENTO ---------- */
 
-const SERVICES = [
+const BENTO_CARDS = [
   {
-    n: "01",
-    name: "Diseño web",
-    desc: "Webs rápidas y bonitas que convierten visitas en clientes.",
-    pills: ["Diseño UI", "WordPress", "Mobile first"],
+    id: "diseno",
+    eyebrow: "(001) — Diseño",
+    title: "Diseño Web",
+    copy: "Webs a medida diseñadas para que el visitante entienda en 3 segundos qué haces y cómo contactarte.",
+    href: "/servicios/diseno-web",
+    theme: "light" as const,
   },
   {
-    n: "02",
-    name: "SEO Local",
-    desc: "Primera página en Google cuando buscan tu negocio en Segovia.",
-    pills: ["Google Maps", "Keywords locales", "On-page SEO"],
+    id: "seo",
+    eyebrow: "(002) — Tráfico",
+    title: "Posicionamiento SEO",
+    copy: "Estrategias a medida para colocar tu negocio en los primeros resultados de Google. Tráfico estable y orgánico.",
+    href: "/servicios/seo",
+    theme: "gray" as const,
   },
   {
-    n: "03",
-    name: "Google Business",
-    desc: "Tu ficha de Google optimizada, con reseñas y fotos actualizadas.",
-    pills: ["GBP Optimización", "Reseñas", "Fotos"],
-  },
-  {
-    n: "04",
-    name: "Mantenimiento",
-    desc: "Tu web siempre rápida, segura y actualizada.",
-    pills: ["Hosting", "Seguridad", "Actualizaciones"],
+    id: "pack",
+    eyebrow: "(003) · RECOMENDADO",
+    title: "Pack Completo",
+    copy: "Diseño web y SEO bajo la misma dirección. La forma más eficiente de crecer online multiplicando tu retorno de inversión.",
+    href: "/servicios/diseno-web",
+    theme: "dark" as const,
   },
 ];
 
