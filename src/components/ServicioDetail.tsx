@@ -56,9 +56,8 @@ function PackCard() {
     <div
       style={{
         position: "relative",
-        background: "rgba(255,255,255,0.7)",
-        backdropFilter: "blur(6px)",
-        border: "0.5px solid rgba(24,24,27,0.12)",
+        background: "#18181B",
+        border: "0.5px solid rgba(255,255,255,0.08)",
         borderRadius: 20,
         padding: 28,
         overflow: "hidden",
@@ -70,8 +69,22 @@ function PackCard() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(80% 100% at 100% 0%, rgba(199,247,81,0.35), transparent 65%)",
+            "radial-gradient(90% 100% at 100% 0%, rgba(199,247,81,0.28), transparent 60%), radial-gradient(60% 80% at 0% 100%, rgba(199,247,81,0.10), transparent 70%)",
           pointerEvents: "none",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.35,
+          pointerEvents: "none",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage:
+            "radial-gradient(120% 100% at 100% 0%, #000 20%, transparent 75%)",
         }}
       />
       <div className="relative flex flex-col gap-4">
@@ -82,8 +95,8 @@ function PackCard() {
             gap: 10,
             padding: "6px 12px",
             borderRadius: 999,
-            background: "rgba(24,24,27,0.06)",
-            color: "#18181B",
+            background: "rgba(199,247,81,0.14)",
+            color: "#C7F751",
             fontSize: 11,
             fontWeight: 700,
             letterSpacing: "0.14em",
@@ -98,11 +111,11 @@ function PackCard() {
           style={{
             fontSize: 15,
             lineHeight: 1.5,
-            color: "rgba(24,24,27,0.75)",
+            color: "rgba(255,255,255,0.75)",
             margin: 0,
           }}
         >
-          <strong style={{ color: "#18181B" }}>¿Y si lo hacemos todo junto?</strong>{" "}
+          <strong style={{ color: "#FFFFFF" }}>¿Y si lo hacemos todo junto?</strong>{" "}
           Diseño web + SEO bajo la misma dirección: mejor precio, mejor
           coordinación y mucho más ROI que contratarlos por separado.
         </p>
@@ -142,6 +155,7 @@ function PackCard() {
     </div>
   );
 }
+
 
 function CheckIcon() {
   return (
