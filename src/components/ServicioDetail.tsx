@@ -1,4 +1,5 @@
-import { ServiceCta, CtaBanner } from "@/routes/index";
+import { useEffect, useState } from "react";
+import { ServiceCta, CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
 
 type IncludeItem = { title: string; description: string };
 
@@ -22,9 +23,8 @@ function PackCard() {
         backdropFilter: "blur(6px)",
         border: "0.5px solid rgba(24,24,27,0.12)",
         borderRadius: 20,
-        padding: 24,
+        padding: 28,
         overflow: "hidden",
-        marginTop: 32,
       }}
     >
       <div
@@ -134,7 +134,7 @@ function IncludesList({ title, items }: { title: string; items: IncludeItem[] })
       <h3
         className="h-display"
         style={{
-          fontSize: "clamp(22px, 2.4vw, 30px)",
+          fontSize: "clamp(20px, 2.1vw, 26px)",
           letterSpacing: "-0.01em",
           margin: 0,
           marginBottom: 20,
@@ -150,7 +150,7 @@ function IncludesList({ title, items }: { title: string; items: IncludeItem[] })
             style={{
               display: "flex",
               gap: 16,
-              padding: "18px 0",
+              padding: "16px 0",
               borderTop: i === 0 ? "none" : "0.5px solid rgba(24,24,27,0.12)",
             }}
           >
@@ -187,22 +187,21 @@ function Disclaimer({ title, text }: { title: string; text: string }) {
   return (
     <div
       style={{
-        marginTop: 32,
-        padding: 24,
-        borderRadius: 18,
+        padding: 28,
+        borderRadius: 20,
         background: "rgba(24,24,27,0.04)",
         border: "0.5px solid rgba(24,24,27,0.10)",
       }}
     >
       <div
         className="label-eyebrow"
-        style={{ color: "rgba(24,24,27,0.55)", marginBottom: 8 }}
+        style={{ color: "rgba(24,24,27,0.55)", marginBottom: 10 }}
       >
         {title}
       </div>
       <p
         style={{
-          fontSize: 14.5,
+          fontSize: 15,
           lineHeight: 1.6,
           color: "rgba(24,24,27,0.75)",
           margin: 0,
@@ -210,6 +209,92 @@ function Disclaimer({ title, text }: { title: string; text: string }) {
       >
         {text}
       </p>
+    </div>
+  );
+}
+
+function ProjectCarouselCard() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % PROJECTS.length), 4200);
+    return () => clearInterval(t);
+  }, []);
+  const p = PROJECTS[i];
+  return (
+    <div
+      style={{
+        position: "relative",
+        background: "#FFFFFF",
+        border: "0.5px solid rgba(24,24,27,0.12)",
+        borderRadius: 24,
+        padding: 20,
+        overflow: "hidden",
+      }}
+    >
+      <div
+        className="label-eyebrow"
+        style={{
+          color: "rgba(24,24,27,0.55)",
+          marginBottom: 14,
+          paddingLeft: 6,
+        }}
+      >
+        Proyectos · {String(i + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
+      </div>
+      <a href={p.href} className="group block">
+        <div
+          className="relative w-full overflow-hidden"
+          style={{ aspectRatio: "4 / 3", borderRadius: 16, background: "#2A2A2A" }}
+        >
+          {PROJECTS.map((pr, idx) => (
+            <img
+              key={pr.name}
+              src={pr.img}
+              alt={pr.name}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-700 ease-out group-hover:scale-[1.05]"
+              style={{ opacity: idx === i ? 1 : 0 }}
+            />
+          ))}
+        </div>
+        <div
+          className="flex items-center justify-between gap-3"
+          style={{ marginTop: 18, padding: "0 6px" }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <div
+              style={{
+                fontSize: 17,
+                fontWeight: 600,
+                color: "#18181B",
+                marginBottom: 8,
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {p.name}
+            </div>
+            <div className="flex gap-2 flex-wrap">
+              {p.pills.map((x) => (
+                <span
+                  key={x}
+                  className="rounded-full whitespace-nowrap"
+                  style={{
+                    border: "0.5px solid rgba(24,24,27,0.35)",
+                    color: "rgba(24,24,27,0.7)",
+                    fontSize: 11,
+                    padding: "3px 10px",
+                  }}
+                >
+                  {x}
+                </span>
+              ))}
+            </div>
+          </div>
+          <ArrowCircle size={44} bg="#C7F751" fg="#18181B" />
+        </div>
+      </a>
     </div>
   );
 }
@@ -260,7 +345,7 @@ export function ServicioDetail(props: Props) {
               {props.eyebrow}
             </div>
 
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-8">
               <span
                 style={{
                   fontSize: 13,
@@ -280,11 +365,12 @@ export function ServicioDetail(props: Props) {
               />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* LEFT column */}
-              <div className="min-w-0">
+            {/* Ordered layout: single flex-col on mobile with `order`, 2-col grid on desktop */}
+            <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+              {/* LEFT column (desktop) */}
+              <div className="contents lg:flex lg:flex-col lg:gap-8 min-w-0">
                 <h1
-                  className="h-display"
+                  className="h-display order-1 lg:order-none"
                   style={{
                     fontSize: "clamp(30px, 4.2vw, 52px)",
                     letterSpacing: "-0.02em",
@@ -297,47 +383,43 @@ export function ServicioDetail(props: Props) {
                   {props.title}
                 </h1>
                 <p
+                  className="order-3 lg:order-none"
                   style={{
-                    fontSize: 18,
-                    lineHeight: 1.6,
-                    color: "rgba(24,24,27,0.7)",
-                    marginTop: 24,
-                    marginBottom: 28,
+                    fontSize: 20,
+                    lineHeight: 1.55,
+                    color: "rgba(24,24,27,0.82)",
+                    margin: 0,
+                    fontWeight: 500,
                   }}
                 >
                   {props.intro}
                 </p>
-                <ServiceCta />
-                <PackCard />
+                <div className="order-4 lg:order-none">
+                  <ServiceCta />
+                </div>
+                <div className="order-5 lg:order-none">
+                  <IncludesList title={props.includeTitle} items={props.includes} />
+                </div>
               </div>
 
-              {/* RIGHT column */}
-              <div className="min-w-0">
-                <IncludesList title={props.includeTitle} items={props.includes} />
-                <Disclaimer title={props.disclaimerTitle} text={props.disclaimerText} />
+              {/* RIGHT column (desktop) */}
+              <div className="contents lg:flex lg:flex-col lg:gap-6 min-w-0">
+                <div className="order-2 lg:order-none">
+                  <ProjectCarouselCard />
+                </div>
+                <div className="order-6 lg:order-none">
+                  <Disclaimer title={props.disclaimerTitle} text={props.disclaimerText} />
+                </div>
+                <div className="order-7 lg:order-none">
+                  <PackCard />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section style={{ background: "#FAFAFA", paddingTop: 40 }}>
-        <div className="max-w-[1280px] mx-auto px-6">
-          <h2
-            className="h-display"
-            style={{
-              fontSize: "clamp(36px, 5vw, 56px)",
-              margin: 0,
-              marginBottom: 24,
-              textAlign: "center",
-            }}
-          >
-            <span style={{ color: "#888" }}>¿Hablamos de tu </span>
-            <span style={{ color: "#18181B" }}>proyecto</span>
-            <span style={{ color: "#888" }}>?</span>
-          </h2>
-        </div>
-      </section>
+      <Plan />
       <CtaBanner />
     </>
   );

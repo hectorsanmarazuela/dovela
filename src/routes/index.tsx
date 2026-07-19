@@ -2903,4 +2903,4 @@ function Index() {
   );
 }
 
-export { Nav, Services, Footer, FeaturePill, StarNote, ServiceCta, Wireframe, Plan, CtaBanner };
+export { Nav, Services, Footer, FeaturePill, StarNote, ServiceCta, Wireframe, Plan, CtaBanner, PROJECTS, ArrowCircle };
