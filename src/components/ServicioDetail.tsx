@@ -465,21 +465,21 @@ export function ServicioDetail(props: Props) {
                 >
                   {props.title}
                 </h1>
-                <p
-                  className="order-3 lg:order-none"
+                <div
+                  className="order-3 lg:order-none flex flex-col gap-5"
                   style={{
                     fontSize: 20,
                     lineHeight: 1.55,
                     color: "rgba(24,24,27,0.82)",
-                    margin: 0,
                     fontWeight: 500,
                   }}
                 >
                   {props.intro}
-                </p>
-                <div className="order-4 lg:order-none">
-                  <ServiceCta />
                 </div>
+                <div className="order-4 lg:order-none">
+                  <BigServiceCta />
+                </div>
+
                 <div className="order-5 lg:order-none">
                   <IncludesList title={props.includeTitle} items={props.includes} />
                 </div>
