@@ -2351,7 +2351,7 @@ function Index() {
       
       <MarqueeBand />
       <Projects />
-      <ServicesAccordion />
+      <Services />
       <Plan />
       <CtaBanner />
       <Testimonials />
@@ -2363,4 +2363,4 @@ function Index() {
   );
 }
 
-export { Nav, Services, Footer, FeaturePill, StarNote, ServiceCta, Wireframe, Plan, CtaBanner, PROJECTS, ArrowCircle };
+export { Nav, Services, Footer, Plan, CtaBanner, PROJECTS, ArrowCircle };
