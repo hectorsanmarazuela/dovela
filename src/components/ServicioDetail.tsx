@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ServiceCta, CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
+import { useEffect, useState, type ReactNode } from "react";
+import { CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
 
 type IncludeItem = { title: string; description: string };
 
@@ -7,21 +7,57 @@ type Props = {
   n: string;
   eyebrow: string;
   title: string;
-  intro: string;
+  intro: ReactNode;
   includeTitle: string;
   includes: IncludeItem[];
   disclaimerTitle: string;
   disclaimerText: string;
 };
 
+function BigServiceCta() {
+  return (
+    <a
+      href="#contacto"
+      className="group inline-flex items-center gap-3 transition hover:brightness-95"
+      style={{
+        marginTop: 8,
+        padding: "17px 17px 17px 30px",
+        borderRadius: 999,
+        background: "#C7F751",
+        color: "#0A0A0A",
+        fontSize: 17,
+        fontWeight: 600,
+        alignSelf: "flex-start",
+      }}
+    >
+      Comenzar proyecto
+      <span
+        style={{
+          width: 36,
+          height: 36,
+          borderRadius: 999,
+          background: "#0A0A0A",
+          color: "#C7F751",
+          display: "inline-grid",
+          placeItems: "center",
+        }}
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="13 6 19 12 13 18" />
+        </svg>
+      </span>
+    </a>
+  );
+}
+
 function PackCard() {
   return (
     <div
       style={{
         position: "relative",
-        background: "rgba(255,255,255,0.7)",
-        backdropFilter: "blur(6px)",
-        border: "0.5px solid rgba(24,24,27,0.12)",
+        background: "#18181B",
+        border: "0.5px solid rgba(255,255,255,0.08)",
         borderRadius: 20,
         padding: 28,
         overflow: "hidden",
@@ -33,8 +69,22 @@ function PackCard() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(80% 100% at 100% 0%, rgba(199,247,81,0.35), transparent 65%)",
+            "radial-gradient(90% 100% at 100% 0%, rgba(199,247,81,0.28), transparent 60%), radial-gradient(60% 80% at 0% 100%, rgba(199,247,81,0.10), transparent 70%)",
           pointerEvents: "none",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.35,
+          pointerEvents: "none",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage:
+            "radial-gradient(120% 100% at 100% 0%, #000 20%, transparent 75%)",
         }}
       />
       <div className="relative flex flex-col gap-4">
@@ -45,8 +95,8 @@ function PackCard() {
             gap: 10,
             padding: "6px 12px",
             borderRadius: 999,
-            background: "rgba(24,24,27,0.06)",
-            color: "#18181B",
+            background: "rgba(199,247,81,0.14)",
+            color: "#C7F751",
             fontSize: 11,
             fontWeight: 700,
             letterSpacing: "0.14em",
@@ -61,11 +111,11 @@ function PackCard() {
           style={{
             fontSize: 15,
             lineHeight: 1.5,
-            color: "rgba(24,24,27,0.75)",
+            color: "rgba(255,255,255,0.75)",
             margin: 0,
           }}
         >
-          <strong style={{ color: "#18181B" }}>¿Y si lo hacemos todo junto?</strong>{" "}
+          <strong style={{ color: "#FFFFFF" }}>¿Y si lo hacemos todo junto?</strong>{" "}
           Diseño web + SEO bajo la misma dirección: mejor precio, mejor
           coordinación y mucho más ROI que contratarlos por separado.
         </p>
@@ -105,6 +155,7 @@ function PackCard() {
     </div>
   );
 }
+
 
 function CheckIcon() {
   return (
@@ -224,13 +275,45 @@ function ProjectCarouselCard() {
     <div
       style={{
         position: "relative",
-        background: "#FFFFFF",
+        background:
+          "linear-gradient(155deg, #FFFFFF 0%, #F7F7F2 55%, #EEF3DE 100%)",
         border: "0.5px solid rgba(24,24,27,0.12)",
         borderRadius: 24,
         padding: 20,
         overflow: "hidden",
+        boxShadow:
+          "0 1px 0 rgba(255,255,255,0.9) inset, 0 30px 60px -30px rgba(24,24,27,0.18)",
       }}
     >
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          opacity: 0.5,
+          backgroundImage:
+            "linear-gradient(rgba(24,24,27,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.04) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+          maskImage:
+            "radial-gradient(120% 100% at 0% 0%, #000 15%, transparent 70%)",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: -80,
+          right: -80,
+          width: 240,
+          height: 240,
+          borderRadius: 999,
+          background:
+            "radial-gradient(closest-side, rgba(199,247,81,0.45), transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+
       <div
         className="label-eyebrow"
         style={{
@@ -382,21 +465,21 @@ export function ServicioDetail(props: Props) {
                 >
                   {props.title}
                 </h1>
-                <p
-                  className="order-3 lg:order-none"
+                <div
+                  className="order-3 lg:order-none flex flex-col gap-5"
                   style={{
                     fontSize: 20,
                     lineHeight: 1.55,
                     color: "rgba(24,24,27,0.82)",
-                    margin: 0,
                     fontWeight: 500,
                   }}
                 >
                   {props.intro}
-                </p>
-                <div className="order-4 lg:order-none">
-                  <ServiceCta />
                 </div>
+                <div className="order-4 lg:order-none">
+                  <BigServiceCta />
+                </div>
+
                 <div className="order-5 lg:order-none">
                   <IncludesList title={props.includeTitle} items={props.includes} />
                 </div>
