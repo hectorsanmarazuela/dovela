@@ -1008,30 +1008,52 @@ function BentoCard({
     ? "radial-gradient(120% 100% at 100% 0%, rgba(199,247,81,0.28), transparent 55%), radial-gradient(80% 80% at 0% 100%, rgba(199,247,81,0.10), transparent 60%)"
     : undefined;
 
+  const hoverShadow = isDark
+    ? "0 1px 0 rgba(255,255,255,0.06) inset, 0 24px 0 -18px rgba(199,247,81,0.35), 0 30px 60px -30px rgba(0,0,0,0.6)"
+    : "0 1px 0 rgba(255,255,255,0.9) inset, 0 24px 0 -18px rgba(10,10,10,0.12), 0 30px 60px -30px rgba(10,10,10,0.25)";
+  const hoverBorder = isDark
+    ? "0.5px solid rgba(199,247,81,0.35)"
+    : "0.5px solid rgba(10,10,10,0.22)";
+
+  const arrowBg = isDark ? "#C7F751" : "#0A0A0A";
+  const arrowFg = isDark ? "#0A0A0A" : "#FAFAFA";
+
   return (
     <Link
       to={href}
-      className="group relative block overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:scale-[1.01]"
-      style={{
-        background: bg,
-        color: textColor,
-        borderRadius: 28,
-        border: cardBorder,
-        padding: "clamp(28px, 4vw, 48px)",
-        minHeight: isDark ? 420 : 360,
+      className="group relative block overflow-hidden transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+      style={
+        {
+          background: bg,
+          color: textColor,
+          borderRadius: 28,
+          border: cardBorder,
+          padding: "clamp(28px, 4vw, 48px)",
+          minHeight: isDark ? 420 : 360,
+          ["--hover-shadow" as string]: hoverShadow,
+          ["--hover-border" as string]: hoverBorder,
+        } as React.CSSProperties
+      }
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = hoverShadow;
+        e.currentTarget.style.border = hoverBorder;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = "";
+        e.currentTarget.style.border = cardBorder;
       }}
     >
       {glow && (
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none transition-opacity duration-700"
-          style={{ background: glow, opacity: 0.9 }}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-90 md:group-hover:opacity-100"
+          style={{ background: glow }}
         />
       )}
       {isDark && (
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-30"
+          className="absolute inset-0 pointer-events-none opacity-30 transition-opacity duration-700 md:group-hover:opacity-50"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
@@ -1042,24 +1064,38 @@ function BentoCard({
         />
       )}
 
+      {/* Sweep highlight */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 ease-out"
+        style={{
+          background: isDark
+            ? "radial-gradient(600px 200px at var(--mx,50%) var(--my,0%), rgba(199,247,81,0.10), transparent 60%)"
+            : "radial-gradient(600px 200px at var(--mx,50%) var(--my,0%), rgba(10,10,10,0.04), transparent 60%)",
+        }}
+      />
+
       <div className="relative h-full flex flex-col">
         <div className="flex items-start justify-between gap-4">
           <span
-            className="uppercase tracking-[0.14em]"
+            className="uppercase tracking-[0.14em] transition-colors duration-500"
             style={{ color: eyebrowColor, fontSize: 12, fontWeight: 600 }}
           >
             {eyebrow}
           </span>
+
+          {/* Arrow pill — reacts to card hover */}
           <span
-            className="inline-flex items-center justify-center rounded-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1.5 md:group-hover:-translate-y-1.5"
+            className="relative inline-flex items-center justify-center rounded-full overflow-hidden transition-[transform,background-color,color,width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:-translate-y-0.5"
             style={{
               width: 48,
               height: 48,
-              background: isDark ? "#C7F751" : "#0A0A0A",
-              color: isDark ? "#0A0A0A" : "#FAFAFA",
+              background: arrowBg,
+              color: arrowFg,
               flexShrink: 0,
             }}
           >
+            {/* Outgoing arrow */}
             <svg
               width={20}
               height={20}
@@ -1069,6 +1105,22 @@ function BentoCard({
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-[140%]"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+            {/* Incoming arrow (from left) */}
+            <svg
+              width={20}
+              height={20}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="absolute -translate-x-[140%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
@@ -1078,7 +1130,7 @@ function BentoCard({
 
         <div className="mt-auto pt-12 md:pt-16">
           <h3
-            className="h-display"
+            className="h-display transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1"
             style={{
               fontSize: "clamp(40px, 6vw, 76px)",
               lineHeight: 0.92,
@@ -1088,6 +1140,7 @@ function BentoCard({
             {title}
           </h3>
           <p
+            className="transition-colors duration-500"
             style={{
               fontSize: 17,
               lineHeight: 1.5,
@@ -1100,6 +1153,15 @@ function BentoCard({
           </p>
         </div>
       </div>
+
+      {/* Corner tick — mechanical accent */}
+      <span
+        aria-hidden
+        className="absolute bottom-6 left-6 h-px transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:w-16 w-6"
+        style={{
+          background: isDark ? "rgba(199,247,81,0.6)" : "rgba(10,10,10,0.35)",
+        }}
+      />
     </Link>
   );
 }
