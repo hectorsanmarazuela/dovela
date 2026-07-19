@@ -40,7 +40,19 @@ function DisenoWebPage() {
         n="001"
         eyebrow="Servicios de diseño web en Segovia"
         title="Un canal de ventas que no requiere de tu tiempo"
-        intro="Desarrollamos páginas web fáciles de usar a medida para tu negocio. Creamos estructuras pensadas para que cualquier visitante entienda en 3 segundos qué haces, por qué eres la solución que busca y cómo contactarte. Cada proyecto se diseña desde cero para tu negocio y tu cliente, optimizado hasta que carga de manera instantánea y se adapta perfectamente a cualquier dispositivo."
+        intro={
+          <>
+            <p style={{ margin: 0 }}>
+              <strong className="font-bold underline decoration-[#C7F751] decoration-4 underline-offset-4 text-[#18181B]">
+                Desarrollamos páginas web fáciles de usar a medida para tu negocio.
+              </strong>{" "}
+              Creamos estructuras pensadas para que cualquier visitante entienda en 3 segundos qué haces, por qué eres la solución que busca y cómo contactarte.
+            </p>
+            <p style={{ margin: 0 }}>
+              Cada proyecto se diseña desde cero para tu negocio y tu cliente, optimizado hasta que carga de manera instantánea y se adapta perfectamente a cualquier dispositivo.
+            </p>
+          </>
+        }
         includeTitle="¿Qué incluye nuestro servicio de Diseño Web?"
         includes={[
           {
