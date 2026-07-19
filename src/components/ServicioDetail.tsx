@@ -1,5 +1,16 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
+import ichoCard from "@/assets/ICHO_1-2.webp.asset.json";
+import solaraCard from "@/assets/SOLARA_1-2.webp.asset.json";
+import voltiaCard from "@/assets/VOLTIA_1-2.webp.asset.json";
+import fontaneroCard from "@/assets/FONTANERO_1-2.webp.asset.json";
+
+const PROJECT_IMAGES: Record<string, string> = {
+  Icho: ichoCard.url,
+  "Solara Estudio de Pilates": solaraCard.url,
+  "Fernández del Campo Fontaneros": fontaneroCard.url,
+  "Voltia Rural": voltiaCard.url,
+};
 
 type IncludeItem = { title: string; description: string };
 
@@ -332,11 +343,11 @@ function ProjectCarouselCard() {
           {PROJECTS.map((pr, idx) => (
             <img
               key={pr.name}
-              src={pr.img}
+              src={PROJECT_IMAGES[pr.name] ?? pr.img}
               alt={pr.name}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-[transform,opacity] duration-700 ease-out group-hover:scale-[1.05]"
-              style={{ opacity: idx === i ? 1 : 0 }}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              style={{ opacity: idx === i ? 1 : 0, transitionProperty: "transform, opacity" }}
             />
           ))}
         </div>
