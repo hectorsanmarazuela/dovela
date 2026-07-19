@@ -952,127 +952,155 @@ function SectionHeader({
 }
 
 function Services() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <section
       id="servicios"
       className="bg-[#FAFAFA]"
-      style={{ paddingTop: 140, paddingBottom: 140 }}
+      style={{ paddingTop: 120, paddingBottom: 120 }}
     >
       <div className="max-w-[1280px] mx-auto px-6">
-        <SectionHeader
-          label="Servicios de diseño web y SEO en Segovia"
-          title="Nuestros servicios."
-          paragraph="Estamos especializados en diseño web, posicionamiento SEO y Google Business. Trabajamos mejor cuando un proyecto requiere los tres servicios, pero si solo necesitas uno, cuéntanoslo."
-          cta="Trabajar con nosotros →"
-        />
-        <div>
-          {SERVICES.map((s, i) => {
-            const isOpen = open === i;
-            return (
-              <div
-                key={s.n}
-                style={{ borderTop: "0.5px solid #E5E5E5" }}
-                className={isOpen ? "overflow-hidden" : ""}
-              >
-                <div
-                  style={
-                    isOpen
-                      ? {
-                          backgroundColor: "#0A0A0A",
-                          color: "#FAFAFA",
-                          borderRadius: 16,
-                        }
-                      : undefined
-                  }
-                >
-                  <button
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="w-full flex items-center gap-4 text-left"
-                    style={{ height: 72, padding: "0 24px" }}
-                  >
-                    <span
-                      style={{
-                        fontSize: 14,
-                        color: isOpen ? "rgba(255,255,255,0.55)" : "#888",
-                        width: 48,
-                      }}
-                    >
-                      {s.n}
-                    </span>
-                    <span style={{ color: "#C7F751", fontSize: 18 }}>•</span>
-                    <span
-                      style={{
-                        fontSize: 18,
-                        fontWeight: 500,
-                        color: isOpen ? "#FAFAFA" : "#0A0A0A",
-                      }}
-                    >
-                      {s.name}
-                    </span>
-                    <span
-                      className="ml-auto inline-flex items-center justify-center rounded-full"
-                      style={{
-                        width: 32,
-                        height: 32,
-                        background: "#0A0A0A",
-                        color: isOpen ? "#C7F751" : "#FAFAFA",
-                        border: isOpen ? "0.5px solid rgba(255,255,255,0.2)" : "none",
-                        fontSize: 18,
-                        lineHeight: 1,
-                      }}
-                    >
-                      {isOpen ? "−" : "+"}
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <div className="grid grid-cols-1 md:grid-cols-[55%_45%] gap-6 px-6 pb-6">
-                      <div>
-                        <p
-                          style={{
-                            fontSize: 14,
-                            color: "rgba(255,255,255,0.75)",
-                            maxWidth: 480,
-                          }}
-                        >
-                          {s.desc}
-                        </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {s.pills.map((p) => (
-                            <span
-                              key={p}
-                              className="rounded-full"
-                              style={{
-                                border: "0.5px solid rgba(255,255,255,0.4)",
-                                color: "#FAFAFA",
-                                fontSize: 12,
-                                padding: "4px 12px",
-                              }}
-                            >
-                              {p}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="flex justify-end">
-                        <div
-                          style={{
-                            width: 200,
-                            height: 200,
-                            background: "#2A2A2A",
-                            borderRadius: 12,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        <div className="mb-12 md:mb-16">
+          <p className="label-eyebrow mb-4">Servicios de diseño web y SEO en Segovia</p>
+          <h2
+            className="h-display text-[#0A0A0A]"
+            style={{ fontSize: "clamp(40px, 6vw, 72px)", margin: 0, lineHeight: 0.95 }}
+          >
+            Nuestros servicios.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {BENTO_CARDS.slice(0, 2).map((card) => (
+            <BentoCard key={card.id} {...card} />
+          ))}
+          <div className="md:col-span-2">
+            <BentoCard {...BENTO_CARDS[2]} />
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function BentoCard({
+  eyebrow,
+  title,
+  copy,
+  href,
+  theme,
+}: {
+  eyebrow: string;
+  title: string;
+  copy: string;
+  href: string;
+  theme: "light" | "gray" | "dark";
+}) {
+  const isDark = theme === "dark";
+  const isGray = theme === "gray";
+
+  const bg = isDark ? "#0A0A0A" : isGray ? "#F0F0ED" : "#FFFFFF";
+  const textColor = isDark ? "#FAFAFA" : "#0A0A0A";
+  const eyebrowColor = isDark ? "#C7F751" : "#888888";
+  const cardBorder = isDark
+    ? "0.5px solid rgba(255,255,255,0.08)"
+    : "0.5px solid rgba(10,10,10,0.08)";
+  const glow = isDark
+    ? "radial-gradient(120% 100% at 100% 0%, rgba(199,247,81,0.28), transparent 55%), radial-gradient(80% 80% at 0% 100%, rgba(199,247,81,0.10), transparent 60%)"
+    : undefined;
+
+  return (
+    <Link
+      to={href}
+      className="group relative block overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:scale-[1.01]"
+      style={{
+        background: bg,
+        color: textColor,
+        borderRadius: 28,
+        border: cardBorder,
+        padding: "clamp(28px, 4vw, 48px)",
+        minHeight: isDark ? 420 : 360,
+      }}
+    >
+      {glow && (
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none transition-opacity duration-700"
+          style={{ background: glow, opacity: 0.9 }}
+        />
+      )}
+      {isDark && (
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none opacity-30"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "radial-gradient(140% 100% at 100% 0%, #000 30%, transparent 75%)",
+          }}
+        />
+      )}
+
+      <div className="relative h-full flex flex-col">
+        <div className="flex items-start justify-between gap-4">
+          <span
+            className="uppercase tracking-[0.14em]"
+            style={{ color: eyebrowColor, fontSize: 12, fontWeight: 600 }}
+          >
+            {eyebrow}
+          </span>
+          <span
+            className="inline-flex items-center justify-center rounded-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1.5 md:group-hover:-translate-y-1.5"
+            style={{
+              width: 48,
+              height: 48,
+              background: isDark ? "#C7F751" : "#0A0A0A",
+              color: isDark ? "#0A0A0A" : "#FAFAFA",
+              flexShrink: 0,
+            }}
+          >
+            <svg
+              width={20}
+              height={20}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="13 6 19 12 13 18" />
+            </svg>
+          </span>
+        </div>
+
+        <div className="mt-auto pt-12 md:pt-16">
+          <h3
+            className="h-display"
+            style={{
+              fontSize: "clamp(40px, 6vw, 76px)",
+              lineHeight: 0.92,
+              margin: "0 0 20px",
+            }}
+          >
+            {title}
+          </h3>
+          <p
+            style={{
+              fontSize: 17,
+              lineHeight: 1.5,
+              color: isDark ? "rgba(255,255,255,0.65)" : "#555",
+              maxWidth: isDark ? 620 : 520,
+              margin: 0,
+            }}
+          >
+            {copy}
+          </p>
+        </div>
+      </div>
+    </Link>
   );
 }
 
