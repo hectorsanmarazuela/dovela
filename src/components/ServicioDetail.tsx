@@ -275,13 +275,45 @@ function ProjectCarouselCard() {
     <div
       style={{
         position: "relative",
-        background: "#FFFFFF",
+        background:
+          "linear-gradient(155deg, #FFFFFF 0%, #F7F7F2 55%, #EEF3DE 100%)",
         border: "0.5px solid rgba(24,24,27,0.12)",
         borderRadius: 24,
         padding: 20,
         overflow: "hidden",
+        boxShadow:
+          "0 1px 0 rgba(255,255,255,0.9) inset, 0 30px 60px -30px rgba(24,24,27,0.18)",
       }}
     >
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          opacity: 0.5,
+          backgroundImage:
+            "linear-gradient(rgba(24,24,27,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(24,24,27,0.04) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+          maskImage:
+            "radial-gradient(120% 100% at 0% 0%, #000 15%, transparent 70%)",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: -80,
+          right: -80,
+          width: 240,
+          height: 240,
+          borderRadius: 999,
+          background:
+            "radial-gradient(closest-side, rgba(199,247,81,0.45), transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+
       <div
         className="label-eyebrow"
         style={{
