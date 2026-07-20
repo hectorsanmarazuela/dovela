@@ -1040,7 +1040,7 @@ function BentoCard({
           borderRadius: 28,
           border: cardBorder,
           padding: "clamp(28px, 4vw, 48px)",
-          minHeight: isDark ? 420 : 360,
+          minHeight: isDark ? 340 : 360,
           ["--hover-shadow" as string]: hoverShadow,
           ["--hover-border" as string]: hoverBorder,
         } as React.CSSProperties
