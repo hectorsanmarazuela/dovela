@@ -875,7 +875,9 @@ const BENTO_CARDS = [
   {
     id: "diseno",
     eyebrow: "(001) — Diseño",
-    title: "Diseño Web",
+    titleTop: "Desarrollo y",
+    titleBottom: "Diseño Web",
+    title: "Desarrollo y Diseño Web",
     copy: "Webs a medida diseñadas para que el visitante entienda en 3 segundos qué haces y cómo contactarte.",
     href: "/servicios/diseno-web",
     theme: "light" as const,
@@ -883,6 +885,8 @@ const BENTO_CARDS = [
   {
     id: "seo",
     eyebrow: "(002) — Tráfico",
+    titleTop: "Posicionamiento",
+    titleBottom: "SEO",
     title: "Posicionamiento SEO",
     copy: "Estrategias a medida para colocar tu negocio en los primeros resultados de Google. Tráfico estable y orgánico.",
     href: "/servicios/seo",
@@ -891,12 +895,15 @@ const BENTO_CARDS = [
   {
     id: "pack",
     eyebrow: "(003) · RECOMENDADO",
+    titleTop: "Pack",
+    titleBottom: "Completo",
     title: "Pack Completo",
     copy: "Diseño web y SEO bajo la misma dirección. La forma más eficiente de crecer online multiplicando tu retorno de inversión.",
     href: "/servicios/diseno-web",
     theme: "dark" as const,
   },
 ];
+
 
 function SectionHeader({
   label,
@@ -984,17 +991,21 @@ function Services() {
 
 function BentoCard({
   eyebrow,
-  title,
+  titleTop,
+  titleBottom,
   copy,
   href,
   theme,
 }: {
   eyebrow: string;
   title: string;
+  titleTop: string;
+  titleBottom: string;
   copy: string;
   href: string;
   theme: "light" | "gray" | "dark";
 }) {
+
   const isDark = theme === "dark";
   const isGray = theme === "gray";
 
@@ -1105,7 +1116,7 @@ function BentoCard({
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-[140%]"
+              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-[150%]"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
@@ -1120,7 +1131,7 @@ function BentoCard({
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute -translate-x-[140%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
+              className="absolute -translate-x-[150%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
@@ -1132,39 +1143,48 @@ function BentoCard({
           <h3
             className="h-display transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1"
             style={{
-              fontSize: "clamp(40px, 6vw, 76px)",
-              lineHeight: 0.92,
-              margin: "0 0 20px",
-            }}
-          >
-            {title}
-          </h3>
-          <p
-            className="transition-colors duration-500"
-            style={{
-              fontSize: 17,
-              lineHeight: 1.5,
-              color: isDark ? "rgba(255,255,255,0.65)" : "#555",
-              maxWidth: isDark ? 620 : 520,
+              lineHeight: 0.95,
               margin: 0,
             }}
           >
-            {copy}
-          </p>
+            <span
+              className={`block ${isDark ? "text-white/45" : "text-gray-400"}`}
+              style={{ fontSize: "clamp(32px, 4.6vw, 60px)", fontWeight: 500 }}
+            >
+              {titleTop}
+            </span>
+            <span
+              className="block font-bold mt-2"
+              style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
+            >
+              {titleBottom}
+            </span>
+          </h3>
+          <div
+            className="mt-8 pt-6 border-t"
+            style={{
+              borderColor: isDark ? "rgba(255,255,255,0.10)" : "rgba(10,10,10,0.10)",
+            }}
+          >
+            <p
+              className="transition-colors duration-500"
+              style={{
+                fontSize: 17,
+                lineHeight: 1.5,
+                color: isDark ? "rgba(255,255,255,0.65)" : "#555",
+                maxWidth: isDark ? 620 : 520,
+                margin: 0,
+              }}
+            >
+              {copy}
+            </p>
+          </div>
         </div>
       </div>
-
-      {/* Corner tick — mechanical accent */}
-      <span
-        aria-hidden
-        className="absolute bottom-6 left-6 h-px transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:w-16 w-6"
-        style={{
-          background: isDark ? "rgba(199,247,81,0.6)" : "rgba(10,10,10,0.35)",
-        }}
-      />
     </Link>
   );
 }
+
 
 /* ---------- PROJECTS ---------- */
 
