@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { CtaBanner, Plan, PROJECTS, ArrowCircle } from "@/routes/index";
+import { CtaBanner, Plan, PROJECTS } from "@/routes/index";
 import ichoCard from "@/assets/ICHO_1-2.webp.asset.json";
 import solaraCard from "@/assets/SOLARA_1-2.webp.asset.json";
 import voltiaCard from "@/assets/VOLTIA_1-2.webp.asset.json";
