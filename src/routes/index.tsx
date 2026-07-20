@@ -991,17 +991,21 @@ function Services() {
 
 function BentoCard({
   eyebrow,
-  title,
+  titleTop,
+  titleBottom,
   copy,
   href,
   theme,
 }: {
   eyebrow: string;
   title: string;
+  titleTop: string;
+  titleBottom: string;
   copy: string;
   href: string;
   theme: "light" | "gray" | "dark";
 }) {
+
   const isDark = theme === "dark";
   const isGray = theme === "gray";
 
