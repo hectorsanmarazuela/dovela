@@ -895,8 +895,8 @@ const BENTO_CARDS = [
   {
     id: "pack",
     eyebrow: "(003) · RECOMENDADO",
-    titleTop: "Pack",
-    titleBottom: "Completo",
+    titleTop: "",
+    titleBottom: "Pack Completo",
     title: "Pack Completo",
     copy: "Diseño web y SEO bajo la misma dirección. La forma más eficiente de crecer online multiplicando tu retorno de inversión.",
     href: "/servicios/diseno-web",
@@ -1040,7 +1040,7 @@ function BentoCard({
           borderRadius: 28,
           border: cardBorder,
           padding: "clamp(28px, 4vw, 48px)",
-          minHeight: isDark ? 420 : 360,
+          minHeight: isDark ? 340 : 360,
           ["--hover-shadow" as string]: hoverShadow,
           ["--hover-border" as string]: hoverBorder,
         } as React.CSSProperties
@@ -1139,7 +1139,7 @@ function BentoCard({
           </span>
         </div>
 
-        <div className="mt-auto pt-12 md:pt-16">
+        <div className={`mt-auto ${titleTop ? "pt-12 md:pt-16" : "pt-8 md:pt-10"}`}>
           <h3
             className="h-display transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1"
             style={{
@@ -1147,14 +1147,16 @@ function BentoCard({
               margin: 0,
             }}
           >
+            {titleTop && (
+              <span
+                className={`block ${isDark ? "text-white/45" : "text-gray-400"}`}
+                style={{ fontSize: "clamp(32px, 4.6vw, 60px)", fontWeight: 500 }}
+              >
+                {titleTop}
+              </span>
+            )}
             <span
-              className={`block ${isDark ? "text-white/45" : "text-gray-400"}`}
-              style={{ fontSize: "clamp(32px, 4.6vw, 60px)", fontWeight: 500 }}
-            >
-              {titleTop}
-            </span>
-            <span
-              className="block font-bold mt-2"
+              className={`block font-bold ${titleTop ? "mt-2" : ""}`}
               style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
             >
               {titleBottom}
