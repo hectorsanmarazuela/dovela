@@ -875,7 +875,9 @@ const BENTO_CARDS = [
   {
     id: "diseno",
     eyebrow: "(001) — Diseño",
-    title: "Diseño Web",
+    titleTop: "Desarrollo y",
+    titleBottom: "Diseño Web",
+    title: "Desarrollo y Diseño Web",
     copy: "Webs a medida diseñadas para que el visitante entienda en 3 segundos qué haces y cómo contactarte.",
     href: "/servicios/diseno-web",
     theme: "light" as const,
@@ -883,6 +885,8 @@ const BENTO_CARDS = [
   {
     id: "seo",
     eyebrow: "(002) — Tráfico",
+    titleTop: "Posicionamiento",
+    titleBottom: "SEO",
     title: "Posicionamiento SEO",
     copy: "Estrategias a medida para colocar tu negocio en los primeros resultados de Google. Tráfico estable y orgánico.",
     href: "/servicios/seo",
@@ -891,12 +895,15 @@ const BENTO_CARDS = [
   {
     id: "pack",
     eyebrow: "(003) · RECOMENDADO",
+    titleTop: "Pack",
+    titleBottom: "Completo",
     title: "Pack Completo",
     copy: "Diseño web y SEO bajo la misma dirección. La forma más eficiente de crecer online multiplicando tu retorno de inversión.",
     href: "/servicios/diseno-web",
     theme: "dark" as const,
   },
 ];
+
 
 function SectionHeader({
   label,
