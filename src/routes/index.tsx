@@ -895,8 +895,8 @@ const BENTO_CARDS = [
   {
     id: "pack",
     eyebrow: "(003) · RECOMENDADO",
-    titleTop: "Pack",
-    titleBottom: "Completo",
+    titleTop: "",
+    titleBottom: "Pack Completo",
     title: "Pack Completo",
     copy: "Diseño web y SEO bajo la misma dirección. La forma más eficiente de crecer online multiplicando tu retorno de inversión.",
     href: "/servicios/diseno-web",
