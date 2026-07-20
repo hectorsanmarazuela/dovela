@@ -1139,7 +1139,7 @@ function BentoCard({
           </span>
         </div>
 
-        <div className="mt-auto pt-12 md:pt-16">
+        <div className={`mt-auto ${titleTop ? "pt-12 md:pt-16" : "pt-8 md:pt-10"}`}>
           <h3
             className="h-display transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1"
             style={{
@@ -1147,14 +1147,16 @@ function BentoCard({
               margin: 0,
             }}
           >
+            {titleTop && (
+              <span
+                className={`block ${isDark ? "text-white/45" : "text-gray-400"}`}
+                style={{ fontSize: "clamp(32px, 4.6vw, 60px)", fontWeight: 500 }}
+              >
+                {titleTop}
+              </span>
+            )}
             <span
-              className={`block ${isDark ? "text-white/45" : "text-gray-400"}`}
-              style={{ fontSize: "clamp(32px, 4.6vw, 60px)", fontWeight: 500 }}
-            >
-              {titleTop}
-            </span>
-            <span
-              className="block font-bold mt-2"
+              className={`block font-bold ${titleTop ? "mt-2" : ""}`}
               style={{ fontSize: "clamp(40px, 6vw, 76px)" }}
             >
               {titleBottom}
