@@ -118,7 +118,7 @@ export function PremiumCTA({ subtitle }: { subtitle: string }) {
                 WebkitBoxDecorationBreak: "clone",
               }}
             >
-              PROYECTO
+              proyecto
             </span>
           </h2>
           <p

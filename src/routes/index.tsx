@@ -112,9 +112,7 @@ function ImagePlaceholder({
 function Nav() {
   const [pathname, setPathname] = useState("/");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const lastScrollY = useRef(0);
   useEffect(() => {
     setPathname(window.location.pathname);
   }, []);
@@ -126,16 +124,7 @@ function Nav() {
   }, [mobileOpen]);
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      const dy = y - lastScrollY.current;
-      const isDesktop = window.innerWidth >= 768;
-      if (isDesktop && y > 80 && dy > 0) {
-        setHidden(true);
-      } else if (dy < 0 || !isDesktop) {
-        setHidden(false);
-      }
-      setScrolled(y > 8);
-      lastScrollY.current = y;
+      setScrolled(window.scrollY > 8);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -165,9 +154,7 @@ function Nav() {
   const pillBorder = `1px solid ${scrolled ? borderColor : "transparent"}`;
   return (
     <header
-      className={`fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-500 ease-out ${hidden ? "" : "delay-100"}`}
-      style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
-
+      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none"
     >
       <nav
         className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-all duration-[500ms] ease-[cubic-bezier(.4,0,.2,1)]"
@@ -545,9 +532,9 @@ function Hero() {
         </div>
       </div>
 
-      {/* Floating service pills — desktop only */}
+      {/* Floating service pills — desktop only (vertical) */}
       <div
-        className="absolute hidden lg:flex flex-wrap justify-end gap-2"
+        className="absolute hidden lg:flex flex-col items-start gap-2"
         style={{ right: 40, top: 320, maxWidth: 340 }}
       >
         {["Diseño web", "SEO Local", "Copywrite"].map((p) => (
@@ -563,7 +550,7 @@ function Hero() {
               background: "rgba(255,255,255,0.04)",
             }}
           >
-            {p}
+            · {p}
           </span>
         ))}
       </div>
@@ -1032,7 +1019,7 @@ function BentoCard({
   return (
     <Link
       to={href}
-      className="group relative block overflow-hidden transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+      className="group relative block overflow-hidden"
       style={
         {
           background: bg,
@@ -1045,14 +1032,6 @@ function BentoCard({
           ["--hover-border" as string]: hoverBorder,
         } as React.CSSProperties
       }
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = hoverShadow;
-        e.currentTarget.style.border = hoverBorder;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
-        e.currentTarget.style.border = cardBorder;
-      }}
     >
       {glow && (
         <div
@@ -1116,7 +1095,7 @@ function BentoCard({
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-[150%]"
+              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-[300%]"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
@@ -1131,7 +1110,7 @@ function BentoCard({
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute -translate-x-[150%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
+              className="absolute -translate-x-[300%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
@@ -1141,7 +1120,7 @@ function BentoCard({
 
         <div className={`mt-auto ${titleTop ? "pt-12 md:pt-16" : "pt-8 md:pt-10"}`}>
           <h3
-            className="h-display transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1"
+            className="h-display"
             style={{
               lineHeight: 0.95,
               margin: 0,
@@ -1191,7 +1170,7 @@ function BentoCard({
 /* ---------- PROJECTS ---------- */
 
 const PROJECTS = [
-  { name: "Icho", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoProjectImg.url, href: "/proyectos/icho" },
+  { name: "Icho — Joyería de Autor", pills: ["Diseño web", "E-commerce"], cat: "E-commerce", img: ichoProjectImg.url, href: "/proyectos/icho" },
   { name: "Solara Estudio de Pilates", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: solaraImg.url, href: "/proyectos/solara" },
   { name: "Fernández del Campo Fontaneros", pills: ["Diseño web", "SEO local"], cat: "SEO local", img: fontaneroImg.url, href: "/proyectos/fdc-fontanero" },
   { name: "Voltia Rural", pills: ["Diseño web", "SEO local"], cat: "Diseño web", img: voltiaImg.url, href: "/proyectos/voltiarural" },
@@ -1254,7 +1233,7 @@ function ProjectCard({
           src={img}
           alt={name}
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
         />
         {/* Static arrow — mobile only */}
         <div className="absolute top-4 right-4 md:hidden">
@@ -1280,8 +1259,8 @@ function ProjectCard({
           ↗
         </div>
       </div>
-      <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
-        <div style={{ fontSize: 15, fontWeight: 500, color: "#0A0A0A" }}>{name}</div>
+      <div className="mt-4 flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:flex-wrap">
+        <div className="text-3xl md:text-[15px]" style={{ fontWeight: 500, color: "#0A0A0A", lineHeight: 1.15 }}>{name}</div>
         <div className="flex gap-2 flex-wrap">
           {pills.map((p) => (
             <span
@@ -1402,8 +1381,9 @@ function Plan() {
             <h3 className="h-display" style={{ ...titleStyle, color: "#121214" }}>
               3 sencillos pasos
             </h3>
+            <hr className="border-t border-[#121214]/15 my-4" />
             <ol
-              className="mt-10 grid gap-4"
+              className="mt-6 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {steps.map((t, i) => (
@@ -1461,8 +1441,9 @@ function Plan() {
             >
               Garantías para tu negocio
             </h2>
+            <hr className="border-gray-200/50 my-4" />
             <ul
-              className="mt-10 grid gap-4"
+              className="mt-6 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {guarantees.map((t) => (
@@ -2030,11 +2011,12 @@ function LeadMagnet() {
   return (
     <section
       id="auditoria"
+      className="w-full overflow-hidden"
       style={{ paddingTop: 40, paddingBottom: 40 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-6 w-full">
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-hidden w-full"
           style={{
             background: "#121214",
             borderRadius: 24,
@@ -2051,19 +2033,19 @@ function LeadMagnet() {
                 Auditoría SEO gratuita para tu negocio
               </h2>
               <p
-                className="h-display mt-6"
-                style={{ fontSize: "clamp(28px, 3.4vw, 40px)", color: "#FAFAFA" }}
+                className="h-display mt-6 text-3xl md:text-4xl"
+                style={{ color: "#FAFAFA", margin: 0 }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
                 <span style={{ color: "#C7F751" }}>aparece en Google?</span>
               </p>
 
               <p
-                className="mt-6"
+                className="mt-6 text-base"
                 style={{
                   color: "rgba(255,255,255,0.65)",
-                  fontSize: "clamp(15px, 1.6vw, 22px)",
                   maxWidth: 720,
+                  lineHeight: 1.6,
                 }}
               >
                 Introduce el nombre de tu negocio o tu web y descubre si tu
