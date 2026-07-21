@@ -1381,8 +1381,9 @@ function Plan() {
             <h3 className="h-display" style={{ ...titleStyle, color: "#121214" }}>
               3 sencillos pasos
             </h3>
+            <hr className="border-t border-[#121214]/15 my-4" />
             <ol
-              className="mt-10 grid gap-4"
+              className="mt-6 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {steps.map((t, i) => (
