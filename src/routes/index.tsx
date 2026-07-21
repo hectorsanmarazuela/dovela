@@ -628,7 +628,7 @@ function Hero() {
             <img
               src={ichoProjectImg.url}
               alt="Icho — Joyería de autor"
-              className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              className="w-full h-full object-contain transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] group-hover:rotate-1"
             />
           </div>
           <div className="mt-3 flex flex-col gap-1">
@@ -734,7 +734,7 @@ function Hero() {
             <img
               src={ichoProjectImg.url}
               alt="Icho — Joyería artesanal"
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              className="w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] group-hover:rotate-1"
             />
             {/* Arrow badge */}
             <div
@@ -1233,7 +1233,7 @@ function ProjectCard({
           src={img}
           alt={name}
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] group-hover:rotate-1"
         />
         {/* Static arrow — mobile only */}
         <div className="absolute top-4 right-4 md:hidden">
