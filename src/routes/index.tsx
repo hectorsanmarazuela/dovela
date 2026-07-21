@@ -55,12 +55,12 @@ function ArrowCircle({
       style={{ width: size, height: size, backgroundColor: bg, color: fg }}
     >
       <span
-        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
+        className="absolute inset-0 grid place-items-center transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-x-[300%] group-hover:translate-x-[300%]"
       >
         <ArrowSvg size={iconSize} />
       </span>
       <span
-        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+        className="absolute inset-0 grid place-items-center -translate-x-[300%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-x-0 group-hover:translate-x-0"
       >
         <ArrowSvg size={iconSize} />
       </span>
