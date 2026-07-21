@@ -1120,7 +1120,7 @@ function BentoCard({
 
         <div className={`mt-auto ${titleTop ? "pt-12 md:pt-16" : "pt-8 md:pt-10"}`}>
           <h3
-            className="h-display transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:group-hover:translate-x-1"
+            className="h-display"
             style={{
               lineHeight: 0.95,
               margin: 0,
