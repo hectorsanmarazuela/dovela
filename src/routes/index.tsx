@@ -532,9 +532,9 @@ function Hero() {
         </div>
       </div>
 
-      {/* Floating service pills — desktop only */}
+      {/* Floating service pills — desktop only (vertical) */}
       <div
-        className="absolute hidden lg:flex flex-wrap justify-end gap-2"
+        className="absolute hidden lg:flex flex-col items-start gap-2"
         style={{ right: 40, top: 320, maxWidth: 340 }}
       >
         {["Diseño web", "SEO Local", "Copywrite"].map((p) => (
@@ -550,7 +550,7 @@ function Hero() {
               background: "rgba(255,255,255,0.04)",
             }}
           >
-            {p}
+            · {p}
           </span>
         ))}
       </div>
