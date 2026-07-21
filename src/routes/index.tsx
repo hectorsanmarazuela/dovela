@@ -1233,7 +1233,7 @@ function ProjectCard({
           src={img}
           alt={name}
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
         />
         {/* Static arrow — mobile only */}
         <div className="absolute top-4 right-4 md:hidden">
