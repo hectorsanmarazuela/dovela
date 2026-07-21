@@ -156,8 +156,6 @@ function Nav() {
     <header
       className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none"
     >
-
-    >
       <nav
         className="pointer-events-auto relative flex items-center justify-between md:justify-start gap-2 bg-[#FAFAFA] rounded-full w-full mx-auto transition-all duration-[500ms] ease-[cubic-bezier(.4,0,.2,1)]"
         style={{
