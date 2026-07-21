@@ -1508,14 +1508,9 @@ function Plan() {
 
 function MarqueeBand() {
   const items = [
-    "SEO Local",
-    "Diseño web",
-    "Copywriting",
-    "Google Business",
-    "Branding",
-    "Analítica",
-    "Mantenimiento",
-    "UX / UI",
+    "entrega en 14 días",
+    "auditoría gratuita",
+    "1 mes de mantenimiento incluido",
   ];
   const loop = [...items, ...items, ...items, ...items];
 
