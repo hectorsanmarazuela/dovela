@@ -128,7 +128,7 @@ function PackCard() {
         >
           <strong style={{ color: "#FFFFFF" }}>¿Y si lo hacemos todo junto?</strong>{" "}
           Diseño web + SEO bajo la misma dirección: mejor precio, mejor
-          coordinación y mucho más ROI que contratarlos por separado.
+          coordinación y mucho más retorno de la inversión que contratarlos por separado.
         </p>
         <a
           href="/#contacto"
