@@ -112,9 +112,7 @@ function ImagePlaceholder({
 function Nav() {
   const [pathname, setPathname] = useState("/");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const lastScrollY = useRef(0);
   useEffect(() => {
     setPathname(window.location.pathname);
   }, []);
@@ -126,16 +124,7 @@ function Nav() {
   }, [mobileOpen]);
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      const dy = y - lastScrollY.current;
-      const isDesktop = window.innerWidth >= 768;
-      if (isDesktop && y > 80 && dy > 0) {
-        setHidden(true);
-      } else if (dy < 0 || !isDesktop) {
-        setHidden(false);
-      }
-      setScrolled(y > 8);
-      lastScrollY.current = y;
+      setScrolled(window.scrollY > 8);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
