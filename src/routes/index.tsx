@@ -1259,8 +1259,8 @@ function ProjectCard({
           ↗
         </div>
       </div>
-      <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
-        <div style={{ fontSize: 15, fontWeight: 500, color: "#0A0A0A" }}>{name}</div>
+      <div className="mt-4 flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:flex-wrap">
+        <div className="text-3xl md:text-[15px]" style={{ fontWeight: 500, color: "#0A0A0A", lineHeight: 1.15 }}>{name}</div>
         <div className="flex gap-2 flex-wrap">
           {pills.map((p) => (
             <span
