@@ -1019,7 +1019,7 @@ function BentoCard({
   return (
     <Link
       to={href}
-      className="group relative block overflow-hidden transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hover:-translate-y-1"
+      className="group relative block overflow-hidden"
       style={
         {
           background: bg,
@@ -1032,14 +1032,6 @@ function BentoCard({
           ["--hover-border" as string]: hoverBorder,
         } as React.CSSProperties
       }
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = hoverShadow;
-        e.currentTarget.style.border = hoverBorder;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "";
-        e.currentTarget.style.border = cardBorder;
-      }}
     >
       {glow && (
         <div
