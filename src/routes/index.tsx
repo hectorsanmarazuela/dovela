@@ -2011,11 +2011,12 @@ function LeadMagnet() {
   return (
     <section
       id="auditoria"
+      className="w-full overflow-hidden"
       style={{ paddingTop: 40, paddingBottom: 40 }}
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-6 w-full">
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-hidden w-full"
           style={{
             background: "#121214",
             borderRadius: 24,
@@ -2032,19 +2033,19 @@ function LeadMagnet() {
                 Auditoría SEO gratuita para tu negocio
               </h2>
               <p
-                className="h-display mt-6"
-                style={{ fontSize: "clamp(28px, 3.4vw, 40px)", color: "#FAFAFA" }}
+                className="h-display mt-6 text-3xl md:text-4xl"
+                style={{ color: "#FAFAFA", margin: 0 }}
               >
                 <span style={{ color: "#FAFAFA" }}>¿Tu negocio</span>{" "}
                 <span style={{ color: "#C7F751" }}>aparece en Google?</span>
               </p>
 
               <p
-                className="mt-6"
+                className="mt-6 text-base"
                 style={{
                   color: "rgba(255,255,255,0.65)",
-                  fontSize: "clamp(15px, 1.6vw, 22px)",
                   maxWidth: 720,
+                  lineHeight: 1.6,
                 }}
               >
                 Introduce el nombre de tu negocio o tu web y descubre si tu
