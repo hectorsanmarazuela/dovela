@@ -1110,7 +1110,7 @@ function BentoCard({
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute -translate-x-[150%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
+              className="absolute -translate-x-[300%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] md:group-hover:translate-x-0"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
