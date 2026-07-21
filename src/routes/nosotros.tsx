@@ -62,7 +62,7 @@ function TeamCarousel() {
         <div className="h-[1px] flex-1 mx-6 bg-[#18181B]/10" />
         <span
           className="text-2xl text-[#C7F751]"
-          style={{ fontFamily: "'Anton', Inter, sans-serif" }}
+          style={{ fontFamily: "Inter, sans-serif", fontWeight: 900 }}
         >
           {current.number}
         </span>
@@ -151,7 +151,8 @@ function NosotrosPage() {
             <h2
               className="uppercase leading-none text-[#18181B]"
               style={{
-                fontFamily: "'Anton', Inter, sans-serif",
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 900,
                 fontSize: "clamp(4rem, 10vw, 9rem)",
               }}
             >
@@ -179,7 +180,7 @@ function NosotrosPage() {
                   </div>
                   <span
                     className="text-[#18181B]/20 text-2xl"
-                    style={{ fontFamily: "'Anton', Inter, sans-serif" }}
+                    style={{ fontFamily: "Inter, sans-serif", fontWeight: 900 }}
                   >
                     {m.number}
                   </span>
