@@ -1441,8 +1441,9 @@ function Plan() {
             >
               Garantías para tu negocio
             </h2>
+            <hr className="border-gray-200/50 my-4" />
             <ul
-              className="mt-10 grid gap-4"
+              className="mt-6 grid gap-4"
               style={{ gridAutoRows: "minmax(48px, auto)" }}
             >
               {guarantees.map((t) => (
