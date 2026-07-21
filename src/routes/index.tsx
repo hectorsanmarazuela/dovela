@@ -55,12 +55,12 @@ function ArrowCircle({
       style={{ width: size, height: size, backgroundColor: bg, color: fg }}
     >
       <span
-        className="absolute inset-0 grid place-items-center transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:-translate-y-full group-hover/arrow:translate-x-full group-hover/arrow:opacity-0 group-hover:-translate-y-full group-hover:translate-x-full group-hover:opacity-0"
+        className="absolute inset-0 grid place-items-center transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-x-[300%] group-hover:translate-x-[300%]"
       >
         <ArrowSvg size={iconSize} />
       </span>
       <span
-        className="absolute inset-0 grid place-items-center translate-y-full -translate-x-full opacity-0 transition-[transform,opacity] duration-[450ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-y-0 group-hover/arrow:translate-x-0 group-hover/arrow:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100"
+        className="absolute inset-0 grid place-items-center -translate-x-[300%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover/arrow:translate-x-0 group-hover:translate-x-0"
       >
         <ArrowSvg size={iconSize} />
       </span>
@@ -628,7 +628,7 @@ function Hero() {
             <img
               src={ichoProjectImg.url}
               alt="Icho — Joyería de autor"
-              className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              className="w-full h-full object-contain transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] group-hover:rotate-1"
             />
           </div>
           <div className="mt-3 flex flex-col gap-1">
@@ -734,7 +734,7 @@ function Hero() {
             <img
               src={ichoProjectImg.url}
               alt="Icho — Joyería artesanal"
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+              className="w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] group-hover:rotate-1"
             />
             {/* Arrow badge */}
             <div
@@ -1233,7 +1233,7 @@ function ProjectCard({
           src={img}
           alt={name}
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] group-hover:rotate-1"
         />
         {/* Static arrow — mobile only */}
         <div className="absolute top-4 right-4 md:hidden">
@@ -1508,14 +1508,9 @@ function Plan() {
 
 function MarqueeBand() {
   const items = [
-    "SEO Local",
-    "Diseño web",
-    "Copywriting",
-    "Google Business",
-    "Branding",
-    "Analítica",
-    "Mantenimiento",
-    "UX / UI",
+    "entrega en 14 días",
+    "auditoría gratuita",
+    "1 mes de mantenimiento incluido",
   ];
   const loop = [...items, ...items, ...items, ...items];
 
