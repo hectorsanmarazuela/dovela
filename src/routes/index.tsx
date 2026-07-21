@@ -154,8 +154,8 @@ function Nav() {
   const pillBorder = `1px solid ${scrolled ? borderColor : "transparent"}`;
   return (
     <header
-      className={`fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none transition-transform duration-500 ease-out ${hidden ? "" : "delay-100"}`}
-      style={{ transform: hidden ? "translateY(calc(-100% - 24px))" : undefined }}
+      className="fixed top-4 left-4 right-4 z-50 flex justify-center pointer-events-none"
+    >
 
     >
       <nav
