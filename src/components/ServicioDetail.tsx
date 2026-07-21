@@ -403,7 +403,7 @@ function ProjectCarouselCard() {
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-[200%]"
+              className="absolute transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:translate-x-[300%]"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="13 6 19 12 13 18" />
