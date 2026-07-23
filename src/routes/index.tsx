@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
  */
 function ArrowCircle({
   size = 36,
-  bg = "#0A0A0A",
+  bg = "#18181B",
   fg = "#FAFAFA",
 }: {
   size?: number;
@@ -178,7 +178,7 @@ function Nav() {
           style={{
             width: 44,
             height: 44,
-            background: "#0A0A0A",
+            background: "#18181B",
             color: "#FAFAFA",
             border: "none",
           }}
@@ -227,7 +227,7 @@ function Nav() {
             fontFamily: "Inter, system-ui, sans-serif",
             fontWeight: 800,
             fontSize: 22,
-            color: "#0A0A0A",
+            color: "#18181B",
             letterSpacing: "-0.02em",
             textTransform: "lowercase",
             lineHeight: 1,
@@ -252,8 +252,8 @@ function Nav() {
                     style={{
                       height: 44,
                       border: pillBorder,
-                      background: active ? "#0A0A0A" : "transparent",
-                      color: active ? "#FAFAFA" : "#0A0A0A",
+                      background: active ? "#18181B" : "transparent",
+                      color: active ? "#FAFAFA" : "#18181B",
                       fontWeight: 700,
                       fontSize: 13,
                     }}
@@ -293,8 +293,8 @@ function Nav() {
                                 padding: "12px 18px",
                                 fontWeight: 700,
                                 fontSize: 13,
-                                background: cActive ? "#0A0A0A" : "transparent",
-                                color: cActive ? "#FAFAFA" : "#0A0A0A",
+                                background: cActive ? "#18181B" : "transparent",
+                                color: cActive ? "#FAFAFA" : "#18181B",
                               }}
                             >
                               <span>{c.label}</span>
@@ -318,8 +318,8 @@ function Nav() {
                 style={{
                   height: 44,
                   border: pillBorder,
-                  background: active ? "#0A0A0A" : "transparent",
-                  color: active ? "#FAFAFA" : "#0A0A0A",
+                  background: active ? "#18181B" : "transparent",
+                  color: active ? "#FAFAFA" : "#18181B",
                   fontWeight: 700,
                   fontSize: 13,
                 }}
@@ -339,7 +339,7 @@ function Nav() {
             height: 44,
             padding: "0 6px 0 22px",
             background: "#C7F751",
-            color: "#0A0A0A",
+            color: "#18181B",
             fontWeight: 700,
             fontSize: 13,
             border: pillBorder,
@@ -357,7 +357,7 @@ function Nav() {
             height: 44,
             padding: "0 4px 0 14px",
             background: "#C7F751",
-            color: "#0A0A0A",
+            color: "#18181B",
             fontWeight: 700,
             fontSize: 12,
             border: pillBorder,
@@ -406,8 +406,8 @@ function Nav() {
                     height: 48,
                     padding: "0 20px",
                     border: pillBorder,
-                    background: active ? "#0A0A0A" : "transparent",
-                    color: active ? "#FAFAFA" : "#0A0A0A",
+                    background: active ? "#18181B" : "transparent",
+                    color: active ? "#FAFAFA" : "#18181B",
                     fontWeight: 700,
                     fontSize: 14,
                     transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
@@ -434,8 +434,8 @@ function Nav() {
                             height: 42,
                             padding: "0 18px",
                             border: pillBorder,
-                            background: cActive ? "#0A0A0A" : "transparent",
-                            color: cActive ? "#FAFAFA" : "#0A0A0A",
+                            background: cActive ? "#18181B" : "transparent",
+                            color: cActive ? "#FAFAFA" : "#18181B",
                             fontWeight: 600,
                             fontSize: 13,
                             transform: mobileOpen ? "translateY(0)" : "translateY(-6px)",
@@ -581,11 +581,11 @@ function Hero() {
         <div className="flex flex-wrap items-center gap-3 mt-6">
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#18181B] hover:brightness-95 transition"
             style={{ padding: "14px 20px", fontWeight: 600, fontSize: 14 }}
           >
             Reserva una llamada gratuita
-            <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+            <ArrowCircle size={28} bg="#18181B" fg="#C7F751" />
           </a>
           <Link
             to="/servicios/diseno-web"
@@ -599,7 +599,7 @@ function Hero() {
             }}
           >
             Explorar nuestros servicios
-            <ArrowCircle size={28} bg="#FAFAFA" fg="#0A0A0A" />
+            <ArrowCircle size={28} bg="#FAFAFA" fg="#18181B" />
           </Link>
         </div>
         <div className="hidden md:block" style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, marginTop: 16 }}>
@@ -635,7 +635,7 @@ function Hero() {
             <span style={{ fontSize: 11, color: "rgba(24,24,27,0.55)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               Proyecto destacado
             </span>
-            <div style={{ fontSize: 16, fontWeight: 600, color: "#0A0A0A" }}>
+            <div style={{ fontSize: 16, fontWeight: 600, color: "#18181B" }}>
               Icho
             </div>
           </div>
@@ -671,11 +671,11 @@ function Hero() {
         <div className="flex flex-wrap items-center gap-3 mt-6">
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#C7F751] text-[#18181B] hover:brightness-95 transition"
             style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14 }}
           >
             Reserva una llamada gratuita
-            <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+            <ArrowCircle size={28} bg="#18181B" fg="#C7F751" />
           </a>
           <Link
             to="/servicios/diseno-web"
@@ -689,7 +689,7 @@ function Hero() {
             }}
           >
             Explorar nuestros servicios
-            <ArrowCircle size={28} bg="#FAFAFA" fg="#0A0A0A" />
+            <ArrowCircle size={28} bg="#FAFAFA" fg="#18181B" />
           </Link>
         </div>
         <div
@@ -751,7 +751,7 @@ function Hero() {
             <span style={{ fontSize: 12, color: "rgba(24,24,27,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Proyecto destacado
             </span>
-            <div style={{ fontSize: 22, fontWeight: 600, color: "#0A0A0A" }}>
+            <div style={{ fontSize: 22, fontWeight: 600, color: "#18181B" }}>
               Icho <span style={{ color: "rgba(24,24,27,0.4)" }}>—</span> Joyería artesanal
             </div>
           </div>
@@ -779,17 +779,17 @@ function PorQueDovela() {
               className="h-display"
               style={{ fontSize: "clamp(44px, 6.4vw, 84px)", margin: 0 }}
             >
-              <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
+              <span className="block" style={{ color: "#18181B", whiteSpace: "nowrap" }}>
                 Construimos
               </span>
-              <span className="block" style={{ color: "#0A0A0A", whiteSpace: "nowrap" }}>
+              <span className="block" style={{ color: "#18181B", whiteSpace: "nowrap" }}>
                 webs usables
               </span>
               <span className="block" style={{ whiteSpace: "nowrap" }}>
                 <span
                   style={{
                     background: "#C7F751",
-                    color: "#0A0A0A",
+                    color: "#18181B",
                     padding: "0 0.18em",
                     borderRadius: 6,
                     boxDecorationBreak: "clone",
@@ -809,17 +809,17 @@ function PorQueDovela() {
             </p>
             <a
               href="#servicios"
-              className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition mt-10"
+              className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#18181B] hover:text-[#FAFAFA] transition mt-10"
               style={{
-                border: "0.5px solid #0A0A0A",
+                border: "0.5px solid #18181B",
                 padding: "10px 10px 10px 20px",
                 fontSize: 15,
                 fontWeight: 600,
-                color: "#0A0A0A",
+                color: "#18181B",
               }}
             >
               Descubre el servicio
-              <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
+              <ArrowCircle size={28} bg="#18181B" fg="#FAFAFA" />
             </a>
           </div>
 
@@ -910,7 +910,7 @@ function SectionHeader({
       <div className="lg:col-span-3">
         <h2 className="label-eyebrow mb-8">{label}</h2>
         <p
-          className="h-display text-[#0A0A0A]"
+          className="h-display text-[#18181B]"
           style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0 }}
         >
           {ghost ? (
@@ -927,17 +927,17 @@ function SectionHeader({
         <p style={{ fontSize: "clamp(15px, 1.6vw, 22px)", color: "#888" }}>{paragraph}</p>
         <a
           href="#"
-          className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#0A0A0A] hover:text-[#FAFAFA] transition"
+          className="group self-start inline-flex items-center gap-2 rounded-full hover:bg-[#18181B] hover:text-[#FAFAFA] transition"
           style={{
-            border: "0.5px solid #0A0A0A",
+            border: "0.5px solid #18181B",
             padding: "10px 10px 10px 20px",
             fontSize: 15,
             fontWeight: 600,
-            color: "#0A0A0A",
+            color: "#18181B",
           }}
         >
           {cta.replace(/\s*→\s*$/, "")}
-          <ArrowCircle size={28} bg="#0A0A0A" fg="#FAFAFA" />
+          <ArrowCircle size={28} bg="#18181B" fg="#FAFAFA" />
         </a>
 
       </div>
@@ -956,7 +956,7 @@ function Services() {
         <div className="mb-12 md:mb-16">
           <p className="label-eyebrow mb-4">Servicios de diseño web y SEO en Segovia</p>
           <h2
-            className="h-display text-[#0A0A0A]"
+            className="h-display text-[#18181B]"
             style={{ fontSize: "clamp(40px, 6vw, 72px)", margin: 0, lineHeight: 0.95 }}
           >
             Nuestros servicios.
@@ -996,8 +996,8 @@ function BentoCard({
   const isDark = theme === "dark";
   const isGray = theme === "gray";
 
-  const bg = isDark ? "#0A0A0A" : isGray ? "#F0F0ED" : "#FFFFFF";
-  const textColor = isDark ? "#FAFAFA" : "#0A0A0A";
+  const bg = isDark ? "#18181B" : isGray ? "#F0F0ED" : "#FFFFFF";
+  const textColor = isDark ? "#FAFAFA" : "#18181B";
   const eyebrowColor = isDark ? "#C7F751" : "#888888";
   const cardBorder = isDark
     ? "0.5px solid rgba(255,255,255,0.08)"
@@ -1013,8 +1013,8 @@ function BentoCard({
     ? "0.5px solid rgba(199,247,81,0.35)"
     : "0.5px solid rgba(10,10,10,0.22)";
 
-  const arrowBg = isDark ? "#C7F751" : "#0A0A0A";
-  const arrowFg = isDark ? "#0A0A0A" : "#FAFAFA";
+  const arrowBg = isDark ? "#C7F751" : "#18181B";
+  const arrowFg = isDark ? "#18181B" : "#FAFAFA";
 
   return (
     <Link
@@ -1237,12 +1237,12 @@ function ProjectCard({
         />
         {/* Static arrow — mobile only */}
         <div className="absolute top-4 right-4 md:hidden">
-          <ArrowCircle size={36} bg="#FAFAFA" fg="#0A0A0A" />
+          <ArrowCircle size={36} bg="#FAFAFA" fg="#18181B" />
         </div>
         {/* Custom cursor — desktop only */}
         <div
           aria-hidden
-          className="hidden md:grid pointer-events-none absolute place-items-center rounded-full text-[#0A0A0A] transition-opacity duration-200 ease-out"
+          className="hidden md:grid pointer-events-none absolute place-items-center rounded-full text-[#18181B] transition-opacity duration-200 ease-out"
           style={{
             width: 72,
             height: 72,
@@ -1260,7 +1260,7 @@ function ProjectCard({
         </div>
       </div>
       <div className="mt-4 flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:flex-wrap">
-        <div className="text-3xl md:text-[15px]" style={{ fontWeight: 500, color: "#0A0A0A", lineHeight: 1.15 }}>{name}</div>
+        <div className="text-3xl md:text-[15px]" style={{ fontWeight: 500, color: "#18181B", lineHeight: 1.15 }}>{name}</div>
         <div className="flex gap-2 flex-wrap">
           {pills.map((p) => (
             <span
@@ -1308,7 +1308,7 @@ function RotatingSeal({ size = 140 }: { size?: number }) {
         </defs>
         <circle cx="50" cy="50" r="50" fill="#C7F751" />
         <text
-          fill="#0A0A0A"
+          fill="#18181B"
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
@@ -1328,7 +1328,7 @@ function RotatingSeal({ size = 140 }: { size?: number }) {
           height={Math.round(size * 0.24)}
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#0A0A0A"
+          stroke="#18181B"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -1364,7 +1364,7 @@ function Plan() {
           style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0, marginBottom: 64 }}
         >
           <span style={{ color: "#888" }}>¿Hablamos de tu </span>
-          <span style={{ color: "#0A0A0A" }}>proyecto</span>
+          <span style={{ color: "#18181B" }}>proyecto</span>
           <span style={{ color: "#888" }}>?</span>
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
@@ -1432,11 +1432,11 @@ function Plan() {
               borderRadius: 20,
               padding: 32,
               border: "0.5px solid #E5E5E5",
-              color: "#0A0A0A",
+              color: "#18181B",
             }}
           >
             <h2
-              className="h-display text-[#0A0A0A]"
+              className="h-display text-[#18181B]"
               style={titleStyle}
             >
               Garantías para tu negocio
@@ -1453,7 +1453,7 @@ function Plan() {
                     style={{
                       width: 32,
                       height: 32,
-                      background: "#0A0A0A",
+                      background: "#18181B",
                       color: "#C7F751",
                     }}
                   >
@@ -1473,7 +1473,7 @@ function Plan() {
                   <span
                     style={{
                       fontSize: 19,
-                      color: "#0A0A0A",
+                      color: "#18181B",
                       lineHeight: 1.5,
                       paddingTop: 4,
                     }}
@@ -1485,15 +1485,15 @@ function Plan() {
             </ul>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start text-[#0A0A0A] transition"
+              className="group inline-flex items-center gap-2 mt-auto pt-8 rounded-full self-start text-[#18181B] transition"
               style={{ fontWeight: 600, fontSize: 14 }}
             >
               <span
-                className="inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] text-[#FAFAFA] hover:brightness-110 transition"
+                className="inline-flex items-center gap-2 rounded-full bg-[#18181B] text-[#FAFAFA] hover:brightness-110 transition"
                 style={{ padding: "12px 20px" }}
               >
                 Ver el Pack Completo
-                <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+                <ArrowCircle size={28} bg="#C7F751" fg="#18181B" />
               </span>
             </a>
           </div>
@@ -1568,8 +1568,8 @@ function MarqueeBand() {
         background: "#C7F751",
         paddingTop: 28,
         paddingBottom: 28,
-        borderTop: "1px solid #0A0A0A",
-        borderBottom: "1px solid #0A0A0A",
+        borderTop: "1px solid #18181B",
+        borderBottom: "1px solid #18181B",
       }}
     >
       <style>{`
@@ -1578,7 +1578,7 @@ function MarqueeBand() {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: -0.01em;
-          color: #0A0A0A;
+          color: #18181B;
           line-height: 1;
         }
         .dovela-sep-icon {
@@ -1614,8 +1614,8 @@ function MarqueeBand() {
                   width="36"
                   height="36"
                   viewBox="0 0 24 24"
-                  fill="#0A0A0A"
-                  stroke="#0A0A0A"
+                  fill="#18181B"
+                  stroke="#18181B"
                   strokeWidth="1.4"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -1774,7 +1774,7 @@ function Testimonials() {
         <div className="mb-12">
           <h2 className="label-eyebrow mb-8">Opiniones de clientes</h2>
           <p
-            className="h-display text-[#0A0A0A]"
+            className="h-display text-[#18181B]"
             style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: 0 }}
           >
             <span style={{ color: "rgba(10,10,10,0.2)" }}>No te fíes solo </span>
@@ -1798,7 +1798,7 @@ function Testimonials() {
             </div>
             <p
               className="mt-2"
-              style={{ fontSize: 18, color: "#0A0A0A", maxWidth: 460 }}
+              style={{ fontSize: 18, color: "#18181B", maxWidth: 460 }}
             >
               Llevábamos años con una web que no aparecía en Google. En tres semanas
               Dovela nos puso en primera página para “fontanero Segovia”.
@@ -1809,7 +1809,7 @@ function Testimonials() {
                   fontSize: 13,
                   fontWeight: 600,
                   letterSpacing: "0.08em",
-                  color: "#0A0A0A",
+                  color: "#18181B",
                 }}
               >
                 CARLOS V.
@@ -1864,7 +1864,7 @@ function Testimonials() {
                       fontSize: 13,
                       fontWeight: 600,
                       letterSpacing: "0.08em",
-                      color: "#0A0A0A",
+                      color: "#18181B",
                     }}
                   >
                     {t.n}
@@ -1872,7 +1872,7 @@ function Testimonials() {
                   <div style={{ fontSize: 12, color: "#888" }}>{t.r}</div>
                 </div>
               </div>
-              <p className="mt-4" style={{ fontSize: "clamp(17px, 1.8vw, 25px)", color: "#0A0A0A" }}>
+              <p className="mt-4" style={{ fontSize: "clamp(17px, 1.8vw, 25px)", color: "#18181B" }}>
                 {t.q}
               </p>
             </div>
@@ -1916,18 +1916,18 @@ function Faq() {
         .fq-c2wrap { max-height:0; opacity:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
         .fq-card.open .fq-c2wrap { max-height:140px; opacity:1; overflow:visible; }
         .fq-c2inner { padding:2px 12px 14px; }
-        .fq-c2 { background:#0A0A0A; border:1px solid #0A0A0A; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; transition: box-shadow .4s cubic-bezier(.4,0,.2,1); }
+        .fq-c2 { background:#18181B; border:1px solid #18181B; border-radius:12px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; transition: box-shadow .4s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-c2 { box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
         .fq-c2 .fq-qtext { color:#FAFAFA; }
         .fq-answ { max-height:0; overflow:hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
         .fq-card.open .fq-answ { max-height:260px; }
         .fq-answbody { padding:6px 26px 22px; }
         .fq-answbody p { font-size:15px; color:#888888; line-height:1.7; }
-        .fq-qtext { font-size:16px; font-weight:500; color:#0A0A0A; line-height:1.35; flex:1; letter-spacing:-0.01em; }
+        .fq-qtext { font-size:16px; font-weight:500; color:#18181B; line-height:1.35; flex:1; letter-spacing:-0.01em; }
 
         .fq-icon { width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(10,10,10,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; overflow:hidden; transition: background .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1); }
         .fq-arrow { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#888888; stroke-width:2; fill:none; transform:rotate(0deg); opacity:1; }
-        .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#0A0A0A; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
+        .fq-chev { position:absolute; transition: opacity .3s ease, transform .4s cubic-bezier(.4,0,.2,1); stroke:#18181B; stroke-width:2; fill:none; transform:rotate(-90deg); opacity:0; }
         .fq-card.open .fq-c2 .fq-icon { background:#C7F751; border-color:#C7F751; }
         .fq-card.open .fq-c2 .fq-icon .fq-arrow { opacity:0; transform:rotate(90deg); }
         .fq-card.open .fq-c2 .fq-icon .fq-chev { opacity:1; transform:rotate(0deg); }
@@ -1935,7 +1935,7 @@ function Faq() {
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="label-eyebrow mb-4" style={{ fontSize: 13 }}>Preguntas frecuentes sobre diseño web y SEO</h2>
-          <p className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0A0A0A", margin: 0 }}>
+          <p className="h-display" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#18181B", margin: 0 }}>
             Preguntas frecuentes.
           </p>
         </div>
@@ -2094,7 +2094,7 @@ function LeadMagnet() {
                 className="w-full outline-none"
                 style={{
                   background: "#FAFAFA",
-                  color: "#0A0A0A",
+                  color: "#18181B",
                   fontSize: 15,
                   padding: "14px 18px",
                   borderRadius: 12,
@@ -2104,7 +2104,7 @@ function LeadMagnet() {
               />
               <button
                 type="submit"
-                className="group inline-flex items-center justify-between gap-2 rounded-full bg-[#C7F751] text-[#0A0A0A] hover:brightness-95 transition"
+                className="group inline-flex items-center justify-between gap-2 rounded-full bg-[#C7F751] text-[#18181B] hover:brightness-95 transition"
                 style={{
                   padding: "14px 22px",
                   fontWeight: 600,
@@ -2114,7 +2114,7 @@ function LeadMagnet() {
                 }}
               >
                 Recibe tu auditoría gratuita
-                <ArrowCircle size={28} bg="#0A0A0A" fg="#C7F751" />
+                <ArrowCircle size={28} bg="#18181B" fg="#C7F751" />
               </button>
               <p
                 style={{
@@ -2146,7 +2146,7 @@ function ContactForm() {
         <div className="min-w-0">
           <h2 className="label-eyebrow mb-8" style={{ fontSize: 13 }}>Contacto — Dovela Estudio Segovia</h2>
           <p
-            className="h-display text-[#0A0A0A]"
+            className="h-display text-[#18181B]"
             style={{ fontSize: "clamp(44px, 6vw, 84px)", margin: 0 }}
           >
             ¿Hablamos?
@@ -2173,7 +2173,7 @@ function ContactForm() {
             >
               <span
                 className="inline-flex items-center justify-center rounded-full shrink-0"
-                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+                style={{ width: 40, height: 40, background: "#18181B", color: "#C7F751" }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -2184,7 +2184,7 @@ function ContactForm() {
                 <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
                   Email
                 </div>
-                <div className="truncate" style={{ fontSize: 15, color: "#0A0A0A", fontWeight: 500 }}>
+                <div className="truncate" style={{ fontSize: 15, color: "#18181B", fontWeight: 500 }}>
                   hola@dovelaestudio.es
                 </div>
               </div>
@@ -2199,7 +2199,7 @@ function ContactForm() {
             >
               <span
                 className="inline-flex items-center justify-center rounded-full shrink-0"
-                style={{ width: 40, height: 40, background: "#0A0A0A", color: "#C7F751" }}
+                style={{ width: 40, height: 40, background: "#18181B", color: "#C7F751" }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12z" />
@@ -2210,15 +2210,15 @@ function ContactForm() {
                 <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 500 }}>
                   Estudio
                 </div>
-                <div style={{ fontSize: 15, color: "#0A0A0A", fontWeight: 500 }}>
+                <div style={{ fontSize: 15, color: "#18181B", fontWeight: 500 }}>
                   Segovia, España
                 </div>
               </div>
               <span
                 className="rounded-full shrink-0"
                 style={{
-                  border: "0.5px solid #0A0A0A",
-                  color: "#0A0A0A",
+                  border: "0.5px solid #18181B",
+                  color: "#18181B",
                   fontSize: 11,
                   padding: "3px 10px",
                   fontWeight: 500,
@@ -2251,11 +2251,11 @@ function ContactForm() {
             </label>
             <textarea
               placeholder="Cuéntanos sobre tu negocio y qué necesitas…"
-              className="w-full outline-none resize-none focus:border-[#0A0A0A] transition-colors"
+              className="w-full outline-none resize-none focus:border-[#18181B] transition-colors"
               rows={6}
               style={{
                 background: "#FAFAFA",
-                color: "#0A0A0A",
+                color: "#18181B",
                 fontSize: 15,
                 padding: "14px 18px",
                 borderRadius: 12,
@@ -2266,11 +2266,11 @@ function ContactForm() {
           </div>
           <button
             type="submit"
-            className="group self-start inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] text-[#FAFAFA] hover:brightness-110 transition"
+            className="group self-start inline-flex items-center gap-2 rounded-full bg-[#18181B] text-[#FAFAFA] hover:brightness-110 transition"
             style={{ padding: "14px 24px", fontWeight: 600, fontSize: 14, minHeight: 48 }}
           >
             Enviar mensaje
-            <ArrowCircle size={28} bg="#C7F751" fg="#0A0A0A" />
+            <ArrowCircle size={28} bg="#C7F751" fg="#18181B" />
           </button>
         </form>
       </div>
@@ -2294,10 +2294,10 @@ function Field({ label, placeholder }: { label: string; placeholder: string }) {
       </label>
       <input
         placeholder={placeholder}
-        className="w-full outline-none focus:border-[#0A0A0A] transition-colors"
+        className="w-full outline-none focus:border-[#18181B] transition-colors"
         style={{
           background: "#FAFAFA",
-          color: "#0A0A0A",
+          color: "#18181B",
           fontSize: 15,
           padding: "14px 18px",
           borderRadius: 12,
@@ -2316,7 +2316,7 @@ function Footer() {
     <footer style={{ padding: 24 }}>
       <div
         style={{
-          background: "#0A0A0A",
+          background: "#18181B",
           borderRadius: 24,
           padding: "56px 40px 32px",
         }}
@@ -2410,7 +2410,7 @@ function Footer() {
 
 function Index() {
   return (
-    <main className="bg-[#FAFAFA] text-[#0A0A0A] overflow-x-clip">
+    <main className="bg-[#FAFAFA] text-[#18181B] overflow-x-clip">
       <Nav />
       <Hero />
       <PorQueDovela />
