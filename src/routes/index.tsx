@@ -147,7 +147,7 @@ function Nav() {
       ],
     },
     { label: "Nosotros", href: "/nosotros", match: "/nosotros" },
-    { label: "Blog", href: "#blog", match: "__none__" },
+    { label: "Contacto", href: "/contacto", match: "/contacto" },
   ];
   const isServiciosActive = pathname.startsWith("/servicios");
   const borderColor = "#D4D4D4";
@@ -2360,21 +2360,26 @@ function Footer() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-y-3 md:justify-self-end">
-            {["Inicio", "Proyectos", "Servicios", "Blog", "Auditoría", "Contacto"].map(
-              (l) => (
-                <a
-                  key={l}
-                  href="#"
-                  className="hover:text-[#FAFAFA] transition-colors"
-                  style={{
-                    fontSize: 14,
-                    color: "rgba(250,250,250,0.65)",
-                  }}
-                >
-                  {l}
-                </a>
-              ),
-            )}
+            {[
+              { label: "Inicio", href: "/" },
+              { label: "Proyectos", href: "/#proyectos" },
+              { label: "Servicios", href: "/servicios/diseno-web" },
+              { label: "Nosotros", href: "/nosotros" },
+              { label: "Auditoría", href: "/#auditoria" },
+              { label: "Contacto", href: "/contacto" },
+            ].map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                className="hover:text-[#FAFAFA] transition-colors"
+                style={{
+                  fontSize: 14,
+                  color: "rgba(250,250,250,0.65)",
+                }}
+              >
+                {l.label}
+              </a>
+            ))}
           </div>
         </div>
         <div
